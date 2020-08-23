@@ -1,32 +1,43 @@
 <template>
-    <div id="app">
-        <Clock></Clock>
-    </div>
+  <div>
+    <HeaderMenu @change="getSelection"></HeaderMenu>
+    <Clock v-if="activeSection==='Reloj'"></Clock>
+  </div>
 </template>
 
 <script>
-    import Clock from "@/components/Clock";
+import HeaderMenu from "@/components/HeaderMenu";
+import Clock from "@/components/Clock";
 
-    export default {
-        name: 'App',
-        components: {
-            Clock,
-        }
+export default {
+  name: 'App',
+  components: {
+    HeaderMenu, Clock
+  },
+  data() {
+    return {
+      activeSection: ''
     }
+  },
+  methods: {
+    getSelection(event) {
+      this.activeSection = event;
+    }
+  }
+}
 </script>
 
 <style>
 
-    body {
-        background-color: #2c3e50;
-    }
+body {
+  margin: 0;
+  padding: 0;
+}
 
-    #app {
-        font-family: Blippo, fantasy;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        margin-top: 60px;
-    }
+:root {
+  font-family: "Fira Code", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
 </style>
