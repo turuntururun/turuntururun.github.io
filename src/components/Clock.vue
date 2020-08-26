@@ -4,8 +4,8 @@
 
     <h1 @click.stop="reset">{{ currentTime }}</h1>
 
-    <button type="button" @click.stop="controlPause"
-            :class="{paused,running:!paused}">
+    <button :class="{paused,running:!paused}" type="button"
+            @click.stop="controlPause">
       Pausa
     </button>
 
@@ -67,6 +67,7 @@ export default {
 @media (orientation: landscape) {
   div {
     flex-flow: row;
+    justify-content: space-evenly;
   }
 }
 
@@ -83,7 +84,6 @@ h1 {
 
 div {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   background-color: #2c3e50;
 }

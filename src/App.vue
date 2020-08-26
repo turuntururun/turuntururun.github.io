@@ -29,9 +29,16 @@ export default {
 
 <style>
 
-body {
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+div {
+  height: 100%;
 }
 
 :root {
@@ -39,5 +46,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  --main-purple: #521C61;
+  --bright-purple: #8c35a5;
 }
+
 </style>
