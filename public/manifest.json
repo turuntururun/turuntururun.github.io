@@ -1,0 +1,11 @@
+{
+  "short_name": "turuntururun",
+  "name": "TurunTururun",
+  "description": "KD webpage",
+  "icons": [],
+  "start_url": "/",
+  "background_color": "#521C61",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#521C61"
+}
