@@ -1,13 +1,18 @@
 <template>
   <header>
-    <h1>TurunTururun</h1>
+    <h1 @click="goHome">TurunTururun</h1>
     <ul>
-      <li v-for="section in myStuff" :key="section" :class="{selected: selected===section}"
-          @click="selected=section;$emit('change', section)">
-        {{ section }}
-      </li>
+      <router-link v-for="section in myStuff" :key="section.path" :to="section.path"
+                   tag="li" active-class="selected" exact>
+        {{ section.name }}
+      </router-link>
+
     </ul>
-    <section v-if="hasLogin" class="login">Acceder</section>
+
+    <router-link v-if="login" to="/login" tag="section" class="login">
+      Acceder
+    </router-link>
+
   </header>
 </template>
 
@@ -17,14 +22,18 @@ export default {
   data() {
     return {
       myStuff: [
-        'Información',
-        'Reloj',
+        {name: 'Información', path: '/'},
+        {name: 'Reloj', path: '/clock'},
         // 'Aplicaciones',
         // 'Mis Libros',
         // 'Trabajo',
       ],
-      selected: 'Información',
-      hasLogin: false
+      login: false
+    }
+  },
+  methods: {
+    goHome() {
+      this.$router.push('/')
     }
   }
 }
@@ -34,7 +43,7 @@ export default {
 
 header {
   background-color: var(--main-purple);
-  color: whitesmoke;
+  color: ghostwhite;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
@@ -44,10 +53,10 @@ h1 {
   font-size: 27pt;
   padding: 0.1rem 1.3rem;
   margin: 0.6rem 0;
+  user-select: none;
 }
 
 ul {
-
   order: 2;
   display: flex;
   flex-flow: row;
@@ -63,6 +72,8 @@ li {
   padding: 0.3rem 1rem;
   display: flex;
   align-items: center;
+  border-radius: 0.4rem;
+  user-select: none;
 }
 
 li.selected {
@@ -77,12 +88,18 @@ li:hover, section:hover {
 li > a {
   color: ghostwhite;
   text-decoration: none;
+  user-select: none;
+  outline: none;
 }
 
 section.login {
   display: flex;
   align-items: center;
   margin: 0.5rem;
+  border-radius: 0.4rem;
+  padding: 0 0.6rem;
+  outline: none;
+  user-select: none;
 }
 
 ::-webkit-scrollbar {

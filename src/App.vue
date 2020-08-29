@@ -1,19 +1,16 @@
 <template>
   <div>
     <HeaderMenu @change="getSelection"></HeaderMenu>
-    <Clock v-if="activeSection==='Reloj'"></Clock>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 import HeaderMenu from "@/components/HeaderMenu";
-import Clock from "@/components/Clock";
 
 export default {
   name: 'App',
-  components: {
-    HeaderMenu, Clock
-  },
+  components: {HeaderMenu},
   data() {
     return {
       activeSection: ''
@@ -39,6 +36,8 @@ html, body {
 
 div {
   height: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
 :root {
