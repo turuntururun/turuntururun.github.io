@@ -2,16 +2,20 @@
   <header>
     <h1 @click="goHome">TurunTururun</h1>
     <ul>
-      <router-link v-for="section in myStuff" :key="section.path" :to="section.path"
+      <router-link v-for="section in allowedSections" :key="section.path" :to="section.path"
                    tag="li" active-class="selected" exact>
         {{ section.name }}
       </router-link>
 
     </ul>
 
-    <router-link v-if="login" to="/login" tag="section" class="login">
+    <section v-if="isAuthenticated" class="login" @click="logout">
+      Cerrar Sesión
+    </section>
+    <router-link v-else class="login" tag="section" to="/login">
       Acceder
     </router-link>
+
 
   </header>
 </template>
@@ -22,18 +26,33 @@ export default {
   data() {
     return {
       myStuff: [
-        {name: 'Información', path: '/'},
+        {name: 'Inicio', path: '/'},
         {name: 'Reloj', path: '/clock'},
         // 'Aplicaciones',
-        // 'Mis Libros',
+        {name: 'Libros', path: '/books', authority: 'books'},
         // 'Trabajo',
-      ],
-      login: false
+      ]
+    }
+  },
+  computed: {
+    allowedSections() {
+      return this.myStuff
+          .filter(value => !value.authority ||
+              this.$store.getters.authorities.includes(value.authority))
+    },
+    isAuthenticated() {
+      return !!this.$store.state.token.access;
     }
   },
   methods: {
     goHome() {
-      this.$router.push('/')
+      if (this.$router.currentRoute.path.substr(1)) {
+        this.$router.push('/');
+      }
+    },
+    logout() {
+      this.$store.commit('clearToken');
+      this.goHome();
     }
   }
 }
@@ -78,6 +97,7 @@ li {
 
 li.selected {
   background-color: var(--bright-purple);
+  margin: 0 0.1rem;
 }
 
 li:hover, section:hover {

@@ -10,44 +10,39 @@
       <input v-model="password" required type="password">
     </label>
     <button>Entrar</button>
+    <label class="error">{{ errorMessage }}</label>
   </form>
 
 </template>
 
 <script>
 import shajs from 'sha.js'
-import axios from 'axios'
-import qs from 'querystring'
 
 export default {
   name: 'Login',
   data() {
     return {
-      username: '',
-      password: ''
+      username: 'sdfa@asdf.sdaf',
+      password: 'sdfsdf',
+      errorMessage: ''
     }
   },
   methods: {
-    async requestLogin() {
-
-      const headers = {
-        'Content-Type': "application/x-www-form-urlencoded",
-        'Authorization': "Basic " + window.btoa("turuntururun.com" + ':' + "123456")
-      };
-
-      const body = {
-        grant_type: 'password',
-        scope: 'read',
+    requestLogin: function () {
+      this.errorMessage = '';
+      this.$store.dispatch('login', {
         username: this.username,
         password: this.hash(this.password)
-      }
-
-      axios.post("https://turuntururun-oauth2.herokuapp.com/oauth/token", qs.stringify(body), {headers})
-          //TODO store token and do something with 4xx errors
-          .then(value => console.log("Token response", value.data))
-          .catch(reason => console.error(reason));
-
-
+      }).then(value => {
+        console.log('requestLogin result', value);
+        this.$router.push('/');
+      }).catch(reason => {
+        if (reason.toJSON().message.includes('400')) {
+          this.errorMessage = 'Credenciales Incorrectas'
+        } else {
+          this.errorMessage = reason
+        }
+      });
     },
     hash(value) {
       return shajs('sha256')
@@ -65,6 +60,10 @@ label {
   display: flex;
   flex-flow: column;
   margin: 1rem;
+}
+
+label.error {
+  color: var(--error-shade);
 }
 
 span {
