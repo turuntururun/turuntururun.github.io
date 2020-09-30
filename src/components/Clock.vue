@@ -62,20 +62,7 @@ export default {
 }
 </script>
 
-<style scoped>
-
-@media (orientation: landscape) {
-  div {
-    flex-flow: row;
-    justify-content: space-evenly;
-  }
-}
-
-@media (orientation: portrait) {
-  div {
-    flex-flow: column;
-  }
-}
+<style lang="scss" scoped>
 
 h1 {
   font-size: 96pt;
@@ -86,6 +73,16 @@ div {
   display: flex;
   align-items: center;
   background-color: #2c3e50;
+
+  @media (orientation: portrait) {
+    flex-flow: column;
+  }
+
+  @media (orientation: landscape) {
+    flex-flow: row;
+    justify-content: space-evenly;
+  }
+
 }
 
 button {
@@ -93,16 +90,16 @@ button {
   font-size: 24pt;
   border: transparent;
   opacity: 1;
-}
 
-button.running {
-  background-color: #4a6a8d;
-  color: bisque;
-}
+  &.running {
+    background-color: #4a6a8d;
+    color: bisque;
+  }
 
-button.paused {
-  background-color: bisque;
-  color: #4a6a8d;
+  &.paused {
+    background-color: bisque;
+    color: #4a6a8d;
+  }
 }
 
 </style>

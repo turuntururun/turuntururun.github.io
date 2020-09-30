@@ -54,42 +54,46 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 label {
   display: flex;
   flex-flow: column;
   margin: 1rem;
-}
 
-label.error {
-  color: var(--error-shade);
+  &.error {
+    color: var(--error-shade);
+  }
 }
 
 span {
   text-align: start;
 }
 
-input {
-  text-align: center;
-  font-size: 13pt;
-  border-style: solid;
-  border-color: var(--bright-purple);
-  border-radius: 0.4rem;
+@mixin purple-border {
+  border: {
+    style: solid;
+    color: var(--bright-purple);
+    radius: 0.4rem;
+  };
 }
 
-input:focus {
-  outline: none;
+input {
+  @include purple-border;
+  text-align: center;
+  font-size: 13pt;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 button {
+  @include purple-border;
   font-size: large;
   font-family: "Fira Code", sans-serif;
   background-color: var(--main-purple);
   color: ghostwhite;
-  border-color: var(--bright-purple);
-  border-style: solid;
-  border-radius: 0.42rem;
 }
 
 @media only screen and (min-width: 700px) {

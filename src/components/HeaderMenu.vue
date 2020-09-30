@@ -58,7 +58,14 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+$desktop: "only screen and (min-width: 700px)";
+
+@mixin nav-link {
+  cursor: pointer;
+  background-color: var(--bright-purple);
+}
 
 header {
   background-color: var(--main-purple);
@@ -66,6 +73,10 @@ header {
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
+
+  @media #{$desktop} {
+    flex-wrap: nowrap;
+  }
 }
 
 h1 {
@@ -93,23 +104,20 @@ li {
   align-items: center;
   border-radius: 0.4rem;
   user-select: none;
+
+  &.selected {
+    background-color: var(--bright-purple);
+    margin: 0 0.1rem;
+  }
+
+  &:hover {
+    @include nav-link;
+  }
+
 }
 
-li.selected {
-  background-color: var(--bright-purple);
-  margin: 0 0.1rem;
-}
-
-li:hover, section:hover {
-  cursor: pointer;
-  background-color: var(--bright-purple);
-}
-
-li > a {
-  color: ghostwhite;
-  text-decoration: none;
-  user-select: none;
-  outline: none;
+section:hover {
+  @include nav-link;
 }
 
 section.login {
@@ -120,6 +128,11 @@ section.login {
   padding: 0 0.6rem;
   outline: none;
   user-select: none;
+
+  @media #{$desktop} {
+    order: 3;
+  }
+
 }
 
 ::-webkit-scrollbar {
@@ -133,18 +146,6 @@ section.login {
 ::-webkit-scrollbar-button {
   background: var(--bright-purple);
   margin: 0.1rem;
-}
-
-@media only screen and (min-width: 700px) {
-
-  header {
-    flex-wrap: nowrap;
-  }
-
-  section.login {
-    order: 3;
-  }
-
 }
 
 </style>
