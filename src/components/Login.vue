@@ -22,8 +22,8 @@ export default {
   name: 'Login',
   data() {
     return {
-      username: 'sdfa@asdf.sdaf',
-      password: 'sdfsdf',
+      username: '',
+      password: '',
       errorMessage: ''
     }
   },
