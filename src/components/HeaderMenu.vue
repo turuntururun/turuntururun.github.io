@@ -28,6 +28,7 @@ export default {
       myStuff: [
         {name: 'Inicio', path: '/'},
         {name: 'Reloj', path: '/clock'},
+        {name: 'Combinaciones', path: '/combinations'},
         // 'Aplicaciones',
         {name: 'Libros', path: '/books', authority: 'books'},
         // 'Trabajo',

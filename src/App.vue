@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
 html, body {
   margin: 0;
@@ -42,5 +42,10 @@ div {
   --bright-purple: #8c35a5;
   --error-shade: #bb200b;
 }
+
+$primary: #521C61;
+
+@import "~bulma/sass/utilities/_all.sass";
+@import "~bulma/sass/elements/button.sass";
 
 </style>
