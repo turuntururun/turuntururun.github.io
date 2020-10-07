@@ -1,32 +1,38 @@
 <template>
 
-  <div class="combination" @submit.prevent="calcSolutions">
-    <form>
-      <button class="button" @click="clear">Limpiar</button>
+  <div class="combination">
+    <div class="columns">
+      <div class="column">
+        <div class="data-input">
+          <form @submit.prevent="">
 
-      <form class="data-input">
-        <label>
-          Suma
-          <input v-model="sum" type="number">
-        </label>
+            <label>
+              <p>Suma</p>
+              <input id="sum-input" v-model="sum" maxlength="2" type="number" @input="jump">
+            </label>
 
-        <label>
-          Elementos
-          <input v-model="elements" type="number">
-        </label>
-      </form>
-      <label>Números permitidos</label>
-      <div class="data-input">
-        <button v-for="n in [1,2,3,4,5,6,7,8,9]" :key="n"
-                :class="{'is-primary':numbers.includes(n), 'is-outlined':!numbers.includes(n)}" class="button"
-                @click="toggleNumber(n)">{{ n }}
-        </button>
+            <label>
+              <p>Elementos</p>
+              <input id="els-input" v-model="elements" maxlength="1" type="number">
+            </label>
+          </form>
+        </div>
+        <label class="middle-label">Números permitidos</label>
+        <div class="data-input">
+          <button v-for="n in [1,2,3,4,5,6,7,8,9]" :key="n"
+                  :class="{'is-primary':numbers.includes(n), 'is-outlined':!numbers.includes(n)}" class="button"
+                  @click="toggleNumber(n)">{{ n }}
+          </button>
+        </div>
+      </div>
+      <div class="column">
+        <button class="button is-primary is-inverted" type="reset" @click="clear">Limpiar</button>
+        <div v-show="dirty && !solutions.length" class="error">No hay soluciones</div>
+        <p v-for="sol in solutions" :key="sol.id">{{ sol }}</p>
       </div>
 
-      <button class="button is-primary" type="submit" @click.prevent="calcSolutions">Calcular</button>
-    </form>
-    <div v-show="dirty && !solutions.length" class="error">No hay soluciones</div>
-    <p v-for="sol in solutions" :key="sol.id">{{ sol }}</p>
+    </div>
+
 
   </div>
 
@@ -41,8 +47,16 @@ export default {
       sum: '',
       elements: '',
       numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-      solutions: [],
       dirty: false
+    }
+  },
+  computed: {
+    solutions() {
+      if (!this.numbers || !this.elements) {
+        return [];
+      }
+      return this.k_combinations(this.numbers, this.elements)
+          .filter(a => a.reduce((e1, e2) => e1 + e2, 0) + '' === this.sum);
     }
   },
   methods: {
@@ -50,13 +64,20 @@ export default {
       this.sum = '';
       this.elements = '';
       this.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      this.solutions = [];
       this.dirty = false;
+      document.getElementById("sum-input").focus();
     },
-    calcSolutions() {
-      this.dirty = true;
-      this.solutions = this.k_combinations(this.numbers, this.elements)
-          .filter(a => a.reduce((e1, e2) => e1 + e2, 0) + '' === this.sum);
+    jump(ev) {
+
+      switch (ev.target.id) {
+        case 'sum-input':
+          if (ev.target.value.length === 2)
+            document.getElementById("els-input").focus();
+          return;
+        case 'els-input':
+          if (ev.target.value.length === 1)
+            document.getElementById("els-input").blur();
+      }
     },
     toggleNumber(n) {
       if (this.numbers.includes(n)) {
@@ -106,6 +127,25 @@ export default {
 
 <style lang="scss" scoped>
 
+p {
+  margin: 0.3rem
+}
+
+.column {
+  flex-grow: 1;
+  width: 50%;
+
+  input {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+.columns {
+  display: flex;
+  flex-flow: row nowrap
+}
+
 div {
   height: auto;
 }
@@ -116,7 +156,6 @@ div {
 }
 
 .data-input {
-  margin: 2em 0;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -129,6 +168,14 @@ input {
 .error {
   margin: 2em auto;
   color: #bf0f0f;
+}
+
+.middle-label {
+  margin: 0.8rem 0
+}
+
+.button.is-inverted {
+  border: 1px solid var(--main-purple);
 }
 
 </style>
