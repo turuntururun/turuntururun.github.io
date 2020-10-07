@@ -21,11 +21,32 @@ const checkAuthentication = function (to, from, next) {
 };
 
 const routes = [
-    {path: '', component: Home},
-    {path: '/clock', component: Clock},
-    {path: '/combinations', component: Combinations},
-    {path: loginPath, component: Login, beforeEnter: checkAuthentication},
-    {path: '/books', component: BookReader, beforeEnter: checkAuthentication},
+    {
+        path: '',
+        name: 'Inicio',
+        component: Home
+    },
+    {
+        path: '/clock',
+        name: 'Reloj',
+        component: Clock
+    },
+    {
+        path: '/combinations',
+        name: 'Combinaciones',
+        component: Combinations
+    },
+    {
+        path: loginPath,
+        component: Login,
+        beforeEnter: checkAuthentication
+    },
+    {
+        path: '/books',
+        name: 'Libros',
+        component: BookReader,
+        authority: 'books', beforeEnter: checkAuthentication
+    },
 ]
 
 Vue.use(VueRouter);

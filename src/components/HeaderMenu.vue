@@ -16,7 +16,6 @@
       Acceder
     </router-link>
 
-
   </header>
 </template>
 
@@ -24,22 +23,17 @@
 export default {
   name: "HeaderMenu",
   data() {
-    return {
-      myStuff: [
-        {name: 'Inicio', path: '/'},
-        {name: 'Reloj', path: '/clock'},
-        {name: 'Combinaciones', path: '/combinations'},
-        // 'Aplicaciones',
-        {name: 'Libros', path: '/books', authority: 'books'},
-        // 'Trabajo',
-      ]
-    }
+    return {}
   },
   computed: {
+    sections() {
+      return this.$router.options.routes
+          .filter(value => !!value.name)
+          .map(({name, authority, path}) => ({name, authority, path: path || '/'}))
+    },
     allowedSections() {
-      return this.myStuff
-          .filter(value => !value.authority ||
-              this.$store.getters.authorities.includes(value.authority))
+      return this.sections
+          .filter(value => !value.authority || this.$store.getters.authorities.includes(value.authority))
     },
     isAuthenticated() {
       return !!this.$store.state.token.access;
