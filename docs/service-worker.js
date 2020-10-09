@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.def93c7fe7d153e3a9c03479e5f385be.js"
+  "/precache-manifest.514df255582f975c285dda7af0b1fd13.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "turuntururun"});

@@ -7,17 +7,17 @@
           <form @submit.prevent="">
 
             <label>
-              <p>Suma</p>
-              <input id="sum-input" v-model="sum" maxlength="2" type="number" @input="jump">
+              <p class="is-unselectable">Suma</p>
+              <input id="sum-input" v-model="sum" maxlength="2" type="number" max="45" @input="jump">
             </label>
 
             <label>
-              <p>Elementos</p>
-              <input id="els-input" v-model="elements" maxlength="1" type="number">
+              <p class="is-unselectable">Elementos</p>
+              <input id="els-input" v-model="elements" maxlength="1" max="10" type="number">
             </label>
           </form>
         </div>
-        <label class="middle-label">Números permitidos</label>
+        <label class="middle-label is-unselectable">Números permitidos</label>
         <div class="data-input">
           <button v-for="n in [1,2,3,4,5,6,7,8,9]" :key="n"
                   :class="{'is-primary':numbers.includes(n), 'is-outlined':!numbers.includes(n)}" class="button"
@@ -28,7 +28,7 @@
       <div class="column">
         <button class="button is-primary is-inverted" type="reset" @click="clear">Limpiar</button>
         <div v-show="dirty && !solutions.length" class="error">No hay soluciones</div>
-        <p v-for="sol in solutions" :key="sol.id">{{ sol }}</p>
+        <p class="is-unselectable" v-for="sol in solutions" :key="sol.id" @click="highlight">{{ sol }}</p>
       </div>
 
     </div>
@@ -56,7 +56,8 @@ export default {
         return [];
       }
       return this.k_combinations(this.numbers, this.elements)
-          .filter(a => a.reduce((e1, e2) => e1 + e2, 0) + '' === this.sum);
+          .filter(a => a.reduce((e1, e2) => e1 + e2, 0) === Number.parseInt(this.sum))
+          .map(a => a.sort());
     }
   },
   methods: {
@@ -69,13 +70,15 @@ export default {
     },
     jump(ev) {
 
-      switch (ev.target.id) {
+      let input = ev.target;
+      let number = input.value;
+      switch (input.id) {
         case 'sum-input':
-          if (ev.target.value.length === 2)
+          if (number.length === 2 || Number.parseInt(number) > 4)
             document.getElementById("els-input").focus();
           return;
         case 'els-input':
-          if (ev.target.value.length === 1)
+          if (number.length === 1)
             document.getElementById("els-input").blur();
       }
     },
@@ -85,6 +88,14 @@ export default {
         this.numbers.splice(index, 1);
       } else {
         this.numbers.push(n);
+      }
+    },
+    highlight(ev) {
+      const classes = ev.target.className.split(' ');
+      if (classes.includes('selected')) {
+        ev.target.className = ev.target.className.replace('selected', '');
+      } else {
+        ev.target.className += ' selected'
       }
     },
     /**
@@ -178,4 +189,11 @@ input {
   border: 1px solid var(--main-purple);
 }
 
+.selected {
+  background-color: #b9c6c9;
+}
+
+.is-unselectable{
+  user-select: none;
+}
 </style>

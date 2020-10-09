@@ -1,12 +1,14 @@
 import Vue from 'vue'
+import VueRouter from "vue-router";
+
 import {store} from "./store";
 
-import Clock from "@/components/Clock";
-import Combinations from "@/components/Combinations";
 import Home from "@/components/Home";
 import Login from "@/components/Login";
+import Clock from "@/components/Clock";
+import Combinations from "@/components/Combinations";
 import BookReader from "@/components/BookReader";
-import VueRouter from "vue-router";
+// import Timer from "@/components/Timer";
 
 const loginPath = '/login';
 
@@ -27,25 +29,30 @@ const routes = [
         component: Home
     },
     {
-        path: '/clock',
-        name: 'Reloj',
-        component: Clock
-    },
-    {
         path: '/combinations',
         name: 'Combinaciones',
         component: Combinations
     },
+    // {
+    //     path: '/timer',
+    //     name: 'Temporizador',
+    //     component: Timer
+    // },
     {
-        path: loginPath,
-        component: Login,
-        beforeEnter: checkAuthentication
+        path: '/clock',
+        name: 'Reloj',
+        component: Clock
     },
     {
         path: '/books',
         name: 'Libros',
         component: BookReader,
         authority: 'books', beforeEnter: checkAuthentication
+    },
+    {
+        path: loginPath,
+        component: Login,
+        beforeEnter: checkAuthentication
     },
 ]
 
