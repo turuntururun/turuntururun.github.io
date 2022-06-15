@@ -1,53 +1,44 @@
 {
   "name": "turuntururun",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix",
+    "test:e2e": "wdio wdio.conf.js"
   },
   "dependencies": {
-    "axios": "0.20.0",
-    "core-js": "^3.6.5",
-    "nosleep.js": "0.11.0",
-    "query-string": "6.13.1",
-    "register-service-worker": "^1.7.1",
-    "sha.js": "2.4.11",
-    "vue": "^2.6.11",
-    "vue-router": "3.4.3",
-    "vuex": "3.5.1"
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.19.3",
+    "nuxt": "^2.15.8",
+    "vue": "^2.6.14",
+    "vue-server-renderer": "^2.6.14",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.4.0",
-    "@vue/cli-plugin-eslint": "~4.4.0",
-    "@vue/cli-plugin-pwa": "^4.5.7",
-    "@vue/cli-service": "~4.4.0",
-    "babel-eslint": "^10.1.0",
-    "bulma": "^0.9.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+    "@babel/eslint-parser": "^7.16.3",
+    "@nuxt/types": "^2.15.8",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/eslint-config-typescript": "^8.0.0",
+    "@nuxtjs/eslint-module": "^3.0.2",
+    "@wdio/cli": "^7.16.11",
+    "@wdio/local-runner": "^7.16.11",
+    "@wdio/mocha-framework": "^7.16.11",
+    "@wdio/spec-reporter": "^7.16.11",
+    "@wdio/sync": "^7.16.11",
+    "eslint": "^8.4.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-nuxt": "^3.1.0",
+    "eslint-plugin-vue": "^8.2.0",
+    "eslint-plugin-wdio": "^7.4.2",
+    "prettier": "^2.5.1",
+    "webdriverio": "^7.16.11"
+  }
 }
