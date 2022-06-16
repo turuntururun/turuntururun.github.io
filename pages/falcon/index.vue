@@ -1,60 +1,54 @@
 <template>
-  <!-- todo create header component -->
-    <div class="container">
-      <header>
-        Find:
-        <Tile
-          v-for="(s, i) in chips"
-          :key="s"
-          :background="found.includes(i) ? 'chartreuse' : ''"
-          :content="s"
-          :width="tileWidth"
+  <div class="container">
+    <!-- todo create components -->
+    <header v-if="found.length > 4">
+      <h4>Great job!!</h4>
+      <button @click="restart">Restart</button>
+    </header>
+    <header v-else>
+      Find:
+      <Tile
+        v-for="(s, i) in chips"
+        :key="s"
+        :background="found.includes(i) ? 'chartreuse' : ''"
+        :content="s"
+        :width="tileWidth"
         >{{ s }}
-        </Tile>
-      </header>
+      </Tile>
+    </header>
 
-      <Board
-        :key="boardKey"
-        :tiles="80"
-        @correct="add"
-        @mounted="boardMounted"
-      />
-
-      <!-- todo improve section and create header component -->
-      <footer v-if="found.length > 4">
-        <h2>Great job!!</h2>
-        <button @click="restart">Restart</button>
-      </footer>
-    </div>
+    <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted" />
+  </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
+import Vue from 'vue'
 
 export default Vue.extend({
   name: 'FalconGame',
   data: (): { found: number[]; chips: string[]; boardKey: string } => ({
     found: [],
     chips: [],
-    boardKey: "dummy-whatever"
+    boardKey: 'dummy-whatever',
   }),
   computed: {
     tileWidth() {
-      return this.$el.clientWidth / 7;
-    }
+      return 100
+    },
   },
   methods: {
     boardMounted(stuff: string[]) {
-      this.chips = stuff;
+      this.chips = stuff
     },
     add(emoji: string) {
-      this.found.push(this.chips.indexOf(emoji));
+      const hit = this.chips.indexOf(emoji)
+      if (!this.found.includes(hit)) this.found.push(hit)
     },
     restart() {
-      this.found = [];
-      this.chips = [];
-      this.boardKey += ".";
-    }
+      this.found = []
+      this.chips = []
+      this.boardKey += '.'
+    },
   },
 })
 </script>
@@ -70,10 +64,8 @@ header {
   font-size: 32pt;
 }
 
-footer {
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+h4 {
+  margin: 0.6rem 0;
 }
 
 button {

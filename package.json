@@ -26,7 +26,7 @@
     "@babel/eslint-parser": "^7.16.3",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxtjs/eslint-config-typescript": "^8.0.0",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@wdio/cli": "^7.16.11",
     "@wdio/local-runner": "^7.16.11",
@@ -36,7 +36,7 @@
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
-    "eslint-plugin-vue": "^8.2.0",
+    "eslint-plugin-vue": "^9.1.1",
     "eslint-plugin-wdio": "^7.4.2",
     "prettier": "^2.5.1",
     "webdriverio": "^7.16.11"
