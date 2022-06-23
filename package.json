@@ -32,7 +32,7 @@
     "@wdio/local-runner": "^7.16.11",
     "@wdio/mocha-framework": "^7.16.11",
     "@wdio/spec-reporter": "^7.16.11",
-    "@wdio/sync": "^7.16.11",
+    "@wdio/sync": "^7.20.4",
     "eslint": "^8.4.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",
