@@ -5,6 +5,9 @@
       algo. Por ahora tengo un juego por
       <nuxt-link to="/falcon">aquí</nuxt-link>.
     </p>
+
+    <nuxt-content :document="{ body: page.body }" />
+    <pre>{{page}}</pre>
   </div>
 </template>
 
@@ -13,6 +16,12 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'IndexPage',
+  async asyncData ({ $content }) {
+    const page = await $content('demo').fetch()
+    return {
+      page
+    }
+  }
 })
 </script>
 

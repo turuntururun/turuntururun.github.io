@@ -32,6 +32,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxt/content'
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -47,6 +48,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  content: {
+    // Options
+  },
 
   generate: {
     dir: 'docs'
