@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <!-- todo create components -->
     <header v-if="found.length > 4">
       <h4>Great job!!</h4>
       <button @click="restart">Restart</button>

@@ -20,7 +20,7 @@ export default Vue.extend({
 
 <style scoped>
 p {
-  font-family: 'Bauhaus 93', AlienCaret, Arial, serif;
+  font-family: 'Bauhaus 93', Arial, serif;
   font-size: 24pt;
   padding: 1rem 1.5rem;
 }

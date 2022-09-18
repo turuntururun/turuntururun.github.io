@@ -1,5 +1,6 @@
 ---
 title: Acordes diatónicos
+description: Acordeón de acordes diatónicos
 ---
 
 ### Major
@@ -20,7 +21,7 @@ title: Acordes diatónicos
 | B<sup>b</sup> | Cm             | Dm             | E<sup>b</sup> | F             | Gm             | Adim             |
 | F             | Gm             | Am             | B<sup>b</sup> | C             | Em             | Edim             |
 
-### Relative minor
+### Natural minor
 
 | i              | ii-              | III           | iv             | v              | VI            | VII           |
 |----------------|------------------|---------------|----------------|----------------|---------------|---------------|

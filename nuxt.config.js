@@ -3,19 +3,17 @@ export default {
   target: 'static',
 
   head: {
-    title: "turuntururun",
+    title: 'turuntururun',
     meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { hid: "description", name: "description", content: "" },
-      { name: "format-detection", content: "telephone=no" }
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [
-    '@/assets/css/main.css',
-  ],
+  css: ['@/assets/css/main', '@/assets/css/nuxt-content'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -32,7 +30,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
-    '@nuxt/content'
+    '@nuxt/content',
   ],
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
@@ -43,7 +41,7 @@ export default {
   },
 
   server: {
-    host: '0.0.0.0'
+    host: '0.0.0.0',
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -54,6 +52,6 @@ export default {
   },
 
   generate: {
-    dir: 'docs'
-  }
+    dir: 'docs',
+  },
 }

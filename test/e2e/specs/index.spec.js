@@ -1,6 +1,6 @@
 const Page = require('../pageObjects/main.page')
 
-// todo learn to use this stuff
+// todo implement testing with cypress??
 describe('Example test', () => {
   it('should open correct app', () => {
     Page.open()

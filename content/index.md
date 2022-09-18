@@ -10,5 +10,5 @@ Notas de ideas y conceptos que quiero tener accesibles para recordar y compartir
 
 ### Música
 
-[Acordes diatónicos](/notes/music/diatonic-chords)
+- [Acordes diatónicos](/notes/music/diatonic-chords)
 

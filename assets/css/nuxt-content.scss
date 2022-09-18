@@ -1,0 +1,20 @@
+// TODO Make the blog look prettier
+.nuxt-content {
+  margin: 1rem 3rem;
+
+  p {
+    font-family: Arial, sans-serif;
+    padding: 1rem 1.5rem;
+  }
+
+  table{
+    border: 1px solid darkslateblue;
+    border-spacing: 0;
+  }
+  td {
+    min-width: 4rem;
+    border: 1px solid darkslateblue;
+    padding: 0.2rem;
+    margin: 0;
+  }
+}
