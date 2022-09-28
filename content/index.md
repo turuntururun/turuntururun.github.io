@@ -10,5 +10,9 @@ Notas de ideas y conceptos que quiero tener accesibles para recordar y compartir
 
 ### Música
 
-- [Acordes diatónicos](/notes/music/diatonic-chords)
+- [Diatonic chords](/notes/music/diatonic-chords)
+- 
+### Noticias
+
+- [Ejercicio y longevidad](/notes/news/exercise-with-weights-linked-to-lower-risk-of-early-death-study-says)
 
