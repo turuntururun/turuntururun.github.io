@@ -2,8 +2,19 @@
   <div class="song-data">
     <h3>Soon to be delisted</h3>
     <section v-for="song in soonDelisting" :key="song.title">
-      <p><strong>{{ song.title }}</strong> {{ song.performer }}</p>
-      <span>Delisting ~{{ expiryDate(song).toLocaleDateString() }}</span>
+      <p>
+        <strong>{{ song.title }}</strong> {{ song.performer }}
+      </p>
+      <span
+        >Delisting
+        {{
+          expiryDate(song).toLocaleDateString('en-uk', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric',
+          })
+        }}</span
+      >
       <span>
         <a :href="searchSpotify(song)" target="_blank"
           ><img
@@ -44,6 +55,9 @@ export default Vue.extend({
     expiryDate(song: Song): Date {
       const date = new Date(Date.parse(song.releaseDate))
       date.setFullYear(date.getFullYear() + 10)
+      while (date.getDay() !== 1) {
+        date.setDate(date.getDate() + 1)
+      }
       return date
     },
     searchSpotify(song: Song): string {
@@ -58,15 +72,20 @@ export default Vue.extend({
         encodeURIComponent(song.title + ' ' + song.performer)
       )
     },
+    addDays(date: Date, days: number): Date {
+      const d = new Date(date)
+      d.setDate(d.getDate() + days)
+      return d
+    },
   },
 })
 </script>
 
 <style scoped>
-.song-data{
+.song-data {
   display: flex;
   flex-flow: column;
-  font-family:  Arial, serif;
+  font-family: Arial, serif;
 }
 img {
   height: 15px;
