@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="340" height="340" xmlns="http://www.w3.org/2000/svg">
+
+  <rect fill="#A9EEF3" stroke="#000" x="0" y="80" rx="40" ry="40" width="340" height="180"/>
+
+  <polyline points="50,90 30,220 32,227  35,235 40,240 60,240 80,200 100,240 120,200 140,240"
+            style="fill:none;stroke:purple;stroke-width:7"/>
+  <polyline points="25,130 70,130 " style="fill:none;stroke:purple;stroke-width:7"/>
+
+  <polyline points="180,90 160,220 162,227 165,235 170,240 190,240 210,200 230,240 250,200 270,240 290,200 310,240 "
+            style="fill:none;stroke:purple;stroke-width:7"/>
+  <polyline points="155,130 200,130 " style="fill:none;stroke:purple;stroke-width:7"/>
+
+</svg>
