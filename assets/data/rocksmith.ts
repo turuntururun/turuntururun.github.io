@@ -334,15 +334,15 @@ export const songs: Song[] = [{
   "releaseDate": "2013-02-05"
 }, {
   "title": "London Calling",
-  "performer": "ClashThe Clash",
+  "performer": "The Clash",
   "releaseDate": "2013-02-12"
 }, {
   "title": "Guns of Brixton",
-  "performer": "ClashThe Clash",
+  "performer": "The Clash",
   "releaseDate": "2013-02-12"
 }, {
   "title": "Should I Stay or Should I Go",
-  "performer": "ClashThe Clash",
+  "performer": "The Clash",
   "releaseDate": "2013-02-12"
 }, { "title": "Black Betty", "performer": "Ram Jam", "releaseDate": "2013-02-19" }, {
   "title": "Carry On Wayward Son",
@@ -2206,7 +2206,7 @@ export const songs: Song[] = [{
   "releaseDate": "2016-08-23"
 }, { "title": "La Villa Strangiato", "performer": "Rush", "releaseDate": "2016-08-23" }, {
   "title": "I Fought the Law",
-  "performer": "ClashThe Clash",
+  "performer": "The Clash",
   "releaseDate": "2016-08-30"
 }, { "title": "Emerald", "performer": "Thin Lizzy", "releaseDate": "2016-08-30" }, {
   "title": "Little Green Bag",

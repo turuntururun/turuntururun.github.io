@@ -1,7 +1,12 @@
 <template>
   <div class="song-data">
-    <h3>Soon to be delisted</h3>
-    <section v-for="song in soonDelisting" :key="song.title">
+    <h3>
+      Song to be delisted in the next
+      <input v-model="limit" type="number" />
+      days
+    </h3>
+    <p>{{ soonDelisting.length }} songs found</p>
+    <section v-for="song in soonDelisting" :key="song.title + song.performer">
       <p>
         <strong>{{ song.title }}</strong> {{ song.performer }}
       </p>
@@ -38,17 +43,18 @@ import { Song, songs } from 'assets/data/rocksmith'
 export default Vue.extend({
   name: 'RocksmithDelisting',
   data() {
-    return { songs, today: new Date() }
+    return { songs, today: new Date(), limit: '30' }
   },
   computed: {
     soonDelisting(): Song[] {
-      const nextMonth = new Date(this.today)
-      nextMonth.setDate(nextMonth.getDate() + 30)
+      const endDate = new Date(this.today)
+      endDate.setDate(endDate.getDate() + Number.parseInt(this.limit))
       const yesterday = new Date(this.today)
       yesterday.setDate(yesterday.getDate() - 1)
-      return this.songs.filter(
-        (s) => this.expiryDate(s) > yesterday && this.expiryDate(s) < nextMonth
-      )
+      return this.songs.filter((s) => {
+        const expiryDate = this.expiryDate(s)
+        return yesterday < expiryDate && expiryDate < endDate
+      })
     },
   },
   methods: {
@@ -100,5 +106,13 @@ section {
   margin: 0.5rem 0.5rem;
   padding: 0.5rem;
   border-bottom: 1px solid cornflowerblue;
+}
+
+input[type='number'] {
+  width: 3.4ch;
+  font-size: 16pt;
+  border: 0;
+  background: #b3ccfa;
+  border-radius: 0.4rem;
 }
 </style>
