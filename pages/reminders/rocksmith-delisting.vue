@@ -5,13 +5,16 @@
       <input v-model="limit" type="number" />
       days
     </h3>
-    <p>{{ soonDelisting.length }} songs found</p>
+    <div class="result-row">
+      <span>{{ soonDelisting.length }} songs found</span>
+      <input v-model="search" placeholder="Search" />
+    </div>
     <section v-for="song in soonDelisting" :key="song.title + song.performer">
-      <p>
+      <p :class="song.available ? '' : 'strike'">
         <strong>{{ song.title }}</strong> {{ song.performer }}
       </p>
       <span
-        >Delisting
+        >{{ song.available ? 'Delisting' : 'Delisted' }}
         {{
           expiryDate(song).toLocaleDateString('en-uk', {
             year: 'numeric',
@@ -26,7 +29,7 @@
             src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
             alt="Spotify search"
         /></a>
-        <a :href="searchSteam(song)" target="_blank"
+        <a v-if="song.available" :href="searchSteam(song)" target="_blank"
           ><img
             src="https://store.steampowered.com/favicon.ico"
             alt="Steam search"
@@ -43,10 +46,22 @@ import { Song, songs } from 'assets/data/rocksmith'
 export default Vue.extend({
   name: 'RocksmithDelisting',
   data() {
-    return { songs, today: new Date(), limit: '30' }
+    return { songs, today: new Date(), limit: '30', search: '' }
   },
   computed: {
     soonDelisting(): Song[] {
+      if (this.search) {
+        return this.songs.filter((s) => {
+          const text = (s.title + ' ' + s.performer).toLowerCase()
+          const searchParams = this.search.toLowerCase().split(' ')
+          for (const word of searchParams) {
+            if (!text.includes(word)) {
+              return false
+            }
+          }
+          return true
+        })
+      }
       const endDate = new Date(this.today)
       endDate.setDate(endDate.getDate() + Number.parseInt(this.limit))
       const yesterday = new Date(this.today)
@@ -87,7 +102,7 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .song-data {
   display: flex;
   flex-flow: column;
@@ -114,5 +129,16 @@ input[type='number'] {
   border: 0;
   background: #b3ccfa;
   border-radius: 0.4rem;
+}
+
+.result-row {
+  margin: 0 2rem;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.strike {
+  text-decoration: line-through;
 }
 </style>
