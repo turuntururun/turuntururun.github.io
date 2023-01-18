@@ -22,7 +22,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Tighten Up',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2011-11-01',
   },
   {
@@ -42,7 +42,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Jessica',
-    performer: 'Allman Brothers BandThe Allman Brothers Band',
+    performer: 'The Allman Brothers Band',
     releaseDate: '2011-11-15',
   },
   { title: 'Cousins', performer: 'Vampire Weekend', releaseDate: '2011-11-29' },
@@ -88,17 +88,17 @@ export const songs: Song[] = [
   },
   {
     title: 'Mind Eraser',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2011-12-27',
   },
   {
     title: 'Gold on the Ceiling',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2011-12-27',
   },
   {
     title: 'Just Got to Be',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2011-12-27',
   },
   {
@@ -145,7 +145,7 @@ export const songs: Song[] = [
     releaseDate: '2012-03-06',
   },
   {
-    title: 'Thrill Is GoneThe Thrill is Gone',
+    title: 'The Thrill Is Gone',
     performer: 'B.B. King',
     releaseDate: '2012-03-20',
   },
@@ -156,7 +156,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Soul Man',
-    performer: 'Blues BrothersThe Blues Brothers',
+    performer: 'The Blues Brothers',
     releaseDate: '2012-03-20',
   },
   {
@@ -296,7 +296,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Whipping Post',
-    performer: 'Allman Brothers BandThe Allman Brothers Band',
+    performer: 'The Allman Brothers Band',
     releaseDate: '2012-08-21',
   },
   {
@@ -310,7 +310,7 @@ export const songs: Song[] = [
     releaseDate: '2012-09-04',
   },
   {
-    title: 'Man Who Sold the WorldThe Man Who Sold the World',
+    title: 'The Man Who Sold the World',
     performer: 'David Bowie',
     releaseDate: '2012-09-04',
   },
@@ -320,7 +320,7 @@ export const songs: Song[] = [
     releaseDate: '2012-09-18',
   },
   {
-    title: 'Final CountdownThe Final Countdown',
+    title: 'The Final Countdown',
     performer: 'Europe',
     releaseDate: '2012-09-18',
   },
@@ -466,7 +466,7 @@ export const songs: Song[] = [
   },
   {
     title: 'American Woman',
-    performer: 'Guess WhoThe Guess Who',
+    performer: 'The Guess Who',
     releaseDate: '2013-01-29',
   },
   {
@@ -567,7 +567,7 @@ export const songs: Song[] = [
     releaseDate: '2013-03-19',
   },
   {
-    title: 'End of the WorldThe End of the World',
+    title: 'The End of the World',
     performer: 'The Cure',
     releaseDate: '2013-03-19',
   },
@@ -578,7 +578,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Southbound',
-    performer: 'Allman Brothers BandThe Allman Brothers Band',
+    performer: 'The Allman Brothers Band',
     releaseDate: '2013-04-02',
   },
   { title: 'Ballroom Blitz', performer: 'Sweet', releaseDate: '2013-04-02' },
@@ -588,7 +588,7 @@ export const songs: Song[] = [
     releaseDate: '2013-04-16',
   },
   {
-    title: 'Good Left UndoneThe Good Left Undone',
+    title: 'The Good Left Undone',
     performer: 'Rise Against',
     releaseDate: '2013-04-16',
   },
@@ -644,13 +644,13 @@ export const songs: Song[] = [
     releaseDate: '2013-10-22',
   },
   {
-    title: 'Sky Is CryingThe Sky Is Crying',
+    title: 'The Sky Is Crying',
     performer: 'Albert King',
     releaseDate: '2013-10-22',
   },
   {
     title: 'Cherub Rock',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-22',
   },
   {
@@ -676,27 +676,27 @@ export const songs: Song[] = [
   { title: 'Ho Hey', performer: 'The Lumineers', releaseDate: '2013-10-22' },
   {
     title: '1979',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-29',
   },
   {
     title: 'Tonight, Tonight',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-29',
   },
   {
     title: 'Today',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-29',
   },
   {
     title: 'Disarm',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-29',
   },
   {
     title: 'Bullet with Butterfly Wings',
-    performer: 'Smashing PumpkinsThe Smashing Pumpkins',
+    performer: 'The Smashing Pumpkins',
     releaseDate: '2013-10-29',
   },
   {
@@ -715,7 +715,7 @@ export const songs: Song[] = [
     releaseDate: '2013-11-05',
   },
   {
-    title: 'Number of the BeastThe Number of the Beast',
+    title: 'The Number of the Beast',
     performer: 'Iron Maiden',
     releaseDate: '2013-11-05',
   },
@@ -1340,7 +1340,7 @@ export const songs: Song[] = [
   },
   {
     title: 'China Grove',
-    performer: 'Doobie BrothersThe Doobie Brothers',
+    performer: 'The Doobie Brothers',
     releaseDate: '2014-07-22',
   },
   {
@@ -1548,27 +1548,27 @@ export const songs: Song[] = [
   },
   {
     title: 'Blue Orchid',
-    performer: 'White StripesThe White Stripes',
+    performer: 'The White Stripes',
     releaseDate: '2014-10-14',
   },
   {
     title: 'Fell in Love With a Girl',
-    performer: 'White StripesThe White Stripes',
+    performer: 'The White Stripes',
     releaseDate: '2014-10-14',
   },
   {
     title: 'Seven Nation Army',
-    performer: 'White StripesThe White Stripes',
+    performer: 'The White Stripes',
     releaseDate: '2014-10-14',
   },
   {
     title: 'The Hardest Button to Button',
-    performer: 'White StripesThe White Stripes',
+    performer: 'The White Stripes',
     releaseDate: '2014-10-14',
   },
   {
     title: 'You Don\u0027t Know What Love Is (You Just Do as You\u0027re Told)',
-    performer: 'White StripesThe White Stripes',
+    performer: 'The White Stripes',
     releaseDate: '2014-10-14',
   },
   { title: 'Holy Diver', performer: 'Dio', releaseDate: '2014-10-21' },
@@ -1761,62 +1761,62 @@ export const songs: Song[] = [
   },
   {
     title: 'Bold as Love',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Castles Made of Sand',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Fire',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Foxy Lady',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'If 6 Was 9',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Little Wing',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Manic Depression',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Purple Haze',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'The Wind Cries Mary',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Red House',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Freedom',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
     title: 'Voodoo Child (Slight Return)',
-    performer: 'Jimi Hendrix ExperienceThe Jimi Hendrix Experience',
+    performer: 'The Jimi Hendrix Experience',
     releaseDate: '2014-12-16',
   },
   {
@@ -2413,17 +2413,17 @@ export const songs: Song[] = [
   { title: 'Dust in the Wind', performer: 'Kansas', releaseDate: '2015-08-18' },
   {
     title: 'Love Spreads',
-    performer: 'Stone RosesThe Stone Roses',
+    performer: 'The Stone Roses',
     releaseDate: '2015-08-25',
   },
   {
     title: 'She Bangs the Drums',
-    performer: 'Stone RosesThe Stone Roses',
+    performer: 'The Stone Roses',
     releaseDate: '2015-08-25',
   },
   {
     title: 'I Wanna Be Adored',
-    performer: 'Stone RosesThe Stone Roses',
+    performer: 'The Stone Roses',
     releaseDate: '2015-08-25',
   },
   {
@@ -2609,27 +2609,27 @@ export const songs: Song[] = [
   },
   {
     title: 'Howlin\u0027 for You',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2015-11-24',
   },
   {
     title: 'Little Black Submarines',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2015-11-24',
   },
   {
     title: 'Lonely Boy',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2015-11-24',
   },
   {
     title: 'thickfreakness',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2015-11-24',
   },
   {
     title: 'Your Touch',
-    performer: 'Black KeysThe Black Keys',
+    performer: 'The Black Keys',
     releaseDate: '2015-11-24',
   },
   { title: 'Awake And Alive', performer: 'Skillet', releaseDate: '2015-12-01' },
@@ -2836,7 +2836,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Long Train Runnin',
-    performer: 'Doobie BrothersThe Doobie Brothers',
+    performer: 'The Doobie Brothers',
     releaseDate: '2016-02-16',
   },
   {
@@ -2916,7 +2916,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Heaven Knows',
-    performer: 'Pretty RecklessThe Pretty Reckless',
+    performer: 'The Pretty Reckless',
     releaseDate: '2016-03-08',
   },
   {
@@ -3065,7 +3065,7 @@ export const songs: Song[] = [
   {
     title: 'Peaches',
     performer:
-      'Presidents of the United States of AmericaThe Presidents of the United States of America',
+      'The Presidents of the United States of America',
     releaseDate: '2016-05-10',
   },
   {
@@ -3398,7 +3398,7 @@ export const songs: Song[] = [
   },
   {
     title: 'I Want You Back',
-    performer: 'Jackson 5The Jackson 5',
+    performer: 'The Jackson 5',
     releaseDate: '2016-10-04',
   },
   { title: 'Hey Ya!', performer: 'OutKast', releaseDate: '2016-10-04' },
@@ -3556,7 +3556,7 @@ export const songs: Song[] = [
   },
   {
     title: 'F.C.P.R.E.M.I.X.',
-    performer: 'Fall of TroyThe Fall Of Troy',
+    performer: 'The Fall of Troy',
     releaseDate: '2016-12-06',
   },
   {
@@ -3976,13 +3976,13 @@ export const songs: Song[] = [
   },
   {
     title: 'Surfin\u0027 U.S.A.',
-    performer: 'Beach BoysThe Beach Boys',
+    performer: 'The Beach Boys',
     releaseDate: '2017-06-06',
   },
   { title: 'Pipeline', performer: 'The Chantays', releaseDate: '2017-06-06' },
   {
     title: 'Surf Rider',
-    performer: 'Lively OnesThe Lively Ones',
+    performer: 'The Lively Ones',
     releaseDate: '2017-06-06',
   },
   {
@@ -4114,7 +4114,7 @@ export const songs: Song[] = [
   },
   {
     title: '45',
-    performer: 'Gaslight AnthemThe Gaslight Anthem',
+    performer: 'The Gaslight Anthem',
     releaseDate: '2017-08-08',
   },
   { title: 'Let Her Go', performer: 'Passenger', releaseDate: '2017-08-08' },
@@ -4170,7 +4170,7 @@ export const songs: Song[] = [
   },
   {
     title: 'She Don\u0027t Use Jelly',
-    performer: 'Flaming LipsThe Flaming Lips',
+    performer: 'The Flaming Lips',
     releaseDate: '2017-08-29',
   },
   {
@@ -4608,7 +4608,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Face Down',
-    performer: 'Red Jumpsuit ApparatusThe Red Jumpsuit Apparatus',
+    performer: 'The Red Jumpsuit Apparatus',
     releaseDate: '2018-02-20',
   },
   {
@@ -4948,7 +4948,7 @@ export const songs: Song[] = [
   },
   {
     title: 'The Ballad of Clutch Nixon',
-    performer: 'Road VikingsThe Road Vikings',
+    performer: 'The Road Vikings',
     releaseDate: '2018-07-31',
   },
   {
@@ -5066,7 +5066,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Red Eyes',
-    performer: 'War on DrugsThe War on Drugs',
+    performer: 'The War on Drugs',
     releaseDate: '2018-09-25',
   },
   {
@@ -5086,7 +5086,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Surfin\u0027 Safari',
-    performer: 'Beach BoysThe Beach Boys',
+    performer: 'The Beach Boys',
     releaseDate: '2018-10-09',
   },
   {
@@ -5126,7 +5126,7 @@ export const songs: Song[] = [
   },
   {
     title: 'Keep Your Hands to Yourself',
-    performer: 'Georgia SatellitesThe Georgia Satellites',
+    performer: 'The Georgia Satellites',
     releaseDate: '2018-10-23',
   },
   { title: 'Fallen Angel', performer: 'Poison', releaseDate: '2018-10-23' },
@@ -5245,22 +5245,22 @@ export const songs: Song[] = [
   },
   {
     title: 'Brown Sugar',
-    performer: 'Rolling StonesThe Rolling Stones',
+    performer: 'The Rolling Stones',
     releaseDate: '2018-12-18',
   },
   {
     title: 'Gimme Shelter',
-    performer: 'Rolling StonesThe Rolling Stones',
+    performer: 'The Rolling Stones',
     releaseDate: '2018-12-18',
   },
   {
     title: 'Jumpin\u0027 Jack Flash',
-    performer: 'Rolling StonesThe Rolling Stones',
+    performer: 'The Rolling Stones',
     releaseDate: '2018-12-18',
   },
   {
     title: 'Sympathy for the Devil',
-    performer: 'Rolling StonesThe Rolling Stones',
+    performer: 'The Rolling Stones',
     releaseDate: '2018-12-18',
   },
   {
@@ -5642,17 +5642,17 @@ export const songs: Song[] = [
   },
   {
     title: 'My Medicine',
-    performer: 'Pretty RecklessThe Pretty Reckless',
+    performer: 'The Pretty Reckless',
     releaseDate: '2019-07-09',
   },
   {
     title: 'Make Me Wanna Die',
-    performer: 'Pretty RecklessThe Pretty Reckless',
+    performer: 'The Pretty Reckless',
     releaseDate: '2019-07-09',
   },
   {
     title: 'Going to Hell',
-    performer: 'Pretty RecklessThe Pretty Reckless',
+    performer: 'The Pretty Reckless',
     releaseDate: '2019-07-09',
   },
   {
