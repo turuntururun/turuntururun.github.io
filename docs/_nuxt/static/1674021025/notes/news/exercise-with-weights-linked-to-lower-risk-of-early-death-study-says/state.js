@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1674021025",layout:"default",error:a,serverRendered:true,routePath:"\u002Fnotes\u002Fnews\u002Fexercise-with-weights-linked-to-lower-risk-of-early-death-study-says",config:{_app:{basePath:"\u002F",assetsPath:"\u002F_nuxt\u002F",cdnURL:a},content:{dbHash:"3526bce3"}}}}(null));
