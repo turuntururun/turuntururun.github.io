@@ -16,7 +16,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import {defineComponent} from 'vue'
+
 import { uniqueEmojis } from '~/assets/emoji-store'
 
 function shuffleArray(array: any[]) {
@@ -28,7 +29,7 @@ function shuffleArray(array: any[]) {
   }
 }
 
-export default Vue.extend({
+export default defineComponent({
   name: 'GameBoard',
   props: {
     tiles: { type: Number, default: 40 },

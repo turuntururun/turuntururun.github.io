@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <ContentDoc path="/"/>
-  </div>
+  <ContentDoc :path="$route.params.category +'/' +  $route.params.post"/>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
 
 export default defineComponent({
-  name: 'IndexPage'
+  name: 'Post',
 })
 </script>
 

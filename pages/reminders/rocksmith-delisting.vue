@@ -40,10 +40,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import {defineComponent} from 'vue'
+
 import { Song, songs } from 'assets/data/rocksmith'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'RocksmithDelisting',
   data() {
     return { songs, today: new Date(), limit: '30', search: '' }

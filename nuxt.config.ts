@@ -24,17 +24,16 @@ export default defineNuxtConfig({
 
   components: true,
 
-  /*/ Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
+    // '@nuxtjs/pwa',
     '@nuxt/content',
   ],
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  /*/ PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       lang: 'es',
