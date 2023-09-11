@@ -29,10 +29,16 @@
             src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
             alt="Spotify search"
         /></a>
-        <a v-if="song.available" :href="searchSteam(song)" target="_blank"
+        <a :href="searchSteam(song)" target="_blank"
           ><img
             src="https://store.steampowered.com/favicon.ico"
             alt="Steam search"
+        /></a>
+        <a :href="searchYouTube(song)" target="_blank"
+        ><img
+          src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
+
+          alt="YouTube search"
         /></a>
       </span>
     </section>
@@ -94,6 +100,12 @@ export default defineComponent({
         encodeURIComponent(song.title + ' ' + song.performer)
       )
     },
+    searchYouTube(song: Song): string {
+      return (
+        `https://www.youtube.com/results?search_query=Rocksmith+${song.title}+${song.performer}`
+          .replaceAll(' ', '+')
+      )
+    },
     addDays(date: Date, days: number): Date {
       const d = new Date(date)
       d.setDate(d.getDate() + days)
@@ -122,6 +134,10 @@ section {
   margin: 0.5rem 0.5rem;
   padding: 0.5rem;
   border-bottom: 1px solid cornflowerblue;
+
+  * {
+    margin-right: 0.25rem;
+  }
 }
 
 input[type='number'] {

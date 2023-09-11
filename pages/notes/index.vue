@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <ContentDoc path="/"/>
-  </div>
+  <ContentDoc path="/" class="content" />
 </template>
 
 <script lang="ts">

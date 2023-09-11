@@ -1,5 +1,5 @@
 <template>
-  <ContentDoc :path="$route.params.category +'/' +  $route.params.post"/>
+  <ContentDoc :path="$route.params.category +'/' +  $route.params.post" class="content"/>
 </template>
 
 <script lang="ts">
