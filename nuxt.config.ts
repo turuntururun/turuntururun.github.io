@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   devtools: {enabled: true},
 
   app: {
-
     head: {
       title: 'turuntururun',
       meta: [
@@ -19,29 +18,9 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css', '~/assets/css/nuxt-content.scss'],
 
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
-
   components: true,
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-
-  // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    // https://go.nuxtjs.dev/pwa
-    // '@nuxtjs/pwa',
-    '@nuxt/content',
-  ],
-
-  /*/ PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'es',
-    },
-    icon: {
-      fileName: 'logo.png',
-    },
-  },*/
+  modules: ['@nuxt/content'],
 
   devServer: {
     host: '0.0.0.0',
@@ -51,5 +30,6 @@ export default defineNuxtConfig({
     output: {
       publicDir: '../docs'
     }
-  }
+  },
+
 })

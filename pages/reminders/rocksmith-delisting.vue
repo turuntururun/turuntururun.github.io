@@ -29,16 +29,16 @@
             src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
             alt="Spotify search"
         /></a>
-        <a :href="searchSteam(song)" target="_blank"
-          ><img
-            src="https://store.steampowered.com/favicon.ico"
-            alt="Steam search"
-        /></a>
         <a :href="searchYouTube(song)" target="_blank"
         ><img
           src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
 
           alt="YouTube search"
+        /></a>
+        <a v-if="song.available" :href="searchSteam(song)" target="_blank"
+          ><img
+            src="https://store.steampowered.com/favicon.ico"
+            alt="Steam search"
         /></a>
       </span>
     </section>
@@ -48,7 +48,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 
-import { Song, songs } from 'assets/data/rocksmith'
+import {Song, songs} from 'assets/data/rocksmith'
 
 export default defineComponent({
   name: 'RocksmithDelisting',
