@@ -1,7 +1,6 @@
 <template>
   <p
     :style="'font-size: ' + width *0.5 + 'px;background:' + background"
-    @click="$emit('click')"
   >{{ content }}</p>
 </template>
 

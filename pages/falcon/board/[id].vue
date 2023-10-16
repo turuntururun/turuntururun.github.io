@@ -1,36 +1,89 @@
 <script lang="ts">
+import {defineComponent} from 'vue'
+import {Client} from "@stomp/stompjs";
 
-// todo connect to websocket
+
+const stompClient = new Client({
+  brokerURL: 'ws://192.168.1.73:8080/falcon-websocket'
+});
+
+stompClient.onWebSocketError = (error) => {
+  console.error('Error with websocket', error);
+};
+
+stompClient.onStompError = (frame) => {
+  console.error('Broker reported error: ' + frame.headers['message']);
+  console.error('Additional details: ' + frame.body);
+};
+
 // todo assign user id
 // todo request display name
-// todo coordinate game start
+// todo coordinate game start/end/restart
 
 export default defineComponent({
   name: "multiplayer",
-  data: (): { found: number[]; chips: string[]; } => ({
+  data: (): { found: number[]; chips: string[]; score: { [user: string]: { points: number; total: number } } } => ({
     found: [],
     chips: [],
+    score: {}
   }),
+  mounted() {
+
+    console.log('We are in board', this.$route.params.id)
+
+    stompClient.onConnect = (frame) => {
+
+      // this.connected = true
+      // todo handle connection issues
+      console.log('Connected: ' + JSON.stringify(frame));
+      stompClient.subscribe('/topic/greetings', (response) => {
+        console.log('topic message', response)
+        console.log('topic message body', response.body)
+        this.score = JSON.parse(response.body)
+      });
+    };
+
+    this.connect()
+
+  },
+  beforeUnmount() {
+    this.disconnect()
+  },
   methods: {
     boardMounted(stuff: string[]) {
       this.chips = stuff
     },
     add(emoji: string) {
       const hit = this.chips.indexOf(emoji)
-      if (!this.found.includes(hit)) this.found.push(hit)
+      if (!this.found.includes(hit)) {
+        this.found.push(hit)
+        this.sendData()
+      }
     },
     restart() {
       this.found = []
       this.chips = []
     },
+
+    connect() {
+      stompClient.activate();
+    },
+    disconnect() {
+      stompClient.deactivate();
+      // this.connected = false
+      console.log("Disconnected");
+    },
+    sendData() {
+      stompClient.publish({
+        destination: "/score",
+        body: 'Gordito'
+      });
+    }
   }
 })
 </script>
 
 <template>
-  <pre>
-    We are in board {{ this.$route.params.id }}
-  </pre>
 
   <div class="game-area">
 
@@ -52,12 +105,12 @@ export default defineComponent({
     </section>
 
     <section class="data-area">
-      <p>Kevin</p>
-      <pre>{{ '✅'.repeat(found.length) + '⚪'.repeat(chips.length - found.length) }}</pre>
-      <p>Frida: ✅⚪⚪✅⚪</p>
-      <p>Maru: ✅✅⚪⚪⚪</p>
-      <p>Cari: ✅✅⚪✅⚪</p>
-      <p>Rafa: ⚪⚪✅⚪⚪</p>
+      <!-- TODO Create component -->
+      <div v-for="(score, user) in score" :key="user" style="display: flex;flex-flow: row wrap;justify-content: space-between">
+        <span>{{user}}</span>
+        <span>{{score.total}}</span>
+        <span style="width: 100%">{{'✅'.repeat(score.points)}}</span>
+      </div>
     </section>
 
 
