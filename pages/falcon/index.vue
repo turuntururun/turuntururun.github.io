@@ -17,8 +17,8 @@ export default defineComponent({
   data: () => ({message: {type: 'info', text: '', target: ''}}),
   methods: {
     requestMultiplayerSession() {
-      console.log("TODO request session in backend")
-      console.log("TODO display loading while requesting")
+      // TODO request session in backend
+      // TODO display loading while requesting
       const boardId = '🎧𓀄🚩♤🧓'
       this.message.type = 'success'
       this.message.text = 'Session "' + boardId + '" created'
