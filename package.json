@@ -16,7 +16,7 @@
     "lintfix": "prettier --write --list-different . && npm run lint:js -- --fix"
   },
   "devDependencies": {
-    "@nuxt/content": "^2.8.2",
+    "@nuxt/content": "^2.9.0",
     "@nuxt/devtools": "latest",
     "@vite-pwa/nuxt": "^0.1.1",
     "nuxt": "^3.7.4"
