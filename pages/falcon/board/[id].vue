@@ -2,10 +2,12 @@
 import {defineComponent} from 'vue'
 import {Client} from "@stomp/stompjs";
 import {randomEmojiSet} from "assets/emoji-store";
+import axios from 'axios';
 
 
 const stompClient = new Client({
-  brokerURL: 'ws://192.168.1.73:8080/falcon-websocket'
+  // todo declare backend address as constant somewhere
+  brokerURL: 'ws://turuntururun-falcon.us-west-2.elasticbeanstalk.com/falcon-websocket'
 });
 
 stompClient.onWebSocketError = (error) => {
@@ -50,33 +52,19 @@ export default defineComponent({
     localStorage.setItem('falcon-user-name', this.session.userName)
 
     console.log('We are in board', this.boardId)
-    // todo validate boardId is valid on BE then caonnect or redirect
 
-    stompClient.onConnect = (frame) => {
+    axios.get('http://turuntururun-falcon.us-west-2.elasticbeanstalk.com/board/' + this.boardId)
+      .then(response => {
+        // fixme if response data contains current user, asume joined/connected
+        this.score = response.data
+        console.log('get response', response);
+        this.connect()
+      }).catch(e => {
+      console.warn('Caught error', e)
+      console.warn('Websocket not connected')
+      // TODO replace with an error view if board is not available
+    });
 
-      // this.connected = true
-      // todo handle connection issues
-      console.log('Connected: ' + JSON.stringify(frame));
-      stompClient.subscribe('/topic/' + this.boardId + '/user-score', (response) => {
-        console.log('/user-score', 'body', response.body)
-        this.score = JSON.parse(response.body)
-      });
-      stompClient.subscribe('/topic/' + this.boardId + '/events', (response) => {
-        console.log('/events', 'body', response.body)
-        switch (response.body) {
-          case 'start':
-            this.session.playing = true
-            return
-          case 'stop':
-            this.session.playing = false
-            this.restart()
-            return
-        }
-        // TODO animate to game events
-      });
-    };
-
-    this.connect()
 
   },
   beforeUnmount() {
@@ -85,6 +73,9 @@ export default defineComponent({
   computed: {
     boardId() {
       return this.$route.params.id
+    },
+    joined() {
+      return Object.keys(this.score).includes(this.session.userId)
     }
   },
   methods: {
@@ -107,15 +98,38 @@ export default defineComponent({
       this.boardKey += '.'
     },
     connect() {
+      stompClient.onConnect = (frame) => {
+
+        // this.connected = true
+        // todo handle connection issues
+        console.log('Connected: ' + JSON.stringify(frame));
+        stompClient.subscribe('/topic/' + this.boardId + '/user-score', (response) => {
+          console.log('/user-score', 'body', response.body)
+          this.score = JSON.parse(response.body)
+        });
+        stompClient.subscribe('/topic/' + this.boardId + '/events', (response) => {
+          console.log('/events', 'body', response.body)
+          switch (response.body) {
+            case 'start':
+              this.session.playing = true
+              return
+            case 'stop':
+              this.session.playing = false
+              this.restart()
+              return
+          }
+          // TODO animate to game events
+        });
+      };
+
       stompClient.activate();
     },
     disconnect() {
-      // todo remove player from backend cache?
       stompClient.deactivate();
       console.log("Disconnected");
     },
     postPlayer() {
-      // todo connect to websocket here
+      // todo connect to websocket here?
       localStorage.setItem('falcon-user-name', this.session.userName)
       stompClient.publish({
         destination: "/board/" + this.boardId + "/player",
@@ -149,14 +163,10 @@ export default defineComponent({
         :key="s"
         :background="found.includes(i) ? 'chartreuse' : ''"
         :content="s"
-        :width="100"
+        :size="3"
       >{{ s }}
       </Tile>
     </header>
-
-    <section class="game-board">
-      <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted"/>
-    </section>
 
     <section class="data-area">
       <!-- TODO Create component -->
@@ -168,45 +178,88 @@ export default defineComponent({
       </div>
     </section>
 
+    <section class="game-board">
+      <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted"/>
+    </section>
+
   </div>
-  <div v-else>
-    <label>
-      Name:
-      <input v-model="session.userName">
-    </label>
-    <!-- TODO join websocket on demand and display players on connect -->
-    <button @click="postPlayer">
-      Join
-    </button>
-    <button @click="()=>postEvent('start')">
+  <section class="waiting" v-else>
+    <h1>Session {{boardId}}</h1>
+    <section class="name-row">
+      <label>
+        Name:
+        <input v-model="session.userName">
+      </label>
+      <button class="action-button" @click="postPlayer">
+        {{ joined ? 'Change name' : 'Join' }}
+      </button>
+    </section>
+    <button :disabled="!joined" class="action-button" @click="()=>postEvent('start')">
       Start Game
     </button>
-
 
     <div v-for="(score, user) in score" :key="user"
          style="display: flex;flex-flow: row wrap;justify-content: space-between">
       <span>{{ score.user.name }} : {{ score.total }}</span>
     </div>
-  </div>
+  </section>
 
 
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .game-area {
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 2fr;
   grid-template-rows: auto;
+  grid-template-areas:
+    "header data"
+    "board board";
+
+  header {
+    grid-area: header;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 2em;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .data-area {
+    grid-area: data;
+    padding: 1rem;
+  }
+
+  .game-board {
+    grid-area: board;
+  }
 
 }
 
-header {
+
+section.waiting {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: column;
+  align-items: center;
+  font-size: 2rem;
+  gap: 0.7rem;
+  margin: 1.5rem;
+
+  button, input {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.5rem;
+  }
+
+  button {
+    border-radius: 2rem;
+    background: #00dc82;
+    border-color: #65ea9b;
+  }
+
 }
 
-.data-area {
-  padding: 1rem;
-  grid-area: 1 / 2 / last-line / last-line;
+section.name-row > * {
+  margin: 0 1rem;
 }
+
 </style>

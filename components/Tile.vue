@@ -1,17 +1,17 @@
 <template>
   <p
-    :style="'font-size: ' + width *0.5 + 'px;background:' + background"
+    :style="'font-size: '
+    + size
+    + 'pc;background:' + background"
   >{{ content }}</p>
 </template>
 
 <script>
 export default {
   name: "BoardTile",
-  data() {
-    return {c: 'x'}
-  },
   props:
-    ['content', 'width', 'background']
+    ['content', 'size', 'background'],
+  computed: {}
 
 }
 </script>

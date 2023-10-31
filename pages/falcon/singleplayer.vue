@@ -11,7 +11,7 @@
         :key="s"
         :background="found.includes(i) ? 'chartreuse' : ''"
         :content="s"
-        :width="tileWidth"
+        :size="tileWidth"
         >{{ s }}
       </Tile>
     </header>
@@ -33,7 +33,7 @@ export default defineComponent({
   }),
   computed: {
     tileWidth() {
-      return 100
+      return 4
     },
   },
   methods: {

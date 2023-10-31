@@ -8,7 +8,7 @@
         v-for="c in chips"
         :key="c"
         :content="c"
-        :width="tileWidth"
+        :size="tileWidth"
         @click="selectEmoji(c)"
       />
     </section>
@@ -49,9 +49,9 @@ export default defineComponent({
     },
     /* todo calc tile layout according to display */
     tileWidth(): number {
-      //if (!this.$el)
-      return 80
-      //return this.$el.clientWidth / 8
+      //if (this.$el)
+      //  return this.$el.clientWidth / 8
+      return 3
     },
   },
   mounted() {
