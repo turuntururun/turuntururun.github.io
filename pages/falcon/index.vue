@@ -38,7 +38,9 @@ export default defineComponent({
             const boardId = response.data
             this.message.type = 'success'
             this.message.text = 'Session "' + boardId + '" created'
-            this.message.target = '/falcon/board/' + boardId
+            //this.message.target = '/falcon/board/' + boardId
+            this.message.target = '/falcon/board?id=' + boardId
+
           }
         })
 
