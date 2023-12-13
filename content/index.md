@@ -11,6 +11,7 @@ Notas de ideas y conceptos que quiero tener accesibles para recordar y compartir
 ### Música
 
 - [Diatonic chords](/notes/music/diatonic-chords)
+- [Synth params](/notes/synth)
 
 ### Noticias
 
