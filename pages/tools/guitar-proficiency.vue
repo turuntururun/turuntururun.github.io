@@ -48,19 +48,48 @@ export default defineComponent({
     octaves: 2,
   }),
   methods: {
+    // have these functions in a package and create tests for them
     noteName(n: number): string {
       // todo name b or # according to context
       return noteDict.get(n % 12) ?? ''
+    },
+    getFret(note: number, string: number) {
+      // todo consider alternate tunings
+      const baseNote = {
+        1: 64,
+        2: 59,
+        3: 55,
+        4: 50,
+        5: 45,
+        6: 40,
+      }[string]
+      if (!baseNote) {
+        return 3000
+      }
+      return note - baseNote
     }
+
   },
   computed: {
-    notes(): number[] {
-      const numbers = []
-      for (let i = 0; i < this.octaves; i++) {
-        numbers.push(...scales[this.scale].map(n => n + (this.baseNote + i * 12)));
-      }
-      numbers.push(this.baseNote + (this.octaves * 12))
-      return numbers
+    notes() {
+      // todo generate according to pattern
+      return [
+        [6, 5, "A"],
+        [6, 7, "B"],
+        [6, 8, "C"],
+        [5, 5, "D"],
+        [5, 7, "E"],
+        [5, 8, "F"],
+        [4, 5, "G"],
+        [4, 7, "A"],
+        [3, 4, "B"],
+        [3, 5, "C"],
+        [3, 7, "D"],
+        [2, 5, "E"],
+        [2, 6, "F"],
+        [2, 8, "G"],
+        [1, 5, "A"],
+      ]
     }
   }
 
@@ -69,13 +98,13 @@ export default defineComponent({
 
 <template>
 
-  <Fretboard :notes="notes"/>
+  <Fretboard :fingerings="notes"/>
   <p>TODO render music notation</p>
   <p>TODO show exercise data</p>
   <p>Given that low E is 40, E mod is {{ 40 % 12 }} and the next C is {{ 40 + (12 - (40 % 12)) }}</p>
 
   <p>{{ notes }}</p>
-  <p>{{ notes.map(noteName) }}</p>
+
 
 </template>
 

@@ -10,28 +10,22 @@ export default defineComponent({
       criterion: Math.ceil
     }
   },
-// low E is midi 40.
-  props: ['notes'],
+  props: ['fingerings'],
   computed: {
+    // TODO show custom strings/frets dynamically
     strings() {
       return [1, 2, 3, 4, 5, 6]
     },
     frets() {
       return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     },
-    notesByString() {
-      const chunkSize = this.criterion(this.notes.length / (this.strings.length));
-      const result = {
-        6: this.notes.slice(0, chunkSize)
-      }
-      // todo algorithm to finger positions
-
-      console.log('chunkSize', chunkSize)
-      console.log('result', result)
-      console.log('this.notes', this.notes)
-
-      return result
-    }
+  },
+  methods: {
+    toFretPosition(string: number, note: number) {
+      const x = Math.max(2.5 + note * 15, 5);
+      const y = 10 + string * 5;
+      return `translate(${x},${y})`
+    },
   }
 })
 </script>
@@ -48,13 +42,11 @@ export default defineComponent({
       <circle v-for="c in [3,5,7,9,12,15]" r="1" :cx="2.5+ c*15" cy="27.5" fill="gray"/>
     </g>
 
-    <g>
-
+    <g v-for="(f, i) in fingerings" :transform="toFretPosition(f[0],f[1])" :key="i">
+      <circle r="2.5" cx="0" cy="0" fill="white" stroke="black" stroke-width="0.5"/>
+      <text x="-1.5" y="1.6" font-size="5" font-weight="bold" font-family="monospace">{{ f[2] }}</text>
     </g>
   </svg>
-  <pre>{{ notes }}</pre>
-  <pre>{{ notesByString }}</pre>
-  <pre>{{ notes.length / (strings.length) }}</pre>
 
 </template>
 
