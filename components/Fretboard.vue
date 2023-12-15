@@ -42,9 +42,9 @@ export default defineComponent({
       <circle v-for="c in [3,5,7,9,12,15]" r="1" :cx="2.5+ c*15" cy="27.5" fill="gray"/>
     </g>
 
-    <g v-for="(f, i) in fingerings" :transform="toFretPosition(f[0],f[1])" :key="i">
+    <g v-for="(f, i) in fingerings" :transform="toFretPosition(f.string,f.fret)" :key="i">
       <circle r="2.5" cx="0" cy="0" fill="white" stroke="black" stroke-width="0.5"/>
-      <text x="-1.5" y="1.6" font-size="5" font-weight="bold" font-family="monospace">{{ f[2] }}</text>
+      <text x="-1.5" y="1.6" font-size="5" font-weight="bold" font-family="monospace">X</text>
     </g>
   </svg>
 
