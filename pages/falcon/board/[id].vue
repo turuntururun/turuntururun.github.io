@@ -3,11 +3,11 @@ import {defineComponent} from 'vue'
 import {Client} from "@stomp/stompjs";
 import {randomEmojiSet} from "assets/emoji-store";
 import axios from 'axios';
+import {serverUrl} from "assets/global";
 
 
 const stompClient = new Client({
-  // todo declare backend address as constant somewhere
-  brokerURL: 'ws://turuntururun-falcon.us-west-2.elasticbeanstalk.com/falcon-websocket'
+  brokerURL: serverUrl.replace('https', 'wss') + '/falcon-websocket'
 });
 
 stompClient.onWebSocketError = (error) => {
@@ -53,7 +53,7 @@ export default defineComponent({
 
     console.log('We are in board', this.boardId)
 
-    axios.get('http://turuntururun-falcon.us-west-2.elasticbeanstalk.com/board/' + this.boardId)
+    axios.get(serverUrl+'/board/' + this.boardId)
       .then(response => {
         // fixme if response data contains current user, asume joined/connected
         this.score = response.data

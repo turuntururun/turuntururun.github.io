@@ -5,7 +5,7 @@
       <Tile content="🕺" size="5"/>
     <nuxt-link to="/falcon/singleplayer">  Single Player Board</nuxt-link>
     </span>
-    <!-- TODO show but disabled -->
+    <!-- TODO disable if backend is down -->
     <span v-if="multiplayerEnabled">
       <Tile content="👯" size="5"/>
       <button v-if="!message.text" @click="requestMultiplayerSession"> Create Multiplayer Session</button>
@@ -21,6 +21,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 import axios from "axios";
+import {serverUrl} from "assets/global";
 
 export default defineComponent({
   name: 'FalconGameIndex',
@@ -31,7 +32,7 @@ export default defineComponent({
   methods: {
     requestMultiplayerSession() {
       // TODO display loading while requesting
-      axios.post('http://turuntururun-falcon.us-west-2.elasticbeanstalk.com/board')
+      axios.post(serverUrl+'/board')
         .then(response => {
           console.log(response);
           if ((response.status == 201)) {
