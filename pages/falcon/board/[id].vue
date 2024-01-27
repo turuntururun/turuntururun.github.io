@@ -60,11 +60,9 @@ export default defineComponent({
         console.log('get response', response);
         this.connect()
       }).catch(e => {
-      console.warn('Caught error', e)
-      console.warn('Websocket not connected')
-      // TODO replace with an error view if board is not available
-    });
-
+        console.warn('Caught error', e)
+        navigateTo('/falcon')
+      });
 
   },
   beforeUnmount() {

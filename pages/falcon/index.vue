@@ -5,14 +5,16 @@
       <Tile content="🕺" size="5"/>
     <nuxt-link to="/falcon/singleplayer">  Single Player Board</nuxt-link>
     </span>
-    <!-- TODO disable if backend is down -->
-    <span v-if="multiplayerEnabled">
+    <span>
       <Tile content="👯" size="5"/>
-      <button v-if="!message.text" @click="requestMultiplayerSession"> Create Multiplayer Session</button>
+      <button v-if="!message.text"
+              @click="requestMultiplayerSession"> Create Multiplayer Session</button>
       <nuxt-link :to="message.target" v-if="message.type ==='success'">
         {{ message.text }}
       </nuxt-link>
-      <!-- TODO handle message.type == error -->
+      <span v-else-if="message.text">
+        {{ message.text }}
+      </span>
     </span>
 
   </div>
@@ -25,23 +27,32 @@ import {serverUrl} from "assets/global";
 
 export default defineComponent({
   name: 'FalconGameIndex',
-  data: () => ({message: {type: 'info', text: '', target: ''},
-    // todo connect to backend and check availability
-    multiplayerEnabled: true
+  data: () => ({
+    message: {type: 'info', text: 'Loading...', target: ''}
   }),
+  mounted() {
+    axios.get(serverUrl + '/actuator/health')
+      .then(response => {
+        if (response.status == 200 && response.data.status == 'UP') {
+          this.message.text = ''
+        } else {
+          this.message.text = 'Service unavailable'
+        }
+      }).catch(_ => {
+        this.message.text = 'Service unavailable'
+      })
+
+  },
   methods: {
     requestMultiplayerSession() {
       // TODO display loading while requesting
-      axios.post(serverUrl+'/board')
+      axios.post(serverUrl + '/board')
         .then(response => {
-          console.log(response);
           if ((response.status == 201)) {
             const boardId = response.data
             this.message.type = 'success'
             this.message.text = 'Session "' + boardId + '" created'
-            //this.message.target = '/falcon/board/' + boardId
-            this.message.target = '/falcon/board?id=' + boardId
-
+            this.message.target = '/falcon/board/' + boardId
           }
         })
 
@@ -53,12 +64,13 @@ export default defineComponent({
 <style lang="scss" scoped>
 /* TODO Style page */
 
-h1{
+h1 {
   margin: 1.2rem auto;
   text-align: center;
   font-family: 'Bauhaus 93', Arial, serif;
   font-size: 3.5rem;
 }
+
 .container {
   display: flex;
   flex-flow: row wrap;
