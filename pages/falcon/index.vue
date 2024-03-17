@@ -1,78 +1,104 @@
 <template>
+  <h1>Falcon</h1>
   <div class="container">
-    <header v-if="found.length > 4">
-      <h4>Great job!!</h4>
-      <button @click="restart">Restart</button>
-    </header>
-    <header v-else>
-      Find:
-      <Tile
-        v-for="(s, i) in chips"
-        :key="s"
-        :background="found.includes(i) ? 'chartreuse' : ''"
-        :content="s"
-        :width="tileWidth"
-        >{{ s }}
-      </Tile>
-    </header>
+    <span>
+      <Tile content="🕺" size="5"/>
+    <nuxt-link to="/falcon/singleplayer">  Single Player Board</nuxt-link>
+    </span>
+    <span>
+      <Tile content="👯" size="5"/>
+      <button v-if="!message.text"
+              @click="requestMultiplayerSession"> Create Multiplayer Session</button>
+      <nuxt-link :to="message.target" v-if="message.type ==='success'">
+        {{ message.text }}
+      </nuxt-link>
+      <span v-else-if="message.text">
+        {{ message.text }}
+      </span>
+    </span>
 
-    <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted" />
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from 'vue'
+import axios from "axios";
+import {serverUrl} from "assets/global";
 
 export default defineComponent({
-  name: 'FalconGame',
-  data: (): { found: number[]; chips: string[]; boardKey: string } => ({
-    found: [],
-    chips: [],
-    boardKey: 'dummy-whatever',
+  name: 'FalconGameIndex',
+  data: () => ({
+    message: {type: 'info', text: 'Loading...', target: ''}
   }),
-  computed: {
-    tileWidth() {
-      return 100
-    },
+  mounted() {
+    axios.get(serverUrl + '/actuator/health')
+      .then(response => {
+        if (response.status == 200 && response.data.status == 'UP') {
+          this.message.text = ''
+        } else {
+          this.message.text = 'Service unavailable'
+        }
+      }).catch(_ => {
+        this.message.text = 'Service unavailable'
+      })
+
   },
   methods: {
-    boardMounted(stuff: string[]) {
-      this.chips = stuff
-    },
-    add(emoji: string) {
-      const hit = this.chips.indexOf(emoji)
-      if (!this.found.includes(hit)) this.found.push(hit)
-    },
-    restart() {
-      this.found = []
-      this.chips = []
-      this.boardKey += '.'
-    },
-  },
+    requestMultiplayerSession() {
+      // TODO display loading while requesting
+      axios.post(serverUrl + '/board')
+        .then(response => {
+          if ((response.status == 201)) {
+            const boardId = response.data
+            this.message.type = 'success'
+            this.message.text = 'Session "' + boardId + '" created'
+            this.message.target = '/falcon/board/' + boardId
+          }
+        })
+
+    }
+  }
 })
 </script>
 
-<style scoped>
-header {
-  user-select: none;
+<style lang="scss" scoped>
+/* TODO Style page */
+
+h1 {
+  margin: 1.2rem auto;
+  text-align: center;
+  font-family: 'Bauhaus 93', Arial, serif;
+  font-size: 3.5rem;
+}
+
+.container {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-around;
-  align-items: center;
-  margin: 0.4rem 0;
-  font-size: 32pt;
+  margin: 3rem;
+  font-size: 1.5rem;
+
+  span {
+    padding: 1.3rem 2.7rem;
+    display: flex;
+    flex-flow: column;
+    border: 4px solid teal;
+    border-radius: 0.5rem;
+    background: #c9eeee;
+
+    * {
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  button {
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    color: ghostwhite;
+    background: #00dc82;
+    border-color: #65ea9b;
+  }
+
 }
 
-h4 {
-  margin: 0.6rem 0;
-}
-
-button {
-  color: ghostwhite;
-  background: #5ccde0;
-  padding: 0.5rem 1.2rem;
-  font-size: 21pt;
-  border: none;
-  border-radius: 0.4rem;
-}
 </style>

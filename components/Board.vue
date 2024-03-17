@@ -8,7 +8,7 @@
         v-for="c in chips"
         :key="c"
         :content="c"
-        :width="tileWidth"
+        :size="tileWidth"
         @click="selectEmoji(c)"
       />
     </section>
@@ -18,16 +18,7 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
 
-import { uniqueEmojis } from '~/assets/emoji-store'
-
-function shuffleArray(array: any[]) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const temp = array[i]
-    array[i] = array[j]
-    array[j] = temp
-  }
-}
+import {randomEmojiSet} from '~/assets/emoji-store'
 
 export default defineComponent({
   name: 'GameBoard',
@@ -47,9 +38,7 @@ export default defineComponent({
   },
   computed: {
     chips(): string[] {
-      const data = [...uniqueEmojis]
-      shuffleArray(data)
-      return data.slice(0, this.finalTiles)
+      return randomEmojiSet(this.finalTiles)
     },
     selected(): string[] {
       const set = new Set<string>()
@@ -60,9 +49,9 @@ export default defineComponent({
     },
     /* todo calc tile layout according to display */
     tileWidth(): number {
-      //if (!this.$el)
-      return 80
-      //return this.$el.clientWidth / 8
+      //if (this.$el)
+      //  return this.$el.clientWidth / 8
+      return 3
     },
   },
   mounted() {
