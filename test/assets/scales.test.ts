@@ -43,19 +43,22 @@ test('Definition composing', () => {
 
 });
 
+
 test('Mode creation works', () => {
-  expect(scaleComposer(major, onDegree(1))(0).map(noteName).join()).toBe('C,D,E,F,G,A,B')
-  expect(scaleComposer(major, onDegree(2))(0).map(noteName).join()).toBe('D,E,F,G,A,B,C')
-  expect(scaleComposer(major, onDegree(3))(0).map(noteName).join()).toBe('E,F,G,A,B,C,D')
-  expect(scaleComposer(major, onDegree(4))(0).map(noteName).join()).toBe('F,G,A,B,C,D,E')
-  expect(scaleComposer(major, onDegree(5))(0).map(noteName).join()).toBe('G,A,B,C,D,E,F')
-  expect(scaleComposer(major, onDegree(6))(0).map(noteName).join()).toBe('A,B,C,D,E,F,G')
-  expect(scaleComposer(major, onDegree(7))(0).map(noteName).join()).toBe('B,C,D,E,F,G,A')
+  const firstNoteName = (n: number) => noteName(n)[0]
+  expect(scaleComposer(major, onDegree(1))(0).map(firstNoteName).join()).toBe('C,D,E,F,G,A,B')
+  expect(scaleComposer(major, onDegree(2))(0).map(firstNoteName).join()).toBe('D,E,F,G,A,B,C')
+  expect(scaleComposer(major, onDegree(3))(0).map(firstNoteName).join()).toBe('E,F,G,A,B,C,D')
+  expect(scaleComposer(major, onDegree(4))(0).map(firstNoteName).join()).toBe('F,G,A,B,C,D,E')
+  expect(scaleComposer(major, onDegree(5))(0).map(firstNoteName).join()).toBe('G,A,B,C,D,E,F')
+  expect(scaleComposer(major, onDegree(6))(0).map(firstNoteName).join()).toBe('A,B,C,D,E,F,G')
+  expect(scaleComposer(major, onDegree(7))(0).map(firstNoteName).join()).toBe('B,C,D,E,F,G,A')
 
 });
 
 test('C melodic minor works', () => {
-  expect(melodicMinor(0).map(noteName).join()).toBe('C,D,Eb,F,G,A,B')
+  const firstNoteName = (n: number) => noteName(n)[0]
+  expect(melodicMinor(0).map(firstNoteName).join()).toBe('C,D,Eb,F,G,A,B')
 });
 
 test('C harmonic minor works', () => {

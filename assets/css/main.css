@@ -1,6 +1,13 @@
 
 html {
-  background: ghostwhite;
+  background: #a4e5e1;
+  color: #4e295c;
+  font-weight: bold;
+  font-family: "Noto Sans", sans-serif;
+}
+
+a {
+  color: #4e295c;
 }
 
 body {

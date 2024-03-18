@@ -38,7 +38,8 @@ export default defineComponent({
   computed: {
     notes() {
       // todo generate note naming
-      return generateFingering(scaleComposer(this.scaleProvider, onDegree(this.mode), octaves(2), closed)(this.baseNote))
+      let notes = scaleComposer(this.scaleProvider, onDegree(this.mode), octaves(2), closed)(this.baseNote)
+      return generateFingering(notes)
     },
     scaleProvider() {
       return {
@@ -67,10 +68,7 @@ export default defineComponent({
   <Fretboard :fingerings="notes"/>
   <p>TODO render music notation</p>
   <p>TODO show exercise data</p>
-  <p>Given that low E is 40, E mod is {{ 40 % 12 }} and the next C is {{ 40 + (12 - (40 % 12)) }}</p>
-
-  <p>{{ notes }}</p>
-
+  <!--p>Given that low E is 40, E mod is {{ 40 % 12 }} and the next C is {{ 40 + (12 - (40 % 12)) }}</p-->
 
 </template>
 

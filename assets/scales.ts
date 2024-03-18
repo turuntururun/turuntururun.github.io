@@ -1,15 +1,15 @@
 const noteDict = new Map([
   [0, "C"],
-  [1, "C#"],
+  [1, ""],
   [2, "D"],
-  [3, "Eb"],
+  [3, ""],
   [4, "E"],
   [5, "F"],
-  [6, "F#"],
+  [6, ""],
   [7, "G"],
-  [8, "Ab"],
+  [8, ""],
   [9, "A"],
-  [10, "A#"],
+  [10, ""],
   [11, "B"],
 ])
 
@@ -74,9 +74,12 @@ export const harmonicMajor = (root: number) => {
   return scaleComposer(harmonicMinor, withSharp(3))(root)
 }
 
-export function noteName(n: number): string {
-  // todo name b or # according to context
-  return noteDict.get(n % 12) ?? ''
+export function noteName(n: number): string[] {
+  const s = noteDict.get(n % 12)
+  if(s) return [s]
+
+  return [noteDict.get((n-1) % 12) + '#', noteDict.get((n+1) % 12)+'b' ]
+
 }
 
 const standardE = [
@@ -111,4 +114,27 @@ export const generateFingering = (notes: number[], tuning: { string: number, not
   })
 
   return result;
+}
+
+export const parseChord = (notes: number[]): string[] => {
+
+  const root = notes[0]
+  const rootName = noteName(root)
+
+  const third = notes[1] - root
+  const fifth = notes[2] - root
+
+  let flavor = ''
+  if (third == 4) {
+    if(fifth == 7)
+      flavor = 'major'
+    if(fifth == 8)
+      flavor = 'aug'
+  } else if (third == 3){
+    if(fifth == 7)
+      flavor = 'minor'
+    if(fifth == 6)
+      flavor = 'dim'
+  }
+  return rootName.map(n => n + ' ' + flavor)
 }
