@@ -1,18 +1,22 @@
 ---
-title: Notas
-description: Cosas que necesito recordar
+title: Notes
+description: Stuff to bookmark and remember
 ---
 
-## Mis notas
-Notas de ideas y conceptos que quiero tener accesibles para recordar y compartir.
+[//]: # (TODO tener esta sección utilizable:)
+<!---
+### Sofware
 
-[//]: # (TODO tener un script que actualice este índice con el contenido)
+- [android-sdk-cheatsheet](/notes/programming/android-sdk-cheatsheet)
+- [jdk-versions-cheatsheet](/notes/programming/jdk-versions-cheatsheet)
+-->
 
-### Música
+### Music
 
-- [Diatonic chords](/notes/music/diatonic-chords)
+- [Diatonic chords](/tools/diatonic-chords)
+- [Guitar proficiency](/tools/guitar-proficiency)
+- [SY-1 Synth params](/tools/synth) 
 
-### Noticias
+### Gaming
 
-- [Ejercicio y longevidad](/notes/news/exercise-with-weights-linked-to-lower-risk-of-early-death-study-says)
-
+- [Rocksmith delisting](/reminders/rocksmith-delisting)

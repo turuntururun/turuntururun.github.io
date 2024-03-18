@@ -1,10 +1,10 @@
 <template>
   <div>
+    <h2>turuntururun</h2>
     <p>
-      Todavía no sé qué poner en esta página, pero creo que pronto se me ocurre
-      algo. Por ahora tengo un juego por
-      <nuxt-link to="/falcon">aquí</nuxt-link>
-      y unas notas por <nuxt-link to="/notes">acá</nuxt-link>.
+      Hi there! There's no much going on around here, but we have a game
+      <nuxt-link to="/falcon">here</nuxt-link>
+      and some notes <nuxt-link to="/notes">over here</nuxt-link>.
     </p>
 
   </div>
@@ -19,9 +19,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
+h2{
+  font-family: 'Bauhaus 93', Arial, sans-serif;
+  text-align: center;
+  font-size: 36pt;
+  font-weight: lighter;
+}
+
 p {
-  font-family: 'Bauhaus 93', Arial, serif;
   font-size: 24pt;
   padding: 1rem 1.5rem;
 }
+
 </style>

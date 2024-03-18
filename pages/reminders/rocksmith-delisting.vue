@@ -1,6 +1,7 @@
 <template>
   <div class="song-data">
-    <h3>
+    <h3 v-if="search">Songs matching '{{ search }}'</h3>
+    <h3 v-else>
       Song to be delisted in the next
       <input v-model="limit" type="number" />
       days
@@ -11,23 +12,23 @@
     </div>
     <section v-for="song in soonDelisting" :key="song.title + song.performer">
       <p :class="song.available ? '' : 'strike'">
-        <strong>{{ song.title }}</strong> {{ song.performer }}
+        <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
       </p>
       <span
-        >{{ song.available ? 'Delisting' : 'Delisted' }}
+      >{{ song.available ? 'Delisting' : 'Delisted' }}
         {{
           expiryDate(song).toLocaleDateString('en-uk', {
             year: 'numeric',
             month: 'short',
-            day: 'numeric',
+            day: 'numeric'
           })
         }}</span
       >
       <span>
         <a :href="searchSpotify(song)" target="_blank"
-          ><img
-            src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
-            alt="Spotify search"
+        ><img
+          src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
+          alt="Spotify search"
         /></a>
         <a :href="searchYouTube(song)" target="_blank"
         ><img
@@ -36,22 +37,23 @@
           alt="YouTube search"
         /></a>
         <a v-if="song.available" :href="searchSteam(song)" target="_blank"
-          ><img
-            src="https://store.steampowered.com/favicon.ico"
-            alt="Steam search"
+        ><img
+          src="https://store.steampowered.com/favicon.ico"
+          alt="Steam search"
         /></a>
       </span>
     </section>
+    <footer>Dates are best effort approximates. Feel free to send your comments to
+      <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue'
+import { Song, songs } from 'assets/data/rocksmith'
 
-import {Song, songs} from 'assets/data/rocksmith'
-
-export default defineComponent({
+export default defineNuxtComponent({
   name: 'RocksmithDelisting',
+  head: () => ({ title: 'Rocksmith Delisting' }),
   data() {
     return { songs, today: new Date(), limit: '30', search: '' }
   },
@@ -77,7 +79,7 @@ export default defineComponent({
         const expiryDate = this.expiryDate(s)
         return yesterday < expiryDate && expiryDate < endDate
       })
-    },
+    }
   },
   methods: {
     expiryDate(song: Song): Date {
@@ -110,8 +112,8 @@ export default defineComponent({
       const d = new Date(date)
       d.setDate(d.getDate() + days)
       return d
-    },
-  },
+    }
+  }
 })
 </script>
 
@@ -121,18 +123,25 @@ export default defineComponent({
   flex-flow: column;
   font-family: Arial, serif;
 }
+
 img {
   height: 15px;
+}
+
+strong {
+  font-size: larger;
 }
 
 h3 {
   font-size: 18pt;
   margin: 0 auto;
 }
+
 section {
   font-size: 13pt;
   margin: 0.5rem 0.5rem;
   padding: 0.5rem;
+  flex: 5;
   border-bottom: 1px solid cornflowerblue;
 
   * {
@@ -158,4 +167,5 @@ input[type='number'] {
 .strike {
   text-decoration: line-through;
 }
+
 </style>
