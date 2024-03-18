@@ -1,10 +1,7 @@
 ---
-title: Notas
-description: Cosas que necesito recordar
+title: Notes
+description: Stuff to bookmark and remember
 ---
-
-## Mis notas
-Notas de ideas y conceptos que quiero tener accesibles para recordar y compartir.
 
 [//]: # (TODO tener esta sección utilizable:)
 <!---
