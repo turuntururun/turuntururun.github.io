@@ -2,6 +2,8 @@
 import { defineComponent } from 'vue'
 import axios from 'axios'
 
+const apiUrl = 'https://project24-19f4587ef60f.herokuapp.com'
+
 export default defineComponent({
   name: 'index',
   data() {
@@ -13,14 +15,26 @@ export default defineComponent({
       candidates: {}
     }
   },
-  mounted() {
-    this.getFromCacheOrBackend('places', '/places')
-      .then(o => {
-        this.places = o
-      })
+  async mounted() {
+    const response = await axios.get(apiUrl + '/data-version')
+    let version = response.data
+    console.log('version read', version)
+    if (version == localStorage.getItem('data-version')) {
+      console.log('Trusting cache')
+    } else {
+      console.log('Clearing cache')
+      localStorage.clear()
+    }
+    localStorage.setItem('data-version', version)
+    this.places = await this.getFromCacheOrBackend('places', '/places')
+    this.state = localStorage.getItem('state') || ''
+    this.district = localStorage.getItem('district') || ''
+    if (this.state && this.district) this.search()
   },
   methods: {
     search() {
+      localStorage.setItem('state', this.state)
+      localStorage.setItem('district', this.district)
       this.getFromCacheOrBackend(this.state + '/' + this.district, '/candidates/' + this.state + '/' + this.district)
         .then(o => {
           this.candidates = o
@@ -31,7 +45,7 @@ export default defineComponent({
       if (storedPlaces) {
         return JSON.parse(storedPlaces)
       }
-      const r = await axios.get('https://project24-19f4587ef60f.herokuapp.com' + urlPath)
+      const r = await axios.get(apiUrl + urlPath)
       localStorage.setItem(key, JSON.stringify(r.data))
       return r.data
     }
@@ -69,7 +83,7 @@ export default defineComponent({
     <label class="after-line">
       Entidad
       <select v-model="state">
-        <option v-for="(_, n) in places">{{ n }}</option>
+        <option v-for="(_, n) in places" v-show="n != 'NACIONAL'">{{ n }}</option>
       </select>
     </label>
     <label class="after-line" v-show="state">
@@ -113,10 +127,11 @@ select {
   font-size: medium;
 }
 
-.wrap-row{
+.wrap-row {
   display: flex;
   flex-flow: row wrap;
 }
+
 label:has(input[type="radio"]) {
   padding: 0.6rem 2rem;
 }
@@ -163,7 +178,7 @@ select {
   margin-left: 0.5rem;
 }
 
-.after-line{
+.after-line {
   margin-bottom: 1.5rem;
 }
 

@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "generate": "nuxt generate",
-    "package": "npm run clean & npm run generate & git add -A -- docs",
+    "build-site": "npm run clean & npm run generate & git add -A -- docs",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
     "lint": "npm run lint:js && npm run lint:prettier",
