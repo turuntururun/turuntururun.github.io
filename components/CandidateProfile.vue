@@ -9,22 +9,23 @@
       <h3>{{ candidate.name }}</h3>
     </header>
     <section class="candidate-data">
-      <fieldset>
+      <fieldset class="age">
         <legend>Edad</legend>
         <span>{{ candidate.age }}</span>
       </fieldset>
-      <fieldset>
+      <fieldset class="sex">
         <legend>Sexo</legend>
         <span>{{ candidate.sex }}</span>
       </fieldset>
-      <fieldset>
+      <fieldset class="education">
         <legend>Nivel de estudios</legend>
         <span>{{ candidate.education || 'No proporcionó' }}</span>
       </fieldset>
+      <span class="break"></span>
 
-      <fieldset>
+      <fieldset class="socials">
         <legend>Redes sociales</legend>
-        <span v-if="!candidate.socials.includes('https')">{{candidate.socials}}</span>
+        <span v-if="!candidate.socials.includes('https')">{{ candidate.socials }}</span>
         <span v-else v-for="s in candidate.socials.split(',')">
           <a :href="s.trim()" target="_blank">
         <svg v-if="s.includes('facebook.com')" class="logo" aria-labelledby="fb-app-logo" fill="none"
@@ -60,7 +61,12 @@
         </span>
       </fieldset>
 
-      <button @click="showAboutMe = true">Sobre mí</button>
+      <section class="button-collection">
+        <button @click="showAboutMe = true">Sobre mí</button>
+        <button @click="showProposals = true">Propuestas</button>
+        <button @click="showContact = true">Datos de contacto</button>
+      </section>
+
       <dialog :open="showAboutMe">
         <button class="close" @click="showAboutMe = false">X</button>
         <h2>{{ candidate.name }}</h2>
@@ -74,7 +80,6 @@
         <p>{{ candidate.extraEducation || 'No proporcionó' }}</p>
       </dialog>
 
-      <button @click="showProposals = true">Propuestas</button>
       <dialog :open="showProposals">
         <button class="close" @click="showProposals = false">X</button>
         <h2>{{ candidate.name }}</h2>
@@ -84,6 +89,17 @@
         <p>{{ candidate.proposal2 || 'No proporcionó' }}</p>
         <h3>PROPUESTA_GENERO</h3>
         <p>{{ candidate.proposal3 || 'No proporcionó' }}</p>
+      </dialog>
+
+      <dialog :open="showContact">
+        <button class="close" @click="showContact = false">X</button>
+        <h2>{{ candidate.name }}</h2>
+        <h3>Correo electrónico</h3>
+        <p>{{ candidate.email || 'No proporcionó' }}</p>
+        <h3>Teléfono</h3>
+        <p>{{ candidate.phone || 'No proporcionó' }}</p>
+        <h3>Dirección de casa de campaña</h3>
+        <p>{{ candidate.address || 'No proporcionó' }}</p>
       </dialog>
     </section>
   </div>
@@ -97,7 +113,28 @@ export default {
   data() {
     return {
       showAboutMe: false,
-      showProposals: false
+      showProposals: false,
+      showContact: false
+    }
+  },
+  watch: {
+    showAboutMe(on) {
+      if (on) {
+        this.showProposals = false
+        this.showContact = false
+      }
+    },
+    showProposals(on) {
+      if (on) {
+        this.showAboutMe = false
+        this.showContact = false
+      }
+    },
+    showContact(on) {
+      if (on) {
+        this.showProposals = false
+        this.showAboutMe = false
+      }
     }
   }
 
@@ -108,17 +145,18 @@ export default {
 
 .logo {
   width: 2rem;
-  margin: 1rem;
+  padding: 1rem;
 }
 
-.candidate-container{
- display: flex;
+.candidate-container {
+  display: flex;
   flex-flow: column;
 }
+
 .candidate-data {
-  display: inline-grid;
-  grid-template-columns:  1fr 1fr 1fr;
-  grid-template-rows: auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
 }
 
 button {
@@ -137,14 +175,39 @@ dialog[open] {
   flex-flow: column;
 }
 
-button.close{
+button.close {
   align-self: flex-end;
 }
 
 .position-header {
-  margin: 0.6rem 0;
+  padding: 0.6rem 0;
   font-style: italic;
   font-size: medium;
 }
 
+.age, .sex {
+  flex: 1;
+}
+.education {
+  flex: 2;
+}
+.break{
+  flex: 100%;
+  height: 0;
+}
+.socials {
+  display: flex;
+  flex: 2;
+  flex-flow: row wrap;
+  align-items: center;
+}
+.button-collection {
+  display: flex;
+  flex: 2;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
 </style>

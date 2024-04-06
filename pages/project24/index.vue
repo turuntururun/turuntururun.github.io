@@ -144,16 +144,19 @@ label:has(input[type="radio"]:checked) {
 .ticket-holder {
   border: 1px solid #4e295c;
   margin: 0.2rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1rem;
+  gap: 1rem;
 
   h3 {
-    grid-column: 1/-1;
-    place-self: center;
+    flex: 100%;
+    text-align: center;
   }
 
   * {
-    margin: 1rem;
+    flex: 1 3;
+    min-width: 230px;
   }
 
 }
