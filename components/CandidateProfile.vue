@@ -1,6 +1,6 @@
 <template>
   <div class="candidate-container">
-    <header v-if="candidate.type=='Persona Propietaria'">
+    <header v-if="['Persona Propietaria', 'TITULAR'].includes(candidate.type)">
       <h5 class="position-header">Titular</h5>
       <h3>{{ candidate.name }}</h3>
     </header>
@@ -33,7 +33,7 @@
                                                                                              d="m500,250C500,111.93,388.07,0,250,0S0,111.93,0,250c0,117.24,80.72,215.62,189.61,242.64v-166.24h-51.55v-76.4h51.55v-32.92c0-85.09,38.51-124.53,122.05-124.53,15.84,0,43.17,3.11,54.35,6.21v69.25c-5.9-.62-16.15-.93-28.88-.93-40.99,0-56.83,15.53-56.83,55.9v27.02h81.66l-14.03,76.4h-67.63v171.77c123.77-14.95,219.7-120.35,219.7-248.17Z"></path><path
           fill="none"
           d="m347.92,326.4l14.03-76.4h-81.66v-27.02c0-40.37,15.84-55.9,56.83-55.9,12.73,0,22.98.31,28.88.93v-69.25c-11.18-3.11-38.51-6.21-54.35-6.21-83.54,0-122.05,39.44-122.05,124.53v32.92h-51.55v76.4h51.55v166.24c19.34,4.8,39.57,7.36,60.39,7.36,10.25,0,20.36-.63,30.29-1.83v-171.77h67.64Z"></path></g></svg>
-        <svg v-else-if="s.includes('twitter.com')" viewBox="0 0 24 24" aria-hidden="true" class="logo"><g><path
+        <svg v-else-if="s.includes('twitter.com')||s.includes('x.com')" viewBox="0 0 24 24" aria-hidden="true" class="logo"><g><path
           d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></g></svg>
         <img v-else-if="s.includes('instagram.com')" class="logo"
              src="https://static.xx.fbcdn.net/rsrc.php/v3/yx/r/tBxa1IFcTQH.png" alt="">
@@ -65,6 +65,7 @@
         <button @click="showAboutMe = true">Sobre mí</button>
         <button @click="showProposals = true">Propuestas</button>
         <button @click="showContact = true">Datos de contacto</button>
+        <a class="google-me" :href="googleUrl" target="_blank">Googléame</a>
       </section>
 
       <dialog :open="showAboutMe">
@@ -109,7 +110,12 @@
 export default {
   name: 'CandidateProfile',
   props: ['candidate'],
-  computed: {},
+  computed: {
+    googleUrl() {
+      const query = encodeURIComponent(this.candidate.name + ' ' + this.candidate.party)
+      return 'https://www.google.com/search?q=' + query + '&tbm=nws&tbs=qdr:m'
+    }
+  },
   data() {
     return {
       showAboutMe: false,
@@ -159,7 +165,7 @@ export default {
   align-items: flex-start;
 }
 
-button {
+button, a.google-me {
   place-self: center;
 
   color: ghostwhite;
@@ -168,6 +174,11 @@ button {
   font-size: 14pt;
   border: none;
   border-radius: 0.4rem;
+}
+
+a.google-me{
+  text-decoration: none;
+font-weight: normal;
 }
 
 dialog[open] {
@@ -188,19 +199,23 @@ button.close {
 .age, .sex {
   flex: 1;
 }
+
 .education {
   flex: 2;
 }
-.break{
+
+.break {
   flex: 100%;
   height: 0;
 }
+
 .socials {
   display: flex;
   flex: 2;
   flex-flow: row wrap;
   align-items: center;
 }
+
 .button-collection {
   display: flex;
   flex: 2;
