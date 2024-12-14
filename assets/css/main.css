@@ -13,3 +13,21 @@ a {
 body {
   margin: 3px;
 }
+
+#__nuxt {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+button {
+  border-radius: 0.5rem;
+  border: 3px solid #4e295c;
+  background: #4e295c;
+  margin: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  color: #a4e5e1;
+  font-size: large;
+  font-weight: bold;
+}

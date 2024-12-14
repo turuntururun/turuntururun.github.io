@@ -14,6 +14,7 @@
       <p :class="song.available ? '' : 'strike'">
         <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
       </p>
+      <p class="data-row">
       <span
       >{{ song.available ? 'Delisting' : 'Delisted' }}
         {{
@@ -22,26 +23,28 @@
             month: 'short',
             day: 'numeric'
           })
-        }}</span
-      >
-      <span>
-        <a :href="searchSpotify(song)" target="_blank"
-        ><img
-          src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
-          alt="Spotify search"
-        /></a>
-        <a :href="searchYouTube(song)" target="_blank"
-        ><img
-          src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
+        }}</span>
+        <span>
+        <a :href="searchSpotify(song)" target="_blank">
+          <img
+            src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
+            alt="Spotify search"
+          /></a></span>
+        <span>
+        <a :href="searchYouTube(song)" target="_blank">
+          <img
+            src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
 
-          alt="YouTube search"
-        /></a>
+            alt="YouTube search"
+          /></a></span>
+        <span>
         <a v-if="song.available" :href="searchSteam(song)" target="_blank"
         ><img
           src="https://store.steampowered.com/favicon.ico"
           alt="Steam search"
         /></a>
       </span>
+      </p>
     </section>
     <footer>Dates are best effort approximates. Feel free to send your comments to
       <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
@@ -49,7 +52,7 @@
 </template>
 
 <script lang="ts">
-import { Song, songs } from 'assets/data/rocksmith'
+import { type Song, songs } from 'assets/data/rocksmith'
 
 export default defineNuxtComponent({
   name: 'RocksmithDelisting',
@@ -125,7 +128,14 @@ export default defineNuxtComponent({
 }
 
 img {
-  height: 15px;
+  height: 1.5rem;
+}
+
+p.data-row {
+  margin: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.3rem
 }
 
 strong {
