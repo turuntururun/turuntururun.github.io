@@ -66,7 +66,7 @@ export default defineComponent({
       if (index >= 0) this.$emit('correct', emoji)
     },
     setTilesPerRow() {
-      this.tilesPerRow = Math.floor(this.size.width / 100)
+      this.tilesPerRow = Math.floor(this.size.width / 25)
       this.finalTiles =
         this.tilesPerRow * Math.ceil(this.tiles / this.tilesPerRow)
     },

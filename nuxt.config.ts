@@ -1,6 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
   devtools: {enabled: true},
 
   app: {
@@ -17,9 +16,7 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css', '~/assets/css/nuxt-content.scss'],
-
   components: true,
-
   modules: ['@nuxt/content'],
 
   devServer: {
@@ -32,4 +29,5 @@ export default defineNuxtConfig({
     }
   },
 
+  compatibilityDate: '2025-02-06'
 })

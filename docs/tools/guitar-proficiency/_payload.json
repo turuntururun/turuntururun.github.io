@@ -1,1 +1,12 @@
-[{"data":1,"prerenderedAt":3},["Reactive",2],{},1726621968088]
+[
+  {
+    "data": 1,
+    "prerenderedAt": 3
+  },
+  [
+    "ShallowReactive",
+    2
+  ],
+  {},
+  1738898426862
+]
