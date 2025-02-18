@@ -2,16 +2,16 @@ export interface Song {
   title: string
   performer: string
   releaseDate: string
-  available: boolean
+  expiration: number
 }
 
-const available = (releaseDate: string) => {
+const calcExpiration: (x: string) => number = (releaseDate: string) => {
   const date = new Date(Date.parse(releaseDate))
   date.setFullYear(date.getFullYear() + 10)
   while (date.getDay() !== 1) {
     date.setDate(date.getDate() + 1)
   }
-  return new Date() < date
+  return date.getTime()
 }
 
 export const songs: Song[] = [
@@ -6157,4 +6157,4 @@ export const songs: Song[] = [
     performer: 'Opeth',
     releaseDate: '2020-03-31',
   },
-].map(s => ({...s, available: available((s.releaseDate))}))
+].map(s => ({ ...s, expiration: calcExpiration(s.releaseDate) }))

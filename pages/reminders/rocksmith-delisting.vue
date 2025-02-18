@@ -11,11 +11,11 @@
       <input v-model="search" placeholder="Search" />
     </div>
     <section v-for="song in soonDelisting" :key="song.title + song.performer">
-      <p :class="song.available ? '' : 'strike'">
+      <p :class="available(song.expiration) ? '' : 'strike'">
         <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
       </p>
       <span
-      >{{ song.available ? 'Delisting' : 'Delisted' }}
+      >{{ available(song.expiration) ? 'Delisting' : 'Delisted' }}
         {{
           expiryDate(song).toLocaleDateString('en-uk', {
             year: 'numeric',
@@ -36,7 +36,7 @@
 
           alt="YouTube search"
         /></a>
-        <a v-if="song.available" :href="searchSteam(song)" target="_blank"
+        <a v-if="available(song.expiration)" :href="searchSteam(song)" target="_blank"
         ><img
           src="https://store.steampowered.com/favicon.ico"
           alt="Steam search"
@@ -55,7 +55,9 @@ export default defineNuxtComponent({
   name: 'RocksmithDelisting',
   head: () => ({ title: 'Rocksmith Delisting' }),
   data() {
-    return { songs, today: new Date(), limit: '30', search: '' }
+    const today = new Date()
+    console.debug('Today is', today.toLocaleDateString())
+    return { songs, today, limit: '30', search: '' }
   },
   computed: {
     soonDelisting(): Song[] {
@@ -108,10 +110,8 @@ export default defineNuxtComponent({
           .replaceAll(' ', '+')
       )
     },
-    addDays(date: Date, days: number): Date {
-      const d = new Date(date)
-      d.setDate(d.getDate() + days)
-      return d
+    available(date: number): boolean {
+      return date > this.today.getTime()
     }
   }
 })
