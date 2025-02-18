@@ -1,0 +1,20 @@
+{
+  "id": "81f8011d-7e0d-46ca-ae64-927a7c1b2039",
+  "timestamp": 1739841516352,
+  "matcher": {
+    "static": {},
+    "wildcard": {},
+    "dynamic": {}
+  },
+  "prerendered": [
+    "/",
+    "/tools/guitar-proficiency",
+    "/notes",
+    "/privacy-policy",
+    "/tools/synth",
+    "/tools/diatonic-chords",
+    "/reminders/rocksmith-delisting",
+    "/falcon/singleplayer",
+    "/falcon"
+  ]
+}
