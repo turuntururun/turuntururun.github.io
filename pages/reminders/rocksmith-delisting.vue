@@ -1,30 +1,31 @@
 <template>
-  <div class="song-data">
-    <h3 v-if="search">Songs matching '{{ search }}'</h3>
-    <h3 v-else>
-      Song to be delisted in the next
-      <input v-model="limit" type="number" />
-      days
-    </h3>
-    <div class="result-row">
-      <span>{{ soonDelisting.length }} songs found</span>
-      <input v-model="search" placeholder="Search" />
-    </div>
-    <section v-for="song in soonDelisting" :key="song.title + song.performer">
-      <p :class="song.available ? '' : 'strike'">
-        <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
-      </p>
-      <span
-      >{{ song.available ? 'Delisting' : 'Delisted' }}
+  <client-only>
+    <div class="song-data">
+      <h3 v-if="search">Songs matching '{{ search }}'</h3>
+      <h3 v-else>
+        Song to be delisted in the next
+        <input v-model="limit" type="number" />
+        days
+      </h3>
+      <div class="result-row">
+        <span>{{ soonDelisting.length }} songs found</span>
+        <input v-model="search" placeholder="Search" />
+      </div>
+      <section v-for="song in soonDelisting" :key="song.title + song.performer">
+        <p :class="available(song.expiration) ? '' : 'strike'">
+          <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
+        </p>
+        <span
+        >{{ available(song.expiration) ? 'Delisting' : 'Delisted' }}
         {{
-          expiryDate(song).toLocaleDateString('en-uk', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-          })
-        }}</span
-      >
-      <span>
+            expiryDate(song).toLocaleDateString('en-uk', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })
+          }}</span
+        >
+        <span>
         <a :href="searchSpotify(song)" target="_blank"
         ><img
           src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
@@ -36,16 +37,17 @@
 
           alt="YouTube search"
         /></a>
-        <a v-if="song.available" :href="searchSteam(song)" target="_blank"
+        <a v-if="available(song.expiration)" :href="searchSteam(song)" target="_blank"
         ><img
           src="https://store.steampowered.com/favicon.ico"
           alt="Steam search"
         /></a>
       </span>
-    </section>
-    <footer>Dates are best effort approximates. Feel free to send your comments to
-      <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
-  </div>
+      </section>
+      <footer>Dates are best effort approximates. Feel free to send your comments to
+        <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
+    </div>
+  </client-only>
 </template>
 
 <script lang="ts">
@@ -55,7 +57,9 @@ export default defineNuxtComponent({
   name: 'RocksmithDelisting',
   head: () => ({ title: 'Rocksmith Delisting' }),
   data() {
-    return { songs, today: new Date(), limit: '30', search: '' }
+    const today = new Date()
+    console.debug('Today is', today.toLocaleDateString())
+    return { songs, today, limit: '30', search: '' }
   },
   computed: {
     soonDelisting(): Song[] {
@@ -108,10 +112,8 @@ export default defineNuxtComponent({
           .replaceAll(' ', '+')
       )
     },
-    addDays(date: Date, days: number): Date {
-      const d = new Date(date)
-      d.setDate(d.getDate() + days)
-      return d
+    available(date: number): boolean {
+      return date > this.today.getTime()
     }
   }
 })
