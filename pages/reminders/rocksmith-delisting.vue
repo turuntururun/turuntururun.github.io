@@ -27,18 +27,18 @@
         >
         <span>
         <a :href="searchSpotify(song)" target="_blank"
-        ><img
+        ><img class="inline-logo"
           src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
           alt="Spotify search"
         /></a>
         <a :href="searchYouTube(song)" target="_blank"
-        ><img
+        ><img class="inline-logo"
           src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
 
           alt="YouTube search"
         /></a>
         <a v-if="available(song.expiration)" :href="searchSteam(song)" target="_blank"
-        ><img
+        ><img class="inline-logo"
           src="https://store.steampowered.com/favicon.ico"
           alt="Steam search"
         /></a>
@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { Song, songs } from 'assets/data/rocksmith'
+import { type Song, songs } from 'assets/data/rocksmith'
 
 export default defineNuxtComponent({
   name: 'RocksmithDelisting',
