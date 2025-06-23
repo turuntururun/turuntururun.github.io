@@ -28,6 +28,7 @@ export default defineComponent({
     chips: string[];
     boardKey: string;
     score: { [user: string]: { points: number; total: number } };
+    accent: { [tile: number]: string };
     session: {
       playing: boolean,
       userName: string
@@ -38,6 +39,7 @@ export default defineComponent({
     found: [],
     chips: [],
     score: {},
+    accent: {},
     session: {
       playing: false,
       userId: randomEmojiSet(8).join(''),
@@ -51,13 +53,13 @@ export default defineComponent({
     this.session.userName = localStorage.getItem('falcon-user-name') || this.session.userName
     localStorage.setItem('falcon-user-name', this.session.userName)
 
-    console.log('We are in board', this.boardId)
+    console.debug('We are in board', this.boardId)
 
     axios.get(serverUrl+'/board/' + this.boardId)
       .then(response => {
         // fixme if response data contains current user, asume joined/connected
         this.score = response.data
-        console.log('get response', response);
+        console.debug('get response', response);
         this.connect()
       }).catch(e => {
         console.warn('Caught error', e)
@@ -80,8 +82,11 @@ export default defineComponent({
     boardMounted(stuff: string[]) {
       this.chips = stuff
     },
-    add(emoji: string) {
+    add(data: { emoji: string, index: number }) {
+      console.log('emmitted', data)
+      const {emoji, index} = data
       const hit = this.chips.indexOf(emoji)
+      this.accent[index] = "chartreuse"
       if (!this.found.includes(hit)) {
         this.found.push(hit)
         this.postPoint()
@@ -98,15 +103,14 @@ export default defineComponent({
     connect() {
       stompClient.onConnect = (frame) => {
 
-        // this.connected = true
         // todo handle connection issues
-        console.log('Connected: ' + JSON.stringify(frame));
+        console.debug('Connected: ' + JSON.stringify(frame));
         stompClient.subscribe('/topic/' + this.boardId + '/user-score', (response) => {
-          console.log('/user-score', 'body', response.body)
+          console.debug('/user-score', 'body', response.body)
           this.score = JSON.parse(response.body)
         });
         stompClient.subscribe('/topic/' + this.boardId + '/events', (response) => {
-          console.log('/events', 'body', response.body)
+          console.debug('/events', 'body', response.body)
           switch (response.body) {
             case 'start':
               this.session.playing = true
@@ -124,7 +128,7 @@ export default defineComponent({
     },
     disconnect() {
       stompClient.deactivate();
-      console.log("Disconnected");
+      console.debug("Disconnected");
     },
     postPlayer() {
       // todo connect to websocket here?
@@ -170,14 +174,15 @@ export default defineComponent({
       <!-- TODO Create component -->
       <div v-for="(score, user) in score" :key="user"
            style="display: flex;flex-flow: row wrap;justify-content: space-between">
-        <span>{{ score.user.name }}</span>
-        <span>{{ score.total }}</span>
-        <span style="width: 100%">{{ '✅'.repeat(score.points) }}</span>
+        <h4 style="margin: 0.5rem">{{ score.user.name }}</h4>
+        <h4 style="margin: 0.5rem">{{ score.total }}</h4>
+        <span v-if="score.points > 0" style="width: 100%">{{ '✅'.repeat(score.points) }}</span>
+        <span v-else style="width: 100%">🤔</span>
       </div>
     </section>
 
     <section class="game-board">
-      <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted"/>
+      <Board :key="boardKey" :tiles="80" :accent="accent" @correct="add" @mounted="boardMounted"/>
     </section>
 
   </div>
@@ -186,7 +191,7 @@ export default defineComponent({
     <section class="name-row">
       <label>
         Name:
-        <input v-model="session.userName">
+        <input maxlength="20" v-model="session.userName">
       </label>
       <button class="action-button" @click="postPlayer">
         {{ joined ? 'Change name' : 'Join' }}
@@ -196,9 +201,9 @@ export default defineComponent({
       Start Game
     </button>
 
-    <div v-for="(score, user) in score" :key="user"
-         style="display: flex;flex-flow: row wrap;justify-content: space-between">
-      <span>{{ score.user.name }} : {{ score.total }}</span>
+    <div style="display: flex;flex-flow: column-reverse;justify-content: space-between">
+      <span v-for="(score, user) in score" :key="user" :style="{order: score.total}"
+      >{{ score.user.name }} : {{ score.total }}</span>
     </div>
   </section>
 

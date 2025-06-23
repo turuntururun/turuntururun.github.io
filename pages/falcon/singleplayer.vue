@@ -40,8 +40,8 @@ export default defineComponent({
     boardMounted(stuff: string[]) {
       this.chips = stuff
     },
-    add(emoji: string) {
-      const hit = this.chips.indexOf(emoji)
+    add(data: { emoji: string, index: number }) {
+      const hit = this.chips.indexOf(data.emoji)
       if (!this.found.includes(hit)) this.found.push(hit)
     },
     restart() {

@@ -5,10 +5,11 @@
       :style="'grid-template-columns: repeat(' + tilesPerRow + ', 1fr)'"
     >
       <Tile
-        v-for="c in chips"
-        :key="c"
+        v-for="(c,i) in chips"
+        :key="i"
         :content="c"
         :size="tileWidth"
+        :background="accent[i]||'none'"
         @click="selectEmoji(c)"
       />
     </section>
@@ -24,6 +25,7 @@ export default defineComponent({
   name: 'GameBoard',
   props: {
     tiles: { type: Number, default: 40 },
+    accent: { type: Object, default: {}}
   },
   data() {
     return {
@@ -62,8 +64,11 @@ export default defineComponent({
   },
   methods: {
     selectEmoji(emoji: string) {
-      const index = this.selected.indexOf(emoji)
-      if (index >= 0) this.$emit('correct', emoji)
+      const i = this.selected.indexOf(emoji)
+      if (i >= 0) {
+        const index = this.chips.indexOf(emoji)
+        this.$emit('correct', { emoji, index })
+      }
     },
     setTilesPerRow() {
       this.tilesPerRow = Math.floor(this.size.width / 100)
