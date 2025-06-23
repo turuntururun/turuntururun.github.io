@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <section
       class="board"
       :style="'grid-template-columns: repeat(' + tilesPerRow + ', 1fr)'"
@@ -80,6 +80,10 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.container {
+  align-items: stretch;
+}
+
 .board {
   margin: 0;
   display: grid;

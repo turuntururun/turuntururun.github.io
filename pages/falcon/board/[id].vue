@@ -98,6 +98,7 @@ export default defineComponent({
     restart() {
       this.found = []
       this.chips = []
+      this.accent = {}
       this.boardKey += '.'
     },
     connect() {
@@ -188,6 +189,7 @@ export default defineComponent({
   </div>
   <section class="waiting" v-else>
     <h1>Session {{boardId}}</h1>
+    <div class="container">
     <section class="name-row">
       <label>
         Name:
@@ -204,6 +206,7 @@ export default defineComponent({
     <div style="display: flex;flex-flow: column-reverse;justify-content: space-between">
       <span v-for="(score, user) in score" :key="user" :style="{order: score.total}"
       >{{ score.user.name }} : {{ score.total }}</span>
+    </div>
     </div>
   </section>
 
@@ -245,8 +248,17 @@ section.waiting {
   flex-flow: column;
   align-items: center;
   font-size: 2rem;
-  gap: 0.7rem;
   margin: 1.5rem;
+}
+
+.container {
+  display: flex;
+  flex-flow: column;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   button, input {
     padding: 0.6rem 1.2rem;
@@ -255,6 +267,7 @@ section.waiting {
 
   button {
     border-radius: 2rem;
+    font-weight: bold;
     background: #00dc82;
     border-color: #65ea9b;
   }

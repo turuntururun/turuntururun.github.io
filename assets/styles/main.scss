@@ -27,10 +27,9 @@ body {
 
 // Container for content
 .container {
-  max-width: $container-width;
   margin: 0 auto;
   padding: $spacing-unit;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.73);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
