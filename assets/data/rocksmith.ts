@@ -3619,7 +3619,7 @@ export const songs: Song[] = [
   { title: 'Sunday Bloody Sunday', performer: 'U2', releaseDate: '2017-01-03' },
   {
     title: 'California Dreamin',
-    performer: 'Mamas \u0026 the PapasThe Mamas \u0026 the Papas',
+    performer: 'The Mamas \u0026 the Papas',
     releaseDate: '2017-01-10',
   },
   {

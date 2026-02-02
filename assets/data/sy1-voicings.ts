@@ -1,0 +1,158 @@
+const toneDepth = { c1: 'TONE', c2: 'DEPTH' }
+const tonePitch = { c1: 'TONE', c2: 'PITCH' }
+const depthPitch = { c1: 'DEPTH', c2: 'PITCH' }
+const rateDepth = { c1: 'RATE (TEMPO)', c2: 'DEPTH' }
+
+export const voicingMap: Record<string, Record<string, Record<string, string>>> = {
+  'LEAD1': {
+    'SAW LEAD': toneDepth,
+    'SAW LEAD OCT UP': toneDepth,
+    'SQUARE LEAD': toneDepth,
+    'SQUARE LEAD OCT UP': toneDepth,
+    'SYNC LEAD 1': toneDepth,
+    'SYNC LEAD 2': toneDepth,
+    'SINE LEAD': toneDepth,
+    'BRASSY LEAD': toneDepth,
+    'TRI LEAD': toneDepth,
+    'WHISTLY LEAD': toneDepth,
+    'SAW LEAD (PITCH CONTROL)': tonePitch
+  },
+  'LEAD2': {
+    '5th LEAD 1': toneDepth,
+    '5th LEAD 2': toneDepth,
+    '5th LEAD 3': toneDepth,
+    '5th LEAD 4': toneDepth,
+    'OCT LEAD 1': toneDepth,
+    'OCT LEAD 2': toneDepth,
+    'UPPER OCT LEAD': toneDepth,
+    'PWM LEAD': toneDepth,
+    'PWM OCT LEAD': toneDepth,
+    'FILTER LEAD': toneDepth,
+    'SQUARE LEAD (PITCH CONTROL)': tonePitch
+  },
+  'PAD': {
+    'SAW PAD': toneDepth,
+    'SOFT PAD': toneDepth,
+    'LAYERED PAD 1 (Octave Down on Lower Notes Only)': toneDepth,
+    'ORCHESTRAL PAD': toneDepth,
+    'HEAVY PAD': toneDepth,
+    'LAYERED PAD 2 (Octave Down on Lower Notes Only)': toneDepth,
+    'SYNTH BRASS 1': toneDepth,
+    'LAYERED SYNTH BRASS 2 (Octave Down on Lower Notes Only)': toneDepth,
+    'SYNTH BRASS 2': toneDepth,
+    'PHASED PAD': toneDepth,
+    'SAW PAD (PITCH CONTROL)': tonePitch
+  },
+  'BASS': {
+    'FILTER BASS 1': toneDepth,
+    'FILTER BASS 2': toneDepth,
+    'FILTER BASS 3': toneDepth,
+    'DARK BASS 1': toneDepth,
+    'DARK BASS 2': toneDepth,
+    'SAW BASS': toneDepth,
+    'DIRTY SQUARE BASS': toneDepth,
+    'BOWED BASS': toneDepth,
+    'FILTER BASS 4': toneDepth,
+    'LIGHT SQUARE BASS': toneDepth,
+    'SAW BASS (PITCH CONTROL)': tonePitch
+  },
+  'STR': {
+    'DETUNED STRINGS': toneDepth,
+    'HIGH OCTAVE STRINGS': toneDepth,
+    'LOW OCTAVE STRINGS': toneDepth,
+    'LOW+HIGH STRINGS': toneDepth,
+    'LIGHT STRINGS': toneDepth,
+    'LAYERED STRINGS 1 (Octave Down on Lower Notes Only)': toneDepth,
+    'LAYERED STRINGS 2 (Octave Down on Lower Notes Only)': toneDepth,
+    'LAYERED STRINGS 3 (Octave Down on Lower Notes Only)': toneDepth,
+    'SWEEP STRINGS': toneDepth,
+    'PHASED STRINGS': toneDepth,
+    'DETUNED STRINGS (PITCH CONTROL)': tonePitch
+  },
+  'ORGAN': {
+    'ROTARY SLOW 1': toneDepth,
+    'ROTARY SLOW 2': toneDepth,
+    'ROTARY SLOW 3': toneDepth,
+    'ROTARY FAST 1': toneDepth,
+    'ROTARY FAST 2': toneDepth,
+    'COMP ORGAN 1': toneDepth,
+    'COMP ORGAN 2': toneDepth,
+    'LAYERED ORGAN (Octave Down on Lower Notes Only)': toneDepth,
+    'CHORUS ORGAN': toneDepth,
+    'SWEEP ORGAN': toneDepth,
+    'ROTARY FAST (PITCH CONTROL)': tonePitch
+  },
+  'BELL': {
+    'BELL 1': toneDepth,
+    'BELL 2': toneDepth,
+    'BELL SQUARE': toneDepth,
+    'BELL 3': toneDepth,
+    'BELL SAW': toneDepth,
+    'BELL BASS': toneDepth,
+    'BELL STRINGS': toneDepth,
+    'STEEL PAN 1': toneDepth,
+    'STEEL PAN 2': toneDepth,
+    'PHASED BELL': toneDepth,
+    'BELL (PITCH CONTROL)': tonePitch
+  },
+  'SFX1': {
+    'WIND': toneDepth,
+    'LASER BEAM': toneDepth,
+    'LO-FI': toneDepth,
+    'BEEP': toneDepth,
+    'LO-FI PHASE': toneDepth,
+    'GOING DOWN 1': depthPitch,
+    'GOING UP 1': depthPitch,
+    'WIGGLE': depthPitch,
+    'GOING DOWN 2': depthPitch,
+    'GOING UP 2': depthPitch,
+    'BUBBLE': toneDepth
+  },
+  'SFX2': {
+    'MOVING FILTER 1': {
+      c1: 'RATE',
+      c2: 'DEPTH'
+    },
+    'MOVING FILTER 2 RATE DEPTH': {
+
+      c1: 'RATE', c2: 'DEPTH'
+    },
+    'MOVING PITCH': {
+      c1: 'RATE', c2: 'DEPTH'
+    },
+    'BREATH 1': toneDepth,
+    'BREATH 2': toneDepth,
+    'TOUCH FILTER 1': toneDepth,
+    'TOUCH FILTER 2': toneDepth,
+    'TOUCH FILTER 3': toneDepth,
+    'SENSITIVE PITCH': toneDepth,
+    'RING MOD 1': toneDepth,
+    'RING MOD 2': toneDepth
+  },
+  'SEQ1': {
+    'SIMPLE BASS 16th NOTE': rateDepth,
+    'SIMPLE BASS 8th NOTE': rateDepth,
+    'MOVING ORGAN': rateDepth,
+    'MOVING FILTER 3': rateDepth,
+    'SEQUENCE 1': rateDepth,
+    'SEQUENCE 2': rateDepth,
+    'NOISY SEQUENCE': rateDepth,
+    'SEQUENCE 3': rateDepth,
+    'RHYTHM + BASS 8th NOTE': rateDepth,
+    'RHYTHM + BASS TRIPLET': rateDepth,
+    'RHYTHM + BASS 16th NOTE': rateDepth
+  },
+  'SEQ2': {
+    'ARPEGGIO 1': rateDepth,
+    'ARPEGGIO 2': rateDepth,
+    'ARPEGGIO 3': rateDepth,
+    'ARPEGGIO 4': rateDepth,
+    'BASS SEQUENCE 1': rateDepth,
+    'BASS SEQUENCE 2': rateDepth,
+    'BASS SEQUENCE + STRINGS': rateDepth,
+    'BASS SEQUENCE + BRASS': rateDepth,
+    'BASS SEQUENCE + RHYTHM 1': rateDepth,
+    'BASS SEQUENCE + RHYTHM 2': rateDepth,
+    'BASS SEQUENCE + RHYTHM 3': rateDepth
+  }
+}
