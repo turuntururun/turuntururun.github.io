@@ -26,12 +26,11 @@ export default defineComponent({
 </script>
 
 <template>
-  <section>
-    <NuxtLink to="/">🏠</NuxtLink>
+  <NuxtLink to="/">🏠</NuxtLink>
+  <section class="row-wrapped">
 
-    <form>
-
-      <fieldset>
+    <form class="row-no-wrap">
+      <fieldset style="width: 7rem">
         <legend>Type</legend>
         <div class="radio" v-for="t in types">
           <input type="radio" :id="'type-' +t" name="type" :value="t" v-model="type" />
@@ -39,28 +38,50 @@ export default defineComponent({
         </div>
       </fieldset>
 
-      <fieldset>
+      <fieldset style="width: 18rem">
         <legend>Variation</legend>
         <div class="radio" v-for="(v, pos) in vars">
           <input type="radio" :id="'variation' +v" name="variation" :value="pos" v-model="variation" />
-          <label :for="'variation' +v">{{ pos + 1 }} - {{ v }}</label>
+          <label v-if="v.includes('(')" :for="'variation' +v">
+            {{ pos + 1 }} - {{ v.substring(0, v.indexOf('(')) }}
+            <sup v-if="v.includes('PITCH CONTROL')" aria-label="PITCH CONTROL">🎶👣</sup>
+            <sup v-if="v.includes('Octave Down')" aria-label="Octave Down on Lower Notes Only">🎼🔽</sup>
+          </label>
+          <label v-else :for="'variation' +v">{{ pos + 1 }} - {{ v }}</label>
         </div>
       </fieldset>
-
     </form>
 
-    <pre>  {{ type }} - {{ vars[variation] }}</pre>
-    <dashboard v-if="control" :inner-knob="control.c1" :outer-knob="control.c2" />
+    <section style="width: 25rem" class="column">
+      <pre>  {{ type }} - {{ vars[variation] }}</pre>
+      <dashboard v-if="control"
+                 :inner-knob="control.c1"
+                 :outer-knob="control.c2"
+                 :variation="variation"
+                 :type="types.indexOf(type)"
+      />
+    </section>
 
   </section>
 </template>
 
 <style scoped>
 
-form {
+.row-wrapped {
   display: flex;
-  flex-flow: row;
+  flex-flow: row wrap;
   gap: 1rem
+}
+
+.row-no-wrap {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem
+}
+
+.column {
+  display: flex;
+  flex-flow: column;
 }
 
 .radio {

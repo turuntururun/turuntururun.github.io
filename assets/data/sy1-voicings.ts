@@ -1,7 +1,7 @@
 const toneDepth = { c1: 'TONE', c2: 'DEPTH' }
 const tonePitch = { c1: 'TONE', c2: 'PITCH' }
 const depthPitch = { c1: 'DEPTH', c2: 'PITCH' }
-const rateDepth = { c1: 'RATE (TEMPO)', c2: 'DEPTH' }
+const rateDepth = { c1: 'TEMPO', c2: 'DEPTH' }
 
 export const voicingMap: Record<string, Record<string, Record<string, string>>> = {
   'LEAD1': {
