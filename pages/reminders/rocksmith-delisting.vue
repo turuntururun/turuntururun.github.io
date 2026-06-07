@@ -43,6 +43,12 @@
           alt="Steam search"
         /></a>
       </span>
+        <span class="hide-widget">
+        <label>
+          Hide?
+          <input type="checkbox" :checked="hiddenSongs.includes(song.id)" @change="hide(song.id,($event?.target as HTMLInputElement).checked)">
+        </label>
+          </span>
       </section>
       <footer>Dates are best effort approximates. Feel free to send your comments to
         <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
@@ -58,13 +64,12 @@ export default defineNuxtComponent({
   head: () => ({ title: 'Rocksmith Delisting' }),
   data() {
     const today = new Date()
-    console.debug('Today is', today.toLocaleDateString())
-    return { songs, today, limit: '30', search: '' }
+    return { today, limit: 30, search: '', hiddenSongs: [0] }
   },
   computed: {
     soonDelisting(): Song[] {
       if (this.search) {
-        return this.songs.filter((s) => {
+        return songs.filter((s) => {
           const text = (s.title + ' ' + s.performer).toLowerCase()
           const searchParams = this.search.toLowerCase().split(' ')
           for (const word of searchParams) {
@@ -76,10 +81,11 @@ export default defineNuxtComponent({
         })
       }
       const endDate = new Date(this.today)
-      endDate.setDate(endDate.getDate() + Number.parseInt(this.limit))
+      endDate.setDate(endDate.getDate() + this.limit)
       const yesterday = new Date(this.today)
       yesterday.setDate(yesterday.getDate() - 1)
-      return this.songs.filter((s) => {
+      return songs.filter((s) => {
+        if(this.hiddenSongs.includes(s.id)) return false
         const expiryDate = this.expiryDate(s)
         return yesterday < expiryDate && expiryDate < endDate
       })
@@ -114,6 +120,31 @@ export default defineNuxtComponent({
     },
     available(date: number): boolean {
       return date > this.today.getTime()
+    },
+    hide(songId: number, toHide: boolean){
+      if (toHide) {
+        this.hiddenSongs.push(songId)
+      } else {
+        const index = this.hiddenSongs.indexOf(songId);
+        if (index > -1) {
+          this.hiddenSongs.splice(index, 1);
+        }
+      }
+      localStorage.setItem('hidden-songs', JSON.stringify(this.hiddenSongs))
+    },
+  },
+  mounted(){
+    try {
+      const hiddenSongs = localStorage.getItem('hidden-songs') || '[]'
+      this.hiddenSongs = JSON.parse(hiddenSongs)
+      this.limit = Number.parseInt(localStorage.getItem('limit-days') || '30')
+    } catch (e) {
+
+    }
+  },
+  watch: {
+    limit(val) {
+      localStorage.setItem('limit-days', val)
     }
   }
 })
@@ -168,6 +199,12 @@ input[type='number'] {
 
 .strike {
   text-decoration: line-through;
+}
+
+.hide-widget {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
 }
 
 </style>

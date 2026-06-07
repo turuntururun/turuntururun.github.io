@@ -1,6160 +1,9929 @@
 export interface Song {
+  id: number
   title: string
   performer: string
   releaseDate: string
   expiration: number
 }
 
-const calcExpiration: (x: string) => number = (releaseDate: string) => {
-  const date = new Date(Date.parse(releaseDate))
-  date.setFullYear(date.getFullYear() + 10)
-  while (date.getDay() !== 1) {
-    date.setDate(date.getDate() + 1)
-  }
-  return date.getTime()
-}
-
 export const songs: Song[] = [
   {
-    title: 'Bodysnatchers',
-    performer: 'Radiohead',
-    releaseDate: '2011-11-01',
+    "title": "Bodysnatchers",
+    "performer": "Radiohead",
+    "releaseDate": "2011-11-01",
+    "expiration": 1635811200000,
+    "id": 1
   },
   {
-    title: 'Tighten Up',
-    performer: 'The Black Keys',
-    releaseDate: '2011-11-01',
+    "title": "Tighten Up",
+    "performer": "The Black Keys",
+    "releaseDate": "2011-11-01",
+    "expiration": 1635811200000,
+    "id": 2
   },
   {
-    title: 'Free Bird',
-    performer: 'Lynyrd Skynyrd',
-    releaseDate: '2011-11-01',
+    "title": "Free Bird",
+    "performer": "Lynyrd Skynyrd",
+    "releaseDate": "2011-11-01",
+    "expiration": 1635811200000,
+    "id": 3
   },
   {
-    title: 'Smoke on the Water',
-    performer: 'Deep Purple',
-    releaseDate: '2011-11-15',
+    "title": "Smoke on the Water",
+    "performer": "Deep Purple",
+    "releaseDate": "2011-11-15",
+    "expiration": 1637020800000,
+    "id": 4
   },
   {
-    title: 'More than a Feeling',
-    performer: 'Boston',
-    releaseDate: '2011-11-15',
+    "title": "More than a Feeling",
+    "performer": "Boston",
+    "releaseDate": "2011-11-15",
+    "expiration": 1637020800000,
+    "id": 5
   },
   {
-    title: 'Jessica',
-    performer: 'The Allman Brothers Band',
-    releaseDate: '2011-11-15',
+    "title": "Jessica",
+    "performer": "The Allman Brothers Band",
+    "releaseDate": "2011-11-15",
+    "expiration": 1637020800000,
+    "id": 6
   },
-  { title: 'Cousins', performer: 'Vampire Weekend', releaseDate: '2011-11-29' },
   {
-    title: '20th Century Boy',
-    performer: 'T. Rex',
-    releaseDate: '2011-11-29',
+    "title": "Cousins",
+    "performer": "Vampire Weekend",
+    "releaseDate": "2011-11-29",
+    "expiration": 1638230400000,
+    "id": 7
   },
   {
-    title: 'I Hate Everything About You',
-    performer: 'Three Days Grace',
-    releaseDate: '2011-11-29',
+    "title": "20th Century Boy",
+    "performer": "T. Rex",
+    "releaseDate": "2011-11-29",
+    "expiration": 1638230400000,
+    "id": 8
   },
   {
-    title: 'Symphony of Destruction',
-    performer: 'Megadeth',
-    releaseDate: '2011-12-13',
+    "title": "I Hate Everything About You",
+    "performer": "Three Days Grace",
+    "releaseDate": "2011-11-29",
+    "expiration": 1638230400000,
+    "id": 9
   },
   {
-    title: 'Hangar 18',
-    performer: 'Megadeth',
-    releaseDate: '2011-12-13',
+    "title": "Symphony of Destruction",
+    "performer": "Megadeth",
+    "releaseDate": "2011-12-13",
+    "expiration": 1639440000000,
+    "id": 10
   },
   {
-    title: 'Public Enemy No. 1',
-    performer: 'Megadeth',
-    releaseDate: '2011-12-13',
+    "title": "Hangar 18",
+    "performer": "Megadeth",
+    "releaseDate": "2011-12-13",
+    "expiration": 1639440000000,
+    "id": 11
   },
   {
-    title: 'Carol of the Bells',
-    performer: 'Seth Chapla',
-    releaseDate: '2011-12-20',
+    "title": "Public Enemy No. 1",
+    "performer": "Megadeth",
+    "releaseDate": "2011-12-13",
+    "expiration": 1639440000000,
+    "id": 12
   },
   {
-    title: 'God Rest Ye Merry, Gentlemen',
-    performer: 'Brian Adam McCune',
-    releaseDate: '2011-12-20',
+    "title": "Carol of the Bells",
+    "performer": "Seth Chapla",
+    "releaseDate": "2011-12-20",
+    "expiration": 1640044800000,
+    "id": 13
   },
   {
-    title: 'We Three Kings',
-    performer: 'Versus Them',
-    releaseDate: '2011-12-20',
+    "title": "God Rest Ye Merry, Gentlemen",
+    "performer": "Brian Adam McCune",
+    "releaseDate": "2011-12-20",
+    "expiration": 1640044800000,
+    "id": 14
   },
   {
-    title: 'Mind Eraser',
-    performer: 'The Black Keys',
-    releaseDate: '2011-12-27',
+    "title": "We Three Kings",
+    "performer": "Versus Them",
+    "releaseDate": "2011-12-20",
+    "expiration": 1640044800000,
+    "id": 15
   },
   {
-    title: 'Gold on the Ceiling',
-    performer: 'The Black Keys',
-    releaseDate: '2011-12-27',
+    "title": "Mind Eraser",
+    "performer": "The Black Keys",
+    "releaseDate": "2011-12-27",
+    "expiration": 1640649600000,
+    "id": 16
   },
   {
-    title: 'Just Got to Be',
-    performer: 'The Black Keys',
-    releaseDate: '2011-12-27',
+    "title": "Gold on the Ceiling",
+    "performer": "The Black Keys",
+    "releaseDate": "2011-12-27",
+    "expiration": 1640649600000,
+    "id": 17
   },
   {
-    title: '(Don\u0027t Fear) The Reaper',
-    performer: 'Blue Öyster Cult',
-    releaseDate: '2012-01-17',
+    "title": "Just Got to Be",
+    "performer": "The Black Keys",
+    "releaseDate": "2011-12-27",
+    "expiration": 1640649600000,
+    "id": 18
   },
   {
-    title: 'Space Oddity',
-    performer: 'David Bowie',
-    releaseDate: '2012-01-17',
+    "title": "(Don't Fear) The Reaper",
+    "performer": "Blue Öyster Cult",
+    "releaseDate": "2012-01-17",
+    "expiration": 1642464000000,
+    "id": 19
   },
   {
-    title: 'Barracuda',
-    performer: 'Heart',
-    releaseDate: '2012-01-17',
+    "title": "Space Oddity",
+    "performer": "David Bowie",
+    "releaseDate": "2012-01-17",
+    "expiration": 1642464000000,
+    "id": 20
   },
-  { title: 'Jeremy', performer: 'Pearl Jam', releaseDate: '2012-02-07' },
   {
-    title: 'Black',
-    performer: 'Pearl Jam',
-    releaseDate: '2012-02-07',
+    "title": "Barracuda",
+    "performer": "Heart",
+    "releaseDate": "2012-01-17",
+    "expiration": 1642464000000,
+    "id": 21
   },
-  { title: 'Dammit', performer: 'Blink-182', releaseDate: '2012-02-21' },
   {
-    title: 'All The Small Things',
-    performer: 'Blink-182',
-    releaseDate: '2012-02-21',
+    "title": "Jeremy",
+    "performer": "Pearl Jam",
+    "releaseDate": "2012-02-07",
+    "expiration": 1644278400000,
+    "id": 22
   },
   {
-    title: 'What\u0027s My Age Again?',
-    performer: 'Blink-182',
-    releaseDate: '2012-02-21',
+    "title": "Black",
+    "performer": "Pearl Jam",
+    "releaseDate": "2012-02-07",
+    "expiration": 1644278400000,
+    "id": 23
   },
-  { title: 'Kryptonite', performer: '3 Doors Down', releaseDate: '2012-03-06' },
   {
-    title: 'Loser',
-    performer: '3 Doors Down',
-    releaseDate: '2012-03-06',
+    "title": "Dammit",
+    "performer": "Blink-182",
+    "releaseDate": "2012-02-21",
+    "expiration": 1645488000000,
+    "id": 24
   },
   {
-    title: 'When I\u0027m Gone',
-    performer: '3 Doors Down',
-    releaseDate: '2012-03-06',
+    "title": "All The Small Things",
+    "performer": "Blink-182",
+    "releaseDate": "2012-02-21",
+    "expiration": 1645488000000,
+    "id": 25
   },
   {
-    title: 'The Thrill Is Gone',
-    performer: 'B.B. King',
-    releaseDate: '2012-03-20',
+    "title": "What's My Age Again?",
+    "performer": "Blink-182",
+    "releaseDate": "2012-02-21",
+    "expiration": 1645488000000,
+    "id": 26
   },
   {
-    title: 'Born Under a Bad Sign',
-    performer: 'Albert King with Stevie Ray Vaughan',
-    releaseDate: '2012-03-20',
+    "title": "Kryptonite",
+    "performer": "3 Doors Down",
+    "releaseDate": "2012-03-06",
+    "expiration": 1646697600000,
+    "id": 27
   },
   {
-    title: 'Soul Man',
-    performer: 'The Blues Brothers',
-    releaseDate: '2012-03-20',
+    "title": "Loser",
+    "performer": "3 Doors Down",
+    "releaseDate": "2012-03-06",
+    "expiration": 1646697600000,
+    "id": 28
   },
   {
-    title: 'Bring Me to Life',
-    performer: 'Evanescence',
-    releaseDate: '2012-04-03',
+    "title": "When I'm Gone",
+    "performer": "3 Doors Down",
+    "releaseDate": "2012-03-06",
+    "expiration": 1646697600000,
+    "id": 29
   },
   {
-    title: 'Pumped Up Kicks',
-    performer: 'Foster the People',
-    releaseDate: '2012-04-03',
+    "title": "The Thrill Is Gone",
+    "performer": "B.B. King",
+    "releaseDate": "2012-03-20",
+    "expiration": 1647907200000,
+    "id": 30
   },
-  { title: 'This Love', performer: 'Maroon 5', releaseDate: '2012-04-03' },
   {
-    title: 'Breaking the Law',
-    performer: 'Judas Priest',
-    releaseDate: '2012-04-17',
+    "title": "Born Under a Bad Sign",
+    "performer": "Albert King with Stevie Ray Vaughan",
+    "releaseDate": "2012-03-20",
+    "expiration": 1647907200000,
+    "id": 31
   },
   {
-    title: 'Living After Midnight',
-    performer: 'Judas Priest',
-    releaseDate: '2012-04-17',
+    "title": "Soul Man",
+    "performer": "The Blues Brothers",
+    "releaseDate": "2012-03-20",
+    "expiration": 1647907200000,
+    "id": 32
   },
-  { title: 'Painkiller', performer: 'Judas Priest', releaseDate: '2012-04-17' },
   {
-    title: 'Roxanne',
-    performer: 'The Police',
-    releaseDate: '2012-05-01',
+    "title": "Bring Me to Life",
+    "performer": "Evanescence",
+    "releaseDate": "2012-04-03",
+    "expiration": 1649116800000,
+    "id": 33
   },
   {
-    title: 'Message in a Bottle',
-    performer: 'The Police',
-    releaseDate: '2012-05-01',
+    "title": "Pumped Up Kicks",
+    "performer": "Foster the People",
+    "releaseDate": "2012-04-03",
+    "expiration": 1649116800000,
+    "id": 34
   },
   {
-    title: 'Synchronicity II',
-    performer: 'The Police',
-    releaseDate: '2012-05-01',
+    "title": "This Love",
+    "performer": "Maroon 5",
+    "releaseDate": "2012-04-03",
+    "expiration": 1649116800000,
+    "id": 35
   },
   {
-    title: 'Gone Away',
-    performer: 'The Offspring',
-    releaseDate: '2012-05-15',
+    "title": "Breaking the Law",
+    "performer": "Judas Priest",
+    "releaseDate": "2012-04-17",
+    "expiration": 1650326400000,
+    "id": 36
   },
   {
-    title: 'Come Out and Play (Keep \u0027Em Separated)',
-    performer: 'The Offspring',
-    releaseDate: '2012-05-15',
+    "title": "Living After Midnight",
+    "performer": "Judas Priest",
+    "releaseDate": "2012-04-17",
+    "expiration": 1650326400000,
+    "id": 37
   },
   {
-    title: 'Self Esteem',
-    performer: 'The Offspring',
-    releaseDate: '2012-05-15',
+    "title": "Painkiller",
+    "performer": "Judas Priest",
+    "releaseDate": "2012-04-17",
+    "expiration": 1650326400000,
+    "id": 38
   },
   {
-    title: 'Planetary (GO!)',
-    performer: 'My Chemical Romance',
-    releaseDate: '2012-05-29',
+    "title": "Roxanne",
+    "performer": "The Police",
+    "releaseDate": "2012-05-01",
+    "expiration": 1651536000000,
+    "id": 39
   },
   {
-    title: 'Welcome to the Black Parade',
-    performer: 'My Chemical Romance',
-    releaseDate: '2012-05-29',
+    "title": "Message in a Bottle",
+    "performer": "The Police",
+    "releaseDate": "2012-05-01",
+    "expiration": 1651536000000,
+    "id": 40
   },
   {
-    title: 'Na Na Na (Na Na Na Na Na Na Na Na Na)',
-    performer: 'My Chemical Romance',
-    releaseDate: '2012-05-29',
+    "title": "Synchronicity II",
+    "performer": "The Police",
+    "releaseDate": "2012-05-01",
+    "expiration": 1651536000000,
+    "id": 41
   },
   {
-    title: 'Keep Yourself Alive',
-    performer: 'Queen',
-    releaseDate: '2012-06-12',
+    "title": "Gone Away",
+    "performer": "The Offspring",
+    "releaseDate": "2012-05-15",
+    "expiration": 1652745600000,
+    "id": 42
   },
-  { title: 'Bohemian Rhapsody', performer: 'Queen', releaseDate: '2012-06-12' },
   {
-    title: 'Fat Bottomed Girls',
-    performer: 'Queen',
-    releaseDate: '2012-06-12',
+    "title": "Come Out and Play (Keep 'Em Separated)",
+    "performer": "The Offspring",
+    "releaseDate": "2012-05-15",
+    "expiration": 1652745600000,
+    "id": 43
   },
-  { title: 'Killer Queen', performer: 'Queen', releaseDate: '2012-06-12' },
   {
-    title: 'Stone Cold Crazy',
-    performer: 'Queen',
-    releaseDate: '2012-06-12',
+    "title": "Self Esteem",
+    "performer": "The Offspring",
+    "releaseDate": "2012-05-15",
+    "expiration": 1652745600000,
+    "id": 44
   },
   {
-    title: 'Godzilla',
-    performer: 'Blue Öyster Cult',
-    releaseDate: '2012-06-26',
+    "title": "Planetary (GO!)",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2012-05-29",
+    "expiration": 1653955200000,
+    "id": 45
   },
   {
-    title: 'My Sharona',
-    performer: 'The Knack',
-    releaseDate: '2012-06-26',
+    "title": "Welcome to the Black Parade",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2012-05-29",
+    "expiration": 1653955200000,
+    "id": 46
   },
   {
-    title: 'Hit Me with Your Best Shot',
-    performer: 'Pat Benatar',
-    releaseDate: '2012-06-26',
+    "title": "Na Na Na (Na Na Na Na Na Na Na Na Na)",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2012-05-29",
+    "expiration": 1653955200000,
+    "id": 47
   },
   {
-    title: 'Redneck',
-    performer: 'Lamb of God',
-    releaseDate: '2012-07-10',
+    "title": "Keep Yourself Alive",
+    "performer": "Queen",
+    "releaseDate": "2012-06-12",
+    "expiration": 1655164800000,
+    "id": 48
   },
   {
-    title: 'I Believe in a Thing Called Love',
-    performer: 'The Darkness',
-    releaseDate: '2012-07-10',
+    "title": "Bohemian Rhapsody",
+    "performer": "Queen",
+    "releaseDate": "2012-06-12",
+    "expiration": 1655164800000,
+    "id": 49
   },
-  { title: 'Paralyzer', performer: 'Finger Eleven', releaseDate: '2012-07-10' },
   {
-    title: 'My Girl',
-    performer: 'The Temptations',
-    releaseDate: '2012-07-24',
+    "title": "Fat Bottomed Girls",
+    "performer": "Queen",
+    "releaseDate": "2012-06-12",
+    "expiration": 1655164800000,
+    "id": 50
   },
   {
-    title: '(Sittin\u0027 On) The Dock of the Bay',
-    performer: 'Otis Redding',
-    releaseDate: '2012-07-24',
+    "title": "Killer Queen",
+    "performer": "Queen",
+    "releaseDate": "2012-06-12",
+    "expiration": 1655164800000,
+    "id": 51
   },
   {
-    title: 'What\u0027s Going On',
-    performer: 'Marvin Gaye',
-    releaseDate: '2012-07-24',
+    "title": "Stone Cold Crazy",
+    "performer": "Queen",
+    "releaseDate": "2012-06-12",
+    "expiration": 1655164800000,
+    "id": 52
   },
   {
-    title: 'Born on the Bayou',
-    performer: 'Creedence Clearwater Revival',
-    releaseDate: '2012-08-21',
+    "title": "Godzilla",
+    "performer": "Blue Öyster Cult",
+    "releaseDate": "2012-06-26",
+    "expiration": 1656374400000,
+    "id": 53
   },
   {
-    title: 'In-A-Gadda-Da-Vida',
-    performer: 'Iron Butterfly',
-    releaseDate: '2012-08-21',
+    "title": "My Sharona",
+    "performer": "The Knack",
+    "releaseDate": "2012-06-26",
+    "expiration": 1656374400000,
+    "id": 54
   },
   {
-    title: 'Whipping Post',
-    performer: 'The Allman Brothers Band',
-    releaseDate: '2012-08-21',
+    "title": "Hit Me with Your Best Shot",
+    "performer": "Pat Benatar",
+    "releaseDate": "2012-06-26",
+    "expiration": 1656374400000,
+    "id": 55
   },
   {
-    title: 'Mississippi Queen',
-    performer: 'Mountain',
-    releaseDate: '2012-09-04',
+    "title": "Redneck",
+    "performer": "Lamb of God",
+    "releaseDate": "2012-07-10",
+    "expiration": 1657584000000,
+    "id": 56
   },
   {
-    title: 'Drift Away',
-    performer: 'Dobie Gray',
-    releaseDate: '2012-09-04',
+    "title": "I Believe in a Thing Called Love",
+    "performer": "The Darkness",
+    "releaseDate": "2012-07-10",
+    "expiration": 1657584000000,
+    "id": 57
   },
   {
-    title: 'The Man Who Sold the World',
-    performer: 'David Bowie',
-    releaseDate: '2012-09-04',
+    "title": "Paralyzer",
+    "performer": "Finger Eleven",
+    "releaseDate": "2012-07-10",
+    "expiration": 1657584000000,
+    "id": 58
   },
   {
-    title: 'We\u0027re Not Gonna Take It',
-    performer: 'Twisted Sister',
-    releaseDate: '2012-09-18',
+    "title": "My Girl",
+    "performer": "The Temptations",
+    "releaseDate": "2012-07-24",
+    "expiration": 1658793600000,
+    "id": 59
   },
   {
-    title: 'The Final Countdown',
-    performer: 'Europe',
-    releaseDate: '2012-09-18',
+    "title": "(Sittin' On) The Dock of the Bay",
+    "performer": "Otis Redding",
+    "releaseDate": "2012-07-24",
+    "expiration": 1658793600000,
+    "id": 60
   },
-  { title: 'Is This Love', performer: 'Whitesnake', releaseDate: '2012-09-18' },
   {
-    title: 'Caring Is Creepy',
-    performer: 'The Shins',
-    releaseDate: '2012-10-02',
+    "title": "What's Going On",
+    "performer": "Marvin Gaye",
+    "releaseDate": "2012-07-24",
+    "expiration": 1658793600000,
+    "id": 61
   },
   {
-    title: 'Bright Lights',
-    performer: 'Gary Clark Jr.',
-    releaseDate: '2012-10-02',
+    "title": "Born on the Bayou",
+    "performer": "Creedence Clearwater Revival",
+    "releaseDate": "2012-08-21",
+    "expiration": 1661212800000,
+    "id": 62
   },
   {
-    title: 'Paris (Ooh La La)',
-    performer: 'Grace Potter and the Nocturnals',
-    releaseDate: '2012-10-02',
+    "title": "In-A-Gadda-Da-Vida",
+    "performer": "Iron Butterfly",
+    "releaseDate": "2012-08-21",
+    "expiration": 1661212800000,
+    "id": 63
   },
   {
-    title: 'Beast and the Harlot',
-    performer: 'Avenged Sevenfold',
-    releaseDate: '2012-10-30',
+    "title": "Whipping Post",
+    "performer": "The Allman Brothers Band",
+    "releaseDate": "2012-08-21",
+    "expiration": 1661212800000,
+    "id": 64
   },
   {
-    title: 'Afterlife',
-    performer: 'Avenged Sevenfold',
-    releaseDate: '2012-10-30',
+    "title": "Mississippi Queen",
+    "performer": "Mountain",
+    "releaseDate": "2012-09-04",
+    "expiration": 1662422400000,
+    "id": 65
   },
   {
-    title: 'Nightmare',
-    performer: 'Avenged Sevenfold',
-    releaseDate: '2012-10-30',
+    "title": "Drift Away",
+    "performer": "Dobie Gray",
+    "releaseDate": "2012-09-04",
+    "expiration": 1662422400000,
+    "id": 66
   },
-  { title: 'Limelight', performer: 'Rush', releaseDate: '2012-11-13' },
   {
-    title: 'Red Barchetta',
-    performer: 'Rush',
-    releaseDate: '2012-11-13',
+    "title": "The Man Who Sold the World",
+    "performer": "David Bowie",
+    "releaseDate": "2012-09-04",
+    "expiration": 1662422400000,
+    "id": 67
   },
-  { title: 'Tom Sawyer', performer: 'Rush', releaseDate: '2012-11-13' },
   {
-    title: 'YYZ',
-    performer: 'Rush',
-    releaseDate: '2012-11-13',
+    "title": "We're Not Gonna Take It",
+    "performer": "Twisted Sister",
+    "releaseDate": "2012-09-18",
+    "expiration": 1663632000000,
+    "id": 68
   },
-  { title: 'Subdivisions', performer: 'Rush', releaseDate: '2012-11-13' },
   {
-    title: 'Headlong Flight',
-    performer: 'Rush',
-    releaseDate: '2012-11-13',
+    "title": "The Final Countdown",
+    "performer": "Europe",
+    "releaseDate": "2012-09-18",
+    "expiration": 1663632000000,
+    "id": 69
   },
   {
-    title: 'Give Up the Funk (Tear the Roof off the Sucker)',
-    performer: 'Parliament',
-    releaseDate: '2012-11-27',
+    "title": "Is This Love",
+    "performer": "Whitesnake",
+    "releaseDate": "2012-09-18",
+    "expiration": 1663632000000,
+    "id": 70
   },
-  { title: 'Good Times', performer: 'Chic', releaseDate: '2012-11-27' },
   {
-    title: 'Super Freak',
-    performer: 'Rick James',
-    releaseDate: '2012-11-27',
+    "title": "Caring Is Creepy",
+    "performer": "The Shins",
+    "releaseDate": "2012-10-02",
+    "expiration": 1664841600000,
+    "id": 71
   },
   {
-    title: 'Cowboys from Hell',
-    performer: 'Pantera',
-    releaseDate: '2012-12-04',
+    "title": "Bright Lights",
+    "performer": "Gary Clark Jr.",
+    "releaseDate": "2012-10-02",
+    "expiration": 1664841600000,
+    "id": 72
   },
   {
-    title: 'Domination',
-    performer: 'Pantera',
-    releaseDate: '2012-12-04',
+    "title": "Paris (Ooh La La)",
+    "performer": "Grace Potter and the Nocturnals",
+    "releaseDate": "2012-10-02",
+    "expiration": 1664841600000,
+    "id": 73
   },
-  { title: 'Walk', performer: 'Pantera', releaseDate: '2012-12-04' },
   {
-    title: 'How You Remind Me',
-    performer: 'Nickelback',
-    releaseDate: '2012-12-11',
+    "title": "Beast and the Harlot",
+    "performer": "Avenged Sevenfold",
+    "releaseDate": "2012-10-30",
+    "expiration": 1667260800000,
+    "id": 74
   },
-  { title: 'Rockstar', performer: 'Nickelback', releaseDate: '2012-12-11' },
   {
-    title: 'Bottoms Up',
-    performer: 'Nickelback',
-    releaseDate: '2012-12-11',
+    "title": "Afterlife",
+    "performer": "Avenged Sevenfold",
+    "releaseDate": "2012-10-30",
+    "expiration": 1667260800000,
+    "id": 75
   },
   {
-    title: 'Best of You',
-    performer: 'Foo Fighters',
-    releaseDate: '2012-12-18',
+    "title": "Nightmare",
+    "performer": "Avenged Sevenfold",
+    "releaseDate": "2012-10-30",
+    "expiration": 1667260800000,
+    "id": 76
   },
   {
-    title: 'My Hero',
-    performer: 'Foo Fighters',
-    releaseDate: '2012-12-18',
+    "title": "Limelight",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 77
   },
   {
-    title: 'Times Like These',
-    performer: 'Foo Fighters',
-    releaseDate: '2012-12-18',
+    "title": "Red Barchetta",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 78
   },
   {
-    title: 'Walk',
-    performer: 'Foo Fighters',
-    releaseDate: '2012-12-18',
+    "title": "Tom Sawyer",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 79
   },
   {
-    title: 'Wheels',
-    performer: 'Foo Fighters',
-    releaseDate: '2012-12-18',
+    "title": "YYZ",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 80
   },
   {
-    title: 'Black Magic Woman/Gypsy Queen',
-    performer: 'Santana',
-    releaseDate: '2013-01-08',
+    "title": "Subdivisions",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 81
   },
-  { title: 'Oye Como Va', performer: 'Santana', releaseDate: '2013-01-08' },
   {
-    title: 'Smooth',
-    performer: 'Santana feat. Rob Thomas',
-    releaseDate: '2013-01-08',
+    "title": "Headlong Flight",
+    "performer": "Rush",
+    "releaseDate": "2012-11-13",
+    "expiration": 1668470400000,
+    "id": 82
   },
   {
-    title: 'Cliffs of Dover',
-    performer: 'Eric Johnson',
-    releaseDate: '2013-01-15',
+    "title": "Give Up the Funk (Tear the Roof off the Sucker)",
+    "performer": "Parliament",
+    "releaseDate": "2012-11-27",
+    "expiration": 1669680000000,
+    "id": 83
   },
   {
-    title: 'No Rain',
-    performer: 'Blind Melon',
-    releaseDate: '2013-01-15',
+    "title": "Good Times",
+    "performer": "Chic",
+    "releaseDate": "2012-11-27",
+    "expiration": 1669680000000,
+    "id": 84
   },
-  { title: 'Alive', performer: 'Pearl Jam', releaseDate: '2013-01-15' },
   {
-    title: 'Juicebox',
-    performer: 'The Strokes',
-    releaseDate: '2013-01-22',
+    "title": "Super Freak",
+    "performer": "Rick James",
+    "releaseDate": "2012-11-27",
+    "expiration": 1669680000000,
+    "id": 85
   },
-  { title: 'Last Nite', performer: 'The Strokes', releaseDate: '2013-01-22' },
   {
-    title: 'Reptilia',
-    performer: 'The Strokes',
-    releaseDate: '2013-01-22',
+    "title": "Cowboys from Hell",
+    "performer": "Pantera",
+    "releaseDate": "2012-12-04",
+    "expiration": 1670284800000,
+    "id": 86
   },
   {
-    title: 'American Woman',
-    performer: 'The Guess Who',
-    releaseDate: '2013-01-29',
+    "title": "Domination",
+    "performer": "Pantera",
+    "releaseDate": "2012-12-04",
+    "expiration": 1670284800000,
+    "id": 87
   },
   {
-    title: 'Born to Be Wild',
-    performer: 'Steppenwolf',
-    releaseDate: '2013-01-29',
+    "title": "Walk",
+    "performer": "Pantera",
+    "releaseDate": "2012-12-04",
+    "expiration": 1670284800000,
+    "id": 88
   },
   {
-    title: 'Surrender',
-    performer: 'Cheap Trick',
-    releaseDate: '2013-01-29',
+    "title": "How You Remind Me",
+    "performer": "Nickelback",
+    "releaseDate": "2012-12-11",
+    "expiration": 1670889600000,
+    "id": 89
   },
   {
-    title: 'America\u0027s Suitehearts',
-    performer: 'Fall Out Boy',
-    releaseDate: '2013-02-05',
+    "title": "Rockstar",
+    "performer": "Nickelback",
+    "releaseDate": "2012-12-11",
+    "expiration": 1670889600000,
+    "id": 90
   },
   {
-    title: 'Dance, Dance',
-    performer: 'Fall Out Boy',
-    releaseDate: '2013-02-05',
+    "title": "Bottoms Up",
+    "performer": "Nickelback",
+    "releaseDate": "2012-12-11",
+    "expiration": 1670889600000,
+    "id": 91
   },
   {
-    title: 'I Don\u0027t Care',
-    performer: 'Fall Out Boy',
-    releaseDate: '2013-02-05',
+    "title": "Best of You",
+    "performer": "Foo Fighters",
+    "releaseDate": "2012-12-18",
+    "expiration": 1671494400000,
+    "id": 92
   },
   {
-    title: 'Sugar, We\u0027re Goin Down',
-    performer: 'Fall Out Boy',
-    releaseDate: '2013-02-05',
+    "title": "My Hero",
+    "performer": "Foo Fighters",
+    "releaseDate": "2012-12-18",
+    "expiration": 1671494400000,
+    "id": 93
   },
   {
-    title: 'Thnks fr th Mmrs',
-    performer: 'Fall Out Boy',
-    releaseDate: '2013-02-05',
+    "title": "Times Like These",
+    "performer": "Foo Fighters",
+    "releaseDate": "2012-12-18",
+    "expiration": 1671494400000,
+    "id": 94
   },
   {
-    title: 'London Calling',
-    performer: 'The Clash',
-    releaseDate: '2013-02-12',
+    "title": "Walk",
+    "performer": "Foo Fighters",
+    "releaseDate": "2012-12-18",
+    "expiration": 1671494400000,
+    "id": 95
   },
   {
-    title: 'Guns of Brixton',
-    performer: 'The Clash',
-    releaseDate: '2013-02-12',
+    "title": "Wheels",
+    "performer": "Foo Fighters",
+    "releaseDate": "2012-12-18",
+    "expiration": 1671494400000,
+    "id": 96
   },
   {
-    title: 'Should I Stay or Should I Go',
-    performer: 'The Clash',
-    releaseDate: '2013-02-12',
+    "title": "Black Magic Woman/Gypsy Queen",
+    "performer": "Santana",
+    "releaseDate": "2013-01-08",
+    "expiration": 1673308800000,
+    "id": 97
   },
-  { title: 'Black Betty', performer: 'Ram Jam', releaseDate: '2013-02-19' },
   {
-    title: 'Carry On Wayward Son',
-    performer: 'Kansas',
-    releaseDate: '2013-02-19',
+    "title": "Oye Como Va",
+    "performer": "Santana",
+    "releaseDate": "2013-01-08",
+    "expiration": 1673308800000,
+    "id": 98
   },
   {
-    title: 'You\u0027ve Got Another Thing Comin\u0027',
-    performer: 'Judas Priest',
-    releaseDate: '2013-02-19',
+    "title": "Smooth",
+    "performer": "Santana feat. Rob Thomas",
+    "releaseDate": "2013-01-08",
+    "expiration": 1673308800000,
+    "id": 99
   },
   {
-    title: 'Wish You Were Here',
-    performer: 'Incubus',
-    releaseDate: '2013-02-26',
+    "title": "Cliffs of Dover",
+    "performer": "Eric Johnson",
+    "releaseDate": "2013-01-15",
+    "expiration": 1673913600000,
+    "id": 100
   },
   {
-    title: 'Anna Molly',
-    performer: 'Incubus',
-    releaseDate: '2013-02-26',
+    "title": "No Rain",
+    "performer": "Blind Melon",
+    "releaseDate": "2013-01-15",
+    "expiration": 1673913600000,
+    "id": 101
   },
-  { title: 'Love Hurts', performer: 'Incubus', releaseDate: '2013-02-26' },
   {
-    title: 'Burnin\u0027 For You',
-    performer: 'Blue Öyster Cult',
-    releaseDate: '2013-03-05',
+    "title": "Alive",
+    "performer": "Pearl Jam",
+    "releaseDate": "2013-01-15",
+    "expiration": 1673913600000,
+    "id": 102
   },
   {
-    title: 'Blister in the Sun',
-    performer: 'Violent Femmes',
-    releaseDate: '2013-03-05',
+    "title": "Juicebox",
+    "performer": "The Strokes",
+    "releaseDate": "2013-01-22",
+    "expiration": 1674518400000,
+    "id": 103
   },
   {
-    title: 'Cult of Personality',
-    performer: 'Living Colour',
-    releaseDate: '2013-03-05',
+    "title": "Last Nite",
+    "performer": "The Strokes",
+    "releaseDate": "2013-01-22",
+    "expiration": 1674518400000,
+    "id": 104
   },
   {
-    title: 'Lovesong',
-    performer: 'The Cure',
-    releaseDate: '2013-03-19',
+    "title": "Reptilia",
+    "performer": "The Strokes",
+    "releaseDate": "2013-01-22",
+    "expiration": 1674518400000,
+    "id": 105
   },
   {
-    title: 'Just Like Heaven',
-    performer: 'The Cure',
-    releaseDate: '2013-03-19',
+    "title": "American Woman",
+    "performer": "The Guess Who",
+    "releaseDate": "2013-01-29",
+    "expiration": 1675123200000,
+    "id": 106
   },
   {
-    title: 'The End of the World',
-    performer: 'The Cure',
-    releaseDate: '2013-03-19',
+    "title": "Born to Be Wild",
+    "performer": "Steppenwolf",
+    "releaseDate": "2013-01-29",
+    "expiration": 1675123200000,
+    "id": 107
   },
   {
-    title: 'Have You Ever Seen the Rain?',
-    performer: 'Creedence Clearwater Revival',
-    releaseDate: '2013-04-02',
+    "title": "Surrender",
+    "performer": "Cheap Trick",
+    "releaseDate": "2013-01-29",
+    "expiration": 1675123200000,
+    "id": 108
   },
   {
-    title: 'Southbound',
-    performer: 'The Allman Brothers Band',
-    releaseDate: '2013-04-02',
+    "title": "America's Suitehearts",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2013-02-05",
+    "expiration": 1675728000000,
+    "id": 109
   },
-  { title: 'Ballroom Blitz', performer: 'Sweet', releaseDate: '2013-04-02' },
   {
-    title: 'Get Free',
-    performer: 'The Vines',
-    releaseDate: '2013-04-16',
+    "title": "Dance, Dance",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2013-02-05",
+    "expiration": 1675728000000,
+    "id": 110
   },
   {
-    title: 'The Good Left Undone',
-    performer: 'Rise Against',
-    releaseDate: '2013-04-16',
+    "title": "I Don't Care",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2013-02-05",
+    "expiration": 1675728000000,
+    "id": 111
   },
-  { title: 'Float On', performer: 'Modest Mouse', releaseDate: '2013-04-16' },
   {
-    title: 'White Wedding',
-    performer: 'Billy Idol',
-    releaseDate: '2013-04-30',
+    "title": "Sugar, We're Goin Down",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2013-02-05",
+    "expiration": 1675728000000,
+    "id": 112
   },
   {
-    title: 'Eye of the Tiger',
-    performer: 'Survivor',
-    releaseDate: '2013-04-30',
+    "title": "Thnks fr th Mmrs",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2013-02-05",
+    "expiration": 1675728000000,
+    "id": 113
   },
   {
-    title: 'Here Comes Your Man',
-    performer: 'PixiesPixies',
-    releaseDate: '2013-04-30',
+    "title": "London Calling",
+    "performer": "The Clash",
+    "releaseDate": "2013-02-12",
+    "expiration": 1676332800000,
+    "id": 114
   },
   {
-    title: 'Misery',
-    performer: 'Maroon 5',
-    releaseDate: '2013-05-14',
+    "title": "Guns of Brixton",
+    "performer": "The Clash",
+    "releaseDate": "2013-02-12",
+    "expiration": 1676332800000,
+    "id": 115
   },
   {
-    title: 'Harder to Breathe',
-    performer: 'Maroon 5',
-    releaseDate: '2013-05-14',
+    "title": "Should I Stay or Should I Go",
+    "performer": "The Clash",
+    "releaseDate": "2013-02-12",
+    "expiration": 1676332800000,
+    "id": 116
   },
   {
-    title: 'She Will Be Loved',
-    performer: 'Maroon 5',
-    releaseDate: '2013-05-14',
+    "title": "Black Betty",
+    "performer": "Ram Jam",
+    "releaseDate": "2013-02-19",
+    "expiration": 1676937600000,
+    "id": 117
   },
   {
-    title: 'Call Me',
-    performer: 'Blondie',
-    releaseDate: '2013-05-28',
+    "title": "Carry On Wayward Son",
+    "performer": "Kansas",
+    "releaseDate": "2013-02-19",
+    "expiration": 1676937600000,
+    "id": 118
   },
   {
-    title: '867-5309/Jenny',
-    performer: 'Tommy Tutone',
-    releaseDate: '2013-05-28',
+    "title": "You've Got Another Thing Comin'",
+    "performer": "Judas Priest",
+    "releaseDate": "2013-02-19",
+    "expiration": 1676937600000,
+    "id": 119
   },
   {
-    title: 'Jessie\u0027s Girl',
-    performer: 'Rick Springfield',
-    releaseDate: '2013-05-28',
+    "title": "Wish You Were Here",
+    "performer": "Incubus",
+    "releaseDate": "2013-02-26",
+    "expiration": 1677542400000,
+    "id": 120
   },
   {
-    title: '25 or 6 to 4',
-    performer: 'Chicago',
-    releaseDate: '2013-10-22',
+    "title": "Anna Molly",
+    "performer": "Incubus",
+    "releaseDate": "2013-02-26",
+    "expiration": 1677542400000,
+    "id": 121
   },
   {
-    title: 'The Sky Is Crying',
-    performer: 'Albert King',
-    releaseDate: '2013-10-22',
+    "title": "Love Hurts",
+    "performer": "Incubus",
+    "releaseDate": "2013-02-26",
+    "expiration": 1677542400000,
+    "id": 122
   },
   {
-    title: 'Cherub Rock',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-22',
+    "title": "Burnin' For You",
+    "performer": "Blue Öyster Cult",
+    "releaseDate": "2013-03-05",
+    "expiration": 1678147200000,
+    "id": 123
   },
   {
-    title: 'Elephant',
-    performer: 'Tame Impala',
-    releaseDate: '2013-10-22',
+    "title": "Blister in the Sun",
+    "performer": "Violent Femmes",
+    "releaseDate": "2013-03-05",
+    "expiration": 1678147200000,
+    "id": 124
   },
   {
-    title: 'Mind Eraser, No Chaser',
-    performer: 'Them Crooked Vultures',
-    releaseDate: '2013-10-22',
+    "title": "Cult of Personality",
+    "performer": "Living Colour",
+    "releaseDate": "2013-03-05",
+    "expiration": 1678147200000,
+    "id": 125
   },
   {
-    title: 'Hate to Say I Told You So',
-    performer: 'The Hives',
-    releaseDate: '2013-10-22',
+    "title": "Lovesong",
+    "performer": "The Cure",
+    "releaseDate": "2013-03-19",
+    "expiration": 1679356800000,
+    "id": 126
   },
   {
-    title: 'My God Is the Sun',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2013-10-22',
+    "title": "Just Like Heaven",
+    "performer": "The Cure",
+    "releaseDate": "2013-03-19",
+    "expiration": 1679356800000,
+    "id": 127
   },
-  { title: 'Ho Hey', performer: 'The Lumineers', releaseDate: '2013-10-22' },
   {
-    title: '1979',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-29',
+    "title": "The End of the World",
+    "performer": "The Cure",
+    "releaseDate": "2013-03-19",
+    "expiration": 1679356800000,
+    "id": 128
   },
   {
-    title: 'Tonight, Tonight',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-29',
+    "title": "Have You Ever Seen the Rain?",
+    "performer": "Creedence Clearwater Revival",
+    "releaseDate": "2013-04-02",
+    "expiration": 1680566400000,
+    "id": 129
   },
   {
-    title: 'Today',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-29',
+    "title": "Southbound",
+    "performer": "The Allman Brothers Band",
+    "releaseDate": "2013-04-02",
+    "expiration": 1680566400000,
+    "id": 130
   },
   {
-    title: 'Disarm',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-29',
+    "title": "Ballroom Blitz",
+    "performer": "Sweet",
+    "releaseDate": "2013-04-02",
+    "expiration": 1680566400000,
+    "id": 131
   },
   {
-    title: 'Bullet with Butterfly Wings',
-    performer: 'The Smashing Pumpkins',
-    releaseDate: '2013-10-29',
+    "title": "Get Free",
+    "performer": "The Vines",
+    "releaseDate": "2013-04-16",
+    "expiration": 1681779600000,
+    "id": 132
   },
   {
-    title: 'Aces High',
-    performer: 'Iron Maiden',
-    releaseDate: '2013-11-05',
+    "title": "The Good Left Undone",
+    "performer": "Rise Against",
+    "releaseDate": "2013-04-16",
+    "expiration": 1681779600000,
+    "id": 133
   },
   {
-    title: '2 Minutes to Midnight',
-    performer: 'Iron Maiden',
-    releaseDate: '2013-11-05',
+    "title": "Float On",
+    "performer": "Modest Mouse",
+    "releaseDate": "2013-04-16",
+    "expiration": 1681779600000,
+    "id": 134
   },
   {
-    title: 'Fear of the Dark',
-    performer: 'Iron Maiden',
-    releaseDate: '2013-11-05',
+    "title": "White Wedding",
+    "performer": "Billy Idol",
+    "releaseDate": "2013-04-30",
+    "expiration": 1682989200000,
+    "id": 135
   },
   {
-    title: 'The Number of the Beast',
-    performer: 'Iron Maiden',
-    releaseDate: '2013-11-05',
+    "title": "Eye of the Tiger",
+    "performer": "Survivor",
+    "releaseDate": "2013-04-30",
+    "expiration": 1682989200000,
+    "id": 136
   },
   {
-    title: 'Run to the Hills',
-    performer: 'Iron Maiden',
-    releaseDate: '2013-11-05',
+    "title": "Here Comes Your Man",
+    "performer": "PixiesPixies",
+    "releaseDate": "2013-04-30",
+    "expiration": 1682989200000,
+    "id": 137
   },
   {
-    title: 'Thrill',
-    performer: 'Hotei',
-    releaseDate: '2013-11-05',
+    "title": "Misery",
+    "performer": "Maroon 5",
+    "releaseDate": "2013-05-14",
+    "expiration": 1684198800000,
+    "id": 138
   },
   {
-    title: 'Battle Without Honor or Humanity',
-    performer: 'Hotei',
-    releaseDate: '2013-11-05',
+    "title": "Harder to Breathe",
+    "performer": "Maroon 5",
+    "releaseDate": "2013-05-14",
+    "expiration": 1684198800000,
+    "id": 139
   },
-  { title: 'Bambina', performer: 'Hotei', releaseDate: '2013-11-05' },
   {
-    title: 'Check My Brain',
-    performer: 'Alice in Chains',
-    releaseDate: '2013-11-12',
+    "title": "She Will Be Loved",
+    "performer": "Maroon 5",
+    "releaseDate": "2013-05-14",
+    "expiration": 1684198800000,
+    "id": 140
   },
-  { title: 'Hollow', performer: 'Alice in Chains', releaseDate: '2013-11-12' },
   {
-    title: 'Man in the Box',
-    performer: 'Alice in Chains',
-    releaseDate: '2013-11-12',
+    "title": "Call Me",
+    "performer": "Blondie",
+    "releaseDate": "2013-05-28",
+    "expiration": 1685408400000,
+    "id": 141
   },
   {
-    title: 'Them Bones',
-    performer: 'Alice in Chains',
-    releaseDate: '2013-11-12',
+    "title": "867-5309/Jenny",
+    "performer": "Tommy Tutone",
+    "releaseDate": "2013-05-28",
+    "expiration": 1685408400000,
+    "id": 142
   },
   {
-    title: 'Would?',
-    performer: 'Alice in Chains',
-    releaseDate: '2013-11-12',
+    "title": "Jessie's Girl",
+    "performer": "Rick Springfield",
+    "releaseDate": "2013-05-28",
+    "expiration": 1685408400000,
+    "id": 143
   },
   {
-    title: 'American Idiot',
-    performer: 'Green Day',
-    releaseDate: '2013-11-19',
+    "title": "25 or 6 to 4",
+    "performer": "Chicago",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 144
   },
   {
-    title: 'Basket Case',
-    performer: 'Green Day',
-    releaseDate: '2013-11-19',
+    "title": "The Sky Is Crying",
+    "performer": "Albert King",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 145
   },
-  { title: 'Oh Love', performer: 'Green Day', releaseDate: '2013-11-19' },
   {
-    title: 'Easy Come, Easy Go!',
-    performer: 'B\u0027z',
-    releaseDate: '2013-11-19',
+    "title": "Cherub Rock",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 146
   },
-  { title: 'Giri Giri chop', performer: 'B\u0027z', releaseDate: '2013-11-19' },
   {
-    title: 'juice',
-    performer: 'B\u0027z',
-    releaseDate: '2013-11-19',
+    "title": "Elephant",
+    "performer": "Tame Impala",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 147
   },
-  { title: 'My Iron Lung', performer: 'Radiohead', releaseDate: '2013-11-26' },
   {
-    title: 'Creep',
-    performer: 'Radiohead',
-    releaseDate: '2013-11-26',
+    "title": "Mind Eraser, No Chaser",
+    "performer": "Them Crooked Vultures",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 148
   },
-  { title: 'Karma Police', performer: 'Radiohead', releaseDate: '2013-11-26' },
   {
-    title: 'Optimistic',
-    performer: 'Radiohead',
-    releaseDate: '2013-11-26',
+    "title": "Hate to Say I Told You So",
+    "performer": "The Hives",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 149
   },
-  { title: 'Just', performer: 'Radiohead', releaseDate: '2013-11-26' },
   {
-    title: 'Baba O\u0027Riley',
-    performer: 'The Who',
-    releaseDate: '2013-12-03',
+    "title": "My God Is the Sun",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 150
   },
   {
-    title: 'Behind Blue Eyes',
-    performer: 'The Who',
-    releaseDate: '2013-12-03',
+    "title": "Ho Hey",
+    "performer": "The Lumineers",
+    "releaseDate": "2013-10-22",
+    "expiration": 1698109200000,
+    "id": 151
   },
   {
-    title: 'Who Are You',
-    performer: 'The Who',
-    releaseDate: '2013-12-03',
+    "title": "1979",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-29",
+    "expiration": 1698710400000,
+    "id": 152
   },
-  { title: 'Pinball Wizard', performer: 'The Who', releaseDate: '2013-12-03' },
   {
-    title: 'The Seeker',
-    performer: 'The Who',
-    releaseDate: '2013-12-03',
+    "title": "Tonight, Tonight",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-29",
+    "expiration": 1698710400000,
+    "id": 153
   },
-  { title: 'Liar', performer: 'One Ok Rock', releaseDate: '2013-12-03' },
   {
-    title: 'NO SCARED',
-    performer: 'One Ok Rock',
-    releaseDate: '2013-12-03',
+    "title": "Today",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-29",
+    "expiration": 1698710400000,
+    "id": 154
   },
   {
-    title: 'Yasashiku Naritai',
-    performer: 'Kazuyoshi Saito',
-    releaseDate: '2013-12-03',
+    "title": "Disarm",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-29",
+    "expiration": 1698710400000,
+    "id": 155
   },
   {
-    title: 'Down with the Sickness',
-    performer: 'Disturbed',
-    releaseDate: '2013-12-10',
+    "title": "Bullet with Butterfly Wings",
+    "performer": "The Smashing Pumpkins",
+    "releaseDate": "2013-10-29",
+    "expiration": 1698710400000,
+    "id": 156
   },
   {
-    title: 'Voices',
-    performer: 'Disturbed',
-    releaseDate: '2013-12-10',
+    "title": "Aces High",
+    "performer": "Iron Maiden",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 157
   },
-  { title: 'Asylum', performer: 'Disturbed', releaseDate: '2013-12-10' },
   {
-    title: 'Hysteria',
-    performer: 'Muse',
-    releaseDate: '2013-12-17',
+    "title": "2 Minutes to Midnight",
+    "performer": "Iron Maiden",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 158
   },
   {
-    title: 'Time Is Running Out',
-    performer: 'Muse',
-    releaseDate: '2013-12-17',
+    "title": "Fear of the Dark",
+    "performer": "Iron Maiden",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 159
   },
   {
-    title: 'Supermassive Black Hole',
-    performer: 'Muse',
-    releaseDate: '2013-12-17',
+    "title": "The Number of the Beast",
+    "performer": "Iron Maiden",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 160
   },
-  { title: 'Stockholm Syndrome', performer: 'Muse', releaseDate: '2013-12-17' },
   {
-    title: 'Muscle Museum',
-    performer: 'Muse',
-    releaseDate: '2013-12-17',
+    "title": "Run to the Hills",
+    "performer": "Iron Maiden",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 161
   },
   {
-    title: 'Memeshikute',
-    performer: 'Golden Bomber',
-    releaseDate: '2013-12-17',
+    "title": "Thrill",
+    "performer": "Hotei",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 162
   },
   {
-    title: 'Earphone',
-    performer: 'Golden Bomber',
-    releaseDate: '2013-12-17',
+    "title": "Battle Without Honor or Humanity",
+    "performer": "Hotei",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 163
   },
   {
-    title: 'Death Mental',
-    performer: 'Golden Bomber',
-    releaseDate: '2013-12-17',
+    "title": "Bambina",
+    "performer": "Hotei",
+    "releaseDate": "2013-11-05",
+    "expiration": 1699315200000,
+    "id": 164
   },
   {
-    title: 'Same Old Song and Dance',
-    performer: 'Aerosmith',
-    releaseDate: '2014-01-07',
+    "title": "Check My Brain",
+    "performer": "Alice in Chains",
+    "releaseDate": "2013-11-12",
+    "expiration": 1699920000000,
+    "id": 165
   },
-  { title: 'Sweet Emotion', performer: 'Aerosmith', releaseDate: '2014-01-07' },
   {
-    title: 'Legendary Child',
-    performer: 'Aerosmith',
-    releaseDate: '2014-01-07',
+    "title": "Hollow",
+    "performer": "Alice in Chains",
+    "releaseDate": "2013-11-12",
+    "expiration": 1699920000000,
+    "id": 166
   },
-  { title: 'Dream On', performer: 'Aerosmith', releaseDate: '2014-01-07' },
   {
-    title: 'Oh Yeah',
-    performer: 'Aerosmith',
-    releaseDate: '2014-01-07',
+    "title": "Man in the Box",
+    "performer": "Alice in Chains",
+    "releaseDate": "2013-11-12",
+    "expiration": 1699920000000,
+    "id": 167
   },
-  { title: 'Live Forever', performer: 'Oasis', releaseDate: '2014-01-14' },
   {
-    title: 'Supersonic',
-    performer: 'Oasis',
-    releaseDate: '2014-01-14',
+    "title": "Them Bones",
+    "performer": "Alice in Chains",
+    "releaseDate": "2013-11-12",
+    "expiration": 1699920000000,
+    "id": 168
   },
   {
-    title: 'Champagne Supernova',
-    performer: 'Oasis',
-    releaseDate: '2014-01-14',
+    "title": "Would?",
+    "performer": "Alice in Chains",
+    "releaseDate": "2013-11-12",
+    "expiration": 1699920000000,
+    "id": 169
   },
   {
-    title: 'Some Might Say',
-    performer: 'Oasis',
-    releaseDate: '2014-01-14',
+    "title": "American Idiot",
+    "performer": "Green Day",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 170
   },
-  { title: 'Wonderwall', performer: 'Oasis', releaseDate: '2014-01-14' },
   {
-    title: 'Atarashii Hikari',
-    performer: '9mm Parabellum Bullet',
-    releaseDate: '2014-01-14',
+    "title": "Basket Case",
+    "performer": "Green Day",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 171
   },
   {
-    title: 'Punishment',
-    performer: '9mm Parabellum Bullet',
-    releaseDate: '2014-01-14',
+    "title": "Oh Love",
+    "performer": "Green Day",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 172
   },
-  { title: 'Buddy Holly', performer: 'Weezer', releaseDate: '2014-01-21' },
   {
-    title: 'My Name Is Jonas',
-    performer: 'Weezer',
-    releaseDate: '2014-01-21',
+    "title": "Easy Come, Easy Go!",
+    "performer": "B'z",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 173
   },
   {
-    title: 'Island in the Sun',
-    performer: 'Weezer',
-    releaseDate: '2014-01-21',
+    "title": "Giri Giri chop",
+    "performer": "B'z",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 174
   },
   {
-    title: 'Undone (The Sweater Song)',
-    performer: 'Weezer',
-    releaseDate: '2014-01-21',
+    "title": "juice",
+    "performer": "B'z",
+    "releaseDate": "2013-11-19",
+    "expiration": 1700524800000,
+    "id": 175
   },
   {
-    title: 'Hash Pipe',
-    performer: 'Weezer',
-    releaseDate: '2014-01-21',
+    "title": "My Iron Lung",
+    "performer": "Radiohead",
+    "releaseDate": "2013-11-26",
+    "expiration": 1701129600000,
+    "id": 176
   },
   {
-    title: 'Aerials',
-    performer: 'System of a Down',
-    releaseDate: '2014-01-28',
+    "title": "Creep",
+    "performer": "Radiohead",
+    "releaseDate": "2013-11-26",
+    "expiration": 1701129600000,
+    "id": 177
   },
   {
-    title: 'B.Y.O.B.',
-    performer: 'System of a Down',
-    releaseDate: '2014-01-28',
+    "title": "Karma Police",
+    "performer": "Radiohead",
+    "releaseDate": "2013-11-26",
+    "expiration": 1701129600000,
+    "id": 178
   },
   {
-    title: 'Toxicity',
-    performer: 'System of a Down',
-    releaseDate: '2014-01-28',
+    "title": "Optimistic",
+    "performer": "Radiohead",
+    "releaseDate": "2013-11-26",
+    "expiration": 1701129600000,
+    "id": 179
   },
   {
-    title: 'From Noon Till Dawn',
-    performer: 'Straightener',
-    releaseDate: '2014-02-04',
+    "title": "Just",
+    "performer": "Radiohead",
+    "releaseDate": "2013-11-26",
+    "expiration": 1701129600000,
+    "id": 180
   },
-  { title: 'ROCKSTEADY', performer: 'Straightener', releaseDate: '2014-02-04' },
   {
-    title: 'Everybody Hurts',
-    performer: 'R.E.M.',
-    releaseDate: '2014-02-04',
+    "title": "Baba O'Riley",
+    "performer": "The Who",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 181
   },
   {
-    title: 'Shiny Happy People',
-    performer: 'R.E.M.',
-    releaseDate: '2014-02-04',
+    "title": "Behind Blue Eyes",
+    "performer": "The Who",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 182
   },
   {
-    title: 'The One I Love',
-    performer: 'R.E.M.',
-    releaseDate: '2014-02-04',
+    "title": "Who Are You",
+    "performer": "The Who",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 183
   },
   {
-    title: 'What\u0027s the Frequency, Kenneth?',
-    performer: 'R.E.M.',
-    releaseDate: '2014-02-04',
+    "title": "Pinball Wizard",
+    "performer": "The Who",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 184
   },
-  { title: 'Überlin', performer: 'R.E.M.', releaseDate: '2014-02-04' },
   {
-    title: 'Detroit Rock City',
-    performer: 'Kiss',
-    releaseDate: '2014-02-11',
+    "title": "The Seeker",
+    "performer": "The Who",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 185
   },
   {
-    title: 'Heaven\u0027s On Fire',
-    performer: 'Kiss',
-    releaseDate: '2014-02-11',
+    "title": "Liar",
+    "performer": "One Ok Rock",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 186
   },
   {
-    title: 'I Was Made for Lovin\u0027 You',
-    performer: 'Kiss',
-    releaseDate: '2014-02-11',
+    "title": "NO SCARED",
+    "performer": "One Ok Rock",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 187
   },
-  { title: 'Shinsekai', performer: 'ACIDMAN', releaseDate: '2014-02-18' },
   {
-    title: 'stupid',
-    performer: 'The Birthday',
-    releaseDate: '2014-02-18',
+    "title": "Yasashiku Naritai",
+    "performer": "Kazuyoshi Saito",
+    "releaseDate": "2013-12-03",
+    "expiration": 1701734400000,
+    "id": 188
   },
-  { title: 'PARADOX Taiso', performer: 'RIZE', releaseDate: '2014-02-18' },
   {
-    title: 'Give It All',
-    performer: 'Rise Against',
-    releaseDate: '2014-02-18',
+    "title": "Down with the Sickness",
+    "performer": "Disturbed",
+    "releaseDate": "2013-12-10",
+    "expiration": 1702339200000,
+    "id": 189
   },
   {
-    title: 'Swing Life Away',
-    performer: 'Rise Against',
-    releaseDate: '2014-02-18',
+    "title": "Voices",
+    "performer": "Disturbed",
+    "releaseDate": "2013-12-10",
+    "expiration": 1702339200000,
+    "id": 190
   },
   {
-    title: 'Make It Stop',
-    performer: 'Rise Against',
-    releaseDate: '2014-02-18',
+    "title": "Asylum",
+    "performer": "Disturbed",
+    "releaseDate": "2013-12-10",
+    "expiration": 1702339200000,
+    "id": 191
   },
   {
-    title: 'Satellite',
-    performer: 'Rise Against',
-    releaseDate: '2014-02-18',
+    "title": "Hysteria",
+    "performer": "Muse",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 192
   },
   {
-    title: 'Prayer of the Refugee',
-    performer: 'Rise Against',
-    releaseDate: '2014-02-18',
+    "title": "Time Is Running Out",
+    "performer": "Muse",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 193
   },
   {
-    title: 'Light My Fire',
-    performer: 'The Doors',
-    releaseDate: '2014-02-25',
+    "title": "Supermassive Black Hole",
+    "performer": "Muse",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 194
   },
   {
-    title: 'Riders on the Storm',
-    performer: 'The Doors',
-    releaseDate: '2014-02-25',
+    "title": "Stockholm Syndrome",
+    "performer": "Muse",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 195
   },
   {
-    title: 'Roadhouse Blues',
-    performer: 'The Doors',
-    releaseDate: '2014-02-25',
+    "title": "Muscle Museum",
+    "performer": "Muse",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 196
   },
   {
-    title: 'Don\u0027t Look Back',
-    performer: 'Boston',
-    releaseDate: '2014-03-04',
+    "title": "Memeshikute",
+    "performer": "Golden Bomber",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 197
   },
   {
-    title: 'Foreplay/Long Time',
-    performer: 'Boston',
-    releaseDate: '2014-03-04',
+    "title": "Earphone",
+    "performer": "Golden Bomber",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 198
   },
   {
-    title: 'Hitch a Ride',
-    performer: 'Boston',
-    releaseDate: '2014-03-04',
+    "title": "Death Mental",
+    "performer": "Golden Bomber",
+    "releaseDate": "2013-12-17",
+    "expiration": 1702944000000,
+    "id": 199
   },
-  { title: 'Crazy on You', performer: 'Heart', releaseDate: '2014-03-11' },
   {
-    title: 'Love Bites (So Do I)',
-    performer: 'Halestorm',
-    releaseDate: '2014-03-11',
+    "title": "Same Old Song and Dance",
+    "performer": "Aerosmith",
+    "releaseDate": "2014-01-07",
+    "expiration": 1704758400000,
+    "id": 200
   },
   {
-    title: 'All Around Me',
-    performer: 'Flyleaf',
-    releaseDate: '2014-03-11',
+    "title": "Sweet Emotion",
+    "performer": "Aerosmith",
+    "releaseDate": "2014-01-07",
+    "expiration": 1704758400000,
+    "id": 201
   },
   {
-    title: 'It\u0027s Complicated',
-    performer: 'A Day to Remember',
-    releaseDate: '2014-03-18',
+    "title": "Legendary Child",
+    "performer": "Aerosmith",
+    "releaseDate": "2014-01-07",
+    "expiration": 1704758400000,
+    "id": 202
   },
   {
-    title: 'If It Means a Lot to You',
-    performer: 'A Day to Remember',
-    releaseDate: '2014-03-18',
+    "title": "Dream On",
+    "performer": "Aerosmith",
+    "releaseDate": "2014-01-07",
+    "expiration": 1704758400000,
+    "id": 203
   },
   {
-    title: 'All I Want',
-    performer: 'A Day to Remember',
-    releaseDate: '2014-03-18',
+    "title": "Oh Yeah",
+    "performer": "Aerosmith",
+    "releaseDate": "2014-01-07",
+    "expiration": 1704758400000,
+    "id": 204
   },
   {
-    title: 'The Downfall of Us All',
-    performer: 'A Day to Remember',
-    releaseDate: '2014-03-18',
+    "title": "Live Forever",
+    "performer": "Oasis",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 205
   },
   {
-    title: 'All Signs Point to Lauderdale',
-    performer: 'A Day to Remember',
-    releaseDate: '2014-03-18',
+    "title": "Supersonic",
+    "performer": "Oasis",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 206
   },
-  { title: 'Unwell', performer: 'Matchbox Twenty', releaseDate: '2014-03-25' },
   {
-    title: 'She\u0027s So Mean',
-    performer: 'Matchbox Twenty',
-    releaseDate: '2014-03-25',
+    "title": "Champagne Supernova",
+    "performer": "Oasis",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 207
   },
   {
-    title: 'How Far We\u0027ve Come',
-    performer: 'Matchbox Twenty',
-    releaseDate: '2014-03-25',
+    "title": "Some Might Say",
+    "performer": "Oasis",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 208
   },
-  { title: 'Push', performer: 'Matchbox Twenty', releaseDate: '2014-03-25' },
   {
-    title: '3AM',
-    performer: 'Matchbox Twenty',
-    releaseDate: '2014-03-25',
+    "title": "Wonderwall",
+    "performer": "Oasis",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 209
   },
-  { title: 'Totalimmortal', performer: 'AFI', releaseDate: '2014-04-01' },
   {
-    title: 'Silver and Cold',
-    performer: 'AFI',
-    releaseDate: '2014-04-01',
+    "title": "Atarashii Hikari",
+    "performer": "9mm Parabellum Bullet",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 210
   },
-  { title: 'Miss Murder', performer: 'AFI', releaseDate: '2014-04-01' },
   {
-    title: 'Girl\u0027s Not Grey',
-    performer: 'AFI',
-    releaseDate: '2014-04-01',
+    "title": "Punishment",
+    "performer": "9mm Parabellum Bullet",
+    "releaseDate": "2014-01-14",
+    "expiration": 1705363200000,
+    "id": 211
   },
   {
-    title: 'Subterranean Homesick Blues',
-    performer: 'Bob Dylan',
-    releaseDate: '2014-04-08',
+    "title": "Buddy Holly",
+    "performer": "Weezer",
+    "releaseDate": "2014-01-21",
+    "expiration": 1705968000000,
+    "id": 212
   },
   {
-    title: 'Like a Rolling Stone',
-    performer: 'Bob Dylan',
-    releaseDate: '2014-04-08',
+    "title": "My Name Is Jonas",
+    "performer": "Weezer",
+    "releaseDate": "2014-01-21",
+    "expiration": 1705968000000,
+    "id": 213
   },
   {
-    title: 'Just Like a Woman',
-    performer: 'Bob Dylan',
-    releaseDate: '2014-04-08',
+    "title": "Island in the Sun",
+    "performer": "Weezer",
+    "releaseDate": "2014-01-21",
+    "expiration": 1705968000000,
+    "id": 214
   },
   {
-    title: 'I Think I\u0027m Paranoid',
-    performer: 'Garbage',
-    releaseDate: '2014-04-15',
+    "title": "Undone (The Sweater Song)",
+    "performer": "Weezer",
+    "releaseDate": "2014-01-21",
+    "expiration": 1705968000000,
+    "id": 215
   },
   {
-    title: 'Only Happy When it Rains',
-    performer: 'Garbage',
-    releaseDate: '2014-04-15',
+    "title": "Hash Pipe",
+    "performer": "Weezer",
+    "releaseDate": "2014-01-21",
+    "expiration": 1705968000000,
+    "id": 216
   },
-  { title: 'Stupid Girl', performer: 'Garbage', releaseDate: '2014-04-15' },
   {
-    title: 'Father of Mine',
-    performer: 'Everclear',
-    releaseDate: '2014-04-22',
+    "title": "Aerials",
+    "performer": "System of a Down",
+    "releaseDate": "2014-01-28",
+    "expiration": 1706572800000,
+    "id": 217
   },
-  { title: 'Tomorrow', performer: 'Silverchair', releaseDate: '2014-04-22' },
   {
-    title: 'Two Princes',
-    performer: 'Spin Doctors',
-    releaseDate: '2014-04-22',
+    "title": "B.Y.O.B.",
+    "performer": "System of a Down",
+    "releaseDate": "2014-01-28",
+    "expiration": 1706572800000,
+    "id": 218
   },
-  { title: 'Blackbird', performer: 'Alter Bridge', releaseDate: '2014-04-29' },
   {
-    title: 'Isolation',
-    performer: 'Alter Bridge',
-    releaseDate: '2014-04-29',
+    "title": "Toxicity",
+    "performer": "System of a Down",
+    "releaseDate": "2014-01-28",
+    "expiration": 1706572800000,
+    "id": 219
   },
-  { title: 'Rise Today', performer: 'Alter Bridge', releaseDate: '2014-04-29' },
   {
-    title: 'Ties That Bind',
-    performer: 'Alter Bridge',
-    releaseDate: '2014-04-29',
+    "title": "From Noon Till Dawn",
+    "performer": "Straightener",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 220
   },
-  { title: 'Amber', performer: '311', releaseDate: '2014-05-06' },
   {
-    title: 'Down',
-    performer: '311',
-    releaseDate: '2014-05-06',
+    "title": "ROCKSTEADY",
+    "performer": "Straightener",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 221
   },
-  { title: 'Beautiful Disaster', performer: '311', releaseDate: '2014-05-06' },
   {
-    title: 'Colony of Birchmen',
-    performer: 'Mastodon',
-    releaseDate: '2014-05-13',
+    "title": "Everybody Hurts",
+    "performer": "R.E.M.",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 222
   },
-  { title: 'Oblivion', performer: 'Mastodon', releaseDate: '2014-05-13' },
   {
-    title: 'Black Tongue',
-    performer: 'Mastodon',
-    releaseDate: '2014-05-13',
+    "title": "Shiny Happy People",
+    "performer": "R.E.M.",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 223
   },
   {
-    title: 'Stickshifts and Safetybelts',
-    performer: 'Cake',
-    releaseDate: '2014-05-20',
+    "title": "The One I Love",
+    "performer": "R.E.M.",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 224
   },
   {
-    title: 'Short Skirt/Long Jacket',
-    performer: 'Cake',
-    releaseDate: '2014-05-20',
+    "title": "What's the Frequency, Kenneth?",
+    "performer": "R.E.M.",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 225
   },
   {
-    title: 'Never There',
-    performer: 'Cake',
-    releaseDate: '2014-05-20',
+    "title": "Überlin",
+    "performer": "R.E.M.",
+    "releaseDate": "2014-02-04",
+    "expiration": 1707177600000,
+    "id": 226
   },
-  { title: 'I Will Survive', performer: 'Cake', releaseDate: '2014-05-20' },
   {
-    title: 'The Distance',
-    performer: 'Cake',
-    releaseDate: '2014-05-20',
+    "title": "Detroit Rock City",
+    "performer": "Kiss",
+    "releaseDate": "2014-02-11",
+    "expiration": 1707782400000,
+    "id": 227
   },
-  { title: 'You\u0027re a Lie', performer: 'Slash', releaseDate: '2014-05-27' },
   {
-    title: 'Back from Cali',
-    performer: 'Slash',
-    releaseDate: '2014-05-27',
+    "title": "Heaven's On Fire",
+    "performer": "Kiss",
+    "releaseDate": "2014-02-11",
+    "expiration": 1707782400000,
+    "id": 228
   },
-  { title: 'Anastasia', performer: 'Slash', releaseDate: '2014-05-27' },
   {
-    title: 'Fat Lip',
-    performer: 'Sum 41',
-    releaseDate: '2014-06-03',
+    "title": "I Was Made for Lovin' You",
+    "performer": "Kiss",
+    "releaseDate": "2014-02-11",
+    "expiration": 1707782400000,
+    "id": 229
   },
-  { title: 'In Too Deep', performer: 'Sum 41', releaseDate: '2014-06-03' },
   {
-    title: 'The Hell Song',
-    performer: 'Sum 41',
-    releaseDate: '2014-06-03',
+    "title": "Shinsekai",
+    "performer": "ACIDMAN",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 230
   },
   {
-    title: 'Still Waiting',
-    performer: 'Sum 41',
-    releaseDate: '2014-06-03',
+    "title": "stupid",
+    "performer": "The Birthday",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 231
   },
   {
-    title: 'We\u0027re All to Blame',
-    performer: 'Sum 41',
-    releaseDate: '2014-06-03',
+    "title": "PARADOX Taiso",
+    "performer": "RIZE",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 232
   },
   {
-    title: 'Funk #49',
-    performer: 'James Gang',
-    releaseDate: '2014-06-10',
+    "title": "Give It All",
+    "performer": "Rise Against",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 233
   },
   {
-    title: 'Ain\u0027t No Sunshine',
-    performer: 'Bill Withers',
-    releaseDate: '2014-06-10',
+    "title": "Swing Life Away",
+    "performer": "Rise Against",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 234
   },
   {
-    title: 'Sweet Dreams',
-    performer: 'Roy Buchanan',
-    releaseDate: '2014-06-10',
+    "title": "Make It Stop",
+    "performer": "Rise Against",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 235
   },
   {
-    title: 'Awake',
-    performer: 'Godsmack',
-    releaseDate: '2014-06-17',
+    "title": "Satellite",
+    "performer": "Rise Against",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 236
   },
-  { title: 'I Stand Alone', performer: 'Godsmack', releaseDate: '2014-06-17' },
   {
-    title: 'Love-Hate-Sex-Pain',
-    performer: 'Godsmack',
-    releaseDate: '2014-06-17',
+    "title": "Prayer of the Refugee",
+    "performer": "Rise Against",
+    "releaseDate": "2014-02-18",
+    "expiration": 1708387200000,
+    "id": 237
   },
   {
-    title: 'Cryin\u0027 Like a Bitch',
-    performer: 'Godsmack',
-    releaseDate: '2014-06-17',
+    "title": "Light My Fire",
+    "performer": "The Doors",
+    "releaseDate": "2014-02-25",
+    "expiration": 1708992000000,
+    "id": 238
   },
   {
-    title: 'Voodoo',
-    performer: 'Godsmack',
-    releaseDate: '2014-06-17',
+    "title": "Riders on the Storm",
+    "performer": "The Doors",
+    "releaseDate": "2014-02-25",
+    "expiration": 1708992000000,
+    "id": 239
   },
   {
-    title: 'Walk Don\u0027t Run',
-    performer: 'The Ventures',
-    releaseDate: '2014-06-24',
+    "title": "Roadhouse Blues",
+    "performer": "The Doors",
+    "releaseDate": "2014-02-25",
+    "expiration": 1708992000000,
+    "id": 240
   },
-  { title: 'Wipe Out', performer: 'The Surfaris', releaseDate: '2014-06-24' },
   {
-    title: 'Misirlou',
-    performer: 'Dick Dale',
-    releaseDate: '2014-06-24',
+    "title": "Don't Look Back",
+    "performer": "Boston",
+    "releaseDate": "2014-03-04",
+    "expiration": 1709596800000,
+    "id": 241
   },
   {
-    title: 'Devil in a Midnight Mass',
-    performer: 'Billy Talent',
-    releaseDate: '2014-07-01',
+    "title": "Foreplay/Long Time",
+    "performer": "Boston",
+    "releaseDate": "2014-03-04",
+    "expiration": 1709596800000,
+    "id": 242
   },
   {
-    title: 'Fallen Leaves',
-    performer: 'Billy Talent',
-    releaseDate: '2014-07-01',
+    "title": "Hitch a Ride",
+    "performer": "Boston",
+    "releaseDate": "2014-03-04",
+    "expiration": 1709596800000,
+    "id": 243
   },
   {
-    title: 'Red Flag',
-    performer: 'Billy Talent',
-    releaseDate: '2014-07-01',
+    "title": "Crazy on You",
+    "performer": "Heart",
+    "releaseDate": "2014-03-11",
+    "expiration": 1710201600000,
+    "id": 244
   },
   {
-    title: 'Try Honesty',
-    performer: 'Billy Talent',
-    releaseDate: '2014-07-01',
+    "title": "Love Bites (So Do I)",
+    "performer": "Halestorm",
+    "releaseDate": "2014-03-11",
+    "expiration": 1710201600000,
+    "id": 245
   },
   {
-    title: 'Viking Death March',
-    performer: 'Billy Talent',
-    releaseDate: '2014-07-01',
+    "title": "All Around Me",
+    "performer": "Flyleaf",
+    "releaseDate": "2014-03-11",
+    "expiration": 1710201600000,
+    "id": 246
   },
   {
-    title: 'Can\u0027t Stand Me Now',
-    performer: 'The Libertines',
-    releaseDate: '2014-07-08',
+    "title": "It's Complicated",
+    "performer": "A Day to Remember",
+    "releaseDate": "2014-03-18",
+    "expiration": 1710806400000,
+    "id": 247
   },
   {
-    title: 'Don\u0027t Look Back into the Sun',
-    performer: 'The Libertines',
-    releaseDate: '2014-07-08',
+    "title": "If It Means a Lot to You",
+    "performer": "A Day to Remember",
+    "releaseDate": "2014-03-18",
+    "expiration": 1710806400000,
+    "id": 248
   },
   {
-    title: 'What Katie Did',
-    performer: 'The Libertines',
-    releaseDate: '2014-07-08',
+    "title": "All I Want",
+    "performer": "A Day to Remember",
+    "releaseDate": "2014-03-18",
+    "expiration": 1710806400000,
+    "id": 249
   },
   {
-    title: 'Be Quiet and Drive (Far Away)',
-    performer: 'Deftones',
-    releaseDate: '2014-07-15',
+    "title": "The Downfall of Us All",
+    "performer": "A Day to Remember",
+    "releaseDate": "2014-03-18",
+    "expiration": 1710806400000,
+    "id": 250
   },
   {
-    title: 'Change (In the House of Flies)',
-    performer: 'Deftones',
-    releaseDate: '2014-07-15',
+    "title": "All Signs Point to Lauderdale",
+    "performer": "A Day to Remember",
+    "releaseDate": "2014-03-18",
+    "expiration": 1710806400000,
+    "id": 251
   },
-  { title: 'Digital Bath', performer: 'Deftones', releaseDate: '2014-07-15' },
   {
-    title: 'Hole in the Earth',
-    performer: 'Deftones',
-    releaseDate: '2014-07-15',
+    "title": "Unwell",
+    "performer": "Matchbox Twenty",
+    "releaseDate": "2014-03-25",
+    "expiration": 1711411200000,
+    "id": 252
   },
   {
-    title: 'China Grove',
-    performer: 'The Doobie Brothers',
-    releaseDate: '2014-07-22',
+    "title": "She's So Mean",
+    "performer": "Matchbox Twenty",
+    "releaseDate": "2014-03-25",
+    "expiration": 1711411200000,
+    "id": 253
   },
   {
-    title: 'Escape (The Piña Colada Song)',
-    performer: 'Rupert Holmes',
-    releaseDate: '2014-07-22',
+    "title": "How Far We've Come",
+    "performer": "Matchbox Twenty",
+    "releaseDate": "2014-03-25",
+    "expiration": 1711411200000,
+    "id": 254
   },
   {
-    title: 'Hold the Line',
-    performer: 'Toto',
-    releaseDate: '2014-07-22',
+    "title": "Push",
+    "performer": "Matchbox Twenty",
+    "releaseDate": "2014-03-25",
+    "expiration": 1711411200000,
+    "id": 255
   },
   {
-    title: 'I Keep Forgettin\u0027 (Every Time You\u0027re Near)',
-    performer: 'Michael McDonald',
-    releaseDate: '2014-07-22',
+    "title": "3AM",
+    "performer": "Matchbox Twenty",
+    "releaseDate": "2014-03-25",
+    "expiration": 1711411200000,
+    "id": 256
   },
   {
-    title: 'Kiss On My List',
-    performer: 'Daryl Hall and John Oates',
-    releaseDate: '2014-07-22',
+    "title": "Totalimmortal",
+    "performer": "AFI",
+    "releaseDate": "2014-04-01",
+    "expiration": 1712016000000,
+    "id": 257
   },
   {
-    title: 'Laid to Rest',
-    performer: 'Lamb of God',
-    releaseDate: '2014-07-29',
+    "title": "Silver and Cold",
+    "performer": "AFI",
+    "releaseDate": "2014-04-01",
+    "expiration": 1712016000000,
+    "id": 258
   },
   {
-    title: 'Walk With Me in Hell',
-    performer: 'Lamb of God',
-    releaseDate: '2014-07-29',
+    "title": "Miss Murder",
+    "performer": "AFI",
+    "releaseDate": "2014-04-01",
+    "expiration": 1712016000000,
+    "id": 259
   },
   {
-    title: 'Ghost Walking',
-    performer: 'Lamb of God',
-    releaseDate: '2014-07-29',
+    "title": "Girl's Not Grey",
+    "performer": "AFI",
+    "releaseDate": "2014-04-01",
+    "expiration": 1712016000000,
+    "id": 260
   },
   {
-    title: 'Black Chandelier',
-    performer: 'Biffy Clyro',
-    releaseDate: '2014-08-05',
+    "title": "Subterranean Homesick Blues",
+    "performer": "Bob Dylan",
+    "releaseDate": "2014-04-08",
+    "expiration": 1712624400000,
+    "id": 261
   },
-  { title: 'Bubbles', performer: 'Biffy Clyro', releaseDate: '2014-08-05' },
   {
-    title: 'Many of Horror',
-    performer: 'Biffy Clyro',
-    releaseDate: '2014-08-05',
+    "title": "Like a Rolling Stone",
+    "performer": "Bob Dylan",
+    "releaseDate": "2014-04-08",
+    "expiration": 1712624400000,
+    "id": 262
   },
-  { title: 'Mountains', performer: 'Biffy Clyro', releaseDate: '2014-08-05' },
   {
-    title: 'Stingin\u0027 Belle',
-    performer: 'Biffy Clyro',
-    releaseDate: '2014-08-05',
+    "title": "Just Like a Woman",
+    "performer": "Bob Dylan",
+    "releaseDate": "2014-04-08",
+    "expiration": 1712624400000,
+    "id": 263
   },
   {
-    title: 'Don\u0027t Speak',
-    performer: 'No Doubt',
-    releaseDate: '2014-08-12',
+    "title": "I Think I'm Paranoid",
+    "performer": "Garbage",
+    "releaseDate": "2014-04-15",
+    "expiration": 1713229200000,
+    "id": 264
   },
   {
-    title: 'Ex-Girlfriend',
-    performer: 'No Doubt',
-    releaseDate: '2014-08-12',
+    "title": "Only Happy When it Rains",
+    "performer": "Garbage",
+    "releaseDate": "2014-04-15",
+    "expiration": 1713229200000,
+    "id": 265
   },
-  { title: 'Spiderwebs', performer: 'No Doubt', releaseDate: '2014-08-12' },
   {
-    title: 'Hungry Like The Wolf',
-    performer: 'Duran Duran',
-    releaseDate: '2014-08-19',
+    "title": "Stupid Girl",
+    "performer": "Garbage",
+    "releaseDate": "2014-04-15",
+    "expiration": 1713229200000,
+    "id": 266
   },
-  { title: 'Rio', performer: 'Duran Duran', releaseDate: '2014-08-19' },
   {
-    title: 'Ordinary World',
-    performer: 'Duran Duran',
-    releaseDate: '2014-08-19',
+    "title": "Father of Mine",
+    "performer": "Everclear",
+    "releaseDate": "2014-04-22",
+    "expiration": 1713834000000,
+    "id": 267
   },
   {
-    title: 'Rondo alla Turca',
-    performer: 'Wolfgang Amadeus Mozart',
-    releaseDate: '2014-08-26',
+    "title": "Tomorrow",
+    "performer": "Silverchair",
+    "releaseDate": "2014-04-22",
+    "expiration": 1713834000000,
+    "id": 268
   },
   {
-    title: 'Moonlight Sonata: Adagio Sostenuto',
-    performer: 'Ludwig van Beethoven',
-    releaseDate: '2014-08-26',
+    "title": "Two Princes",
+    "performer": "Spin Doctors",
+    "releaseDate": "2014-04-22",
+    "expiration": 1713834000000,
+    "id": 269
   },
   {
-    title: 'In the Hall of the Mountain King',
-    performer: 'Edvard Grieg',
-    releaseDate: '2014-08-26',
+    "title": "Blackbird",
+    "performer": "Alter Bridge",
+    "releaseDate": "2014-04-29",
+    "expiration": 1714438800000,
+    "id": 270
   },
   {
-    title: 'Little Fugue in G minor',
-    performer: 'Johann Sebastian Bach',
-    releaseDate: '2014-08-26',
+    "title": "Isolation",
+    "performer": "Alter Bridge",
+    "releaseDate": "2014-04-29",
+    "expiration": 1714438800000,
+    "id": 271
   },
   {
-    title: 'Ride of the Valkyries',
-    performer: 'Richard Wagner',
-    releaseDate: '2014-08-26',
+    "title": "Rise Today",
+    "performer": "Alter Bridge",
+    "releaseDate": "2014-04-29",
+    "expiration": 1714438800000,
+    "id": 272
   },
-  { title: 'Caress Me Down', performer: 'Sublime', releaseDate: '2014-09-02' },
   {
-    title: 'Santería',
-    performer: 'Sublime',
-    releaseDate: '2014-09-02',
+    "title": "Ties That Bind",
+    "performer": "Alter Bridge",
+    "releaseDate": "2014-04-29",
+    "expiration": 1714438800000,
+    "id": 273
   },
-  { title: 'What I Got', performer: 'Sublime', releaseDate: '2014-09-02' },
   {
-    title: 'Wrong Way',
-    performer: 'Sublime',
-    releaseDate: '2014-09-02',
+    "title": "Amber",
+    "performer": "311",
+    "releaseDate": "2014-05-06",
+    "expiration": 1715043600000,
+    "id": 274
   },
   {
-    title: 'Smoke Two Joints',
-    performer: 'Sublime',
-    releaseDate: '2014-09-02',
+    "title": "Down",
+    "performer": "311",
+    "releaseDate": "2014-05-06",
+    "expiration": 1715043600000,
+    "id": 275
   },
   {
-    title: 'Highway Star',
-    performer: 'Deep Purple',
-    releaseDate: '2014-09-09',
+    "title": "Beautiful Disaster",
+    "performer": "311",
+    "releaseDate": "2014-05-06",
+    "expiration": 1715043600000,
+    "id": 276
   },
   {
-    title: 'Simple Man',
-    performer: 'Lynyrd Skynyrd',
-    releaseDate: '2014-09-09',
+    "title": "Colony of Birchmen",
+    "performer": "Mastodon",
+    "releaseDate": "2014-05-13",
+    "expiration": 1715648400000,
+    "id": 277
   },
   {
-    title: 'Stranglehold',
-    performer: 'Ted Nugent',
-    releaseDate: '2014-09-09',
+    "title": "Oblivion",
+    "performer": "Mastodon",
+    "releaseDate": "2014-05-13",
+    "expiration": 1715648400000,
+    "id": 278
   },
-  { title: 'Higher', performer: 'Creed', releaseDate: '2014-09-16' },
   {
-    title: 'My Own Prison',
-    performer: 'Creed',
-    releaseDate: '2014-09-16',
+    "title": "Black Tongue",
+    "performer": "Mastodon",
+    "releaseDate": "2014-05-13",
+    "expiration": 1715648400000,
+    "id": 279
   },
-  { title: 'My Sacrifice', performer: 'Creed', releaseDate: '2014-09-16' },
   {
-    title: 'One Last Breath',
-    performer: 'Creed',
-    releaseDate: '2014-09-16',
+    "title": "Stickshifts and Safetybelts",
+    "performer": "Cake",
+    "releaseDate": "2014-05-20",
+    "expiration": 1716253200000,
+    "id": 280
   },
   {
-    title: 'With Arms Wide Open',
-    performer: 'Creed',
-    releaseDate: '2014-09-16',
+    "title": "Short Skirt/Long Jacket",
+    "performer": "Cake",
+    "releaseDate": "2014-05-20",
+    "expiration": 1716253200000,
+    "id": 281
   },
   {
-    title: '45',
-    performer: 'Shinedown',
-    releaseDate: '2014-09-23',
+    "title": "Never There",
+    "performer": "Cake",
+    "releaseDate": "2014-05-20",
+    "expiration": 1716253200000,
+    "id": 282
   },
-  { title: 'Bully', performer: 'Shinedown', releaseDate: '2014-09-23' },
   {
-    title: 'Enemies',
-    performer: 'Shinedown',
-    releaseDate: '2014-09-23',
+    "title": "I Will Survive",
+    "performer": "Cake",
+    "releaseDate": "2014-05-20",
+    "expiration": 1716253200000,
+    "id": 283
   },
-  { title: 'Second Chance', performer: 'Shinedown', releaseDate: '2014-09-23' },
   {
-    title: 'Sound of Madness',
-    performer: 'Shinedown',
-    releaseDate: '2014-09-23',
+    "title": "The Distance",
+    "performer": "Cake",
+    "releaseDate": "2014-05-20",
+    "expiration": 1716253200000,
+    "id": 284
   },
-  { title: 'Cold as Ice', performer: 'Foreigner', releaseDate: '2014-09-30' },
   {
-    title: 'Double Vision',
-    performer: 'Foreigner',
-    releaseDate: '2014-09-30',
+    "title": "You're a Lie",
+    "performer": "Slash",
+    "releaseDate": "2014-05-27",
+    "expiration": 1716858000000,
+    "id": 285
   },
   {
-    title: 'Feels Like the First Time',
-    performer: 'Foreigner',
-    releaseDate: '2014-09-30',
+    "title": "Back from Cali",
+    "performer": "Slash",
+    "releaseDate": "2014-05-27",
+    "expiration": 1716858000000,
+    "id": 286
   },
-  { title: 'Hot Blooded', performer: 'Foreigner', releaseDate: '2014-09-30' },
   {
-    title: 'Juke Box Hero',
-    performer: 'Foreigner',
-    releaseDate: '2014-09-30',
+    "title": "Anastasia",
+    "performer": "Slash",
+    "releaseDate": "2014-05-27",
+    "expiration": 1716858000000,
+    "id": 287
   },
-  { title: 'Be Yourself', performer: 'Audioslave', releaseDate: '2014-10-07' },
   {
-    title: 'Cochise',
-    performer: 'Audioslave',
-    releaseDate: '2014-10-07',
+    "title": "Fat Lip",
+    "performer": "Sum 41",
+    "releaseDate": "2014-06-03",
+    "expiration": 1717462800000,
+    "id": 288
   },
   {
-    title: 'I Am the Highway',
-    performer: 'Audioslave',
-    releaseDate: '2014-10-07',
+    "title": "In Too Deep",
+    "performer": "Sum 41",
+    "releaseDate": "2014-06-03",
+    "expiration": 1717462800000,
+    "id": 289
   },
   {
-    title: 'Like a Stone',
-    performer: 'Audioslave',
-    releaseDate: '2014-10-07',
+    "title": "The Hell Song",
+    "performer": "Sum 41",
+    "releaseDate": "2014-06-03",
+    "expiration": 1717462800000,
+    "id": 290
   },
   {
-    title: 'Show Me How to Live',
-    performer: 'Audioslave',
-    releaseDate: '2014-10-07',
+    "title": "Still Waiting",
+    "performer": "Sum 41",
+    "releaseDate": "2014-06-03",
+    "expiration": 1717462800000,
+    "id": 291
   },
   {
-    title: 'Blue Orchid',
-    performer: 'The White Stripes',
-    releaseDate: '2014-10-14',
+    "title": "We're All to Blame",
+    "performer": "Sum 41",
+    "releaseDate": "2014-06-03",
+    "expiration": 1717462800000,
+    "id": 292
   },
   {
-    title: 'Fell in Love With a Girl',
-    performer: 'The White Stripes',
-    releaseDate: '2014-10-14',
+    "title": "Funk #49",
+    "performer": "James Gang",
+    "releaseDate": "2014-06-10",
+    "expiration": 1718067600000,
+    "id": 293
   },
   {
-    title: 'Seven Nation Army',
-    performer: 'The White Stripes',
-    releaseDate: '2014-10-14',
+    "title": "Ain't No Sunshine",
+    "performer": "Bill Withers",
+    "releaseDate": "2014-06-10",
+    "expiration": 1718067600000,
+    "id": 294
   },
   {
-    title: 'The Hardest Button to Button',
-    performer: 'The White Stripes',
-    releaseDate: '2014-10-14',
+    "title": "Sweet Dreams",
+    "performer": "Roy Buchanan",
+    "releaseDate": "2014-06-10",
+    "expiration": 1718067600000,
+    "id": 295
   },
   {
-    title: 'You Don\u0027t Know What Love Is (You Just Do as You\u0027re Told)',
-    performer: 'The White Stripes',
-    releaseDate: '2014-10-14',
+    "title": "Awake",
+    "performer": "Godsmack",
+    "releaseDate": "2014-06-17",
+    "expiration": 1718672400000,
+    "id": 296
   },
-  { title: 'Holy Diver', performer: 'Dio', releaseDate: '2014-10-21' },
   {
-    title: 'Seventeen',
-    performer: 'Winger',
-    releaseDate: '2014-10-21',
+    "title": "I Stand Alone",
+    "performer": "Godsmack",
+    "releaseDate": "2014-06-17",
+    "expiration": 1718672400000,
+    "id": 297
   },
   {
-    title: 'Turn Up the Radio',
-    performer: 'Autograph',
-    releaseDate: '2014-10-21',
+    "title": "Love-Hate-Sex-Pain",
+    "performer": "Godsmack",
+    "releaseDate": "2014-06-17",
+    "expiration": 1718672400000,
+    "id": 298
   },
   {
-    title: 'The Stroke',
-    performer: 'Billy Squier',
-    releaseDate: '2014-10-21',
+    "title": "Cryin' Like a Bitch",
+    "performer": "Godsmack",
+    "releaseDate": "2014-06-17",
+    "expiration": 1718672400000,
+    "id": 299
   },
   {
-    title: 'Nothin\u0027 but a Good Time',
-    performer: 'Poison',
-    releaseDate: '2014-10-21',
+    "title": "Voodoo",
+    "performer": "Godsmack",
+    "releaseDate": "2014-06-17",
+    "expiration": 1718672400000,
+    "id": 300
   },
-  { title: 'Runaways', performer: 'The Killers', releaseDate: '2014-10-28' },
   {
-    title: 'Spaceman',
-    performer: 'The Killers',
-    releaseDate: '2014-10-28',
+    "title": "Walk Don't Run",
+    "performer": "The Ventures",
+    "releaseDate": "2014-06-24",
+    "expiration": 1719277200000,
+    "id": 301
   },
   {
-    title: 'Somebody Told Me',
-    performer: 'The Killers',
-    releaseDate: '2014-10-28',
+    "title": "Wipe Out",
+    "performer": "The Surfaris",
+    "releaseDate": "2014-06-24",
+    "expiration": 1719277200000,
+    "id": 302
   },
   {
-    title: 'When You Were Young',
-    performer: 'The Killers',
-    releaseDate: '2014-10-28',
+    "title": "Misirlou",
+    "performer": "Dick Dale",
+    "releaseDate": "2014-06-24",
+    "expiration": 1719277200000,
+    "id": 303
   },
   {
-    title: 'Mr. Brightside',
-    performer: 'The Killers',
-    releaseDate: '2014-10-28',
+    "title": "Devil in a Midnight Mass",
+    "performer": "Billy Talent",
+    "releaseDate": "2014-07-01",
+    "expiration": 1719882000000,
+    "id": 304
   },
   {
-    title: 'The End of Heartache',
-    performer: 'Killswitch Engage',
-    releaseDate: '2014-11-04',
+    "title": "Fallen Leaves",
+    "performer": "Billy Talent",
+    "releaseDate": "2014-07-01",
+    "expiration": 1719882000000,
+    "id": 305
   },
   {
-    title: 'Holy Diver (Dio cover)',
-    performer: 'Killswitch Engage',
-    releaseDate: '2014-11-04',
+    "title": "Red Flag",
+    "performer": "Billy Talent",
+    "releaseDate": "2014-07-01",
+    "expiration": 1719882000000,
+    "id": 306
   },
   {
-    title: 'My Curse',
-    performer: 'Killswitch Engage',
-    releaseDate: '2014-11-04',
+    "title": "Try Honesty",
+    "performer": "Billy Talent",
+    "releaseDate": "2014-07-01",
+    "expiration": 1719882000000,
+    "id": 307
   },
   {
-    title: 'American Girl',
-    performer: 'Tom Petty and the Heartbreakers',
-    releaseDate: '2014-11-11',
+    "title": "Viking Death March",
+    "performer": "Billy Talent",
+    "releaseDate": "2014-07-01",
+    "expiration": 1719882000000,
+    "id": 308
   },
   {
-    title: 'Learning to Fly',
-    performer: 'Tom Petty and the Heartbreakers',
-    releaseDate: '2014-11-11',
+    "title": "Can't Stand Me Now",
+    "performer": "The Libertines",
+    "releaseDate": "2014-07-08",
+    "expiration": 1720486800000,
+    "id": 309
   },
   {
-    title: 'Refugee',
-    performer: 'Tom Petty and the Heartbreakers',
-    releaseDate: '2014-11-11',
+    "title": "Don't Look Back into the Sun",
+    "performer": "The Libertines",
+    "releaseDate": "2014-07-08",
+    "expiration": 1720486800000,
+    "id": 310
   },
   {
-    title: 'Free Fallin\u0027',
-    performer: 'Tom Petty',
-    releaseDate: '2014-11-11',
+    "title": "What Katie Did",
+    "performer": "The Libertines",
+    "releaseDate": "2014-07-08",
+    "expiration": 1720486800000,
+    "id": 311
   },
   {
-    title: 'I Won\u0027t Back Down',
-    performer: 'Tom Petty',
-    releaseDate: '2014-11-11',
+    "title": "Be Quiet and Drive (Far Away)",
+    "performer": "Deftones",
+    "releaseDate": "2014-07-15",
+    "expiration": 1721091600000,
+    "id": 312
   },
   {
-    title: 'Learn to Fly',
-    performer: 'Foo Fighters',
-    releaseDate: '2014-11-18',
+    "title": "Change (In the House of Flies)",
+    "performer": "Deftones",
+    "releaseDate": "2014-07-15",
+    "expiration": 1721091600000,
+    "id": 313
   },
   {
-    title: 'Long Road to Ruin',
-    performer: 'Foo Fighters',
-    releaseDate: '2014-11-18',
+    "title": "Digital Bath",
+    "performer": "Deftones",
+    "releaseDate": "2014-07-15",
+    "expiration": 1721091600000,
+    "id": 314
   },
   {
-    title: 'Monkey Wrench',
-    performer: 'Foo Fighters',
-    releaseDate: '2014-11-18',
+    "title": "Hole in the Earth",
+    "performer": "Deftones",
+    "releaseDate": "2014-07-15",
+    "expiration": 1721091600000,
+    "id": 315
   },
   {
-    title: 'The Pretender',
-    performer: 'Foo Fighters',
-    releaseDate: '2014-11-18',
+    "title": "China Grove",
+    "performer": "The Doobie Brothers",
+    "releaseDate": "2014-07-22",
+    "expiration": 1721696400000,
+    "id": 316
   },
-  { title: 'Rope', performer: 'Foo Fighters', releaseDate: '2014-11-18' },
   {
-    title: 'Hand of Blood',
-    performer: 'Bullet for My Valentine',
-    releaseDate: '2014-11-25',
+    "title": "Escape (The Piña Colada Song)",
+    "performer": "Rupert Holmes",
+    "releaseDate": "2014-07-22",
+    "expiration": 1721696400000,
+    "id": 317
   },
   {
-    title: 'Hearts Burst into Fire',
-    performer: 'Bullet for My Valentine',
-    releaseDate: '2014-11-25',
+    "title": "Hold the Line",
+    "performer": "Toto",
+    "releaseDate": "2014-07-22",
+    "expiration": 1721696400000,
+    "id": 318
   },
   {
-    title: 'Tears Don\u0027t Fall',
-    performer: 'Bullet for My Valentine',
-    releaseDate: '2014-11-25',
+    "title": "I Keep Forgettin' (Every Time You're Near)",
+    "performer": "Michael McDonald",
+    "releaseDate": "2014-07-22",
+    "expiration": 1721696400000,
+    "id": 319
   },
   {
-    title: 'Your Betrayal',
-    performer: 'Bullet for My Valentine',
-    releaseDate: '2014-11-25',
+    "title": "Kiss On My List",
+    "performer": "Daryl Hall and John Oates",
+    "releaseDate": "2014-07-22",
+    "expiration": 1721696400000,
+    "id": 320
   },
   {
-    title: 'Scream Aim Fire',
-    performer: 'Bullet for My Valentine',
-    releaseDate: '2014-11-25',
+    "title": "Laid to Rest",
+    "performer": "Lamb of God",
+    "releaseDate": "2014-07-29",
+    "expiration": 1722301200000,
+    "id": 321
   },
   {
-    title: 'Blaze of Glory',
-    performer: 'Jon Bon Jovi',
-    releaseDate: '2014-12-02',
+    "title": "Walk With Me in Hell",
+    "performer": "Lamb of God",
+    "releaseDate": "2014-07-29",
+    "expiration": 1722301200000,
+    "id": 322
   },
   {
-    title: 'It\u0027s My Life',
-    performer: 'Bon Jovi',
-    releaseDate: '2014-12-02',
+    "title": "Ghost Walking",
+    "performer": "Lamb of God",
+    "releaseDate": "2014-07-29",
+    "expiration": 1722301200000,
+    "id": 323
   },
   {
-    title: 'Livin\u0027 on a Prayer',
-    performer: 'Bon Jovi',
-    releaseDate: '2014-12-02',
+    "title": "Black Chandelier",
+    "performer": "Biffy Clyro",
+    "releaseDate": "2014-08-05",
+    "expiration": 1722906000000,
+    "id": 324
   },
   {
-    title: 'Wanted Dead or Alive',
-    performer: 'Bon Jovi',
-    releaseDate: '2014-12-02',
+    "title": "Bubbles",
+    "performer": "Biffy Clyro",
+    "releaseDate": "2014-08-05",
+    "expiration": 1722906000000,
+    "id": 325
   },
   {
-    title: 'You Give Love a Bad Name',
-    performer: 'Bon Jovi',
-    releaseDate: '2014-12-02',
+    "title": "Many of Horror",
+    "performer": "Biffy Clyro",
+    "releaseDate": "2014-08-05",
+    "expiration": 1722906000000,
+    "id": 326
   },
   {
-    title: 'Bombtrack',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Mountains",
+    "performer": "Biffy Clyro",
+    "releaseDate": "2014-08-05",
+    "expiration": 1722906000000,
+    "id": 327
   },
   {
-    title: 'Know Your Enemy',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Stingin' Belle",
+    "performer": "Biffy Clyro",
+    "releaseDate": "2014-08-05",
+    "expiration": 1722906000000,
+    "id": 328
   },
   {
-    title: 'Killing in the Name',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Don't Speak",
+    "performer": "No Doubt",
+    "releaseDate": "2014-08-12",
+    "expiration": 1723510800000,
+    "id": 329
   },
   {
-    title: 'Wake Up',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Ex-Girlfriend",
+    "performer": "No Doubt",
+    "releaseDate": "2014-08-12",
+    "expiration": 1723510800000,
+    "id": 330
   },
   {
-    title: 'Bulls on Parade',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Spiderwebs",
+    "performer": "No Doubt",
+    "releaseDate": "2014-08-12",
+    "expiration": 1723510800000,
+    "id": 331
   },
   {
-    title: 'Down Rodeo',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Hungry Like The Wolf",
+    "performer": "Duran Duran",
+    "releaseDate": "2014-08-19",
+    "expiration": 1724115600000,
+    "id": 332
   },
   {
-    title: 'Renegades of Funk',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2014-12-09',
+    "title": "Rio",
+    "performer": "Duran Duran",
+    "releaseDate": "2014-08-19",
+    "expiration": 1724115600000,
+    "id": 333
   },
   {
-    title: 'Bold as Love',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Ordinary World",
+    "performer": "Duran Duran",
+    "releaseDate": "2014-08-19",
+    "expiration": 1724115600000,
+    "id": 334
   },
   {
-    title: 'Castles Made of Sand',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Rondo alla Turca",
+    "performer": "Wolfgang Amadeus Mozart",
+    "releaseDate": "2014-08-26",
+    "expiration": 1724720400000,
+    "id": 335
   },
   {
-    title: 'Fire',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Moonlight Sonata: Adagio Sostenuto",
+    "performer": "Ludwig van Beethoven",
+    "releaseDate": "2014-08-26",
+    "expiration": 1724720400000,
+    "id": 336
   },
   {
-    title: 'Foxy Lady',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "In the Hall of the Mountain King",
+    "performer": "Edvard Grieg",
+    "releaseDate": "2014-08-26",
+    "expiration": 1724720400000,
+    "id": 337
   },
   {
-    title: 'If 6 Was 9',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Little Fugue in G minor",
+    "performer": "Johann Sebastian Bach",
+    "releaseDate": "2014-08-26",
+    "expiration": 1724720400000,
+    "id": 338
   },
   {
-    title: 'Little Wing',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Ride of the Valkyries",
+    "performer": "Richard Wagner",
+    "releaseDate": "2014-08-26",
+    "expiration": 1724720400000,
+    "id": 339
   },
   {
-    title: 'Manic Depression',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Caress Me Down",
+    "performer": "Sublime",
+    "releaseDate": "2014-09-02",
+    "expiration": 1725325200000,
+    "id": 340
   },
   {
-    title: 'Purple Haze',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Santería",
+    "performer": "Sublime",
+    "releaseDate": "2014-09-02",
+    "expiration": 1725325200000,
+    "id": 341
   },
   {
-    title: 'The Wind Cries Mary',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "What I Got",
+    "performer": "Sublime",
+    "releaseDate": "2014-09-02",
+    "expiration": 1725325200000,
+    "id": 342
   },
   {
-    title: 'Red House',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Wrong Way",
+    "performer": "Sublime",
+    "releaseDate": "2014-09-02",
+    "expiration": 1725325200000,
+    "id": 343
   },
   {
-    title: 'Freedom',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Smoke Two Joints",
+    "performer": "Sublime",
+    "releaseDate": "2014-09-02",
+    "expiration": 1725325200000,
+    "id": 344
   },
   {
-    title: 'Voodoo Child (Slight Return)',
-    performer: 'The Jimi Hendrix Experience',
-    releaseDate: '2014-12-16',
+    "title": "Highway Star",
+    "performer": "Deep Purple",
+    "releaseDate": "2014-09-09",
+    "expiration": 1725930000000,
+    "id": 345
   },
   {
-    title: 'Bleed It Out',
-    performer: 'Linkin Park',
-    releaseDate: '2015-01-06',
+    "title": "Simple Man",
+    "performer": "Lynyrd Skynyrd",
+    "releaseDate": "2014-09-09",
+    "expiration": 1725930000000,
+    "id": 346
   },
   {
-    title: 'Guilty All the Same',
-    performer: 'Linkin Park',
-    releaseDate: '2015-01-06',
+    "title": "Stranglehold",
+    "performer": "Ted Nugent",
+    "releaseDate": "2014-09-09",
+    "expiration": 1725930000000,
+    "id": 347
   },
   {
-    title: 'In The End',
-    performer: 'Linkin Park',
-    releaseDate: '2015-01-06',
+    "title": "Higher",
+    "performer": "Creed",
+    "releaseDate": "2014-09-16",
+    "expiration": 1726534800000,
+    "id": 348
   },
-  { title: 'Numb', performer: 'Linkin Park', releaseDate: '2015-01-06' },
   {
-    title: 'One Step Closer',
-    performer: 'Linkin Park',
-    releaseDate: '2015-01-06',
+    "title": "My Own Prison",
+    "performer": "Creed",
+    "releaseDate": "2014-09-16",
+    "expiration": 1726534800000,
+    "id": 349
   },
   {
-    title: 'What I\u0027ve Done',
-    performer: 'Linkin Park',
-    releaseDate: '2015-01-06',
+    "title": "My Sacrifice",
+    "performer": "Creed",
+    "releaseDate": "2014-09-16",
+    "expiration": 1726534800000,
+    "id": 350
   },
   {
-    title: 'Black Hole Sun',
-    performer: 'Soundgarden',
-    releaseDate: '2015-01-13',
+    "title": "One Last Breath",
+    "performer": "Creed",
+    "releaseDate": "2014-09-16",
+    "expiration": 1726534800000,
+    "id": 351
   },
   {
-    title: 'Fell on Black Days',
-    performer: 'Soundgarden',
-    releaseDate: '2015-01-13',
+    "title": "With Arms Wide Open",
+    "performer": "Creed",
+    "releaseDate": "2014-09-16",
+    "expiration": 1726534800000,
+    "id": 352
   },
   {
-    title: 'Jesus Christ Pose',
-    performer: 'Soundgarden',
-    releaseDate: '2015-01-13',
+    "title": "45",
+    "performer": "Shinedown",
+    "releaseDate": "2014-09-23",
+    "expiration": 1727139600000,
+    "id": 353
   },
   {
-    title: 'Pretty Noose',
-    performer: 'Soundgarden',
-    releaseDate: '2015-01-13',
+    "title": "Bully",
+    "performer": "Shinedown",
+    "releaseDate": "2014-09-23",
+    "expiration": 1727139600000,
+    "id": 354
   },
-  { title: 'Spoonman', performer: 'Soundgarden', releaseDate: '2015-01-13' },
   {
-    title: 'Rainbow in the Dark',
-    performer: 'Dio',
-    releaseDate: '2015-01-20',
+    "title": "Enemies",
+    "performer": "Shinedown",
+    "releaseDate": "2014-09-23",
+    "expiration": 1727139600000,
+    "id": 355
   },
   {
-    title: 'Ace of Spades',
-    performer: 'Motörhead',
-    releaseDate: '2015-01-20',
+    "title": "Second Chance",
+    "performer": "Shinedown",
+    "releaseDate": "2014-09-23",
+    "expiration": 1727139600000,
+    "id": 356
   },
   {
-    title: 'Rock and Roll, Hoochie Koo',
-    performer: 'Rick Derringer',
-    releaseDate: '2015-01-20',
+    "title": "Sound of Madness",
+    "performer": "Shinedown",
+    "releaseDate": "2014-09-23",
+    "expiration": 1727139600000,
+    "id": 357
   },
-  { title: 'Renegade', performer: 'Styx', releaseDate: '2015-01-20' },
   {
-    title: 'Cherry Pie',
-    performer: 'Warrant',
-    releaseDate: '2015-01-20',
+    "title": "Cold as Ice",
+    "performer": "Foreigner",
+    "releaseDate": "2014-09-30",
+    "expiration": 1727744400000,
+    "id": 358
   },
   {
-    title: 'Animal I Have Become',
-    performer: 'Three Days Grace',
-    releaseDate: '2015-01-27',
+    "title": "Double Vision",
+    "performer": "Foreigner",
+    "releaseDate": "2014-09-30",
+    "expiration": 1727744400000,
+    "id": 359
   },
-  { title: 'Break', performer: 'Three Days Grace', releaseDate: '2015-01-27' },
   {
-    title: 'Just Like You',
-    performer: 'Three Days Grace',
-    releaseDate: '2015-01-27',
+    "title": "Feels Like the First Time",
+    "performer": "Foreigner",
+    "releaseDate": "2014-09-30",
+    "expiration": 1727744400000,
+    "id": 360
   },
   {
-    title: 'Never Too Late',
-    performer: 'Three Days Grace',
-    releaseDate: '2015-01-27',
+    "title": "Hot Blooded",
+    "performer": "Foreigner",
+    "releaseDate": "2014-09-30",
+    "expiration": 1727744400000,
+    "id": 361
   },
   {
-    title: 'Riot',
-    performer: 'Three Days Grace',
-    releaseDate: '2015-01-27',
+    "title": "Juke Box Hero",
+    "performer": "Foreigner",
+    "releaseDate": "2014-09-30",
+    "expiration": 1727744400000,
+    "id": 362
   },
-  { title: 'Amanda', performer: 'Boston', releaseDate: '2015-02-03' },
   {
-    title: 'Every Rose Has Its Thorn',
-    performer: 'Poison',
-    releaseDate: '2015-02-03',
+    "title": "Be Yourself",
+    "performer": "Audioslave",
+    "releaseDate": "2014-10-07",
+    "expiration": 1728349200000,
+    "id": 363
   },
   {
-    title: 'More Than Words',
-    performer: 'Extreme',
-    releaseDate: '2015-02-03',
+    "title": "Cochise",
+    "performer": "Audioslave",
+    "releaseDate": "2014-10-07",
+    "expiration": 1728349200000,
+    "id": 364
   },
   {
-    title: 'Don\u0027t Know What You Got (Till It\u0027s Gone)',
-    performer: 'Cinderella',
-    releaseDate: '2015-02-03',
+    "title": "I Am the Highway",
+    "performer": "Audioslave",
+    "releaseDate": "2014-10-07",
+    "expiration": 1728349200000,
+    "id": 365
   },
-  { title: 'Love Song', performer: 'Tesla', releaseDate: '2015-02-03' },
   {
-    title: 'Remedy',
-    performer: 'Seether',
-    releaseDate: '2015-02-10',
+    "title": "Like a Stone",
+    "performer": "Audioslave",
+    "releaseDate": "2014-10-07",
+    "expiration": 1728349200000,
+    "id": 366
   },
-  { title: 'Fake It', performer: 'Seether', releaseDate: '2015-02-10' },
   {
-    title: 'Broken',
-    performer: 'Seether feat. Amy Lee',
-    releaseDate: '2015-02-10',
+    "title": "Show Me How to Live",
+    "performer": "Audioslave",
+    "releaseDate": "2014-10-07",
+    "expiration": 1728349200000,
+    "id": 367
   },
   {
-    title: 'Jane Says',
-    performer: 'Jane\u0027s Addiction',
-    releaseDate: '2015-02-17',
+    "title": "Blue Orchid",
+    "performer": "The White Stripes",
+    "releaseDate": "2014-10-14",
+    "expiration": 1728954000000,
+    "id": 368
   },
   {
-    title: 'Mountain Song',
-    performer: 'Jane\u0027s Addiction',
-    releaseDate: '2015-02-17',
+    "title": "Fell in Love With a Girl",
+    "performer": "The White Stripes",
+    "releaseDate": "2014-10-14",
+    "expiration": 1728954000000,
+    "id": 369
   },
   {
-    title: 'Been Caught Stealing',
-    performer: 'Jane\u0027s Addiction',
-    releaseDate: '2015-02-17',
+    "title": "Seven Nation Army",
+    "performer": "The White Stripes",
+    "releaseDate": "2014-10-14",
+    "expiration": 1728954000000,
+    "id": 370
   },
   {
-    title: 'Just Because',
-    performer: 'Jane\u0027s Addiction',
-    releaseDate: '2015-02-17',
+    "title": "The Hardest Button to Button",
+    "performer": "The White Stripes",
+    "releaseDate": "2014-10-14",
+    "expiration": 1728954000000,
+    "id": 371
   },
   {
-    title: 'SuperHero',
-    performer: 'Jane\u0027s Addiction',
-    releaseDate: '2015-02-17',
+    "title": "You Don't Know What Love Is (You Just Do as You're Told)",
+    "performer": "The White Stripes",
+    "releaseDate": "2014-10-14",
+    "expiration": 1728954000000,
+    "id": 372
   },
-  { title: 'Last Resort', performer: 'Papa Roach', releaseDate: '2015-02-24' },
   {
-    title: 'Scars',
-    performer: 'Papa Roach',
-    releaseDate: '2015-02-24',
+    "title": "Holy Diver",
+    "performer": "Dio",
+    "releaseDate": "2014-10-21",
+    "expiration": 1729558800000,
+    "id": 373
   },
   {
-    title: 'Getting Away With Murder',
-    performer: 'Papa Roach',
-    releaseDate: '2015-02-24',
+    "title": "Seventeen",
+    "performer": "Winger",
+    "releaseDate": "2014-10-21",
+    "expiration": 1729558800000,
+    "id": 374
   },
   {
-    title: 'Just What I Needed',
-    performer: 'The Cars',
-    releaseDate: '2015-03-03',
+    "title": "Turn Up the Radio",
+    "performer": "Autograph",
+    "releaseDate": "2014-10-21",
+    "expiration": 1729558800000,
+    "id": 375
   },
   {
-    title: 'Good Times Roll',
-    performer: 'The Cars',
-    releaseDate: '2015-03-03',
+    "title": "The Stroke",
+    "performer": "Billy Squier",
+    "releaseDate": "2014-10-21",
+    "expiration": 1729558800000,
+    "id": 376
   },
   {
-    title: 'Bye Bye Love',
-    performer: 'The Cars',
-    releaseDate: '2015-03-03',
+    "title": "Nothin' but a Good Time",
+    "performer": "Poison",
+    "releaseDate": "2014-10-21",
+    "expiration": 1729558800000,
+    "id": 377
   },
   {
-    title: 'You\u0027re All I\u0027ve Got Tonight',
-    performer: 'The Cars',
-    releaseDate: '2015-03-03',
+    "title": "Runaways",
+    "performer": "The Killers",
+    "releaseDate": "2014-10-28",
+    "expiration": 1730160000000,
+    "id": 378
   },
-  { title: 'Let\u0027s Go', performer: 'The Cars', releaseDate: '2015-03-03' },
   {
-    title: 'Hallelujah',
-    performer: 'Jeff Buckley',
-    releaseDate: '2015-03-10',
+    "title": "Spaceman",
+    "performer": "The Killers",
+    "releaseDate": "2014-10-28",
+    "expiration": 1730160000000,
+    "id": 379
   },
-  { title: 'Grace', performer: 'Jeff Buckley', releaseDate: '2015-03-10' },
   {
-    title: 'Last Goodbye',
-    performer: 'Jeff Buckley',
-    releaseDate: '2015-03-10',
+    "title": "Somebody Told Me",
+    "performer": "The Killers",
+    "releaseDate": "2014-10-28",
+    "expiration": 1730160000000,
+    "id": 380
   },
   {
-    title: 'Alternative Ulster',
-    performer: 'Stiff Little Fingers',
-    releaseDate: '2015-03-17',
+    "title": "When You Were Young",
+    "performer": "The Killers",
+    "releaseDate": "2014-10-28",
+    "expiration": 1730160000000,
+    "id": 381
   },
   {
-    title: 'Zombie',
-    performer: 'The Cranberries',
-    releaseDate: '2015-03-17',
+    "title": "Mr. Brightside",
+    "performer": "The Killers",
+    "releaseDate": "2014-10-28",
+    "expiration": 1730160000000,
+    "id": 382
   },
   {
-    title: 'Drunken Lullabies',
-    performer: 'Flogging Molly',
-    releaseDate: '2015-03-17',
+    "title": "The End of Heartache",
+    "performer": "Killswitch Engage",
+    "releaseDate": "2014-11-04",
+    "expiration": 1730764800000,
+    "id": 383
   },
   {
-    title: 'I\u0027m Shipping Up to Boston',
-    performer: 'Dropkick Murphys',
-    releaseDate: '2015-03-17',
+    "title": "Holy Diver (Dio cover)",
+    "performer": "Killswitch Engage",
+    "releaseDate": "2014-11-04",
+    "expiration": 1730764800000,
+    "id": 384
   },
   {
-    title: 'Becoming a Jackal',
-    performer: 'Villagers',
-    releaseDate: '2015-03-17',
+    "title": "My Curse",
+    "performer": "Killswitch Engage",
+    "releaseDate": "2014-11-04",
+    "expiration": 1730764800000,
+    "id": 385
   },
   {
-    title: 'Madhouse',
-    performer: 'Anthrax',
-    releaseDate: '2015-03-24',
+    "title": "American Girl",
+    "performer": "Tom Petty and the Heartbreakers",
+    "releaseDate": "2014-11-11",
+    "expiration": 1731369600000,
+    "id": 386
   },
   {
-    title: 'Caught in a Mosh',
-    performer: 'Anthrax',
-    releaseDate: '2015-03-24',
+    "title": "Learning to Fly",
+    "performer": "Tom Petty and the Heartbreakers",
+    "releaseDate": "2014-11-11",
+    "expiration": 1731369600000,
+    "id": 387
   },
   {
-    title: 'Indians',
-    performer: 'Anthrax',
-    releaseDate: '2015-03-24',
+    "title": "Refugee",
+    "performer": "Tom Petty and the Heartbreakers",
+    "releaseDate": "2014-11-11",
+    "expiration": 1731369600000,
+    "id": 388
   },
-  { title: 'Got the Time', performer: 'Anthrax', releaseDate: '2015-03-24' },
   {
-    title: 'Stonehenge',
-    performer: 'Spinal Tap',
-    releaseDate: '2015-03-31',
+    "title": "Free Fallin'",
+    "performer": "Tom Petty",
+    "releaseDate": "2014-11-11",
+    "expiration": 1731369600000,
+    "id": 389
   },
   {
-    title: 'Tonight I\u0027m Gonna Rock You Tonight',
-    performer: 'Spinal Tap',
-    releaseDate: '2015-03-31',
+    "title": "I Won't Back Down",
+    "performer": "Tom Petty",
+    "releaseDate": "2014-11-11",
+    "expiration": 1731369600000,
+    "id": 390
   },
-  { title: 'Sex Farm', performer: 'Spinal Tap', releaseDate: '2015-03-31' },
   {
-    title: 'Big Bottom',
-    performer: 'Spinal Tap',
-    releaseDate: '2015-03-31',
+    "title": "Learn to Fly",
+    "performer": "Foo Fighters",
+    "releaseDate": "2014-11-18",
+    "expiration": 1731974400000,
+    "id": 391
   },
   {
-    title: 'Gimme Some Money',
-    performer: 'Spinal Tap',
-    releaseDate: '2015-03-31',
+    "title": "Long Road to Ruin",
+    "performer": "Foo Fighters",
+    "releaseDate": "2014-11-18",
+    "expiration": 1731974400000,
+    "id": 392
   },
   {
-    title: 'Comedown',
-    performer: 'Bush',
-    releaseDate: '2015-04-07',
+    "title": "Monkey Wrench",
+    "performer": "Foo Fighters",
+    "releaseDate": "2014-11-18",
+    "expiration": 1731974400000,
+    "id": 393
   },
-  { title: 'Everything Zen', performer: 'Bush', releaseDate: '2015-04-07' },
   {
-    title: 'Glycerine',
-    performer: 'Bush',
-    releaseDate: '2015-04-07',
+    "title": "The Pretender",
+    "performer": "Foo Fighters",
+    "releaseDate": "2014-11-18",
+    "expiration": 1731974400000,
+    "id": 394
   },
-  { title: 'Swallowed', performer: 'Bush', releaseDate: '2015-04-07' },
   {
-    title: 'The Boys Are Back In Town',
-    performer: 'Thin Lizzy',
-    releaseDate: '2015-04-14',
+    "title": "Rope",
+    "performer": "Foo Fighters",
+    "releaseDate": "2014-11-18",
+    "expiration": 1731974400000,
+    "id": 395
   },
   {
-    title: 'Jailbreak',
-    performer: 'Thin Lizzy',
-    releaseDate: '2015-04-14',
+    "title": "Hand of Blood",
+    "performer": "Bullet for My Valentine",
+    "releaseDate": "2014-11-25",
+    "expiration": 1732579200000,
+    "id": 396
   },
   {
-    title: 'Dancing in the Moonlight (It\u0027s Caught Me in Its Spotlight)',
-    performer: 'Thin Lizzy',
-    releaseDate: '2015-04-14',
+    "title": "Hearts Burst into Fire",
+    "performer": "Bullet for My Valentine",
+    "releaseDate": "2014-11-25",
+    "expiration": 1732579200000,
+    "id": 397
   },
   {
-    title: 'Feel the Pain',
-    performer: 'Dinosaur Jr.',
-    releaseDate: '2015-04-21',
+    "title": "Tears Don't Fall",
+    "performer": "Bullet for My Valentine",
+    "releaseDate": "2014-11-25",
+    "expiration": 1732579200000,
+    "id": 398
   },
   {
-    title: 'My Own Worst Enemy',
-    performer: 'Lit',
-    releaseDate: '2015-04-21',
+    "title": "Your Betrayal",
+    "performer": "Bullet for My Valentine",
+    "releaseDate": "2014-11-25",
+    "expiration": 1732579200000,
+    "id": 399
   },
   {
-    title: 'Hemorrhage (In My Hands)',
-    performer: 'Fuel',
-    releaseDate: '2015-04-21',
+    "title": "Scream Aim Fire",
+    "performer": "Bullet for My Valentine",
+    "releaseDate": "2014-11-25",
+    "expiration": 1732579200000,
+    "id": 400
   },
   {
-    title: 'Ocean Avenue',
-    performer: 'Yellowcard',
-    releaseDate: '2015-04-21',
+    "title": "Blaze of Glory",
+    "performer": "Jon Bon Jovi",
+    "releaseDate": "2014-12-02",
+    "expiration": 1733184000000,
+    "id": 401
   },
   {
-    title: 'Through Glass',
-    performer: 'Stone Sour',
-    releaseDate: '2015-04-21',
+    "title": "It's My Life",
+    "performer": "Bon Jovi",
+    "releaseDate": "2014-12-02",
+    "expiration": 1733184000000,
+    "id": 402
   },
   {
-    title: 'Thunderhorse',
-    performer: 'Dethklok',
-    releaseDate: '2015-04-28',
+    "title": "Livin' on a Prayer",
+    "performer": "Bon Jovi",
+    "releaseDate": "2014-12-02",
+    "expiration": 1733184000000,
+    "id": 403
   },
-  { title: 'Awaken', performer: 'Dethklok', releaseDate: '2015-04-28' },
   {
-    title: 'Go into the Water',
-    performer: 'Dethklok',
-    releaseDate: '2015-04-28',
+    "title": "Wanted Dead or Alive",
+    "performer": "Bon Jovi",
+    "releaseDate": "2014-12-02",
+    "expiration": 1733184000000,
+    "id": 404
   },
-  { title: 'Spoonful', performer: 'Howlin’ Wolf', releaseDate: '2015-05-05' },
   {
-    title: 'Boom Boom',
-    performer: 'John Lee Hooker',
-    releaseDate: '2015-05-05',
+    "title": "You Give Love a Bad Name",
+    "performer": "Bon Jovi",
+    "releaseDate": "2014-12-02",
+    "expiration": 1733184000000,
+    "id": 405
   },
   {
-    title: 'Hide Away',
-    performer: 'Freddie King',
-    releaseDate: '2015-05-05',
+    "title": "Bombtrack",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 406
   },
   {
-    title: 'Ain’t No Love In The Heart Of The City',
-    performer: 'Bobby "Blue" Bland',
-    releaseDate: '2015-05-05',
+    "title": "Know Your Enemy",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 407
   },
   {
-    title: 'Be Careful with a Fool',
-    performer: 'Johnny Winter',
-    releaseDate: '2015-05-05',
+    "title": "Killing in the Name",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 408
   },
   {
-    title: 'Two Weeks',
-    performer: 'All That Remains',
-    releaseDate: '2015-05-12',
+    "title": "Wake Up",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 409
   },
   {
-    title: 'Six',
-    performer: 'All That Remains',
-    releaseDate: '2015-05-12',
+    "title": "Bulls on Parade",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 410
   },
   {
-    title: 'This Calling',
-    performer: 'All That Remains',
-    releaseDate: '2015-05-12',
+    "title": "Down Rodeo",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 411
   },
-  { title: 'Angel of Death', performer: 'Slayer', releaseDate: '2015-05-19' },
   {
-    title: 'Dead Skin Mask',
-    performer: 'Slayer',
-    releaseDate: '2015-05-19',
+    "title": "Renegades of Funk",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2014-12-09",
+    "expiration": 1733788800000,
+    "id": 412
   },
-  { title: 'Raining Blood', performer: 'Slayer', releaseDate: '2015-05-19' },
   {
-    title: 'Seasons in the Abyss',
-    performer: 'Slayer',
-    releaseDate: '2015-05-19',
+    "title": "Bold as Love",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 413
   },
-  { title: 'South of Heaven', performer: 'Slayer', releaseDate: '2015-05-19' },
   {
-    title: 'Lovely Day',
-    performer: 'Bill Withers',
-    releaseDate: '2015-05-26',
+    "title": "Castles Made of Sand",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 414
   },
   {
-    title: 'Friday I\u0027m in Love',
-    performer: 'Cure The Cure',
-    releaseDate: '2015-05-26',
+    "title": "Fire",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 415
   },
   {
-    title: 'For the Love of God',
-    performer: 'Steve Vai',
-    releaseDate: '2015-05-26',
+    "title": "Foxy Lady",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 416
   },
   {
-    title: '3\u0027s and 7\u0027s',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2015-06-02',
+    "title": "If 6 Was 9",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 417
   },
   {
-    title: 'I Appear Missing',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2015-06-02',
+    "title": "Little Wing",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 418
   },
   {
-    title: 'Little Sister',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2015-06-02',
+    "title": "Manic Depression",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 419
   },
   {
-    title: 'Make It wit Chu',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2015-06-02',
+    "title": "Purple Haze",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 420
   },
   {
-    title: 'No One Knows',
-    performer: 'Queens of the Stone Age',
-    releaseDate: '2015-06-02',
+    "title": "The Wind Cries Mary",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 421
   },
   {
-    title: 'Rock This Town',
-    performer: 'Brian Setzer',
-    releaseDate: '2015-06-09',
+    "title": "Red House",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 422
   },
   {
-    title: 'Blue Suede Shoes',
-    performer: 'Carl Perkins',
-    releaseDate: '2015-06-09',
+    "title": "Freedom",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 423
   },
   {
-    title: 'Be-Bop-A-Lula',
-    performer: 'Gene Vincent and His Blue Caps',
-    releaseDate: '2015-06-09',
+    "title": "Voodoo Child (Slight Return)",
+    "performer": "The Jimi Hendrix Experience",
+    "releaseDate": "2014-12-16",
+    "expiration": 1734393600000,
+    "id": 424
   },
   {
-    title: 'Hello Mary Lou (Goodbye Heart)',
-    performer: 'Ricky Nelson',
-    releaseDate: '2015-06-09',
+    "title": "Bleed It Out",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 425
   },
   {
-    title: 'Crazy Little Thing Called Love',
-    performer: 'Queen',
-    releaseDate: '2015-06-09',
+    "title": "Guilty All the Same",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 426
   },
   {
-    title: 'Balls to the Wall',
-    performer: 'Accept',
-    releaseDate: '2015-06-16',
+    "title": "In The End",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 427
   },
   {
-    title: 'Frankenstein',
-    performer: 'Edgar Winter Group',
-    releaseDate: '2015-06-16',
+    "title": "Numb",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 428
   },
-  { title: 'All Right Now', performer: 'Free', releaseDate: '2015-06-16' },
   {
-    title: 'Modern Day Cowboy',
-    performer: 'Tesla',
-    releaseDate: '2015-06-16',
+    "title": "One Step Closer",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 429
   },
   {
-    title: 'Jerry Was a Race Car Driver',
-    performer: 'Primus',
-    releaseDate: '2015-06-23',
+    "title": "What I've Done",
+    "performer": "Linkin Park",
+    "releaseDate": "2015-01-06",
+    "expiration": 1736208000000,
+    "id": 430
   },
-  { title: 'South Park Theme', performer: 'Primus', releaseDate: '2015-06-23' },
   {
-    title: 'Tommy the Cat',
-    performer: 'Primus',
-    releaseDate: '2015-06-23',
+    "title": "Black Hole Sun",
+    "performer": "Soundgarden",
+    "releaseDate": "2015-01-13",
+    "expiration": 1736812800000,
+    "id": 431
   },
   {
-    title: 'Wynona\u0027s Big Brown Beaver',
-    performer: 'Primus',
-    releaseDate: '2015-06-23',
+    "title": "Fell on Black Days",
+    "performer": "Soundgarden",
+    "releaseDate": "2015-01-13",
+    "expiration": 1736812800000,
+    "id": 432
   },
   {
-    title: 'I\u0027m So Lonesome I Could Cry',
-    performer: 'Hank Williams',
-    releaseDate: '2015-06-30',
+    "title": "Jesus Christ Pose",
+    "performer": "Soundgarden",
+    "releaseDate": "2015-01-13",
+    "expiration": 1736812800000,
+    "id": 433
   },
   {
-    title: 'King of the Road',
-    performer: 'Roger Miller',
-    releaseDate: '2015-06-30',
+    "title": "Pretty Noose",
+    "performer": "Soundgarden",
+    "releaseDate": "2015-01-13",
+    "expiration": 1736812800000,
+    "id": 434
   },
   {
-    title: 'On the Road Again',
-    performer: 'Willie Nelson',
-    releaseDate: '2015-06-30',
+    "title": "Spoonman",
+    "performer": "Soundgarden",
+    "releaseDate": "2015-01-13",
+    "expiration": 1736812800000,
+    "id": 435
   },
   {
-    title: 'A Warrior\u0027s Call',
-    performer: 'Volbeat',
-    releaseDate: '2015-07-07',
+    "title": "Rainbow in the Dark",
+    "performer": "Dio",
+    "releaseDate": "2015-01-20",
+    "expiration": 1737417600000,
+    "id": 436
   },
   {
-    title: 'Fallen',
-    performer: 'Volbeat',
-    releaseDate: '2015-07-07',
+    "title": "Ace of Spades",
+    "performer": "Motörhead",
+    "releaseDate": "2015-01-20",
+    "expiration": 1737417600000,
+    "id": 437
   },
-  { title: 'Heaven Nor Hell', performer: 'Volbeat', releaseDate: '2015-07-07' },
   {
-    title: 'Lola Montez',
-    performer: 'Volbeat',
-    releaseDate: '2015-07-07',
+    "title": "Rock and Roll, Hoochie Koo",
+    "performer": "Rick Derringer",
+    "releaseDate": "2015-01-20",
+    "expiration": 1737417600000,
+    "id": 438
   },
-  { title: 'Still Counting', performer: 'Volbeat', releaseDate: '2015-07-07' },
   {
-    title: 'Call Me the Breeze',
-    performer: 'Lynyrd Skynyrd',
-    releaseDate: '2015-07-14',
+    "title": "Renegade",
+    "performer": "Styx",
+    "releaseDate": "2015-01-20",
+    "expiration": 1737417600000,
+    "id": 439
   },
   {
-    title: 'Gimme Three Steps',
-    performer: 'Lynyrd Skynyrd',
-    releaseDate: '2015-07-14',
+    "title": "Cherry Pie",
+    "performer": "Warrant",
+    "releaseDate": "2015-01-20",
+    "expiration": 1737417600000,
+    "id": 440
   },
   {
-    title: 'Tuesday\u0027s Gone',
-    performer: 'Lynyrd Skynyrd',
-    releaseDate: '2015-07-14',
+    "title": "Animal I Have Become",
+    "performer": "Three Days Grace",
+    "releaseDate": "2015-01-27",
+    "expiration": 1738022400000,
+    "id": 441
   },
   {
-    title: 'Another One Bites the Dust',
-    performer: 'Queen',
-    releaseDate: '2015-07-21',
+    "title": "Break",
+    "performer": "Three Days Grace",
+    "releaseDate": "2015-01-27",
+    "expiration": 1738022400000,
+    "id": 442
   },
   {
-    title: 'Silent Lucidity',
-    performer: 'Queensrÿche',
-    releaseDate: '2015-07-21',
+    "title": "Just Like You",
+    "performer": "Three Days Grace",
+    "releaseDate": "2015-01-27",
+    "expiration": 1738022400000,
+    "id": 443
   },
   {
-    title: 'Sir Duke',
-    performer: 'Stevie Wonder',
-    releaseDate: '2015-07-21',
+    "title": "Never Too Late",
+    "performer": "Three Days Grace",
+    "releaseDate": "2015-01-27",
+    "expiration": 1738022400000,
+    "id": 444
   },
   {
-    title: 'Rock \u0026 Roll Queen',
-    performer: 'The Subways',
-    releaseDate: '2015-07-21',
+    "title": "Riot",
+    "performer": "Three Days Grace",
+    "releaseDate": "2015-01-27",
+    "expiration": 1738022400000,
+    "id": 445
   },
-  { title: 'Possum Kingdom', performer: 'Toadies', releaseDate: '2015-07-21' },
   {
-    title: 'Digging the Grave',
-    performer: 'Faith No More',
-    releaseDate: '2015-07-28',
+    "title": "Amanda",
+    "performer": "Boston",
+    "releaseDate": "2015-02-03",
+    "expiration": 1738627200000,
+    "id": 446
   },
-  { title: 'Epic', performer: 'Faith No More', releaseDate: '2015-07-28' },
   {
-    title: 'Falling to Pieces',
-    performer: 'Faith No More',
-    releaseDate: '2015-07-28',
+    "title": "Every Rose Has Its Thorn",
+    "performer": "Poison",
+    "releaseDate": "2015-02-03",
+    "expiration": 1738627200000,
+    "id": 447
   },
   {
-    title: 'From Out of Nowhere',
-    performer: 'Faith No More',
-    releaseDate: '2015-07-28',
+    "title": "More Than Words",
+    "performer": "Extreme",
+    "releaseDate": "2015-02-03",
+    "expiration": 1738627200000,
+    "id": 448
   },
   {
-    title: 'Midlife Crisis',
-    performer: 'Faith No More',
-    releaseDate: '2015-07-28',
+    "title": "Don't Know What You Got (Till It's Gone)",
+    "performer": "Cinderella",
+    "releaseDate": "2015-02-03",
+    "expiration": 1738627200000,
+    "id": 449
   },
   {
-    title: 'Rock around the Clock',
-    performer: 'Bill Haley \u0026 His Comets',
-    releaseDate: '2015-08-04',
+    "title": "Love Song",
+    "performer": "Tesla",
+    "releaseDate": "2015-02-03",
+    "expiration": 1738627200000,
+    "id": 450
   },
-  { title: 'Tequila', performer: 'The Champs', releaseDate: '2015-08-04' },
   {
-    title: 'La Bamba',
-    performer: 'Ritchie Valens',
-    releaseDate: '2015-08-04',
+    "title": "Remedy",
+    "performer": "Seether",
+    "releaseDate": "2015-02-10",
+    "expiration": 1739232000000,
+    "id": 451
   },
   {
-    title: 'Bad Luck',
-    performer: 'Social Distortion',
-    releaseDate: '2015-08-11',
+    "title": "Fake It",
+    "performer": "Seether",
+    "releaseDate": "2015-02-10",
+    "expiration": 1739232000000,
+    "id": 452
   },
   {
-    title: 'Ball and Chain',
-    performer: 'Social Distortion',
-    releaseDate: '2015-08-11',
+    "title": "Broken",
+    "performer": "Seether feat. Amy Lee",
+    "releaseDate": "2015-02-10",
+    "expiration": 1739232000000,
+    "id": 453
   },
   {
-    title: 'Reach for the Sky',
-    performer: 'Social Distortion',
-    releaseDate: '2015-08-11',
+    "title": "Jane Says",
+    "performer": "Jane's Addiction",
+    "releaseDate": "2015-02-17",
+    "expiration": 1739836800000,
+    "id": 454
   },
   {
-    title: 'Story of My Life',
-    performer: 'Social Distortion',
-    releaseDate: '2015-08-11',
+    "title": "Mountain Song",
+    "performer": "Jane's Addiction",
+    "releaseDate": "2015-02-17",
+    "expiration": 1739836800000,
+    "id": 455
   },
   {
-    title: 'Rock of Ages',
-    performer: 'Def Leppard',
-    releaseDate: '2015-08-18',
+    "title": "Been Caught Stealing",
+    "performer": "Jane's Addiction",
+    "releaseDate": "2015-02-17",
+    "expiration": 1739836800000,
+    "id": 456
   },
   {
-    title: 'Go Your Own Way',
-    performer: 'Fleetwood Mac',
-    releaseDate: '2015-08-18',
+    "title": "Just Because",
+    "performer": "Jane's Addiction",
+    "releaseDate": "2015-02-17",
+    "expiration": 1739836800000,
+    "id": 457
   },
   {
-    title: 'Are You Gonna Be My Girl',
-    performer: 'Jet',
-    releaseDate: '2015-08-18',
+    "title": "SuperHero",
+    "performer": "Jane's Addiction",
+    "releaseDate": "2015-02-17",
+    "expiration": 1739836800000,
+    "id": 458
   },
-  { title: 'Dust in the Wind', performer: 'Kansas', releaseDate: '2015-08-18' },
   {
-    title: 'Love Spreads',
-    performer: 'The Stone Roses',
-    releaseDate: '2015-08-25',
+    "title": "Last Resort",
+    "performer": "Papa Roach",
+    "releaseDate": "2015-02-24",
+    "expiration": 1740441600000,
+    "id": 459
   },
   {
-    title: 'She Bangs the Drums',
-    performer: 'The Stone Roses',
-    releaseDate: '2015-08-25',
+    "title": "Scars",
+    "performer": "Papa Roach",
+    "releaseDate": "2015-02-24",
+    "expiration": 1740441600000,
+    "id": 460
   },
   {
-    title: 'I Wanna Be Adored',
-    performer: 'The Stone Roses',
-    releaseDate: '2015-08-25',
+    "title": "Getting Away With Murder",
+    "performer": "Papa Roach",
+    "releaseDate": "2015-02-24",
+    "expiration": 1740441600000,
+    "id": 461
   },
   {
-    title: 'Sing a Song',
-    performer: 'Earth, Wind \u0026 Fire',
-    releaseDate: '2015-09-01',
+    "title": "Just What I Needed",
+    "performer": "The Cars",
+    "releaseDate": "2015-03-03",
+    "expiration": 1741046400000,
+    "id": 462
   },
   {
-    title: 'Shining Star',
-    performer: 'Earth, Wind \u0026 Fire',
-    releaseDate: '2015-09-01',
+    "title": "Good Times Roll",
+    "performer": "The Cars",
+    "releaseDate": "2015-03-03",
+    "expiration": 1741046400000,
+    "id": 463
   },
   {
-    title: 'September',
-    performer: 'Earth, Wind \u0026 Fire',
-    releaseDate: '2015-09-01',
+    "title": "Bye Bye Love",
+    "performer": "The Cars",
+    "releaseDate": "2015-03-03",
+    "expiration": 1741046400000,
+    "id": 464
   },
   {
-    title: 'Dirty Little Secret',
-    performer: 'All-American RejectsThe All-American Rejects',
-    releaseDate: '2015-09-08',
+    "title": "You're All I've Got Tonight",
+    "performer": "The Cars",
+    "releaseDate": "2015-03-03",
+    "expiration": 1741046400000,
+    "id": 465
   },
   {
-    title: 'Gives You Hell',
-    performer: 'All-American RejectsThe All-American Rejects',
-    releaseDate: '2015-09-08',
+    "title": "Let's Go",
+    "performer": "The Cars",
+    "releaseDate": "2015-03-03",
+    "expiration": 1741046400000,
+    "id": 466
   },
   {
-    title: 'Move Along',
-    performer: 'All-American RejectsThe All-American Rejects',
-    releaseDate: '2015-09-08',
+    "title": "Hallelujah",
+    "performer": "Jeff Buckley",
+    "releaseDate": "2015-03-10",
+    "expiration": 1741651200000,
+    "id": 467
   },
   {
-    title: 'Break On Through (To the Other Side)',
-    performer: 'The Doors',
-    releaseDate: '2015-09-15',
+    "title": "Grace",
+    "performer": "Jeff Buckley",
+    "releaseDate": "2015-03-10",
+    "expiration": 1741651200000,
+    "id": 468
   },
   {
-    title: 'L.A. Woman',
-    performer: 'The Doors',
-    releaseDate: '2015-09-15',
+    "title": "Last Goodbye",
+    "performer": "Jeff Buckley",
+    "releaseDate": "2015-03-10",
+    "expiration": 1741651200000,
+    "id": 469
   },
   {
-    title: 'People Are Strange',
-    performer: 'The Doors',
-    releaseDate: '2015-09-15',
+    "title": "Alternative Ulster",
+    "performer": "Stiff Little Fingers",
+    "releaseDate": "2015-03-17",
+    "expiration": 1742256000000,
+    "id": 470
   },
   {
-    title: 'Blow Me Away',
-    performer: 'Breaking BenjaminBreaking Benjamin',
-    releaseDate: '2015-09-22',
+    "title": "Zombie",
+    "performer": "The Cranberries",
+    "releaseDate": "2015-03-17",
+    "expiration": 1742256000000,
+    "id": 471
   },
   {
-    title: 'Polyamorous',
-    performer: 'Breaking BenjaminBreaking Benjamin',
-    releaseDate: '2015-09-22',
+    "title": "Drunken Lullabies",
+    "performer": "Flogging Molly",
+    "releaseDate": "2015-03-17",
+    "expiration": 1742256000000,
+    "id": 472
   },
   {
-    title: 'So Cold',
-    performer: 'Breaking BenjaminBreaking Benjamin',
-    releaseDate: '2015-09-22',
+    "title": "I'm Shipping Up to Boston",
+    "performer": "Dropkick Murphys",
+    "releaseDate": "2015-03-17",
+    "expiration": 1742256000000,
+    "id": 473
   },
   {
-    title: 'Okay I Believe You, But My Tommy Gun Don\u0027t',
-    performer: 'Brand New',
-    releaseDate: '2015-09-29',
+    "title": "Becoming a Jackal",
+    "performer": "Villagers",
+    "releaseDate": "2015-03-17",
+    "expiration": 1742256000000,
+    "id": 474
   },
   {
-    title: 'The Quiet Things That No One Ever Knows',
-    performer: 'Brand New',
-    releaseDate: '2015-09-29',
+    "title": "Madhouse",
+    "performer": "Anthrax",
+    "releaseDate": "2015-03-24",
+    "expiration": 1742860800000,
+    "id": 475
   },
   {
-    title: 'Sic Transit Gloria... Glory Fades',
-    performer: 'Brand New',
-    releaseDate: '2015-09-29',
+    "title": "Caught in a Mosh",
+    "performer": "Anthrax",
+    "releaseDate": "2015-03-24",
+    "expiration": 1742860800000,
+    "id": 476
   },
-  { title: 'Sloe Gin', performer: 'Joe Bonamassa', releaseDate: '2015-10-06' },
   {
-    title: 'Blue on Black',
-    performer: 'Kenny Wayne Shepherd',
-    releaseDate: '2015-10-06',
+    "title": "Indians",
+    "performer": "Anthrax",
+    "releaseDate": "2015-03-24",
+    "expiration": 1742860800000,
+    "id": 477
   },
   {
-    title: 'Out Of My Mind',
-    performer: 'Philip Sayce',
-    releaseDate: '2015-10-06',
+    "title": "Got the Time",
+    "performer": "Anthrax",
+    "releaseDate": "2015-03-24",
+    "expiration": 1742860800000,
+    "id": 478
   },
   {
-    title: 'Strutter',
-    performer: 'Kiss',
-    releaseDate: '2015-10-13',
+    "title": "Stonehenge",
+    "performer": "Spinal Tap",
+    "releaseDate": "2015-03-31",
+    "expiration": 1743465600000,
+    "id": 479
   },
-  { title: 'Love Gun', performer: 'Kiss', releaseDate: '2015-10-13' },
   {
-    title: 'God of Thunder',
-    performer: 'Kiss',
-    releaseDate: '2015-10-13',
+    "title": "Tonight I'm Gonna Rock You Tonight",
+    "performer": "Spinal Tap",
+    "releaseDate": "2015-03-31",
+    "expiration": 1743465600000,
+    "id": 480
   },
   {
-    title: 'Dear Maria, Count Me In',
-    performer: 'All Time Low',
-    releaseDate: '2015-10-20',
+    "title": "Sex Farm",
+    "performer": "Spinal Tap",
+    "releaseDate": "2015-03-31",
+    "expiration": 1743465600000,
+    "id": 481
   },
   {
-    title: 'Somewhere in Neverland',
-    performer: 'All Time Low',
-    releaseDate: '2015-10-20',
+    "title": "Big Bottom",
+    "performer": "Spinal Tap",
+    "releaseDate": "2015-03-31",
+    "expiration": 1743465600000,
+    "id": 482
   },
   {
-    title: 'Weightless',
-    performer: 'All Time Low',
-    releaseDate: '2015-10-20',
+    "title": "Gimme Some Money",
+    "performer": "Spinal Tap",
+    "releaseDate": "2015-03-31",
+    "expiration": 1743465600000,
+    "id": 483
   },
   {
-    title: 'Devil on My Shoulder',
-    performer: 'Billy Talent',
-    releaseDate: '2015-10-27',
+    "title": "Comedown",
+    "performer": "Bush",
+    "releaseDate": "2015-04-07",
+    "expiration": 1744074000000,
+    "id": 484
   },
-  { title: 'Hocus Pocus', performer: 'Focus', releaseDate: '2015-10-27' },
   {
-    title: 'Killed by Death',
-    performer: 'Motörhead',
-    releaseDate: '2015-10-27',
+    "title": "Everything Zen",
+    "performer": "Bush",
+    "releaseDate": "2015-04-07",
+    "expiration": 1744074000000,
+    "id": 485
   },
   {
-    title: 'Dead Man\u0027s Party',
-    performer: 'Oingo Boingo',
-    releaseDate: '2015-10-27',
+    "title": "Glycerine",
+    "performer": "Bush",
+    "releaseDate": "2015-04-07",
+    "expiration": 1744074000000,
+    "id": 486
   },
   {
-    title: 'Ziggy Stardust',
-    performer: 'David Bowie',
-    releaseDate: '2015-11-03',
+    "title": "Swallowed",
+    "performer": "Bush",
+    "releaseDate": "2015-04-07",
+    "expiration": 1744074000000,
+    "id": 487
   },
   {
-    title: 'Hysteria',
-    performer: 'Def Leppard',
-    releaseDate: '2015-11-03',
+    "title": "The Boys Are Back In Town",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2015-04-14",
+    "expiration": 1744678800000,
+    "id": 488
   },
-  { title: 'Slow Ride', performer: 'Foghat', releaseDate: '2015-11-03' },
   {
-    title: 'Joker and the Thief',
-    performer: 'Wolfmother',
-    releaseDate: '2015-11-03',
+    "title": "Jailbreak",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2015-04-14",
+    "expiration": 1744678800000,
+    "id": 489
   },
-  { title: 'Fall Back Down', performer: 'Rancid', releaseDate: '2015-11-10' },
   {
-    title: 'Maxwell Murder',
-    performer: 'Rancid',
-    releaseDate: '2015-11-10',
+    "title": "Dancing in the Moonlight (It's Caught Me in Its Spotlight)",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2015-04-14",
+    "expiration": 1744678800000,
+    "id": 490
   },
-  { title: 'Ruby Soho', performer: 'Rancid', releaseDate: '2015-11-10' },
   {
-    title: 'Time Bomb',
-    performer: 'Rancid',
-    releaseDate: '2015-11-10',
+    "title": "Feel the Pain",
+    "performer": "Dinosaur Jr.",
+    "releaseDate": "2015-04-21",
+    "expiration": 1745283600000,
+    "id": 491
   },
   {
-    title: 'Ode to Joy',
-    performer: 'Ludwig van Beethoven',
-    releaseDate: '2015-11-17',
+    "title": "My Own Worst Enemy",
+    "performer": "Lit",
+    "releaseDate": "2015-04-21",
+    "expiration": 1745283600000,
+    "id": 492
   },
   {
-    title: 'Funeral March',
-    performer: 'Frédéric Chopin',
-    releaseDate: '2015-11-17',
+    "title": "Hemorrhage (In My Hands)",
+    "performer": "Fuel",
+    "releaseDate": "2015-04-21",
+    "expiration": 1745283600000,
+    "id": 493
   },
   {
-    title: 'The Can-Can',
-    performer: 'Jacques Offenbach',
-    releaseDate: '2015-11-17',
+    "title": "Ocean Avenue",
+    "performer": "Yellowcard",
+    "releaseDate": "2015-04-21",
+    "expiration": 1745283600000,
+    "id": 494
   },
   {
-    title: 'Notecracker Medley',
-    performer: 'Pyotr Ilyich Tchaikovsky',
-    releaseDate: '2015-11-17',
+    "title": "Through Glass",
+    "performer": "Stone Sour",
+    "releaseDate": "2015-04-21",
+    "expiration": 1745283600000,
+    "id": 495
   },
   {
-    title: 'Symphony No. 40',
-    performer: 'Wolfgang Amadeus Mozart',
-    releaseDate: '2015-11-17',
+    "title": "Thunderhorse",
+    "performer": "Dethklok",
+    "releaseDate": "2015-04-28",
+    "expiration": 1745888400000,
+    "id": 496
   },
   {
-    title: 'Howlin\u0027 for You',
-    performer: 'The Black Keys',
-    releaseDate: '2015-11-24',
+    "title": "Awaken",
+    "performer": "Dethklok",
+    "releaseDate": "2015-04-28",
+    "expiration": 1745888400000,
+    "id": 497
   },
   {
-    title: 'Little Black Submarines',
-    performer: 'The Black Keys',
-    releaseDate: '2015-11-24',
+    "title": "Go into the Water",
+    "performer": "Dethklok",
+    "releaseDate": "2015-04-28",
+    "expiration": 1745888400000,
+    "id": 498
   },
   {
-    title: 'Lonely Boy',
-    performer: 'The Black Keys',
-    releaseDate: '2015-11-24',
+    "title": "Spoonful",
+    "performer": "Howlin’ Wolf",
+    "releaseDate": "2015-05-05",
+    "expiration": 1746493200000,
+    "id": 499
   },
   {
-    title: 'thickfreakness',
-    performer: 'The Black Keys',
-    releaseDate: '2015-11-24',
+    "title": "Boom Boom",
+    "performer": "John Lee Hooker",
+    "releaseDate": "2015-05-05",
+    "expiration": 1746493200000,
+    "id": 500
   },
   {
-    title: 'Your Touch',
-    performer: 'The Black Keys',
-    releaseDate: '2015-11-24',
+    "title": "Hide Away",
+    "performer": "Freddie King",
+    "releaseDate": "2015-05-05",
+    "expiration": 1746493200000,
+    "id": 501
   },
-  { title: 'Awake And Alive', performer: 'Skillet', releaseDate: '2015-12-01' },
   {
-    title: 'Hero',
-    performer: 'Skillet',
-    releaseDate: '2015-12-01',
+    "title": "Ain’t No Love In The Heart Of The City",
+    "performer": "Bobby \"Blue\" Bland",
+    "releaseDate": "2015-05-05",
+    "expiration": 1746493200000,
+    "id": 502
   },
-  { title: 'Monster', performer: 'Skillet', releaseDate: '2015-12-01' },
   {
-    title: 'Joy to the World',
-    performer: 'Band of Merrymakers',
-    releaseDate: '2015-12-01',
+    "title": "Be Careful with a Fool",
+    "performer": "Johnny Winter",
+    "releaseDate": "2015-05-05",
+    "expiration": 1746493200000,
+    "id": 503
   },
   {
-    title: 'Must Be Christmas',
-    performer: 'Band of Merrymakers',
-    releaseDate: '2015-12-01',
+    "title": "Two Weeks",
+    "performer": "All That Remains",
+    "releaseDate": "2015-05-12",
+    "expiration": 1747098000000,
+    "id": 504
   },
   {
-    title: 'Master Exploder',
-    performer: 'Tenacious D',
-    releaseDate: '2015-12-08',
+    "title": "Six",
+    "performer": "All That Remains",
+    "releaseDate": "2015-05-12",
+    "expiration": 1747098000000,
+    "id": 505
   },
   {
-    title: 'The Metal',
-    performer: 'Tenacious D',
-    releaseDate: '2015-12-08',
+    "title": "This Calling",
+    "performer": "All That Remains",
+    "releaseDate": "2015-05-12",
+    "expiration": 1747098000000,
+    "id": 506
   },
-  { title: 'Tribute', performer: 'Tenacious D', releaseDate: '2015-12-08' },
   {
-    title: 'Dr. Feelgood',
-    performer: 'Mötley Crüe',
-    releaseDate: '2015-12-15',
+    "title": "Angel of Death",
+    "performer": "Slayer",
+    "releaseDate": "2015-05-19",
+    "expiration": 1747702800000,
+    "id": 507
   },
   {
-    title: 'Home Sweet Home',
-    performer: 'Mötley Crüe',
-    releaseDate: '2015-12-15',
+    "title": "Dead Skin Mask",
+    "performer": "Slayer",
+    "releaseDate": "2015-05-19",
+    "expiration": 1747702800000,
+    "id": 508
   },
   {
-    title: 'Kickstart My Heart',
-    performer: 'Mötley Crüe',
-    releaseDate: '2015-12-15',
+    "title": "Raining Blood",
+    "performer": "Slayer",
+    "releaseDate": "2015-05-19",
+    "expiration": 1747702800000,
+    "id": 509
   },
   {
-    title: 'Girls Girls Girls',
-    performer: 'Mötley Crüe',
-    releaseDate: '2015-12-15',
+    "title": "Seasons in the Abyss",
+    "performer": "Slayer",
+    "releaseDate": "2015-05-19",
+    "expiration": 1747702800000,
+    "id": 510
   },
   {
-    title: 'Shout At The Devil',
-    performer: 'Mötley Crüe',
-    releaseDate: '2015-12-15',
+    "title": "South of Heaven",
+    "performer": "Slayer",
+    "releaseDate": "2015-05-19",
+    "expiration": 1747702800000,
+    "id": 511
   },
   {
-    title: 'Big Empty',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "Lovely Day",
+    "performer": "Bill Withers",
+    "releaseDate": "2015-05-26",
+    "expiration": 1748307600000,
+    "id": 512
   },
   {
-    title: 'Creep',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "Friday I'm in Love",
+    "performer": "Cure The Cure",
+    "releaseDate": "2015-05-26",
+    "expiration": 1748307600000,
+    "id": 513
   },
   {
-    title: 'Interstate Love Song',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "For the Love of God",
+    "performer": "Steve Vai",
+    "releaseDate": "2015-05-26",
+    "expiration": 1748307600000,
+    "id": 514
   },
   {
-    title: 'Plush',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "3's and 7's",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2015-06-02",
+    "expiration": 1748912400000,
+    "id": 515
   },
   {
-    title: 'Sex Type Thing',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "I Appear Missing",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2015-06-02",
+    "expiration": 1748912400000,
+    "id": 516
   },
   {
-    title: 'Wicked Garden',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2015-12-22',
+    "title": "Little Sister",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2015-06-02",
+    "expiration": 1748912400000,
+    "id": 517
   },
-  { title: 'Heat Of The Moment', performer: 'Asia', releaseDate: '2016-01-05' },
   {
-    title: 'Closing Time',
-    performer: 'Semisonic',
-    releaseDate: '2016-01-05',
+    "title": "Make It wit Chu",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2015-06-02",
+    "expiration": 1748912400000,
+    "id": 518
   },
   {
-    title: 'Play That Funky Music',
-    performer: 'Wild Cherry',
-    releaseDate: '2016-01-05',
+    "title": "No One Knows",
+    "performer": "Queens of the Stone Age",
+    "releaseDate": "2015-06-02",
+    "expiration": 1748912400000,
+    "id": 519
   },
   {
-    title: 'Woman',
-    performer: 'Wolfmother',
-    releaseDate: '2016-01-05',
+    "title": "Rock This Town",
+    "performer": "Brian Setzer",
+    "releaseDate": "2015-06-09",
+    "expiration": 1749517200000,
+    "id": 520
   },
   {
-    title: 'Closer to the Edge',
-    performer: 'Thirty Seconds to Mars',
-    releaseDate: '2016-01-12',
+    "title": "Blue Suede Shoes",
+    "performer": "Carl Perkins",
+    "releaseDate": "2015-06-09",
+    "expiration": 1749517200000,
+    "id": 521
   },
   {
-    title: 'From Yesterday',
-    performer: 'Thirty Seconds to Mars',
-    releaseDate: '2016-01-12',
+    "title": "Be-Bop-A-Lula",
+    "performer": "Gene Vincent and His Blue Caps",
+    "releaseDate": "2015-06-09",
+    "expiration": 1749517200000,
+    "id": 522
   },
   {
-    title: 'The Kill',
-    performer: 'Thirty Seconds to Mars',
-    releaseDate: '2016-01-12',
+    "title": "Hello Mary Lou (Goodbye Heart)",
+    "performer": "Ricky Nelson",
+    "releaseDate": "2015-06-09",
+    "expiration": 1749517200000,
+    "id": 523
   },
   {
-    title: 'Kings and Queens',
-    performer: 'Thirty Seconds to Mars',
-    releaseDate: '2016-01-12',
+    "title": "Crazy Little Thing Called Love",
+    "performer": "Queen",
+    "releaseDate": "2015-06-09",
+    "expiration": 1749517200000,
+    "id": 524
   },
   {
-    title: 'This is War',
-    performer: 'Thirty Seconds to Mars',
-    releaseDate: '2016-01-12',
+    "title": "Balls to the Wall",
+    "performer": "Accept",
+    "releaseDate": "2015-06-16",
+    "expiration": 1750122000000,
+    "id": 525
   },
   {
-    title: 'A Tout Le Monde',
-    performer: 'Megadeth',
-    releaseDate: '2016-01-19',
+    "title": "Frankenstein",
+    "performer": "Edgar Winter Group",
+    "releaseDate": "2015-06-16",
+    "expiration": 1750122000000,
+    "id": 526
   },
   {
-    title: 'Holy Wars… The Punishment Due',
-    performer: 'Megadeth',
-    releaseDate: '2016-01-19',
+    "title": "All Right Now",
+    "performer": "Free",
+    "releaseDate": "2015-06-16",
+    "expiration": 1750122000000,
+    "id": 527
   },
-  { title: 'Peace Sells', performer: 'Megadeth', releaseDate: '2016-01-19' },
   {
-    title: 'Tornado Of Souls',
-    performer: 'Megadeth',
-    releaseDate: '2016-01-19',
+    "title": "Modern Day Cowboy",
+    "performer": "Tesla",
+    "releaseDate": "2015-06-16",
+    "expiration": 1750122000000,
+    "id": 528
   },
-  { title: 'Trust', performer: 'Megadeth', releaseDate: '2016-01-19' },
   {
-    title: 'Caught Up In You',
-    performer: '38 Special',
-    releaseDate: '2016-01-26',
+    "title": "Jerry Was a Race Car Driver",
+    "performer": "Primus",
+    "releaseDate": "2015-06-23",
+    "expiration": 1750726800000,
+    "id": 529
   },
   {
-    title: 'Hold On Loosely',
-    performer: '38 Special',
-    releaseDate: '2016-01-26',
+    "title": "South Park Theme",
+    "performer": "Primus",
+    "releaseDate": "2015-06-23",
+    "expiration": 1750726800000,
+    "id": 530
   },
   {
-    title: 'Rockin’ Into The Night',
-    performer: '38 Special',
-    releaseDate: '2016-01-26',
+    "title": "Tommy the Cat",
+    "performer": "Primus",
+    "releaseDate": "2015-06-23",
+    "expiration": 1750726800000,
+    "id": 531
   },
   {
-    title: 'All I Want',
-    performer: 'The Offspring',
-    releaseDate: '2016-02-02',
+    "title": "Wynona's Big Brown Beaver",
+    "performer": "Primus",
+    "releaseDate": "2015-06-23",
+    "expiration": 1750726800000,
+    "id": 532
   },
   {
-    title: 'Pretty Fly (For a White Guy)',
-    performer: 'The Offspring',
-    releaseDate: '2016-02-02',
+    "title": "I'm So Lonesome I Could Cry",
+    "performer": "Hank Williams",
+    "releaseDate": "2015-06-30",
+    "expiration": 1751331600000,
+    "id": 533
   },
   {
-    title: 'The Kids Aren’t Alright',
-    performer: 'The Offspring',
-    releaseDate: '2016-02-02',
+    "title": "King of the Road",
+    "performer": "Roger Miller",
+    "releaseDate": "2015-06-30",
+    "expiration": 1751331600000,
+    "id": 534
   },
   {
-    title: 'Want You Bad',
-    performer: 'The Offspring',
-    releaseDate: '2016-02-02',
+    "title": "On the Road Again",
+    "performer": "Willie Nelson",
+    "releaseDate": "2015-06-30",
+    "expiration": 1751331600000,
+    "id": 535
   },
   {
-    title: 'You\u0027re Gonna Go Far Kid',
-    performer: 'The Offspring',
-    releaseDate: '2016-02-02',
+    "title": "A Warrior's Call",
+    "performer": "Volbeat",
+    "releaseDate": "2015-07-07",
+    "expiration": 1751936400000,
+    "id": 536
   },
   {
-    title: 'You Make My Dreams',
-    performer: 'Hall \u0026 Oates',
-    releaseDate: '2016-02-09',
+    "title": "Fallen",
+    "performer": "Volbeat",
+    "releaseDate": "2015-07-07",
+    "expiration": 1751936400000,
+    "id": 537
   },
   {
-    title: 'All for You',
-    performer: 'Sister Hazel',
-    releaseDate: '2016-02-09',
+    "title": "Heaven Nor Hell",
+    "performer": "Volbeat",
+    "releaseDate": "2015-07-07",
+    "expiration": 1751936400000,
+    "id": 538
   },
   {
-    title: 'Kiss Me',
-    performer: 'Sixpence None the Richer',
-    releaseDate: '2016-02-09',
+    "title": "Lola Montez",
+    "performer": "Volbeat",
+    "releaseDate": "2015-07-07",
+    "expiration": 1751936400000,
+    "id": 539
   },
-  { title: 'Rosanna', performer: 'Toto', releaseDate: '2016-02-09' },
   {
-    title: 'The Outsider',
-    performer: 'A Perfect Circle',
-    releaseDate: '2016-02-16',
+    "title": "Still Counting",
+    "performer": "Volbeat",
+    "releaseDate": "2015-07-07",
+    "expiration": 1751936400000,
+    "id": 540
   },
   {
-    title: 'Long Train Runnin',
-    performer: 'The Doobie Brothers',
-    releaseDate: '2016-02-16',
+    "title": "Call Me the Breeze",
+    "performer": "Lynyrd Skynyrd",
+    "releaseDate": "2015-07-14",
+    "expiration": 1752541200000,
+    "id": 541
   },
   {
-    title: 'Working For The Weekend',
-    performer: 'Loverboy',
-    releaseDate: '2016-02-16',
+    "title": "Gimme Three Steps",
+    "performer": "Lynyrd Skynyrd",
+    "releaseDate": "2015-07-14",
+    "expiration": 1752541200000,
+    "id": 542
   },
   {
-    title: 'Badfish',
-    performer: 'Sublime',
-    releaseDate: '2016-02-16',
+    "title": "Tuesday's Gone",
+    "performer": "Lynyrd Skynyrd",
+    "releaseDate": "2015-07-14",
+    "expiration": 1752541200000,
+    "id": 543
   },
   {
-    title: 'Dead!',
-    performer: 'My Chemical Romance',
-    releaseDate: '2016-02-23',
+    "title": "Another One Bites the Dust",
+    "performer": "Queen",
+    "releaseDate": "2015-07-21",
+    "expiration": 1753146000000,
+    "id": 544
   },
   {
-    title: 'Famous Last Words',
-    performer: 'My Chemical Romance',
-    releaseDate: '2016-02-23',
+    "title": "Silent Lucidity",
+    "performer": "Queensrÿche",
+    "releaseDate": "2015-07-21",
+    "expiration": 1753146000000,
+    "id": 545
   },
   {
-    title: 'Helena',
-    performer: 'My Chemical Romance',
-    releaseDate: '2016-02-23',
+    "title": "Sir Duke",
+    "performer": "Stevie Wonder",
+    "releaseDate": "2015-07-21",
+    "expiration": 1753146000000,
+    "id": 546
   },
   {
-    title: 'I\u0027m Not Okay (I Promise)',
-    performer: 'My Chemical Romance',
-    releaseDate: '2016-02-23',
+    "title": "Rock & Roll Queen",
+    "performer": "The Subways",
+    "releaseDate": "2015-07-21",
+    "expiration": 1753146000000,
+    "id": 547
   },
   {
-    title: 'Teenagers',
-    performer: 'My Chemical Romance',
-    releaseDate: '2016-02-23',
+    "title": "Possum Kingdom",
+    "performer": "Toadies",
+    "releaseDate": "2015-07-21",
+    "expiration": 1753146000000,
+    "id": 548
   },
   {
-    title: 'A Knife In The Dark',
-    performer: 'Howard Shore',
-    releaseDate: '2016-03-01',
+    "title": "Digging the Grave",
+    "performer": "Faith No More",
+    "releaseDate": "2015-07-28",
+    "expiration": 1753750800000,
+    "id": 549
   },
   {
-    title: 'Back to the Future',
-    performer: 'Alan Silvestri',
-    releaseDate: '2016-03-01',
+    "title": "Epic",
+    "performer": "Faith No More",
+    "releaseDate": "2015-07-28",
+    "expiration": 1753750800000,
+    "id": 550
   },
   {
-    title: 'Batman - Theme',
-    performer: 'Danny Elfman',
-    releaseDate: '2016-03-01',
+    "title": "Falling to Pieces",
+    "performer": "Faith No More",
+    "releaseDate": "2015-07-28",
+    "expiration": 1753750800000,
+    "id": 551
   },
   {
-    title: 'Superman - Main Title',
-    performer: 'John Williams',
-    releaseDate: '2016-03-01',
+    "title": "From Out of Nowhere",
+    "performer": "Faith No More",
+    "releaseDate": "2015-07-28",
+    "expiration": 1753750800000,
+    "id": 552
   },
   {
-    title: 'Jurassic Park - Theme',
-    performer: 'John Williams',
-    releaseDate: '2016-03-01',
+    "title": "Midlife Crisis",
+    "performer": "Faith No More",
+    "releaseDate": "2015-07-28",
+    "expiration": 1753750800000,
+    "id": 553
   },
   {
-    title: 'Take It Off',
-    performer: 'The Donnas',
-    releaseDate: '2016-03-08',
+    "title": "Rock around the Clock",
+    "performer": "Bill Haley & His Comets",
+    "releaseDate": "2015-08-04",
+    "expiration": 1754355600000,
+    "id": 554
   },
   {
-    title: 'I\u0027m So Sick',
-    performer: 'Flyleaf',
-    releaseDate: '2016-03-08',
+    "title": "Tequila",
+    "performer": "The Champs",
+    "releaseDate": "2015-08-04",
+    "expiration": 1754355600000,
+    "id": 555
   },
   {
-    title: 'Celebrity Skin',
-    performer: 'Hole',
-    releaseDate: '2016-03-08',
+    "title": "La Bamba",
+    "performer": "Ritchie Valens",
+    "releaseDate": "2015-08-04",
+    "expiration": 1754355600000,
+    "id": 556
   },
   {
-    title: 'Heaven Knows',
-    performer: 'The Pretty Reckless',
-    releaseDate: '2016-03-08',
+    "title": "Bad Luck",
+    "performer": "Social Distortion",
+    "releaseDate": "2015-08-11",
+    "expiration": 1754960400000,
+    "id": 557
   },
   {
-    title: 'Cherry Bomb',
-    performer: 'The Runaways',
-    releaseDate: '2016-03-08',
+    "title": "Ball and Chain",
+    "performer": "Social Distortion",
+    "releaseDate": "2015-08-11",
+    "expiration": 1754960400000,
+    "id": 558
   },
   {
-    title: 'December',
-    performer: 'Collective Soul',
-    releaseDate: '2016-03-15',
+    "title": "Reach for the Sky",
+    "performer": "Social Distortion",
+    "releaseDate": "2015-08-11",
+    "expiration": 1754960400000,
+    "id": 559
   },
-  { title: 'Gel', performer: 'Collective Soul', releaseDate: '2016-03-15' },
   {
-    title: 'Heavy',
-    performer: 'Collective Soul',
-    releaseDate: '2016-03-15',
+    "title": "Story of My Life",
+    "performer": "Social Distortion",
+    "releaseDate": "2015-08-11",
+    "expiration": 1754960400000,
+    "id": 560
   },
-  { title: 'Shine', performer: 'Collective Soul', releaseDate: '2016-03-15' },
   {
-    title: 'The World I Know',
-    performer: 'Collective Soul',
-    releaseDate: '2016-03-15',
+    "title": "Rock of Ages",
+    "performer": "Def Leppard",
+    "releaseDate": "2015-08-18",
+    "expiration": 1755565200000,
+    "id": 561
   },
-  { title: 'Demons', performer: 'Imagine Dragons', releaseDate: '2016-03-22' },
   {
-    title: 'It\u0027s Time',
-    performer: 'Imagine Dragons',
-    releaseDate: '2016-03-22',
+    "title": "Go Your Own Way",
+    "performer": "Fleetwood Mac",
+    "releaseDate": "2015-08-18",
+    "expiration": 1755565200000,
+    "id": 562
   },
   {
-    title: 'Radioactive',
-    performer: 'Imagine Dragons',
-    releaseDate: '2016-03-22',
+    "title": "Are You Gonna Be My Girl",
+    "performer": "Jet",
+    "releaseDate": "2015-08-18",
+    "expiration": 1755565200000,
+    "id": 563
   },
   {
-    title: 'My Best Friend\u0027s Girl',
-    performer: 'The Cars',
-    releaseDate: '2016-03-29',
+    "title": "Dust in the Wind",
+    "performer": "Kansas",
+    "releaseDate": "2015-08-18",
+    "expiration": 1755565200000,
+    "id": 564
   },
-  { title: 'Free Ride', performer: 'Edgar Winter', releaseDate: '2016-03-29' },
   {
-    title: 'The Reason',
-    performer: 'Hoobastank',
-    releaseDate: '2016-03-29',
+    "title": "Love Spreads",
+    "performer": "The Stone Roses",
+    "releaseDate": "2015-08-25",
+    "expiration": 1756170000000,
+    "id": 565
   },
   {
-    title: 'Summertime Blues',
-    performer: 'Eddie Cochran',
-    releaseDate: '2016-03-29',
+    "title": "She Bangs the Drums",
+    "performer": "The Stone Roses",
+    "releaseDate": "2015-08-25",
+    "expiration": 1756170000000,
+    "id": 566
   },
   {
-    title: 'Stillborn',
-    performer: 'Black Label Society',
-    releaseDate: '2016-04-05',
+    "title": "I Wanna Be Adored",
+    "performer": "The Stone Roses",
+    "releaseDate": "2015-08-25",
+    "expiration": 1756170000000,
+    "id": 567
   },
   {
-    title: 'Suicide Messiah',
-    performer: 'Black Label Society',
-    releaseDate: '2016-04-05',
+    "title": "Sing a Song",
+    "performer": "Earth, Wind & Fire",
+    "releaseDate": "2015-09-01",
+    "expiration": 1756774800000,
+    "id": 568
   },
   {
-    title: 'Overlord',
-    performer: 'Black Label Society',
-    releaseDate: '2016-04-05',
+    "title": "Shining Star",
+    "performer": "Earth, Wind & Fire",
+    "releaseDate": "2015-09-01",
+    "expiration": 1756774800000,
+    "id": 569
   },
   {
-    title: 'Indestructible',
-    performer: 'Disturbed',
-    releaseDate: '2016-04-12',
+    "title": "September",
+    "performer": "Earth, Wind & Fire",
+    "releaseDate": "2015-09-01",
+    "expiration": 1756774800000,
+    "id": 570
   },
   {
-    title: 'Inside the Fire',
-    performer: 'Disturbed',
-    releaseDate: '2016-04-12',
+    "title": "Dirty Little Secret",
+    "performer": "All-American RejectsThe All-American Rejects",
+    "releaseDate": "2015-09-08",
+    "expiration": 1757379600000,
+    "id": 571
   },
-  { title: 'The Night', performer: 'Disturbed', releaseDate: '2016-04-12' },
   {
-    title: 'Stricken',
-    performer: 'Disturbed',
-    releaseDate: '2016-04-12',
+    "title": "Gives You Hell",
+    "performer": "All-American RejectsThe All-American Rejects",
+    "releaseDate": "2015-09-08",
+    "expiration": 1757379600000,
+    "id": 572
   },
   {
-    title: 'Ten Thousand Fists',
-    performer: 'Disturbed',
-    releaseDate: '2016-04-12',
+    "title": "Move Along",
+    "performer": "All-American RejectsThe All-American Rejects",
+    "releaseDate": "2015-09-08",
+    "expiration": 1757379600000,
+    "id": 573
   },
   {
-    title: 'Girl U Want',
-    performer: 'Devo',
-    releaseDate: '2016-04-19',
+    "title": "Break On Through (To the Other Side)",
+    "performer": "The Doors",
+    "releaseDate": "2015-09-15",
+    "expiration": 1757984400000,
+    "id": 574
   },
-  { title: 'Play with Me', performer: 'Extreme', releaseDate: '2016-04-19' },
   {
-    title: 'Electric Eye',
-    performer: 'Judas Priest',
-    releaseDate: '2016-04-19',
+    "title": "L.A. Woman",
+    "performer": "The Doors",
+    "releaseDate": "2015-09-15",
+    "expiration": 1757984400000,
+    "id": 575
   },
   {
-    title: 'Legend of the Spaceborne Killer',
-    performer: 'Crobot',
-    releaseDate: '2016-04-26',
+    "title": "People Are Strange",
+    "performer": "The Doors",
+    "releaseDate": "2015-09-15",
+    "expiration": 1757984400000,
+    "id": 576
   },
-  { title: 'Fly on the Wall', performer: 'Crobot', releaseDate: '2016-04-26' },
   {
-    title: 'Nowhere to Hide',
-    performer: 'Crobot',
-    releaseDate: '2016-04-26',
+    "title": "Blow Me Away",
+    "performer": "Breaking BenjaminBreaking Benjamin",
+    "releaseDate": "2015-09-22",
+    "expiration": 1758589200000,
+    "id": 577
   },
   {
-    title: 'Audience of One',
-    performer: 'Rise Against',
-    releaseDate: '2016-05-03',
+    "title": "Polyamorous",
+    "performer": "Breaking BenjaminBreaking Benjamin",
+    "releaseDate": "2015-09-22",
+    "expiration": 1758589200000,
+    "id": 578
   },
   {
-    title: 'Help Is on the Way',
-    performer: 'Rise Against',
-    releaseDate: '2016-05-03',
+    "title": "So Cold",
+    "performer": "Breaking BenjaminBreaking Benjamin",
+    "releaseDate": "2015-09-22",
+    "expiration": 1758589200000,
+    "id": 579
   },
   {
-    title: 'Paper Wings',
-    performer: 'Rise Against',
-    releaseDate: '2016-05-03',
+    "title": "Okay I Believe You, But My Tommy Gun Don't",
+    "performer": "Brand New",
+    "releaseDate": "2015-09-29",
+    "expiration": 1759194000000,
+    "id": 580
   },
   {
-    title: 'Ready to Fall',
-    performer: 'Rise Against',
-    releaseDate: '2016-05-03',
+    "title": "The Quiet Things That No One Ever Knows",
+    "performer": "Brand New",
+    "releaseDate": "2015-09-29",
+    "expiration": 1759194000000,
+    "id": 581
   },
   {
-    title: 'Re-Education (Through Labor)',
-    performer: 'Rise Against',
-    releaseDate: '2016-05-03',
+    "title": "Sic Transit Gloria... Glory Fades",
+    "performer": "Brand New",
+    "releaseDate": "2015-09-29",
+    "expiration": 1759194000000,
+    "id": 582
   },
-  { title: 'Nemesis', performer: 'Arch Enemy', releaseDate: '2016-05-10' },
   {
-    title: 'Hair of the Dog',
-    performer: 'Nazareth',
-    releaseDate: '2016-05-10',
+    "title": "Sloe Gin",
+    "performer": "Joe Bonamassa",
+    "releaseDate": "2015-10-06",
+    "expiration": 1759798800000,
+    "id": 583
   },
   {
-    title: 'Little Talks',
-    performer: 'Of Monsters and Men',
-    releaseDate: '2016-05-10',
+    "title": "Blue on Black",
+    "performer": "Kenny Wayne Shepherd",
+    "releaseDate": "2015-10-06",
+    "expiration": 1759798800000,
+    "id": 584
   },
   {
-    title: 'Peaches',
-    performer:
-      'The Presidents of the United States of America',
-    releaseDate: '2016-05-10',
+    "title": "Out Of My Mind",
+    "performer": "Philip Sayce",
+    "releaseDate": "2015-10-06",
+    "expiration": 1759798800000,
+    "id": 585
   },
   {
-    title: 'Jet City Woman',
-    performer: 'Queensrÿche',
-    releaseDate: '2016-05-17',
+    "title": "Strutter",
+    "performer": "Kiss",
+    "releaseDate": "2015-10-13",
+    "expiration": 1760403600000,
+    "id": 586
   },
   {
-    title: 'Eyes of a Stranger',
-    performer: 'Queensrÿche',
-    releaseDate: '2016-05-17',
+    "title": "Love Gun",
+    "performer": "Kiss",
+    "releaseDate": "2015-10-13",
+    "expiration": 1760403600000,
+    "id": 587
   },
   {
-    title: 'I Don\u0027t Believe in Love',
-    performer: 'Queensrÿche',
-    releaseDate: '2016-05-17',
+    "title": "God of Thunder",
+    "performer": "Kiss",
+    "releaseDate": "2015-10-13",
+    "expiration": 1760403600000,
+    "id": 588
   },
-  { title: 'The Red', performer: 'Chevelle', releaseDate: '2016-05-24' },
   {
-    title: 'Hats Off to the Bull',
-    performer: 'Chevelle',
-    releaseDate: '2016-05-24',
+    "title": "Dear Maria, Count Me In",
+    "performer": "All Time Low",
+    "releaseDate": "2015-10-20",
+    "expiration": 1761008400000,
+    "id": 589
   },
   {
-    title: 'Vitamin R (Leading Us Along)',
-    performer: 'Chevelle',
-    releaseDate: '2016-05-24',
+    "title": "Somewhere in Neverland",
+    "performer": "All Time Low",
+    "releaseDate": "2015-10-20",
+    "expiration": 1761008400000,
+    "id": 590
   },
-  { title: 'Santa Monica', performer: 'Everclear', releaseDate: '2016-05-31' },
   {
-    title: 'Hey Man Nice Shot',
-    performer: 'Filter',
-    releaseDate: '2016-05-31',
+    "title": "Weightless",
+    "performer": "All Time Low",
+    "releaseDate": "2015-10-20",
+    "expiration": 1761008400000,
+    "id": 591
   },
-  { title: 'Beer', performer: 'Reel Big Fish', releaseDate: '2016-05-31' },
   {
-    title: 'The Anthem',
-    performer: 'Good Charlotte',
-    releaseDate: '2016-06-07',
+    "title": "Devil on My Shoulder",
+    "performer": "Billy Talent",
+    "releaseDate": "2015-10-27",
+    "expiration": 1761609600000,
+    "id": 592
   },
   {
-    title: 'Girls \u0026 Boys',
-    performer: 'Good Charlotte',
-    releaseDate: '2016-06-07',
+    "title": "Hocus Pocus",
+    "performer": "Focus",
+    "releaseDate": "2015-10-27",
+    "expiration": 1761609600000,
+    "id": 593
   },
   {
-    title: 'I Just Wanna Live',
-    performer: 'Good Charlotte',
-    releaseDate: '2016-06-07',
+    "title": "Killed by Death",
+    "performer": "Motörhead",
+    "releaseDate": "2015-10-27",
+    "expiration": 1761609600000,
+    "id": 594
   },
   {
-    title: 'Lifestyles of the Rich and Famous',
-    performer: 'Good Charlotte',
-    releaseDate: '2016-06-07',
+    "title": "Dead Man's Party",
+    "performer": "Oingo Boingo",
+    "releaseDate": "2015-10-27",
+    "expiration": 1761609600000,
+    "id": 595
   },
   {
-    title: 'The River',
-    performer: 'Good Charlotte',
-    releaseDate: '2016-06-07',
+    "title": "Ziggy Stardust",
+    "performer": "David Bowie",
+    "releaseDate": "2015-11-03",
+    "expiration": 1762214400000,
+    "id": 596
   },
   {
-    title: 'Save Tonight',
-    performer: 'Eagle-Eye Cherry',
-    releaseDate: '2016-06-14',
+    "title": "Hysteria",
+    "performer": "Def Leppard",
+    "releaseDate": "2015-11-03",
+    "expiration": 1762214400000,
+    "id": 597
   },
   {
-    title: 'The Gambler',
-    performer: 'Kenny Rogers',
-    releaseDate: '2016-06-14',
+    "title": "Slow Ride",
+    "performer": "Foghat",
+    "releaseDate": "2015-11-03",
+    "expiration": 1762214400000,
+    "id": 598
   },
   {
-    title: 'Under Pressure',
-    performer: 'Queen and David Bowie',
-    releaseDate: '2016-06-14',
+    "title": "Joker and the Thief",
+    "performer": "Wolfmother",
+    "releaseDate": "2015-11-03",
+    "expiration": 1762214400000,
+    "id": 599
   },
-  { title: 'Right Now', performer: 'SR-71', releaseDate: '2016-06-14' },
   {
-    title: 'Drive',
-    performer: 'Incubus',
-    releaseDate: '2016-06-21',
+    "title": "Fall Back Down",
+    "performer": "Rancid",
+    "releaseDate": "2015-11-10",
+    "expiration": 1762819200000,
+    "id": 600
   },
-  { title: 'Megalomaniac', performer: 'Incubus', releaseDate: '2016-06-21' },
   {
-    title: 'Pardon Me',
-    performer: 'Incubus',
-    releaseDate: '2016-06-21',
+    "title": "Maxwell Murder",
+    "performer": "Rancid",
+    "releaseDate": "2015-11-10",
+    "expiration": 1762819200000,
+    "id": 601
   },
   {
-    title: 'Stellar',
-    performer: 'Incubus',
-    releaseDate: '2016-06-21',
+    "title": "Ruby Soho",
+    "performer": "Rancid",
+    "releaseDate": "2015-11-10",
+    "expiration": 1762819200000,
+    "id": 602
   },
   {
-    title: 'The Star-Spangled Banner/4th of July Reprise',
-    performer: 'Boston',
-    releaseDate: '2016-06-28',
+    "title": "Time Bomb",
+    "performer": "Rancid",
+    "releaseDate": "2015-11-10",
+    "expiration": 1762819200000,
+    "id": 603
   },
   {
-    title: 'Only in America',
-    performer: 'Brooks \u0026 Dunn',
-    releaseDate: '2016-06-28',
+    "title": "Ode to Joy",
+    "performer": "Ludwig van Beethoven",
+    "releaseDate": "2015-11-17",
+    "expiration": 1763424000000,
+    "id": 604
   },
-  { title: 'American Pie', performer: 'Don McLean', releaseDate: '2016-06-28' },
   {
-    title: 'Living in America',
-    performer: 'James Brown',
-    releaseDate: '2016-06-28',
+    "title": "Funeral March",
+    "performer": "Frédéric Chopin",
+    "releaseDate": "2015-11-17",
+    "expiration": 1763424000000,
+    "id": 605
   },
   {
-    title: 'Thrash Unreal',
-    performer: 'Against Me!',
-    releaseDate: '2016-07-05',
+    "title": "The Can-Can",
+    "performer": "Jacques Offenbach",
+    "releaseDate": "2015-11-17",
+    "expiration": 1763424000000,
+    "id": 606
   },
   {
-    title: 'Selkies: The Endless Obsession',
-    performer: 'Between the Buried and Me',
-    releaseDate: '2016-07-05',
+    "title": "Notecracker Medley",
+    "performer": "Pyotr Ilyich Tchaikovsky",
+    "releaseDate": "2015-11-17",
+    "expiration": 1763424000000,
+    "id": 607
   },
   {
-    title: 'Nine in the Afternoon',
-    performer: 'Panic! at the Disco',
-    releaseDate: '2016-07-05',
+    "title": "Symphony No. 40",
+    "performer": "Wolfgang Amadeus Mozart",
+    "releaseDate": "2015-11-17",
+    "expiration": 1763424000000,
+    "id": 608
   },
-  { title: 'Again', performer: 'Flyleaf', releaseDate: '2016-07-12' },
   {
-    title: 'Cassie',
-    performer: 'Flyleaf',
-    releaseDate: '2016-07-12',
+    "title": "Howlin' for You",
+    "performer": "The Black Keys",
+    "releaseDate": "2015-11-24",
+    "expiration": 1764028800000,
+    "id": 609
   },
-  { title: 'Fully Alive', performer: 'Flyleaf', releaseDate: '2016-07-12' },
   {
-    title: 'Missing',
-    performer: 'Flyleaf',
-    releaseDate: '2016-07-12',
+    "title": "Little Black Submarines",
+    "performer": "The Black Keys",
+    "releaseDate": "2015-11-24",
+    "expiration": 1764028800000,
+    "id": 610
   },
   {
-    title: 'Love Me Two Times',
-    performer: 'The Doors',
-    releaseDate: '2016-07-19',
+    "title": "Lonely Boy",
+    "performer": "The Black Keys",
+    "releaseDate": "2015-11-24",
+    "expiration": 1764028800000,
+    "id": 611
   },
   {
-    title: 'White Rabbit',
-    performer: 'Jefferson Airplane',
-    releaseDate: '2016-07-19',
+    "title": "thickfreakness",
+    "performer": "The Black Keys",
+    "releaseDate": "2015-11-24",
+    "expiration": 1764028800000,
+    "id": 612
   },
   {
-    title: 'Venus',
-    performer: 'Shocking Blue',
-    releaseDate: '2016-07-19',
+    "title": "Your Touch",
+    "performer": "The Black Keys",
+    "releaseDate": "2015-11-24",
+    "expiration": 1764028800000,
+    "id": 613
   },
-  { title: 'Debaser', performer: 'Pixies', releaseDate: '2016-07-26' },
   {
-    title: 'Hey',
-    performer: 'Pixies',
-    releaseDate: '2016-07-26',
+    "title": "Awake And Alive",
+    "performer": "Skillet",
+    "releaseDate": "2015-12-01",
+    "expiration": 1764633600000,
+    "id": 614
   },
   {
-    title: 'Monkey Gone to Heaven',
-    performer: 'Pixies',
-    releaseDate: '2016-07-26',
+    "title": "Hero",
+    "performer": "Skillet",
+    "releaseDate": "2015-12-01",
+    "expiration": 1764633600000,
+    "id": 615
   },
   {
-    title: 'Wave of Mutilation',
-    performer: 'Pixies',
-    releaseDate: '2016-07-26',
+    "title": "Monster",
+    "performer": "Skillet",
+    "releaseDate": "2015-12-01",
+    "expiration": 1764633600000,
+    "id": 616
   },
   {
-    title: 'Chelsea Dagger',
-    performer: 'The Fratellis',
-    releaseDate: '2016-08-02',
+    "title": "Joy to the World",
+    "performer": "Band of Merrymakers",
+    "releaseDate": "2015-12-01",
+    "expiration": 1764633600000,
+    "id": 617
   },
   {
-    title: 'Always with Me, Always with You',
-    performer: 'Joe Satriani',
-    releaseDate: '2016-08-02',
+    "title": "Must Be Christmas",
+    "performer": "Band of Merrymakers",
+    "releaseDate": "2015-12-01",
+    "expiration": 1764633600000,
+    "id": 618
   },
   {
-    title: 'Blue Collar Man (Long Nights)',
-    performer: 'Styx',
-    releaseDate: '2016-08-02',
+    "title": "Master Exploder",
+    "performer": "Tenacious D",
+    "releaseDate": "2015-12-08",
+    "expiration": 1765238400000,
+    "id": 619
   },
   {
-    title: '5 Minutes Alone',
-    performer: 'Pantera',
-    releaseDate: '2016-08-02',
+    "title": "The Metal",
+    "performer": "Tenacious D",
+    "releaseDate": "2015-12-08",
+    "expiration": 1765238400000,
+    "id": 620
   },
   {
-    title: '21st Century (Digital Boy)',
-    performer: 'Bad Religion',
-    releaseDate: '2016-08-09',
+    "title": "Tribute",
+    "performer": "Tenacious D",
+    "releaseDate": "2015-12-08",
+    "expiration": 1765238400000,
+    "id": 621
   },
-  { title: 'Sorrow', performer: 'Bad Religion', releaseDate: '2016-08-09' },
   {
-    title: 'American Jesus',
-    performer: 'Bad Religion',
-    releaseDate: '2016-08-09',
+    "title": "Dr. Feelgood",
+    "performer": "Mötley Crüe",
+    "releaseDate": "2015-12-15",
+    "expiration": 1765843200000,
+    "id": 622
   },
   {
-    title: 'Infected',
-    performer: 'Bad Religion',
-    releaseDate: '2016-08-09',
+    "title": "Home Sweet Home",
+    "performer": "Mötley Crüe",
+    "releaseDate": "2015-12-15",
+    "expiration": 1765843200000,
+    "id": 623
   },
   {
-    title: 'My Songs Know What You Did in the Dark (Light Em Up)',
-    performer: 'Fall Out Boy',
-    releaseDate: '2016-08-16',
+    "title": "Kickstart My Heart",
+    "performer": "Mötley Crüe",
+    "releaseDate": "2015-12-15",
+    "expiration": 1765843200000,
+    "id": 624
   },
   {
-    title: 'Burn Nice and Slow (The Formative Years)',
-    performer: 'Hail the Sun',
-    releaseDate: '2016-08-16',
+    "title": "Girls Girls Girls",
+    "performer": "Mötley Crüe",
+    "releaseDate": "2015-12-15",
+    "expiration": 1765843200000,
+    "id": 625
   },
   {
-    title: 'Sweater Weather',
-    performer: 'The Neighbourhood',
-    releaseDate: '2016-08-16',
+    "title": "Shout At The Devil",
+    "performer": "Mötley Crüe",
+    "releaseDate": "2015-12-15",
+    "expiration": 1765843200000,
+    "id": 626
   },
   {
-    title: 'Closer to the Heart',
-    performer: 'Rush',
-    releaseDate: '2016-08-23',
+    "title": "Big Empty",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 627
   },
   {
-    title: 'Fly by Night',
-    performer: 'Rush',
-    releaseDate: '2016-08-23',
+    "title": "Creep",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 628
   },
-  { title: 'Freewill', performer: 'Rush', releaseDate: '2016-08-23' },
   {
-    title: 'Working Man',
-    performer: 'Rush',
-    releaseDate: '2016-08-23',
+    "title": "Interstate Love Song",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 629
   },
   {
-    title: 'La Villa Strangiato',
-    performer: 'Rush',
-    releaseDate: '2016-08-23',
+    "title": "Plush",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 630
   },
   {
-    title: 'I Fought the Law',
-    performer: 'The Clash',
-    releaseDate: '2016-08-30',
+    "title": "Sex Type Thing",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 631
   },
-  { title: 'Emerald', performer: 'Thin Lizzy', releaseDate: '2016-08-30' },
   {
-    title: 'Little Green Bag',
-    performer: 'George Baker Selection',
-    releaseDate: '2016-08-30',
+    "title": "Wicked Garden",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2015-12-22",
+    "expiration": 1766448000000,
+    "id": 632
   },
   {
-    title: 'It\u0027s Been Awhile',
-    performer: 'Staind',
-    releaseDate: '2016-09-06',
+    "title": "Heat Of The Moment",
+    "performer": "Asia",
+    "releaseDate": "2016-01-05",
+    "expiration": 1767657600000,
+    "id": 633
   },
   {
-    title: 'Outside',
-    performer: 'Staind',
-    releaseDate: '2016-09-06',
+    "title": "Closing Time",
+    "performer": "Semisonic",
+    "releaseDate": "2016-01-05",
+    "expiration": 1767657600000,
+    "id": 634
   },
   {
-    title: 'So Far Away',
-    performer: 'Staind',
-    releaseDate: '2016-09-06',
+    "title": "Play That Funky Music",
+    "performer": "Wild Cherry",
+    "releaseDate": "2016-01-05",
+    "expiration": 1767657600000,
+    "id": 635
   },
   {
-    title: 'I\u0027m Made of Wax, Larry, What are You Made Of?',
-    performer: 'A Day To Remember',
-    releaseDate: '2016-09-13',
+    "title": "Woman",
+    "performer": "Wolfmother",
+    "releaseDate": "2016-01-05",
+    "expiration": 1767657600000,
+    "id": 636
   },
   {
-    title: 'I Ran (So Far Away)',
-    performer: 'A Flock of Seagulls',
-    releaseDate: '2016-09-13',
+    "title": "Closer to the Edge",
+    "performer": "Thirty Seconds to Mars",
+    "releaseDate": "2016-01-12",
+    "expiration": 1768262400000,
+    "id": 637
   },
   {
-    title: 'Never Going Back Again',
-    performer: 'Fleetwood Mac',
-    releaseDate: '2016-09-13',
+    "title": "From Yesterday",
+    "performer": "Thirty Seconds to Mars",
+    "releaseDate": "2016-01-12",
+    "expiration": 1768262400000,
+    "id": 638
   },
   {
-    title: 'Refuse/Resist',
-    performer: 'Sepultura',
-    releaseDate: '2016-09-13',
+    "title": "The Kill",
+    "performer": "Thirty Seconds to Mars",
+    "releaseDate": "2016-01-12",
+    "expiration": 1768262400000,
+    "id": 639
   },
   {
-    title: 'Die, Die My Darling',
-    performer: 'Misfits',
-    releaseDate: '2016-09-20',
+    "title": "Kings and Queens",
+    "performer": "Thirty Seconds to Mars",
+    "releaseDate": "2016-01-12",
+    "expiration": 1768262400000,
+    "id": 640
   },
   {
-    title: 'Halloween',
-    performer: 'Misfits',
-    releaseDate: '2016-09-20',
+    "title": "This is War",
+    "performer": "Thirty Seconds to Mars",
+    "releaseDate": "2016-01-12",
+    "expiration": 1768262400000,
+    "id": 641
   },
-  { title: 'Last Caress', performer: 'Misfits', releaseDate: '2016-09-20' },
   {
-    title: 'Where Eagles Dare',
-    performer: 'Misfits',
-    releaseDate: '2016-09-20',
+    "title": "A Tout Le Monde",
+    "performer": "Megadeth",
+    "releaseDate": "2016-01-19",
+    "expiration": 1768867200000,
+    "id": 642
   },
   {
-    title: 'Metropolis—Part I: The Miracle and the Sleeper',
-    performer: 'Dream Theater',
-    releaseDate: '2016-09-27',
+    "title": "Holy Wars… The Punishment Due",
+    "performer": "Megadeth",
+    "releaseDate": "2016-01-19",
+    "expiration": 1768867200000,
+    "id": 643
   },
   {
-    title: 'On the Backs of Angels',
-    performer: 'Dream Theater',
-    releaseDate: '2016-09-27',
+    "title": "Peace Sells",
+    "performer": "Megadeth",
+    "releaseDate": "2016-01-19",
+    "expiration": 1768867200000,
+    "id": 644
   },
   {
-    title: 'Pull Me Under',
-    performer: 'Dream Theater',
-    releaseDate: '2016-09-27',
+    "title": "Tornado Of Souls",
+    "performer": "Megadeth",
+    "releaseDate": "2016-01-19",
+    "expiration": 1768867200000,
+    "id": 645
   },
   {
-    title: 'Three Little Birds',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2016-10-04',
+    "title": "Trust",
+    "performer": "Megadeth",
+    "releaseDate": "2016-01-19",
+    "expiration": 1768867200000,
+    "id": 646
   },
   {
-    title: 'Suspicious Minds',
-    performer: 'Elvis Presley',
-    releaseDate: '2016-10-04',
+    "title": "Caught Up In You",
+    "performer": "38 Special",
+    "releaseDate": "2016-01-26",
+    "expiration": 1769472000000,
+    "id": 647
   },
   {
-    title: 'Some Nights',
-    performer: 'fun.',
-    releaseDate: '2016-10-04',
+    "title": "Hold On Loosely",
+    "performer": "38 Special",
+    "releaseDate": "2016-01-26",
+    "expiration": 1769472000000,
+    "id": 648
   },
   {
-    title: 'I Want You Back',
-    performer: 'The Jackson 5',
-    releaseDate: '2016-10-04',
+    "title": "Rockin’ Into The Night",
+    "performer": "38 Special",
+    "releaseDate": "2016-01-26",
+    "expiration": 1769472000000,
+    "id": 649
   },
-  { title: 'Hey Ya!', performer: 'OutKast', releaseDate: '2016-10-04' },
   {
-    title: 'Drops of Jupiter',
-    performer: 'Train',
-    releaseDate: '2016-10-04',
+    "title": "All I Want",
+    "performer": "The Offspring",
+    "releaseDate": "2016-02-02",
+    "expiration": 1770076800000,
+    "id": 650
   },
-  { title: 'Cold', performer: 'Crossfade', releaseDate: '2016-10-11' },
   {
-    title: 'Simple Man',
-    performer: 'Shinedown',
-    releaseDate: '2016-10-11',
+    "title": "Pretty Fly (For a White Guy)",
+    "performer": "The Offspring",
+    "releaseDate": "2016-02-02",
+    "expiration": 1770076800000,
+    "id": 651
   },
   {
-    title: 'How to Save a Life',
-    performer: 'The Fray',
-    releaseDate: '2016-10-11',
+    "title": "The Kids Aren’t Alright",
+    "performer": "The Offspring",
+    "releaseDate": "2016-02-02",
+    "expiration": 1770076800000,
+    "id": 652
   },
   {
-    title: 'Owner of a Lonely Heart',
-    performer: 'Yes',
-    releaseDate: '2016-10-18',
+    "title": "Want You Bad",
+    "performer": "The Offspring",
+    "releaseDate": "2016-02-02",
+    "expiration": 1770076800000,
+    "id": 653
   },
   {
-    title: 'I\u0027ve Seen All Good People',
-    performer: 'Yes',
-    releaseDate: '2016-10-18',
+    "title": "You're Gonna Go Far Kid",
+    "performer": "The Offspring",
+    "releaseDate": "2016-02-02",
+    "expiration": 1770076800000,
+    "id": 654
   },
   {
-    title: 'Heart of the Sunrise',
-    performer: 'Yes',
-    releaseDate: '2016-10-18',
+    "title": "You Make My Dreams",
+    "performer": "Hall & Oates",
+    "releaseDate": "2016-02-09",
+    "expiration": 1770681600000,
+    "id": 655
   },
   {
-    title: 'Starship Trooper',
-    performer: 'Yes',
-    releaseDate: '2016-10-18',
+    "title": "All for You",
+    "performer": "Sister Hazel",
+    "releaseDate": "2016-02-09",
+    "expiration": 1770681600000,
+    "id": 656
   },
-  { title: 'Roundabout', performer: 'Yes', releaseDate: '2016-10-18' },
   {
-    title: 'Black Sunshine',
-    performer: 'White Zombie',
-    releaseDate: '2016-10-25',
+    "title": "Kiss Me",
+    "performer": "Sixpence None the Richer",
+    "releaseDate": "2016-02-09",
+    "expiration": 1770681600000,
+    "id": 657
   },
-  { title: 'Dragula', performer: 'Rob Zombie', releaseDate: '2016-10-25' },
   {
-    title: 'Living Dead Girl',
-    performer: 'Rob Zombie',
-    releaseDate: '2016-10-25',
+    "title": "Rosanna",
+    "performer": "Toto",
+    "releaseDate": "2016-02-09",
+    "expiration": 1770681600000,
+    "id": 658
   },
-  { title: 'Superbeast', performer: 'Rob Zombie', releaseDate: '2016-10-25' },
   {
-    title: 'Sex And Candy',
-    performer: 'Marcy Playground',
-    releaseDate: '2016-11-01',
+    "title": "The Outsider",
+    "performer": "A Perfect Circle",
+    "releaseDate": "2016-02-16",
+    "expiration": 1771286400000,
+    "id": 659
   },
   {
-    title: 'Search And Destroy',
-    performer: 'Iggy and The Stooges',
-    releaseDate: '2016-11-01',
+    "title": "Long Train Runnin",
+    "performer": "The Doobie Brothers",
+    "releaseDate": "2016-02-16",
+    "expiration": 1771286400000,
+    "id": 660
   },
   {
-    title: 'The Ballad Of Mona Lisa',
-    performer: 'Panic! At The Disco',
-    releaseDate: '2016-11-01',
+    "title": "Working For The Weekend",
+    "performer": "Loverboy",
+    "releaseDate": "2016-02-16",
+    "expiration": 1771286400000,
+    "id": 661
   },
   {
-    title: 'Eyes Of A Panther',
-    performer: 'Steel Panther',
-    releaseDate: '2016-11-01',
+    "title": "Badfish",
+    "performer": "Sublime",
+    "releaseDate": "2016-02-16",
+    "expiration": 1771286400000,
+    "id": 662
   },
   {
-    title: 'Danger Zone',
-    performer: 'Kenny Loggins',
-    releaseDate: '2016-11-08',
+    "title": "Dead!",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2016-02-23",
+    "expiration": 1771891200000,
+    "id": 663
   },
   {
-    title: 'Addicted To Love',
-    performer: 'Robert Palmer',
-    releaseDate: '2016-11-08',
+    "title": "Famous Last Words",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2016-02-23",
+    "expiration": 1771891200000,
+    "id": 664
   },
   {
-    title: 'Nobody\u0027s Fool',
-    performer: 'Cinderella',
-    releaseDate: '2016-11-08',
+    "title": "Helena",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2016-02-23",
+    "expiration": 1771891200000,
+    "id": 665
   },
-  { title: 'Burning Heart', performer: 'Survivor', releaseDate: '2016-11-08' },
   {
-    title: 'Talk Dirty to Me',
-    performer: 'Poison',
-    releaseDate: '2016-11-08',
+    "title": "I'm Not Okay (I Promise)",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2016-02-23",
+    "expiration": 1771891200000,
+    "id": 666
   },
   {
-    title: 'Pride and Joy',
-    performer: 'Stevie Ray Vaughan \u0026 Double Trouble',
-    releaseDate: '2016-11-15',
+    "title": "Teenagers",
+    "performer": "My Chemical Romance",
+    "releaseDate": "2016-02-23",
+    "expiration": 1771891200000,
+    "id": 667
   },
   {
-    title: 'Scuttle Buttin',
-    performer: 'Stevie Ray Vaughan \u0026 Double Trouble',
-    releaseDate: '2016-11-15',
+    "title": "A Knife In The Dark",
+    "performer": "Howard Shore",
+    "releaseDate": "2016-03-01",
+    "expiration": 1772496000000,
+    "id": 668
   },
   {
-    title: 'Cold Shot',
-    performer: 'Stevie Ray Vaughan \u0026 Double Trouble',
-    releaseDate: '2016-11-15',
+    "title": "Back to the Future",
+    "performer": "Alan Silvestri",
+    "releaseDate": "2016-03-01",
+    "expiration": 1772496000000,
+    "id": 669
   },
   {
-    title: 'Couldn\u0027t Stand the Weather',
-    performer: 'Stevie Ray Vaughan \u0026 Double Trouble',
-    releaseDate: '2016-11-15',
+    "title": "Batman - Theme",
+    "performer": "Danny Elfman",
+    "releaseDate": "2016-03-01",
+    "expiration": 1772496000000,
+    "id": 670
   },
   {
-    title: 'Texas Flood',
-    performer: 'Stevie Ray Vaughan \u0026 Double Trouble',
-    releaseDate: '2016-11-15',
+    "title": "Superman - Main Title",
+    "performer": "John Williams",
+    "releaseDate": "2016-03-01",
+    "expiration": 1772496000000,
+    "id": 671
   },
   {
-    title: 'Shut Up And Dance',
-    performer: 'Walk The Moon',
-    releaseDate: '2016-11-22',
+    "title": "Jurassic Park - Theme",
+    "performer": "John Williams",
+    "releaseDate": "2016-03-01",
+    "expiration": 1772496000000,
+    "id": 672
   },
   {
-    title: 'In The End',
-    performer: 'Black Veil Brides',
-    releaseDate: '2016-11-22',
+    "title": "Take It Off",
+    "performer": "The Donnas",
+    "releaseDate": "2016-03-08",
+    "expiration": 1773100800000,
+    "id": 673
   },
-  { title: 'Sail', performer: 'Awolnation', releaseDate: '2016-11-22' },
   {
-    title: 'Semi-Charmed Life',
-    performer: 'Third Eye Blind',
-    releaseDate: '2016-11-29',
+    "title": "I'm So Sick",
+    "performer": "Flyleaf",
+    "releaseDate": "2016-03-08",
+    "expiration": 1773100800000,
+    "id": 674
   },
   {
-    title: 'Never Let You Go',
-    performer: 'Third Eye Blind',
-    releaseDate: '2016-11-29',
+    "title": "Celebrity Skin",
+    "performer": "Hole",
+    "releaseDate": "2016-03-08",
+    "expiration": 1773100800000,
+    "id": 675
   },
   {
-    title: 'How\u0027s It Going To Be',
-    performer: 'Third Eye Blind',
-    releaseDate: '2016-11-29',
+    "title": "Heaven Knows",
+    "performer": "The Pretty Reckless",
+    "releaseDate": "2016-03-08",
+    "expiration": 1773100800000,
+    "id": 676
   },
-  { title: 'Jumper', performer: 'Third Eye Blind', releaseDate: '2016-11-29' },
   {
-    title: 'Suffragette City',
-    performer: 'David Bowie',
-    releaseDate: '2016-12-06',
+    "title": "Cherry Bomb",
+    "performer": "The Runaways",
+    "releaseDate": "2016-03-08",
+    "expiration": 1773100800000,
+    "id": 677
   },
   {
-    title: 'Stray Cat Strut',
-    performer: 'Brian Setzer',
-    releaseDate: '2016-12-06',
+    "title": "December",
+    "performer": "Collective Soul",
+    "releaseDate": "2016-03-15",
+    "expiration": 1773705600000,
+    "id": 678
   },
   {
-    title: 'F.C.P.R.E.M.I.X.',
-    performer: 'The Fall of Troy',
-    releaseDate: '2016-12-06',
+    "title": "Gel",
+    "performer": "Collective Soul",
+    "releaseDate": "2016-03-15",
+    "expiration": 1773705600000,
+    "id": 679
   },
   {
-    title: 'Hey Jealousy',
-    performer: 'Gin Blossoms',
-    releaseDate: '2016-12-06',
+    "title": "Heavy",
+    "performer": "Collective Soul",
+    "releaseDate": "2016-03-15",
+    "expiration": 1773705600000,
+    "id": 680
   },
   {
-    title: 'Proud Mary',
-    performer: 'Creedence Clearwater Revival',
-    releaseDate: '2016-12-13',
+    "title": "Shine",
+    "performer": "Collective Soul",
+    "releaseDate": "2016-03-15",
+    "expiration": 1773705600000,
+    "id": 681
   },
   {
-    title: 'Fortunate Son',
-    performer: 'Creedence Clearwater Revival',
-    releaseDate: '2016-12-13',
+    "title": "The World I Know",
+    "performer": "Collective Soul",
+    "releaseDate": "2016-03-15",
+    "expiration": 1773705600000,
+    "id": 682
   },
   {
-    title: 'Bad Moon Rising',
-    performer: 'Creedence Clearwater Revival',
-    releaseDate: '2016-12-13',
+    "title": "Demons",
+    "performer": "Imagine Dragons",
+    "releaseDate": "2016-03-22",
+    "expiration": 1774310400000,
+    "id": 683
   },
-  { title: '21 Guns', performer: 'Green Day', releaseDate: '2016-12-20' },
   {
-    title: 'Bang Bang',
-    performer: 'Green Day',
-    releaseDate: '2016-12-20',
+    "title": "It's Time",
+    "performer": "Imagine Dragons",
+    "releaseDate": "2016-03-22",
+    "expiration": 1774310400000,
+    "id": 684
   },
   {
-    title: 'Good Riddance (Time of Your Life)',
-    performer: 'Green Day',
-    releaseDate: '2016-12-20',
+    "title": "Radioactive",
+    "performer": "Imagine Dragons",
+    "releaseDate": "2016-03-22",
+    "expiration": 1774310400000,
+    "id": 685
   },
   {
-    title: 'Longview',
-    performer: 'Green Day',
-    releaseDate: '2016-12-20',
+    "title": "My Best Friend's Girl",
+    "performer": "The Cars",
+    "releaseDate": "2016-03-29",
+    "expiration": 1774915200000,
+    "id": 686
   },
   {
-    title: 'Wake Me Up When September Ends',
-    performer: 'Green Day',
-    releaseDate: '2016-12-20',
+    "title": "Free Ride",
+    "performer": "Edgar Winter",
+    "releaseDate": "2016-03-29",
+    "expiration": 1774915200000,
+    "id": 687
   },
-  { title: 'Vertigo', performer: 'U2', releaseDate: '2017-01-03' },
   {
-    title: 'Beautiful Day',
-    performer: 'U2',
-    releaseDate: '2017-01-03',
+    "title": "The Reason",
+    "performer": "Hoobastank",
+    "releaseDate": "2016-03-29",
+    "expiration": 1774915200000,
+    "id": 688
   },
   {
-    title: 'Where the Streets Have No Name',
-    performer: 'U2',
-    releaseDate: '2017-01-03',
+    "title": "Summertime Blues",
+    "performer": "Eddie Cochran",
+    "releaseDate": "2016-03-29",
+    "expiration": 1774915200000,
+    "id": 689
   },
   {
-    title: 'With or Without You',
-    performer: 'U2',
-    releaseDate: '2017-01-03',
+    "title": "Stillborn",
+    "performer": "Black Label Society",
+    "releaseDate": "2016-04-05",
+    "expiration": 1775523600000,
+    "id": 690
   },
-  { title: 'Sunday Bloody Sunday', performer: 'U2', releaseDate: '2017-01-03' },
   {
-    title: 'California Dreamin',
-    performer: 'The Mamas \u0026 the Papas',
-    releaseDate: '2017-01-10',
+    "title": "Suicide Messiah",
+    "performer": "Black Label Society",
+    "releaseDate": "2016-04-05",
+    "expiration": 1775523600000,
+    "id": 691
   },
   {
-    title: 'Green Onions',
-    performer: 'Booker T. \u0026 the M.G.\u0027s',
-    releaseDate: '2017-01-10',
+    "title": "Overlord",
+    "performer": "Black Label Society",
+    "releaseDate": "2016-04-05",
+    "expiration": 1775523600000,
+    "id": 692
   },
   {
-    title: 'Somebody To Love',
-    performer: 'Jefferson Airplane',
-    releaseDate: '2017-01-10',
+    "title": "Indestructible",
+    "performer": "Disturbed",
+    "releaseDate": "2016-04-12",
+    "expiration": 1776128400000,
+    "id": 693
   },
-  { title: 'First Date', performer: 'Blink-182', releaseDate: '2017-01-17' },
   {
-    title: 'The Rock Show',
-    performer: 'Blink-182',
-    releaseDate: '2017-01-17',
+    "title": "Inside the Fire",
+    "performer": "Disturbed",
+    "releaseDate": "2016-04-12",
+    "expiration": 1776128400000,
+    "id": 694
   },
   {
-    title: 'Adam\u0027s Song',
-    performer: 'Blink-182',
-    releaseDate: '2017-01-17',
+    "title": "The Night",
+    "performer": "Disturbed",
+    "releaseDate": "2016-04-12",
+    "expiration": 1776128400000,
+    "id": 695
   },
   {
-    title: 'Feeling This',
-    performer: 'Blink-182',
-    releaseDate: '2017-01-17',
+    "title": "Stricken",
+    "performer": "Disturbed",
+    "releaseDate": "2016-04-12",
+    "expiration": 1776128400000,
+    "id": 696
   },
-  { title: 'I Miss You', performer: 'Blink-182', releaseDate: '2017-01-17' },
   {
-    title: 'Counting Stars',
-    performer: 'OneRepublic',
-    releaseDate: '2017-01-24',
+    "title": "Ten Thousand Fists",
+    "performer": "Disturbed",
+    "releaseDate": "2016-04-12",
+    "expiration": 1776128400000,
+    "id": 697
   },
   {
-    title: 'I Melt With You',
-    performer: 'Modern English',
-    releaseDate: '2017-01-24',
+    "title": "Girl U Want",
+    "performer": "Devo",
+    "releaseDate": "2016-04-19",
+    "expiration": 1776733200000,
+    "id": 698
   },
   {
-    title: 'Wherever You Will Go',
-    performer: 'The Calling',
-    releaseDate: '2017-01-24',
+    "title": "Play with Me",
+    "performer": "Extreme",
+    "releaseDate": "2016-04-19",
+    "expiration": 1776733200000,
+    "id": 699
   },
   {
-    title: 'Take The Power Back',
-    performer: 'Rage Against the Machine',
-    releaseDate: '2017-01-24',
+    "title": "Electric Eye",
+    "performer": "Judas Priest",
+    "releaseDate": "2016-04-19",
+    "expiration": 1776733200000,
+    "id": 700
   },
-  { title: 'Going Under', performer: 'Evanescence', releaseDate: '2017-01-31' },
   {
-    title: 'My Immortal',
-    performer: 'Evanescence',
-    releaseDate: '2017-01-31',
+    "title": "Legend of the Spaceborne Killer",
+    "performer": "Crobot",
+    "releaseDate": "2016-04-26",
+    "expiration": 1777338000000,
+    "id": 701
   },
   {
-    title: 'Everybody\u0027s Fool',
-    performer: 'Evanescence',
-    releaseDate: '2017-01-31',
+    "title": "Fly on the Wall",
+    "performer": "Crobot",
+    "releaseDate": "2016-04-26",
+    "expiration": 1777338000000,
+    "id": 702
   },
-  { title: 'Footloose', performer: 'Kenny Loggins', releaseDate: '2017-02-07' },
   {
-    title: 'I Wanna Rock',
-    performer: 'Twisted Sister',
-    releaseDate: '2017-02-07',
+    "title": "Nowhere to Hide",
+    "performer": "Crobot",
+    "releaseDate": "2016-04-26",
+    "expiration": 1777338000000,
+    "id": 703
   },
   {
-    title: 'Don\u0027t You (Forget About Me)',
-    performer: 'Simple Minds',
-    releaseDate: '2017-02-07',
+    "title": "Audience of One",
+    "performer": "Rise Against",
+    "releaseDate": "2016-05-03",
+    "expiration": 1777942800000,
+    "id": 704
   },
-  { title: 'Yellow', performer: 'Coldplay', releaseDate: '2017-02-14' },
   {
-    title: 'Clocks',
-    performer: 'Coldplay',
-    releaseDate: '2017-02-14',
+    "title": "Help Is on the Way",
+    "performer": "Rise Against",
+    "releaseDate": "2016-05-03",
+    "expiration": 1777942800000,
+    "id": 705
   },
-  { title: 'Viva La Vida', performer: 'Coldplay', releaseDate: '2017-02-14' },
   {
-    title: 'Fix You',
-    performer: 'Coldplay',
-    releaseDate: '2017-02-14',
+    "title": "Paper Wings",
+    "performer": "Rise Against",
+    "releaseDate": "2016-05-03",
+    "expiration": 1777942800000,
+    "id": 706
   },
-  { title: 'In My Place', performer: 'Coldplay', releaseDate: '2017-02-14' },
   {
-    title: 'The Scientist',
-    performer: 'Coldplay',
-    releaseDate: '2017-02-14',
+    "title": "Ready to Fall",
+    "performer": "Rise Against",
+    "releaseDate": "2016-05-03",
+    "expiration": 1777942800000,
+    "id": 707
   },
   {
-    title: 'Fight for Your Right',
-    performer: 'Beastie Boys',
-    releaseDate: '2017-02-21',
+    "title": "Re-Education (Through Labor)",
+    "performer": "Rise Against",
+    "releaseDate": "2016-05-03",
+    "expiration": 1777942800000,
+    "id": 708
   },
   {
-    title: 'No Sleep till Brooklyn',
-    performer: 'Beastie Boys',
-    releaseDate: '2017-02-21',
+    "title": "Nemesis",
+    "performer": "Arch Enemy",
+    "releaseDate": "2016-05-10",
+    "expiration": 1778547600000,
+    "id": 709
   },
-  { title: 'Sabotage', performer: 'Beastie Boys', releaseDate: '2017-02-21' },
   {
-    title: 'Magic Carpet Ride',
-    performer: 'Steppenwolf',
-    releaseDate: '2017-02-28',
+    "title": "Hair of the Dog",
+    "performer": "Nazareth",
+    "releaseDate": "2016-05-10",
+    "expiration": 1778547600000,
+    "id": 710
   },
-  { title: 'Far Behind', performer: 'Candlebox', releaseDate: '2017-02-28' },
   {
-    title: 'Underdog',
-    performer: 'Kasabian',
-    releaseDate: '2017-02-28',
+    "title": "Little Talks",
+    "performer": "Of Monsters and Men",
+    "releaseDate": "2016-05-10",
+    "expiration": 1778547600000,
+    "id": 711
   },
   {
-    title: 'Everybody Wants To Rule The World',
-    performer: 'Tears For Fears',
-    releaseDate: '2017-02-28',
+    "title": "Peaches",
+    "performer": "The Presidents of the United States of America",
+    "releaseDate": "2016-05-10",
+    "expiration": 1778547600000,
+    "id": 712
   },
   {
-    title: 'My Happy Ending',
-    performer: 'Avril Lavigne',
-    releaseDate: '2017-03-07',
+    "title": "Jet City Woman",
+    "performer": "Queensrÿche",
+    "releaseDate": "2016-05-17",
+    "expiration": 1779152400000,
+    "id": 713
   },
   {
-    title: 'When You\u0027re Gone',
-    performer: 'Avril Lavigne',
-    releaseDate: '2017-03-07',
+    "title": "Eyes of a Stranger",
+    "performer": "Queensrÿche",
+    "releaseDate": "2016-05-17",
+    "expiration": 1779152400000,
+    "id": 714
   },
   {
-    title: 'Complicated',
-    performer: 'Avril Lavigne',
-    releaseDate: '2017-03-07',
+    "title": "I Don't Believe in Love",
+    "performer": "Queensrÿche",
+    "releaseDate": "2016-05-17",
+    "expiration": 1779152400000,
+    "id": 715
   },
   {
-    title: 'I\u0027m With You',
-    performer: 'Avril Lavigne',
-    releaseDate: '2017-03-07',
+    "title": "The Red",
+    "performer": "Chevelle",
+    "releaseDate": "2016-05-24",
+    "expiration": 1779757200000,
+    "id": 716
   },
   {
-    title: 'Sk8er Boi',
-    performer: 'Avril Lavigne',
-    releaseDate: '2017-03-07',
+    "title": "Hats Off to the Bull",
+    "performer": "Chevelle",
+    "releaseDate": "2016-05-24",
+    "expiration": 1779757200000,
+    "id": 717
   },
-  { title: 'Inside Out', performer: 'Eve 6', releaseDate: '2017-03-14' },
   {
-    title: 'Violet',
-    performer: 'Hole',
-    releaseDate: '2017-03-14',
+    "title": "Vitamin R (Leading Us Along)",
+    "performer": "Chevelle",
+    "releaseDate": "2016-05-24",
+    "expiration": 1779757200000,
+    "id": 718
   },
   {
-    title: 'If You Could Only See',
-    performer: 'Tonic',
-    releaseDate: '2017-03-14',
+    "title": "Santa Monica",
+    "performer": "Everclear",
+    "releaseDate": "2016-05-31",
+    "expiration": 1780362000000,
+    "id": 719
   },
   {
-    title: '18 and Life',
-    performer: 'Skid Row',
-    releaseDate: '2017-03-21',
+    "title": "Hey Man Nice Shot",
+    "performer": "Filter",
+    "releaseDate": "2016-05-31",
+    "expiration": 1780362000000,
+    "id": 720
   },
-  { title: 'I Remember You', performer: 'Skid Row', releaseDate: '2017-03-21' },
   {
-    title: 'Monkey Business',
-    performer: 'Skid Row',
-    releaseDate: '2017-03-21',
+    "title": "Beer",
+    "performer": "Reel Big Fish",
+    "releaseDate": "2016-05-31",
+    "expiration": 1780362000000,
+    "id": 721
   },
   {
-    title: 'Slave to the Grind',
-    performer: 'Skid Row',
-    releaseDate: '2017-03-21',
+    "title": "The Anthem",
+    "performer": "Good Charlotte",
+    "releaseDate": "2016-06-07",
+    "expiration": 1780966800000,
+    "id": 722
   },
   {
-    title: 'Youth Gone Wild',
-    performer: 'Skid Row',
-    releaseDate: '2017-03-21',
+    "title": "Girls & Boys",
+    "performer": "Good Charlotte",
+    "releaseDate": "2016-06-07",
+    "expiration": 1780966800000,
+    "id": 723
   },
   {
-    title: 'You',
-    performer: 'Bad Religion',
-    releaseDate: '2017-03-28',
+    "title": "I Just Wanna Live",
+    "performer": "Good Charlotte",
+    "releaseDate": "2016-06-07",
+    "expiration": 1780966800000,
+    "id": 724
   },
-  { title: 'Superman', performer: 'Goldfinger', releaseDate: '2017-03-28' },
   {
-    title: 'May 16',
-    performer: 'Lagwagon',
-    releaseDate: '2017-03-28',
+    "title": "Lifestyles of the Rich and Famous",
+    "performer": "Good Charlotte",
+    "releaseDate": "2016-06-07",
+    "expiration": 1780966800000,
+    "id": 725
   },
-  { title: 'No Cigar', performer: 'Millencolin', releaseDate: '2017-03-28' },
   {
-    title: 'When Worlds Collide',
-    performer: 'Powerman 5000',
-    releaseDate: '2017-03-28',
+    "title": "The River",
+    "performer": "Good Charlotte",
+    "releaseDate": "2016-06-07",
+    "expiration": 1780966800000,
+    "id": 726
   },
-  { title: 'Even Flow', performer: 'Pearl Jam', releaseDate: '2017-04-04' },
   {
-    title: 'Rearviewmirror',
-    performer: 'Pearl Jam',
-    releaseDate: '2017-04-04',
+    "title": "Save Tonight",
+    "performer": "Eagle-Eye Cherry",
+    "releaseDate": "2016-06-14",
+    "expiration": 1781571600000,
+    "id": 727
   },
   {
-    title: 'Do The Evolution',
-    performer: 'Pearl Jam',
-    releaseDate: '2017-04-04',
+    "title": "The Gambler",
+    "performer": "Kenny Rogers",
+    "releaseDate": "2016-06-14",
+    "expiration": 1781571600000,
+    "id": 728
   },
   {
-    title: 'Last Exit',
-    performer: 'Pearl Jam',
-    releaseDate: '2017-04-04',
+    "title": "Under Pressure",
+    "performer": "Queen and David Bowie",
+    "releaseDate": "2016-06-14",
+    "expiration": 1781571600000,
+    "id": 729
   },
   {
-    title: 'Yellow Ledbetter',
-    performer: 'Pearl Jam',
-    releaseDate: '2017-04-04',
+    "title": "Right Now",
+    "performer": "SR-71",
+    "releaseDate": "2016-06-14",
+    "expiration": 1781571600000,
+    "id": 730
   },
   {
-    title: 'Banana Pancakes',
-    performer: 'Jack Johnson',
-    releaseDate: '2017-04-11',
+    "title": "Drive",
+    "performer": "Incubus",
+    "releaseDate": "2016-06-21",
+    "expiration": 1782176400000,
+    "id": 731
   },
-  { title: 'All Mixed Up', performer: '311', releaseDate: '2017-04-11' },
   {
-    title: 'Surfing With The Alien',
-    performer: 'Joe Satriani',
-    releaseDate: '2017-04-11',
+    "title": "Megalomaniac",
+    "performer": "Incubus",
+    "releaseDate": "2016-06-21",
+    "expiration": 1782176400000,
+    "id": 732
   },
-  { title: 'Let It Go', performer: 'James Bay', releaseDate: '2017-04-11' },
   {
-    title: 'Buffalo Soldier',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2017-04-18',
+    "title": "Pardon Me",
+    "performer": "Incubus",
+    "releaseDate": "2016-06-21",
+    "expiration": 1782176400000,
+    "id": 733
   },
   {
-    title: 'Could You Be Loved',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2017-04-18',
+    "title": "Stellar",
+    "performer": "Incubus",
+    "releaseDate": "2016-06-21",
+    "expiration": 1782176400000,
+    "id": 734
   },
   {
-    title: 'Is This Love',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2017-04-18',
+    "title": "The Star-Spangled Banner/4th of July Reprise",
+    "performer": "Boston",
+    "releaseDate": "2016-06-28",
+    "expiration": 1782781200000,
+    "id": 735
   },
   {
-    title: 'No Woman, No Cry',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2017-04-18',
+    "title": "Only in America",
+    "performer": "Brooks & Dunn",
+    "releaseDate": "2016-06-28",
+    "expiration": 1782781200000,
+    "id": 736
   },
   {
-    title: 'Redemption Song',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2017-04-18',
+    "title": "American Pie",
+    "performer": "Don McLean",
+    "releaseDate": "2016-06-28",
+    "expiration": 1782781200000,
+    "id": 737
   },
   {
-    title: 'Figure It Out',
-    performer: 'Royal Blood',
-    releaseDate: '2017-04-25',
+    "title": "Living in America",
+    "performer": "James Brown",
+    "releaseDate": "2016-06-28",
+    "expiration": 1782781200000,
+    "id": 738
   },
   {
-    title: 'Little Monster',
-    performer: 'Royal Blood',
-    releaseDate: '2017-04-25',
+    "title": "Thrash Unreal",
+    "performer": "Against Me!",
+    "releaseDate": "2016-07-05",
+    "expiration": 1783386000000,
+    "id": 739
   },
   {
-    title: 'Out of the Black',
-    performer: 'Royal Blood',
-    releaseDate: '2017-04-25',
+    "title": "Selkies: The Endless Obsession",
+    "performer": "Between the Buried and Me",
+    "releaseDate": "2016-07-05",
+    "expiration": 1783386000000,
+    "id": 740
   },
   {
-    title: 'Hooked on a Feeling',
-    performer: 'Blue Swede',
-    releaseDate: '2017-05-02',
+    "title": "Nine in the Afternoon",
+    "performer": "Panic! at the Disco",
+    "releaseDate": "2016-07-05",
+    "expiration": 1783386000000,
+    "id": 741
   },
   {
-    title: 'Moonage Daydream',
-    performer: 'David Bowie',
-    releaseDate: '2017-05-02',
+    "title": "Again",
+    "performer": "Flyleaf",
+    "releaseDate": "2016-07-12",
+    "expiration": 1783990800000,
+    "id": 742
   },
   {
-    title: 'Ain\u0027t No Mountain High Enough',
-    performer: 'Marvin Gaye \u0026 Tammi Terrell',
-    releaseDate: '2017-05-02',
+    "title": "Cassie",
+    "performer": "Flyleaf",
+    "releaseDate": "2016-07-12",
+    "expiration": 1783990800000,
+    "id": 743
   },
   {
-    title: 'Go All the Way',
-    performer: 'Raspberries',
-    releaseDate: '2017-05-02',
+    "title": "Fully Alive",
+    "performer": "Flyleaf",
+    "releaseDate": "2016-07-12",
+    "expiration": 1783990800000,
+    "id": 744
   },
   {
-    title: 'Come and Get Your Love',
-    performer: 'Redbone',
-    releaseDate: '2017-05-02',
+    "title": "Missing",
+    "performer": "Flyleaf",
+    "releaseDate": "2016-07-12",
+    "expiration": 1783990800000,
+    "id": 745
   },
   {
-    title: 'If It Makes You Happy',
-    performer: 'Sheryl Crow',
-    releaseDate: '2017-05-09',
+    "title": "Love Me Two Times",
+    "performer": "The Doors",
+    "releaseDate": "2016-07-19",
+    "expiration": 1784595600000,
+    "id": 746
   },
   {
-    title: 'My Favorite Mistake',
-    performer: 'Sheryl Crow',
-    releaseDate: '2017-05-09',
+    "title": "White Rabbit",
+    "performer": "Jefferson Airplane",
+    "releaseDate": "2016-07-19",
+    "expiration": 1784595600000,
+    "id": 747
   },
   {
-    title: 'Soak Up the Sun',
-    performer: 'Sheryl Crow',
-    releaseDate: '2017-05-09',
+    "title": "Venus",
+    "performer": "Shocking Blue",
+    "releaseDate": "2016-07-19",
+    "expiration": 1784595600000,
+    "id": 748
   },
   {
-    title: 'Casey Jones',
-    performer: 'Grateful Dead',
-    releaseDate: '2017-05-16',
+    "title": "Debaser",
+    "performer": "Pixies",
+    "releaseDate": "2016-07-26",
+    "expiration": 1785200400000,
+    "id": 749
   },
   {
-    title: 'Friend of the Devil',
-    performer: 'Grateful Dead',
-    releaseDate: '2017-05-16',
+    "title": "Hey",
+    "performer": "Pixies",
+    "releaseDate": "2016-07-26",
+    "expiration": 1785200400000,
+    "id": 750
   },
   {
-    title: 'Sugar Magnolia',
-    performer: 'Grateful Dead',
-    releaseDate: '2017-05-16',
+    "title": "Monkey Gone to Heaven",
+    "performer": "Pixies",
+    "releaseDate": "2016-07-26",
+    "expiration": 1785200400000,
+    "id": 751
   },
   {
-    title: 'Truckin\u0027',
-    performer: 'Grateful Dead',
-    releaseDate: '2017-05-16',
+    "title": "Wave of Mutilation",
+    "performer": "Pixies",
+    "releaseDate": "2016-07-26",
+    "expiration": 1785200400000,
+    "id": 752
   },
   {
-    title: 'Uncle John\u0027s Band',
-    performer: 'Grateful Dead',
-    releaseDate: '2017-05-16',
+    "title": "Chelsea Dagger",
+    "performer": "The Fratellis",
+    "releaseDate": "2016-08-02",
+    "expiration": 1785805200000,
+    "id": 753
   },
-  { title: 'Rise Above', performer: 'Black Flag', releaseDate: '2017-05-23' },
   {
-    title: 'I Want It All',
-    performer: 'Queen',
-    releaseDate: '2017-05-23',
+    "title": "Always with Me, Always with You",
+    "performer": "Joe Satriani",
+    "releaseDate": "2016-08-02",
+    "expiration": 1785805200000,
+    "id": 754
   },
   {
-    title: 'Take It on the Run',
-    performer: 'REO Speedwagon',
-    releaseDate: '2017-05-23',
+    "title": "Blue Collar Man (Long Nights)",
+    "performer": "Styx",
+    "releaseDate": "2016-08-02",
+    "expiration": 1785805200000,
+    "id": 755
   },
   {
-    title: 'All Downhill from Here',
-    performer: 'New Found Glory',
-    releaseDate: '2017-05-30',
+    "title": "5 Minutes Alone",
+    "performer": "Pantera",
+    "releaseDate": "2016-08-02",
+    "expiration": 1785805200000,
+    "id": 756
   },
   {
-    title: 'Hit or Miss',
-    performer: 'New Found Glory',
-    releaseDate: '2017-05-30',
+    "title": "21st Century (Digital Boy)",
+    "performer": "Bad Religion",
+    "releaseDate": "2016-08-09",
+    "expiration": 1786410000000,
+    "id": 757
   },
   {
-    title: 'My Friends Over You',
-    performer: 'New Found Glory',
-    releaseDate: '2017-05-30',
+    "title": "Sorrow",
+    "performer": "Bad Religion",
+    "releaseDate": "2016-08-09",
+    "expiration": 1786410000000,
+    "id": 758
   },
   {
-    title: 'Surfin\u0027 U.S.A.',
-    performer: 'The Beach Boys',
-    releaseDate: '2017-06-06',
+    "title": "American Jesus",
+    "performer": "Bad Religion",
+    "releaseDate": "2016-08-09",
+    "expiration": 1786410000000,
+    "id": 759
   },
-  { title: 'Pipeline', performer: 'The Chantays', releaseDate: '2017-06-06' },
   {
-    title: 'Surf Rider',
-    performer: 'The Lively Ones',
-    releaseDate: '2017-06-06',
+    "title": "Infected",
+    "performer": "Bad Religion",
+    "releaseDate": "2016-08-09",
+    "expiration": 1786410000000,
+    "id": 760
   },
   {
-    title: 'Penetration',
-    performer: 'The Pyramids',
-    releaseDate: '2017-06-06',
+    "title": "My Songs Know What You Did in the Dark (Light Em Up)",
+    "performer": "Fall Out Boy",
+    "releaseDate": "2016-08-16",
+    "expiration": 1787014800000,
+    "id": 761
   },
-  { title: 'All Over You', performer: 'Live', releaseDate: '2017-06-13' },
   {
-    title: 'The Dolphin\u0027s Cry',
-    performer: 'Live',
-    releaseDate: '2017-06-13',
+    "title": "Burn Nice and Slow (The Formative Years)",
+    "performer": "Hail the Sun",
+    "releaseDate": "2016-08-16",
+    "expiration": 1787014800000,
+    "id": 762
   },
-  { title: 'I Alone', performer: 'Live', releaseDate: '2017-06-13' },
   {
-    title: 'Lightning Crashes',
-    performer: 'Live',
-    releaseDate: '2017-06-13',
+    "title": "Sweater Weather",
+    "performer": "The Neighbourhood",
+    "releaseDate": "2016-08-16",
+    "expiration": 1787014800000,
+    "id": 763
   },
-  { title: 'Selling the Drama', performer: 'Live', releaseDate: '2017-06-13' },
   {
-    title: 'Bad Things',
-    performer: 'Jace Everett',
-    releaseDate: '2017-06-20',
+    "title": "Closer to the Heart",
+    "performer": "Rush",
+    "releaseDate": "2016-08-23",
+    "expiration": 1787619600000,
+    "id": 764
   },
-  { title: 'Lick It Up', performer: 'Kiss', releaseDate: '2017-06-20' },
   {
-    title: 'Mouth for War',
-    performer: 'Pantera',
-    releaseDate: '2017-06-20',
+    "title": "Fly by Night",
+    "performer": "Rush",
+    "releaseDate": "2016-08-23",
+    "expiration": 1787619600000,
+    "id": 765
   },
-  { title: 'Los Angeles', performer: 'X', releaseDate: '2017-06-20' },
   {
-    title: 'Always Alright',
-    performer: 'Alabama Shakes',
-    releaseDate: '2017-06-27',
+    "title": "Freewill",
+    "performer": "Rush",
+    "releaseDate": "2016-08-23",
+    "expiration": 1787619600000,
+    "id": 766
   },
   {
-    title: 'Don\u0027t Wanna Fight',
-    performer: 'Alabama Shakes',
-    releaseDate: '2017-06-27',
+    "title": "Working Man",
+    "performer": "Rush",
+    "releaseDate": "2016-08-23",
+    "expiration": 1787619600000,
+    "id": 767
   },
   {
-    title: 'Gimme All Your Love',
-    performer: 'Alabama Shakes',
-    releaseDate: '2017-06-27',
+    "title": "La Villa Strangiato",
+    "performer": "Rush",
+    "releaseDate": "2016-08-23",
+    "expiration": 1787619600000,
+    "id": 768
   },
   {
-    title: 'Hold On',
-    performer: 'Alabama Shakes',
-    releaseDate: '2017-06-27',
+    "title": "I Fought the Law",
+    "performer": "The Clash",
+    "releaseDate": "2016-08-30",
+    "expiration": 1788224400000,
+    "id": 769
   },
   {
-    title: 'Time in a Bottle',
-    performer: 'Jim Croce',
-    releaseDate: '2017-07-05',
+    "title": "Emerald",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2016-08-30",
+    "expiration": 1788224400000,
+    "id": 770
   },
   {
-    title: 'Do You Feel Like We Do',
-    performer: 'Peter Frampton',
-    releaseDate: '2017-07-05',
+    "title": "Little Green Bag",
+    "performer": "George Baker Selection",
+    "releaseDate": "2016-08-30",
+    "expiration": 1788224400000,
+    "id": 771
   },
-  { title: 'Cowboy Song', performer: 'Thin Lizzy', releaseDate: '2017-07-05' },
   {
-    title: '12:51',
-    performer: 'The Strokes',
-    releaseDate: '2017-07-11',
+    "title": "It's Been Awhile",
+    "performer": "Staind",
+    "releaseDate": "2016-09-06",
+    "expiration": 1788829200000,
+    "id": 772
   },
   {
-    title: 'Someday',
-    performer: 'The Strokes',
-    releaseDate: '2017-07-11',
+    "title": "Outside",
+    "performer": "Staind",
+    "releaseDate": "2016-09-06",
+    "expiration": 1788829200000,
+    "id": 773
   },
   {
-    title: 'Taken for a Fool',
-    performer: 'The Strokes',
-    releaseDate: '2017-07-11',
+    "title": "So Far Away",
+    "performer": "Staind",
+    "releaseDate": "2016-09-06",
+    "expiration": 1788829200000,
+    "id": 774
   },
   {
-    title: 'You Only Live Once',
-    performer: 'The Strokes',
-    releaseDate: '2017-07-11',
+    "title": "I'm Made of Wax, Larry, What are You Made Of?",
+    "performer": "A Day To Remember",
+    "releaseDate": "2016-09-13",
+    "expiration": 1789434000000,
+    "id": 775
   },
   {
-    title: 'Little Miss Can\u0027t Be Wrong',
-    performer: 'Spin Doctors',
-    releaseDate: '2017-07-18',
+    "title": "I Ran (So Far Away)",
+    "performer": "A Flock of Seagulls",
+    "releaseDate": "2016-09-13",
+    "expiration": 1789434000000,
+    "id": 776
   },
-  { title: 'Alright', performer: 'Supergrass', releaseDate: '2017-07-18' },
   {
-    title: 'Life Is a Highway',
-    performer: 'Tom Cochrane',
-    releaseDate: '2017-07-18',
+    "title": "Never Going Back Again",
+    "performer": "Fleetwood Mac",
+    "releaseDate": "2016-09-13",
+    "expiration": 1789434000000,
+    "id": 777
   },
   {
-    title: 'The Beautiful People',
-    performer: 'Marilyn Manson',
-    releaseDate: '2017-07-25',
+    "title": "Refuse/Resist",
+    "performer": "Sepultura",
+    "releaseDate": "2016-09-13",
+    "expiration": 1789434000000,
+    "id": 778
   },
   {
-    title: 'Coma White',
-    performer: 'Marilyn Manson',
-    releaseDate: '2017-07-25',
+    "title": "Die, Die My Darling",
+    "performer": "Misfits",
+    "releaseDate": "2016-09-20",
+    "expiration": 1790038800000,
+    "id": 779
   },
   {
-    title: 'Tourniquet',
-    performer: 'Marilyn Manson',
-    releaseDate: '2017-07-25',
+    "title": "Halloween",
+    "performer": "Misfits",
+    "releaseDate": "2016-09-20",
+    "expiration": 1790038800000,
+    "id": 780
   },
   {
-    title: 'Last Train to Clarksville',
-    performer: 'The Monkees',
-    releaseDate: '2017-08-01',
+    "title": "Last Caress",
+    "performer": "Misfits",
+    "releaseDate": "2016-09-20",
+    "expiration": 1790038800000,
+    "id": 781
   },
   {
-    title: 'Pleasant Valley Sunday',
-    performer: 'The Monkees',
-    releaseDate: '2017-08-01',
+    "title": "Where Eagles Dare",
+    "performer": "Misfits",
+    "releaseDate": "2016-09-20",
+    "expiration": 1790038800000,
+    "id": 782
   },
   {
-    title: 'Valleri',
-    performer: 'The Monkees',
-    releaseDate: '2017-08-01',
+    "title": "Metropolis—Part I: The Miracle and the Sleeper",
+    "performer": "Dream Theater",
+    "releaseDate": "2016-09-27",
+    "expiration": 1790643600000,
+    "id": 783
   },
   {
-    title: 'Can You Feel My Heart',
-    performer: 'Bring Me the Horizon',
-    releaseDate: '2017-08-08',
+    "title": "On the Backs of Angels",
+    "performer": "Dream Theater",
+    "releaseDate": "2016-09-27",
+    "expiration": 1790643600000,
+    "id": 784
   },
   {
-    title: '45',
-    performer: 'The Gaslight Anthem',
-    releaseDate: '2017-08-08',
+    "title": "Pull Me Under",
+    "performer": "Dream Theater",
+    "releaseDate": "2016-09-27",
+    "expiration": 1790643600000,
+    "id": 785
   },
-  { title: 'Let Her Go', performer: 'Passenger', releaseDate: '2017-08-08' },
   {
-    title: 'Honey Bee',
-    performer: 'Muddy Waters',
-    releaseDate: '2017-08-15',
+    "title": "Three Little Birds",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 786
   },
   {
-    title: 'I Can\u0027t Be Satisfied',
-    performer: 'Muddy Waters',
-    releaseDate: '2017-08-15',
+    "title": "Suspicious Minds",
+    "performer": "Elvis Presley",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 787
   },
   {
-    title: 'Mannish Boy',
-    performer: 'Muddy Waters',
-    releaseDate: '2017-08-15',
+    "title": "Some Nights",
+    "performer": "fun.",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 788
   },
   {
-    title: 'Still a Fool',
-    performer: 'Muddy Waters',
-    releaseDate: '2017-08-15',
+    "title": "I Want You Back",
+    "performer": "The Jackson 5",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 789
   },
   {
-    title: 'Runnin\u0027 Wild',
-    performer: 'Airbourne',
-    releaseDate: '2017-08-22',
+    "title": "Hey Ya!",
+    "performer": "OutKast",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 790
   },
   {
-    title: 'Too Much, Too Young, Too Fast',
-    performer: 'Airbourne',
-    releaseDate: '2017-08-22',
+    "title": "Drops of Jupiter",
+    "performer": "Train",
+    "releaseDate": "2016-10-04",
+    "expiration": 1791248400000,
+    "id": 791
   },
   {
-    title: 'Blonde, Bad and Beautiful',
-    performer: 'Airbourne',
-    releaseDate: '2017-08-22',
+    "title": "Cold",
+    "performer": "Crossfade",
+    "releaseDate": "2016-10-11",
+    "expiration": 1791853200000,
+    "id": 792
   },
   {
-    title: 'Your Eyes',
-    performer: 'Bombay Bicycle Club',
-    releaseDate: '2017-08-29',
+    "title": "Simple Man",
+    "performer": "Shinedown",
+    "releaseDate": "2016-10-11",
+    "expiration": 1791853200000,
+    "id": 793
   },
   {
-    title: 'This War Is Ours (The Guillotine Part 2)',
-    performer: 'Escape the Fate',
-    releaseDate: '2017-08-29',
+    "title": "How to Save a Life",
+    "performer": "The Fray",
+    "releaseDate": "2016-10-11",
+    "expiration": 1791853200000,
+    "id": 794
   },
   {
-    title: 'All My Ex\u0027s Live in Texas',
-    performer: 'George Strait',
-    releaseDate: '2017-08-29',
+    "title": "Owner of a Lonely Heart",
+    "performer": "Yes",
+    "releaseDate": "2016-10-18",
+    "expiration": 1792458000000,
+    "id": 795
   },
   {
-    title: 'She Don\u0027t Use Jelly',
-    performer: 'The Flaming Lips',
-    releaseDate: '2017-08-29',
+    "title": "I've Seen All Good People",
+    "performer": "Yes",
+    "releaseDate": "2016-10-18",
+    "expiration": 1792458000000,
+    "id": 796
   },
   {
-    title: 'Away from the Sun',
-    performer: '3 Doors Down',
-    releaseDate: '2017-09-05',
+    "title": "Heart of the Sunrise",
+    "performer": "Yes",
+    "releaseDate": "2016-10-18",
+    "expiration": 1792458000000,
+    "id": 797
   },
   {
-    title: 'Be Like That',
-    performer: '3 Doors Down',
-    releaseDate: '2017-09-05',
+    "title": "Starship Trooper",
+    "performer": "Yes",
+    "releaseDate": "2016-10-18",
+    "expiration": 1792458000000,
+    "id": 798
   },
   {
-    title: 'Here Without You',
-    performer: '3 Doors Down',
-    releaseDate: '2017-09-05',
+    "title": "Roundabout",
+    "performer": "Yes",
+    "releaseDate": "2016-10-18",
+    "expiration": 1792458000000,
+    "id": 799
   },
   {
-    title: 'It\u0027s Not My Time',
-    performer: '3 Doors Down',
-    releaseDate: '2017-09-05',
+    "title": "Black Sunshine",
+    "performer": "White Zombie",
+    "releaseDate": "2016-10-25",
+    "expiration": 1793062800000,
+    "id": 800
   },
-  { title: 'Let Me Go', performer: '3 Doors Down', releaseDate: '2017-09-05' },
   {
-    title: 'Lay It Down',
-    performer: 'Ratt',
-    releaseDate: '2017-09-12',
+    "title": "Dragula",
+    "performer": "Rob Zombie",
+    "releaseDate": "2016-10-25",
+    "expiration": 1793062800000,
+    "id": 801
   },
   {
-    title: 'Hip to Be Square',
-    performer: 'Huey Lewis and the News',
-    releaseDate: '2017-09-12',
+    "title": "Living Dead Girl",
+    "performer": "Rob Zombie",
+    "releaseDate": "2016-10-25",
+    "expiration": 1793062800000,
+    "id": 802
   },
   {
-    title: 'Higher Love',
-    performer: 'Steve Winwood',
-    releaseDate: '2017-09-12',
+    "title": "Superbeast",
+    "performer": "Rob Zombie",
+    "releaseDate": "2016-10-25",
+    "expiration": 1793062800000,
+    "id": 803
   },
   {
-    title: 'The Artist in the Ambulance',
-    performer: 'Thrice',
-    releaseDate: '2017-09-19',
+    "title": "Sex And Candy",
+    "performer": "Marcy Playground",
+    "releaseDate": "2016-11-01",
+    "expiration": 1793664000000,
+    "id": 804
   },
-  { title: 'Stare At the Sun', performer: 'Thrice', releaseDate: '2017-09-19' },
   {
-    title: 'Deadbolt',
-    performer: 'Thrice',
-    releaseDate: '2017-09-19',
+    "title": "Search And Destroy",
+    "performer": "Iggy and The Stooges",
+    "releaseDate": "2016-11-01",
+    "expiration": 1793664000000,
+    "id": 805
   },
   {
-    title: '99 Red Balloons',
-    performer: 'Goldfinger',
-    releaseDate: '2017-09-26',
+    "title": "The Ballad Of Mona Lisa",
+    "performer": "Panic! At The Disco",
+    "releaseDate": "2016-11-01",
+    "expiration": 1793664000000,
+    "id": 806
   },
   {
-    title: 'Bad Romance',
-    performer: 'Halestorm',
-    releaseDate: '2017-09-26',
+    "title": "Eyes Of A Panther",
+    "performer": "Steel Panther",
+    "releaseDate": "2016-11-01",
+    "expiration": 1793664000000,
+    "id": 807
   },
   {
-    title: 'Tainted Love',
-    performer: 'Marilyn Manson',
-    releaseDate: '2017-09-26',
+    "title": "Danger Zone",
+    "performer": "Kenny Loggins",
+    "releaseDate": "2016-11-08",
+    "expiration": 1794268800000,
+    "id": 808
   },
   {
-    title: 'Careless Whisper',
-    performer: 'Seether',
-    releaseDate: '2017-09-26',
+    "title": "Addicted To Love",
+    "performer": "Robert Palmer",
+    "releaseDate": "2016-11-08",
+    "expiration": 1794268800000,
+    "id": 809
   },
   {
-    title: 'I Can\u0027t Help Myself (Sugar Pie Honey Bunch)',
-    performer: 'Four Tops',
-    releaseDate: '2017-10-03',
+    "title": "Nobody's Fool",
+    "performer": "Cinderella",
+    "releaseDate": "2016-11-08",
+    "expiration": 1794268800000,
+    "id": 810
   },
   {
-    title: 'It\u0027s the Same Old Song',
-    performer: 'Four Tops',
-    releaseDate: '2017-10-03',
+    "title": "Burning Heart",
+    "performer": "Survivor",
+    "releaseDate": "2016-11-08",
+    "expiration": 1794268800000,
+    "id": 811
   },
   {
-    title: 'Reach Out I\u0027ll Be There',
-    performer: 'Four Tops',
-    releaseDate: '2017-10-03',
+    "title": "Talk Dirty to Me",
+    "performer": "Poison",
+    "releaseDate": "2016-11-08",
+    "expiration": 1794268800000,
+    "id": 812
   },
-  { title: 'Bernadette', performer: 'Four Tops', releaseDate: '2017-10-03' },
   {
-    title: 'The Funeral',
-    performer: 'Band of Horses',
-    releaseDate: '2017-10-10',
+    "title": "Pride and Joy",
+    "performer": "Stevie Ray Vaughan & Double Trouble",
+    "releaseDate": "2016-11-15",
+    "expiration": 1794873600000,
+    "id": 813
   },
-  { title: 'Lips of an Angel', performer: 'Hinder', releaseDate: '2017-10-10' },
   {
-    title: 'Breakaway',
-    performer: 'Kelly Clarkson',
-    releaseDate: '2017-10-10',
+    "title": "Scuttle Buttin",
+    "performer": "Stevie Ray Vaughan & Double Trouble",
+    "releaseDate": "2016-11-15",
+    "expiration": 1794873600000,
+    "id": 814
   },
   {
-    title: 'Takin\u0027 Care of Business',
-    performer: 'Bachman-Turner Overdrive',
-    releaseDate: '2017-10-17',
+    "title": "Cold Shot",
+    "performer": "Stevie Ray Vaughan & Double Trouble",
+    "releaseDate": "2016-11-15",
+    "expiration": 1794873600000,
+    "id": 815
   },
   {
-    title: 'Let It Ride',
-    performer: 'Bachman-Turner Overdrive',
-    releaseDate: '2017-10-17',
+    "title": "Couldn't Stand the Weather",
+    "performer": "Stevie Ray Vaughan & Double Trouble",
+    "releaseDate": "2016-11-15",
+    "expiration": 1794873600000,
+    "id": 816
   },
   {
-    title: 'You Ain\u0027t Seen Nothing Yet',
-    performer: 'Bachman-Turner Overdrive',
-    releaseDate: '2017-10-17',
+    "title": "Texas Flood",
+    "performer": "Stevie Ray Vaughan & Double Trouble",
+    "releaseDate": "2016-11-15",
+    "expiration": 1794873600000,
+    "id": 817
   },
   {
-    title: 'Down Under',
-    performer: 'Colin Hay',
-    releaseDate: '2017-10-24',
+    "title": "Shut Up And Dance",
+    "performer": "Walk The Moon",
+    "releaseDate": "2016-11-22",
+    "expiration": 1795478400000,
+    "id": 818
   },
   {
-    title: 'Through the Fire and Flames',
-    performer: 'DragonForce',
-    releaseDate: '2017-10-24',
+    "title": "In The End",
+    "performer": "Black Veil Brides",
+    "releaseDate": "2016-11-22",
+    "expiration": 1795478400000,
+    "id": 819
   },
   {
-    title: 'Saturday Night\u0027s Alright for Fighting',
-    performer: 'Elton John',
-    releaseDate: '2017-10-24',
+    "title": "Sail",
+    "performer": "Awolnation",
+    "releaseDate": "2016-11-22",
+    "expiration": 1795478400000,
+    "id": 820
   },
   {
-    title: 'Send Me on My Way',
-    performer: 'Rusted Root',
-    releaseDate: '2017-10-24',
+    "title": "Semi-Charmed Life",
+    "performer": "Third Eye Blind",
+    "releaseDate": "2016-11-29",
+    "expiration": 1796083200000,
+    "id": 821
   },
   {
-    title: 'Twilight of the Thunder God',
-    performer: 'Amon Amarth',
-    releaseDate: '2017-10-31',
+    "title": "Never Let You Go",
+    "performer": "Third Eye Blind",
+    "releaseDate": "2016-11-29",
+    "expiration": 1796083200000,
+    "id": 822
   },
   {
-    title: 'The Pursuit of Vikings',
-    performer: 'Amon Amarth',
-    releaseDate: '2017-10-31',
+    "title": "How's It Going To Be",
+    "performer": "Third Eye Blind",
+    "releaseDate": "2016-11-29",
+    "expiration": 1796083200000,
+    "id": 823
   },
   {
-    title: 'War of the Gods',
-    performer: 'Amon Amarth',
-    releaseDate: '2017-10-31',
+    "title": "Jumper",
+    "performer": "Third Eye Blind",
+    "releaseDate": "2016-11-29",
+    "expiration": 1796083200000,
+    "id": 824
   },
   {
-    title: 'Death in Fire',
-    performer: 'Amon Amarth',
-    releaseDate: '2017-10-31',
+    "title": "Suffragette City",
+    "performer": "David Bowie",
+    "releaseDate": "2016-12-06",
+    "expiration": 1796688000000,
+    "id": 825
   },
   {
-    title: 'Guardians of Asgaard',
-    performer: 'Amon Amarth',
-    releaseDate: '2017-10-31',
+    "title": "Stray Cat Strut",
+    "performer": "Brian Setzer",
+    "releaseDate": "2016-12-06",
+    "expiration": 1796688000000,
+    "id": 826
   },
   {
-    title: 'Linoleum',
-    performer: 'NOFX',
-    releaseDate: '2017-11-07',
+    "title": "F.C.P.R.E.M.I.X.",
+    "performer": "The Fall of Troy",
+    "releaseDate": "2016-12-06",
+    "expiration": 1796688000000,
+    "id": 827
   },
-  { title: 'Bob', performer: 'NOFX', releaseDate: '2017-11-07' },
   {
-    title: 'Seeing Double At The Triple Rock',
-    performer: 'NOFX',
-    releaseDate: '2017-11-07',
+    "title": "Hey Jealousy",
+    "performer": "Gin Blossoms",
+    "releaseDate": "2016-12-06",
+    "expiration": 1796688000000,
+    "id": 828
   },
   {
-    title: 'Stickin\u0027 In My Eye',
-    performer: 'NOFX',
-    releaseDate: '2017-11-07',
+    "title": "Proud Mary",
+    "performer": "Creedence Clearwater Revival",
+    "releaseDate": "2016-12-13",
+    "expiration": 1797292800000,
+    "id": 829
   },
   {
-    title: 'Back on the Chain Gang',
-    performer: 'The Pretenders',
-    releaseDate: '2017-11-14',
+    "title": "Fortunate Son",
+    "performer": "Creedence Clearwater Revival",
+    "releaseDate": "2016-12-13",
+    "expiration": 1797292800000,
+    "id": 830
   },
   {
-    title: 'Brass in Pocket',
-    performer: 'The Pretenders',
-    releaseDate: '2017-11-14',
+    "title": "Bad Moon Rising",
+    "performer": "Creedence Clearwater Revival",
+    "releaseDate": "2016-12-13",
+    "expiration": 1797292800000,
+    "id": 831
   },
   {
-    title: 'Don\u0027t Get Me Wrong',
-    performer: 'The Pretenders',
-    releaseDate: '2017-11-14',
+    "title": "21 Guns",
+    "performer": "Green Day",
+    "releaseDate": "2016-12-20",
+    "expiration": 1797897600000,
+    "id": 832
   },
   {
-    title: 'I\u0027ll Stand By You',
-    performer: 'The Pretenders',
-    releaseDate: '2017-11-14',
+    "title": "Bang Bang",
+    "performer": "Green Day",
+    "releaseDate": "2016-12-20",
+    "expiration": 1797897600000,
+    "id": 833
   },
   {
-    title: 'Middle of the Road',
-    performer: 'The Pretenders',
-    releaseDate: '2017-11-14',
+    "title": "Good Riddance (Time of Your Life)",
+    "performer": "Green Day",
+    "releaseDate": "2016-12-20",
+    "expiration": 1797897600000,
+    "id": 834
   },
-  { title: 'I Get Off', performer: 'Halestorm', releaseDate: '2017-11-22' },
   {
-    title: 'I Miss the Misery',
-    performer: 'Halestorm',
-    releaseDate: '2017-11-22',
+    "title": "Longview",
+    "performer": "Green Day",
+    "releaseDate": "2016-12-20",
+    "expiration": 1797897600000,
+    "id": 835
   },
   {
-    title: 'Mz. Hyde',
-    performer: 'Halestorm',
-    releaseDate: '2017-11-22',
+    "title": "Wake Me Up When September Ends",
+    "performer": "Green Day",
+    "releaseDate": "2016-12-20",
+    "expiration": 1797897600000,
+    "id": 836
   },
   {
-    title: 'A Mad Russian\u0027s Christmas',
-    performer: 'Trans-Siberian Orchestra',
-    releaseDate: '2017-11-28',
+    "title": "Vertigo",
+    "performer": "U2",
+    "releaseDate": "2017-01-03",
+    "expiration": 1799107200000,
+    "id": 837
   },
   {
-    title: 'Christmas Canon Rock',
-    performer: 'Trans-Siberian Orchestra',
-    releaseDate: '2017-11-28',
+    "title": "Beautiful Day",
+    "performer": "U2",
+    "releaseDate": "2017-01-03",
+    "expiration": 1799107200000,
+    "id": 838
   },
   {
-    title: 'Christmas Eve/Sarajevo 12/24',
-    performer: 'Trans-Siberian Orchestra',
-    releaseDate: '2017-11-28',
+    "title": "Where the Streets Have No Name",
+    "performer": "U2",
+    "releaseDate": "2017-01-03",
+    "expiration": 1799107200000,
+    "id": 839
   },
   {
-    title: 'O Come, All Ye Faithful/O Holy Night',
-    performer: 'Trans-Siberian Orchestra',
-    releaseDate: '2017-11-28',
+    "title": "With or Without You",
+    "performer": "U2",
+    "releaseDate": "2017-01-03",
+    "expiration": 1799107200000,
+    "id": 840
   },
   {
-    title: 'Wizards in Winter',
-    performer: 'Trans-Siberian Orchestra',
-    releaseDate: '2017-11-28',
+    "title": "Sunday Bloody Sunday",
+    "performer": "U2",
+    "releaseDate": "2017-01-03",
+    "expiration": 1799107200000,
+    "id": 841
   },
   {
-    title: 'Fly Like an Eagle',
-    performer: 'Steve Miller Band',
-    releaseDate: '2017-12-05',
+    "title": "California Dreamin",
+    "performer": "The Mamas & the Papas",
+    "releaseDate": "2017-01-10",
+    "expiration": 1799712000000,
+    "id": 842
   },
   {
-    title: 'Jet Airliner',
-    performer: 'Steve Miller Band',
-    releaseDate: '2017-12-05',
+    "title": "Green Onions",
+    "performer": "Booker T. & the M.G.'s",
+    "releaseDate": "2017-01-10",
+    "expiration": 1799712000000,
+    "id": 843
   },
   {
-    title: 'The Joker',
-    performer: 'Steve Miller Band',
-    releaseDate: '2017-12-05',
+    "title": "Somebody To Love",
+    "performer": "Jefferson Airplane",
+    "releaseDate": "2017-01-10",
+    "expiration": 1799712000000,
+    "id": 844
   },
   {
-    title: 'Rock\u0027n Me',
-    performer: 'Steve Miller Band',
-    releaseDate: '2017-12-05',
+    "title": "First Date",
+    "performer": "Blink-182",
+    "releaseDate": "2017-01-17",
+    "expiration": 1800316800000,
+    "id": 845
   },
   {
-    title: 'Take the Money and Run',
-    performer: 'Steve Miller Band',
-    releaseDate: '2017-12-05',
+    "title": "The Rock Show",
+    "performer": "Blink-182",
+    "releaseDate": "2017-01-17",
+    "expiration": 1800316800000,
+    "id": 846
   },
   {
-    title: 'Down in a Hole',
-    performer: 'Alice in Chains',
-    releaseDate: '2017-12-12',
+    "title": "Adam's Song",
+    "performer": "Blink-182",
+    "releaseDate": "2017-01-17",
+    "expiration": 1800316800000,
+    "id": 847
   },
   {
-    title: 'Heaven Beside You',
-    performer: 'Alice in Chains',
-    releaseDate: '2017-12-12',
+    "title": "Feeling This",
+    "performer": "Blink-182",
+    "releaseDate": "2017-01-17",
+    "expiration": 1800316800000,
+    "id": 848
   },
   {
-    title: 'No Excuses',
-    performer: 'Alice in Chains',
-    releaseDate: '2017-12-12',
+    "title": "I Miss You",
+    "performer": "Blink-182",
+    "releaseDate": "2017-01-17",
+    "expiration": 1800316800000,
+    "id": 849
   },
   {
-    title: 'Nutshell',
-    performer: 'Alice in Chains',
-    releaseDate: '2017-12-12',
+    "title": "Counting Stars",
+    "performer": "OneRepublic",
+    "releaseDate": "2017-01-24",
+    "expiration": 1800921600000,
+    "id": 850
   },
-  { title: 'Rooster', performer: 'Alice in Chains', releaseDate: '2017-12-12' },
   {
-    title: 'Big River',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "I Melt With You",
+    "performer": "Modern English",
+    "releaseDate": "2017-01-24",
+    "expiration": 1800921600000,
+    "id": 851
   },
   {
-    title: 'Folsom Prison Blues',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Wherever You Will Go",
+    "performer": "The Calling",
+    "releaseDate": "2017-01-24",
+    "expiration": 1800921600000,
+    "id": 852
   },
   {
-    title: 'Give My Love to Rose',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Take The Power Back",
+    "performer": "Rage Against the Machine",
+    "releaseDate": "2017-01-24",
+    "expiration": 1800921600000,
+    "id": 853
   },
-  { title: 'Hey, Porter', performer: 'Johnny Cash', releaseDate: '2017-12-19' },
   {
-    title: 'Jackson',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Going Under",
+    "performer": "Evanescence",
+    "releaseDate": "2017-01-31",
+    "expiration": 1801526400000,
+    "id": 854
   },
   {
-    title: 'Cry! Cry! Cry!',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "My Immortal",
+    "performer": "Evanescence",
+    "releaseDate": "2017-01-31",
+    "expiration": 1801526400000,
+    "id": 855
   },
   {
-    title: 'Get Rhythm',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Everybody's Fool",
+    "performer": "Evanescence",
+    "releaseDate": "2017-01-31",
+    "expiration": 1801526400000,
+    "id": 856
   },
   {
-    title: 'I Walk the Line',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Footloose",
+    "performer": "Kenny Loggins",
+    "releaseDate": "2017-02-07",
+    "expiration": 1802131200000,
+    "id": 857
   },
   {
-    title: 'Ring of Fire',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "I Wanna Rock",
+    "performer": "Twisted Sister",
+    "releaseDate": "2017-02-07",
+    "expiration": 1802131200000,
+    "id": 858
   },
   {
-    title: 'Sunday Mornin\u0027 Comin\u0027 Down',
-    performer: 'Johnny Cash',
-    releaseDate: '2017-12-19',
+    "title": "Don't You (Forget About Me)",
+    "performer": "Simple Minds",
+    "releaseDate": "2017-02-07",
+    "expiration": 1802131200000,
+    "id": 859
   },
   {
-    title: 'Ain\u0027t It Fun',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "Yellow",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 860
   },
   {
-    title: 'Brick by Boring Brick',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "Clocks",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 861
   },
   {
-    title: 'Crushcrushcrush',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "Viva La Vida",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 862
   },
   {
-    title: 'The Only Exception',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "Fix You",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 863
   },
   {
-    title: 'Pressure',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "In My Place",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 864
   },
   {
-    title: 'Still Into You',
-    performer: 'Paramore',
-    releaseDate: '2018-01-09',
+    "title": "The Scientist",
+    "performer": "Coldplay",
+    "releaseDate": "2017-02-14",
+    "expiration": 1802736000000,
+    "id": 865
   },
   {
-    title: 'Boulevard of Broken Dreams',
-    performer: 'Green Day',
-    releaseDate: '2018-01-16',
+    "title": "Fight for Your Right",
+    "performer": "Beastie Boys",
+    "releaseDate": "2017-02-21",
+    "expiration": 1803340800000,
+    "id": 866
   },
   {
-    title: 'Jesus of Suburbia',
-    performer: 'Green Day',
-    releaseDate: '2018-01-16',
+    "title": "No Sleep till Brooklyn",
+    "performer": "Beastie Boys",
+    "releaseDate": "2017-02-21",
+    "expiration": 1803340800000,
+    "id": 867
   },
   {
-    title: 'Holiday',
-    performer: 'Green Day',
-    releaseDate: '2018-01-16',
+    "title": "Sabotage",
+    "performer": "Beastie Boys",
+    "releaseDate": "2017-02-21",
+    "expiration": 1803340800000,
+    "id": 868
   },
   {
-    title: 'Know Your Enemy',
-    performer: 'Green Day',
-    releaseDate: '2018-01-16',
+    "title": "Magic Carpet Ride",
+    "performer": "Steppenwolf",
+    "releaseDate": "2017-02-28",
+    "expiration": 1803945600000,
+    "id": 869
   },
   {
-    title: 'Welcome to Paradise',
-    performer: 'Green Day',
-    releaseDate: '2018-01-16',
+    "title": "Far Behind",
+    "performer": "Candlebox",
+    "releaseDate": "2017-02-28",
+    "expiration": 1803945600000,
+    "id": 870
   },
   {
-    title: 'The Cave',
-    performer: 'Mumford \u0026 Sons',
-    releaseDate: '2018-01-23',
+    "title": "Underdog",
+    "performer": "Kasabian",
+    "releaseDate": "2017-02-28",
+    "expiration": 1803945600000,
+    "id": 871
   },
   {
-    title: 'I Will Wait',
-    performer: 'Mumford \u0026 Sons',
-    releaseDate: '2018-01-23',
+    "title": "Everybody Wants To Rule The World",
+    "performer": "Tears For Fears",
+    "releaseDate": "2017-02-28",
+    "expiration": 1803945600000,
+    "id": 872
   },
   {
-    title: 'Little Lion Man',
-    performer: 'Mumford \u0026 Sons',
-    releaseDate: '2018-01-23',
+    "title": "My Happy Ending",
+    "performer": "Avril Lavigne",
+    "releaseDate": "2017-03-07",
+    "expiration": 1804550400000,
+    "id": 873
   },
-  { title: 'Aqualung', performer: 'Jethro Tull', releaseDate: '2018-01-30' },
   {
-    title: 'Radar Love',
-    performer: 'Golden Earring',
-    releaseDate: '2018-01-30',
+    "title": "When You're Gone",
+    "performer": "Avril Lavigne",
+    "releaseDate": "2017-03-07",
+    "expiration": 1804550400000,
+    "id": 874
   },
   {
-    title: 'We\u0027re an American Band',
-    performer: 'Grand Funk Railroad',
-    releaseDate: '2018-01-30',
+    "title": "Complicated",
+    "performer": "Avril Lavigne",
+    "releaseDate": "2017-03-07",
+    "expiration": 1804550400000,
+    "id": 875
   },
-  { title: 'Poker Face', performer: 'Lady Gaga', releaseDate: '2018-02-06' },
   {
-    title: 'Paparazzi',
-    performer: 'Lady Gaga',
-    releaseDate: '2018-02-06',
+    "title": "I'm With You",
+    "performer": "Avril Lavigne",
+    "releaseDate": "2017-03-07",
+    "expiration": 1804550400000,
+    "id": 876
   },
-  { title: 'Bad Romance', performer: 'Lady Gaga', releaseDate: '2018-02-06' },
   {
-    title: 'You and I',
-    performer: 'Lady Gaga',
-    releaseDate: '2018-02-06',
+    "title": "Sk8er Boi",
+    "performer": "Avril Lavigne",
+    "releaseDate": "2017-03-07",
+    "expiration": 1804550400000,
+    "id": 877
   },
-  { title: 'Built to Fall', performer: 'Trivium', releaseDate: '2018-02-13' },
   {
-    title: 'In Waves',
-    performer: 'Trivium',
-    releaseDate: '2018-02-13',
+    "title": "Inside Out",
+    "performer": "Eve 6",
+    "releaseDate": "2017-03-14",
+    "expiration": 1805155200000,
+    "id": 878
   },
-  { title: 'Strife', performer: 'Trivium', releaseDate: '2018-02-13' },
   {
-    title: 'Only the Good Die Young',
-    performer: 'Billy Joel',
-    releaseDate: '2018-02-20',
+    "title": "Violet",
+    "performer": "Hole",
+    "releaseDate": "2017-03-14",
+    "expiration": 1805155200000,
+    "id": 879
   },
   {
-    title: 'Bad To The Bone',
-    performer: 'George Thorogood and the Destroyers',
-    releaseDate: '2018-02-20',
+    "title": "If You Could Only See",
+    "performer": "Tonic",
+    "releaseDate": "2017-03-14",
+    "expiration": 1805155200000,
+    "id": 880
   },
   {
-    title: 'Face Down',
-    performer: 'The Red Jumpsuit Apparatus',
-    releaseDate: '2018-02-20',
+    "title": "18 and Life",
+    "performer": "Skid Row",
+    "releaseDate": "2017-03-21",
+    "expiration": 1805760000000,
+    "id": 881
   },
   {
-    title: 'Runaway Train',
-    performer: 'Soul Asylum',
-    releaseDate: '2018-02-20',
+    "title": "I Remember You",
+    "performer": "Skid Row",
+    "releaseDate": "2017-03-21",
+    "expiration": 1805760000000,
+    "id": 882
   },
   {
-    title: 'Games People Play',
-    performer: 'Joe South',
-    releaseDate: '2018-02-27',
+    "title": "Monkey Business",
+    "performer": "Skid Row",
+    "releaseDate": "2017-03-21",
+    "expiration": 1805760000000,
+    "id": 883
   },
   {
-    title: 'Get Together',
-    performer: 'The Youngbloods',
-    releaseDate: '2018-02-27',
+    "title": "Slave to the Grind",
+    "performer": "Skid Row",
+    "releaseDate": "2017-03-21",
+    "expiration": 1805760000000,
+    "id": 884
   },
-  { title: 'Hush', performer: 'Deep Purple', releaseDate: '2018-02-27' },
   {
-    title: 'Man! I Feel Like A Woman',
-    performer: 'Shania Twain',
-    releaseDate: '2018-03-06',
+    "title": "Youth Gone Wild",
+    "performer": "Skid Row",
+    "releaseDate": "2017-03-21",
+    "expiration": 1805760000000,
+    "id": 885
   },
   {
-    title: 'That Don\u0027t Impress Me Much',
-    performer: 'Shania Twain',
-    releaseDate: '2018-03-06',
+    "title": "You",
+    "performer": "Bad Religion",
+    "releaseDate": "2017-03-28",
+    "expiration": 1806364800000,
+    "id": 886
   },
   {
-    title: 'You\u0027re Still The One',
-    performer: 'Shania Twain',
-    releaseDate: '2018-03-06',
+    "title": "Superman",
+    "performer": "Goldfinger",
+    "releaseDate": "2017-03-28",
+    "expiration": 1806364800000,
+    "id": 887
   },
-  { title: 'Ruby', performer: 'Kaiser Chiefs', releaseDate: '2018-03-13' },
   {
-    title: 'Never Miss A Beat',
-    performer: 'Kaiser Chiefs',
-    releaseDate: '2018-03-13',
+    "title": "May 16",
+    "performer": "Lagwagon",
+    "releaseDate": "2017-03-28",
+    "expiration": 1806364800000,
+    "id": 888
   },
   {
-    title: 'I Predict A Riot',
-    performer: 'Kaiser Chiefs',
-    releaseDate: '2018-03-13',
+    "title": "No Cigar",
+    "performer": "Millencolin",
+    "releaseDate": "2017-03-28",
+    "expiration": 1806364800000,
+    "id": 889
   },
   {
-    title: 'Pompeii',
-    performer: 'Bastille',
-    releaseDate: '2018-03-20',
+    "title": "When Worlds Collide",
+    "performer": "Powerman 5000",
+    "releaseDate": "2017-03-28",
+    "expiration": 1806364800000,
+    "id": 890
   },
   {
-    title: 'What You Know',
-    performer: 'Two Door Cinema Club',
-    releaseDate: '2018-03-20',
+    "title": "Even Flow",
+    "performer": "Pearl Jam",
+    "releaseDate": "2017-04-04",
+    "expiration": 1806973200000,
+    "id": 891
   },
   {
-    title: 'Hold Back The River',
-    performer: 'James Bay',
-    releaseDate: '2018-03-20',
+    "title": "Rearviewmirror",
+    "performer": "Pearl Jam",
+    "releaseDate": "2017-04-04",
+    "expiration": 1806973200000,
+    "id": 892
   },
   {
-    title: 'Lovefool',
-    performer: 'The Cardigans',
-    releaseDate: '2018-03-27',
+    "title": "Do The Evolution",
+    "performer": "Pearl Jam",
+    "releaseDate": "2017-04-04",
+    "expiration": 1806973200000,
+    "id": 893
   },
   {
-    title: 'Erase/Rewind',
-    performer: 'The Cardigans',
-    releaseDate: '2018-03-27',
+    "title": "Last Exit",
+    "performer": "Pearl Jam",
+    "releaseDate": "2017-04-04",
+    "expiration": 1806973200000,
+    "id": 894
   },
   {
-    title: 'My Favourite Game',
-    performer: 'The Cardigans',
-    releaseDate: '2018-03-27',
+    "title": "Yellow Ledbetter",
+    "performer": "Pearl Jam",
+    "releaseDate": "2017-04-04",
+    "expiration": 1806973200000,
+    "id": 895
   },
-  { title: 'Murmaider', performer: 'Dethklok', releaseDate: '2018-04-03' },
   {
-    title: 'Black Fire Upon Us',
-    performer: 'Dethklok',
-    releaseDate: '2018-04-03',
+    "title": "Banana Pancakes",
+    "performer": "Jack Johnson",
+    "releaseDate": "2017-04-11",
+    "expiration": 1807578000000,
+    "id": 896
   },
-  { title: 'Bloodlines', performer: 'Dethklok', releaseDate: '2018-04-03' },
   {
-    title: 'Your Love',
-    performer: 'The Outfield',
-    releaseDate: '2018-04-10',
+    "title": "All Mixed Up",
+    "performer": "311",
+    "releaseDate": "2017-04-11",
+    "expiration": 1807578000000,
+    "id": 897
   },
   {
-    title: 'Amie',
-    performer: 'Pure Prairie League',
-    releaseDate: '2018-04-10',
+    "title": "Surfing With The Alien",
+    "performer": "Joe Satriani",
+    "releaseDate": "2017-04-11",
+    "expiration": 1807578000000,
+    "id": 898
   },
   {
-    title: 'Hunger Strike',
-    performer: 'Temple Of The Dog',
-    releaseDate: '2018-04-10',
+    "title": "Let It Go",
+    "performer": "James Bay",
+    "releaseDate": "2017-04-11",
+    "expiration": 1807578000000,
+    "id": 899
   },
   {
-    title: 'I Write Sins Not Tragedies',
-    performer: 'Panic! At The Disco',
-    releaseDate: '2018-04-10',
+    "title": "Buffalo Soldier",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2017-04-18",
+    "expiration": 1808182800000,
+    "id": 900
   },
   {
-    title: 'Dakota',
-    performer: 'Stereophonics',
-    releaseDate: '2018-04-17',
+    "title": "Could You Be Loved",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2017-04-18",
+    "expiration": 1808182800000,
+    "id": 901
   },
   {
-    title: 'The Bartender And The Thief',
-    performer: 'Stereophonics',
-    releaseDate: '2018-04-17',
+    "title": "Is This Love",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2017-04-18",
+    "expiration": 1808182800000,
+    "id": 902
   },
   {
-    title: 'Maybe Tomorrow',
-    performer: 'Stereophonics',
-    releaseDate: '2018-04-17',
+    "title": "No Woman, No Cry",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2017-04-18",
+    "expiration": 1808182800000,
+    "id": 903
   },
   {
-    title: 'You Get What You Give',
-    performer: 'New Radicals',
-    releaseDate: '2018-04-24',
+    "title": "Redemption Song",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2017-04-18",
+    "expiration": 1808182800000,
+    "id": 904
   },
-  { title: 'Keep Away', performer: 'Godsmack', releaseDate: '2018-04-24' },
   {
-    title: 'Volcano Girls',
-    performer: 'Veruca Salt',
-    releaseDate: '2018-04-24',
+    "title": "Figure It Out",
+    "performer": "Royal Blood",
+    "releaseDate": "2017-04-25",
+    "expiration": 1808787600000,
+    "id": 905
   },
   {
-    title: 'Black Horse and the Cherry Tree',
-    performer: 'KT Tunstall',
-    releaseDate: '2018-05-01',
+    "title": "Little Monster",
+    "performer": "Royal Blood",
+    "releaseDate": "2017-04-25",
+    "expiration": 1808787600000,
+    "id": 906
   },
   {
-    title: 'Other Side Of The World',
-    performer: 'KT Tunstall',
-    releaseDate: '2018-05-01',
+    "title": "Out of the Black",
+    "performer": "Royal Blood",
+    "releaseDate": "2017-04-25",
+    "expiration": 1808787600000,
+    "id": 907
   },
   {
-    title: 'Suddenly I See',
-    performer: 'KT Tunstall',
-    releaseDate: '2018-05-01',
+    "title": "Hooked on a Feeling",
+    "performer": "Blue Swede",
+    "releaseDate": "2017-05-02",
+    "expiration": 1809392400000,
+    "id": 908
   },
   {
-    title: 'Lonely Is The Night',
-    performer: 'Billy Squier',
-    releaseDate: '2018-05-08',
+    "title": "Moonage Daydream",
+    "performer": "David Bowie",
+    "releaseDate": "2017-05-02",
+    "expiration": 1809392400000,
+    "id": 909
   },
   {
-    title: 'Too Much Time on My Hands',
-    performer: 'Styx',
-    releaseDate: '2018-05-08',
+    "title": "Ain't No Mountain High Enough",
+    "performer": "Marvin Gaye & Tammi Terrell",
+    "releaseDate": "2017-05-02",
+    "expiration": 1809392400000,
+    "id": 910
   },
   {
-    title: 'Let\u0027s Groove',
-    performer: 'Earth, Wind \u0026 Fire',
-    releaseDate: '2018-05-08',
+    "title": "Go All the Way",
+    "performer": "Raspberries",
+    "releaseDate": "2017-05-02",
+    "expiration": 1809392400000,
+    "id": 911
   },
-  { title: 'Obstacle 1', performer: 'Interpol', releaseDate: '2018-05-15' },
   {
-    title: 'All The Rage Back Home',
-    performer: 'Interpol',
-    releaseDate: '2018-05-15',
+    "title": "Come and Get Your Love",
+    "performer": "Redbone",
+    "releaseDate": "2017-05-02",
+    "expiration": 1809392400000,
+    "id": 912
   },
-  { title: 'PDA', performer: 'Interpol', releaseDate: '2018-05-15' },
   {
-    title: 'Evil',
-    performer: 'Interpol',
-    releaseDate: '2018-05-15',
+    "title": "If It Makes You Happy",
+    "performer": "Sheryl Crow",
+    "releaseDate": "2017-05-09",
+    "expiration": 1809997200000,
+    "id": 913
   },
   {
-    title: 'Souls of Black',
-    performer: 'Testament',
-    releaseDate: '2018-05-22',
+    "title": "My Favorite Mistake",
+    "performer": "Sheryl Crow",
+    "releaseDate": "2017-05-09",
+    "expiration": 1809997200000,
+    "id": 914
   },
   {
-    title: 'Transilvanian Hunger',
-    performer: 'Darkthrone',
-    releaseDate: '2018-05-22',
+    "title": "Soak Up the Sun",
+    "performer": "Sheryl Crow",
+    "releaseDate": "2017-05-09",
+    "expiration": 1809997200000,
+    "id": 915
   },
   {
-    title: 'Immortal Rites',
-    performer: 'Morbid Angel',
-    releaseDate: '2018-05-22',
+    "title": "Casey Jones",
+    "performer": "Grateful Dead",
+    "releaseDate": "2017-05-16",
+    "expiration": 1810602000000,
+    "id": 916
   },
   {
-    title: 'Come Away With Me',
-    performer: 'Norah Jones',
-    releaseDate: '2018-05-29',
+    "title": "Friend of the Devil",
+    "performer": "Grateful Dead",
+    "releaseDate": "2017-05-16",
+    "expiration": 1810602000000,
+    "id": 917
   },
   {
-    title: 'Don\u0027t Know Why',
-    performer: 'Norah Jones',
-    releaseDate: '2018-05-29',
+    "title": "Sugar Magnolia",
+    "performer": "Grateful Dead",
+    "releaseDate": "2017-05-16",
+    "expiration": 1810602000000,
+    "id": 918
   },
   {
-    title: 'Sunrise',
-    performer: 'Norah Jones',
-    releaseDate: '2018-05-29',
+    "title": "Truckin'",
+    "performer": "Grateful Dead",
+    "releaseDate": "2017-05-16",
+    "expiration": 1810602000000,
+    "id": 919
   },
-  { title: 'Baby Blue', performer: 'Badfinger', releaseDate: '2018-06-05' },
   {
-    title: 'Apache',
-    performer: 'The Shadows',
-    releaseDate: '2018-06-05',
+    "title": "Uncle John's Band",
+    "performer": "Grateful Dead",
+    "releaseDate": "2017-05-16",
+    "expiration": 1810602000000,
+    "id": 920
   },
   {
-    title: 'In The Meantime',
-    performer: 'Spacehog',
-    releaseDate: '2018-06-05',
+    "title": "Rise Above",
+    "performer": "Black Flag",
+    "releaseDate": "2017-05-23",
+    "expiration": 1811206800000,
+    "id": 921
   },
   {
-    title: 'Bad',
-    performer: 'U2',
-    releaseDate: '2018-06-05',
+    "title": "I Want It All",
+    "performer": "Queen",
+    "releaseDate": "2017-05-23",
+    "expiration": 1811206800000,
+    "id": 922
   },
   {
-    title: 'Dashboard',
-    performer: 'Modest Mouse',
-    releaseDate: '2018-06-12',
+    "title": "Take It on the Run",
+    "performer": "REO Speedwagon",
+    "releaseDate": "2017-05-23",
+    "expiration": 1811206800000,
+    "id": 923
   },
   {
-    title: 'Johnny, I Hardly Knew Ya',
-    performer: 'Dropkick Murphys',
-    releaseDate: '2018-06-12',
+    "title": "All Downhill from Here",
+    "performer": "New Found Glory",
+    "releaseDate": "2017-05-30",
+    "expiration": 1811811600000,
+    "id": 924
   },
   {
-    title: 'Bad Girlfriend',
-    performer: 'Theory of a Deadman',
-    releaseDate: '2018-06-12',
+    "title": "Hit or Miss",
+    "performer": "New Found Glory",
+    "releaseDate": "2017-05-30",
+    "expiration": 1811811600000,
+    "id": 925
   },
   {
-    title: 'No Surprises',
-    performer: 'Radiohead',
-    releaseDate: '2018-06-19',
+    "title": "My Friends Over You",
+    "performer": "New Found Glory",
+    "releaseDate": "2017-05-30",
+    "expiration": 1811811600000,
+    "id": 926
   },
   {
-    title: 'Street Spirit (Fade Out)',
-    performer: 'Radiohead',
-    releaseDate: '2018-06-19',
+    "title": "Surfin' U.S.A.",
+    "performer": "The Beach Boys",
+    "releaseDate": "2017-06-06",
+    "expiration": 1812416400000,
+    "id": 927
   },
-  { title: 'There, There', performer: 'Radiohead', releaseDate: '2018-06-19' },
   {
-    title: 'Bad Reputation',
-    performer: 'Joan Jett',
-    releaseDate: '2018-06-26',
+    "title": "Pipeline",
+    "performer": "The Chantays",
+    "releaseDate": "2017-06-06",
+    "expiration": 1812416400000,
+    "id": 928
   },
   {
-    title: 'Crimson and Clover',
-    performer: 'Joan Jett \u0026 the Blackhearts',
-    releaseDate: '2018-06-26',
+    "title": "Surf Rider",
+    "performer": "The Lively Ones",
+    "releaseDate": "2017-06-06",
+    "expiration": 1812416400000,
+    "id": 929
   },
   {
-    title: 'I Hate Myself for Loving You',
-    performer: 'Joan Jett \u0026 the Blackhearts',
-    releaseDate: '2018-06-26',
+    "title": "Penetration",
+    "performer": "The Pyramids",
+    "releaseDate": "2017-06-06",
+    "expiration": 1812416400000,
+    "id": 930
   },
   {
-    title: 'Ever Fallen In Love',
-    performer: 'Buzzcocks',
-    releaseDate: '2018-07-03',
+    "title": "All Over You",
+    "performer": "Live",
+    "releaseDate": "2017-06-13",
+    "expiration": 1813021200000,
+    "id": 931
   },
   {
-    title: 'Who Do You Love',
-    performer: 'George Thorogood and the Destroyers',
-    releaseDate: '2018-07-03',
+    "title": "The Dolphin's Cry",
+    "performer": "Live",
+    "releaseDate": "2017-06-13",
+    "expiration": 1813021200000,
+    "id": 932
   },
   {
-    title: 'Jungle Love',
-    performer: 'Steve Miller Band',
-    releaseDate: '2018-07-03',
+    "title": "I Alone",
+    "performer": "Live",
+    "releaseDate": "2017-06-13",
+    "expiration": 1813021200000,
+    "id": 933
   },
   {
-    title: 'It\u0027s Tricky',
-    performer: 'Run-DMC',
-    releaseDate: '2018-07-10',
+    "title": "Lightning Crashes",
+    "performer": "Live",
+    "releaseDate": "2017-06-13",
+    "expiration": 1813021200000,
+    "id": 934
   },
   {
-    title: 'King of Rock',
-    performer: 'Run-DMC',
-    releaseDate: '2018-07-10',
+    "title": "Selling the Drama",
+    "performer": "Live",
+    "releaseDate": "2017-06-13",
+    "expiration": 1813021200000,
+    "id": 935
   },
-  { title: 'Rock Box', performer: 'Run-DMC', releaseDate: '2018-07-10' },
   {
-    title: 'Rebel Rouser',
-    performer: 'Duane Eddy',
-    releaseDate: '2018-07-17',
+    "title": "Bad Things",
+    "performer": "Jace Everett",
+    "releaseDate": "2017-06-20",
+    "expiration": 1813626000000,
+    "id": 936
   },
   {
-    title: 'Feeling Good',
-    performer: 'Nina Simone',
-    releaseDate: '2018-07-17',
+    "title": "Lick It Up",
+    "performer": "Kiss",
+    "releaseDate": "2017-06-20",
+    "expiration": 1813626000000,
+    "id": 937
   },
   {
-    title: 'This Love',
-    performer: 'Pantera',
-    releaseDate: '2018-07-17',
+    "title": "Mouth for War",
+    "performer": "Pantera",
+    "releaseDate": "2017-06-20",
+    "expiration": 1813626000000,
+    "id": 938
   },
   {
-    title: 'I\u0027m Gonna Be (500 Miles)',
-    performer: 'The Proclaimers',
-    releaseDate: '2018-07-17',
+    "title": "Los Angeles",
+    "performer": "X",
+    "releaseDate": "2017-06-20",
+    "expiration": 1813626000000,
+    "id": 939
   },
   {
-    title: 'A Case Of You',
-    performer: 'Joni Mitchell',
-    releaseDate: '2018-07-24',
+    "title": "Always Alright",
+    "performer": "Alabama Shakes",
+    "releaseDate": "2017-06-27",
+    "expiration": 1814230800000,
+    "id": 940
   },
   {
-    title: 'Big Yellow Taxi',
-    performer: 'Joni Mitchell',
-    releaseDate: '2018-07-24',
+    "title": "Don't Wanna Fight",
+    "performer": "Alabama Shakes",
+    "releaseDate": "2017-06-27",
+    "expiration": 1814230800000,
+    "id": 941
   },
   {
-    title: 'Both Sides, Now',
-    performer: 'Joni Mitchell',
-    releaseDate: '2018-07-24',
+    "title": "Gimme All Your Love",
+    "performer": "Alabama Shakes",
+    "releaseDate": "2017-06-27",
+    "expiration": 1814230800000,
+    "id": 942
   },
   {
-    title: 'Strategy and Spying',
-    performer: 'Billy Martin',
-    releaseDate: '2018-07-31',
+    "title": "Hold On",
+    "performer": "Alabama Shakes",
+    "releaseDate": "2017-06-27",
+    "expiration": 1814230800000,
+    "id": 943
   },
   {
-    title: 'Assassin\u0027s Creed IV Black Flag Main Theme',
-    performer: 'Brian Tyler',
-    releaseDate: '2018-07-31',
+    "title": "Time in a Bottle",
+    "performer": "Jim Croce",
+    "releaseDate": "2017-07-05",
+    "expiration": 1814835600000,
+    "id": 944
   },
   {
-    title: 'Ezio\u0027s Family',
-    performer: 'Jesper Kyd',
-    releaseDate: '2018-07-31',
+    "title": "Do You Feel Like We Do",
+    "performer": "Peter Frampton",
+    "releaseDate": "2017-07-05",
+    "expiration": 1814835600000,
+    "id": 945
   },
   {
-    title: 'Blood Dragon Theme (Far Cry 3: Blood Dragon)',
-    performer: 'Power Glove',
-    releaseDate: '2018-07-31',
+    "title": "Cowboy Song",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2017-07-05",
+    "expiration": 1814835600000,
+    "id": 946
   },
   {
-    title: 'The Ballad of Clutch Nixon',
-    performer: 'The Road Vikings',
-    releaseDate: '2018-07-31',
+    "title": "12:51",
+    "performer": "The Strokes",
+    "releaseDate": "2017-07-11",
+    "expiration": 1815440400000,
+    "id": 947
   },
   {
-    title: 'Black Smoke Rising',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2018-08-07',
+    "title": "Someday",
+    "performer": "The Strokes",
+    "releaseDate": "2017-07-11",
+    "expiration": 1815440400000,
+    "id": 948
   },
   {
-    title: 'Highway Tune',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2018-08-07',
+    "title": "Taken for a Fool",
+    "performer": "The Strokes",
+    "releaseDate": "2017-07-11",
+    "expiration": 1815440400000,
+    "id": 949
   },
   {
-    title: 'Safari Song',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2018-08-07',
+    "title": "You Only Live Once",
+    "performer": "The Strokes",
+    "releaseDate": "2017-07-11",
+    "expiration": 1815440400000,
+    "id": 950
   },
   {
-    title: 'One Bourbon, One Scotch, One Beer',
-    performer: 'John Lee Hooker',
-    releaseDate: '2018-08-14',
+    "title": "Little Miss Can't Be Wrong",
+    "performer": "Spin Doctors",
+    "releaseDate": "2017-07-18",
+    "expiration": 1816045200000,
+    "id": 951
   },
   {
-    title: 'West Coast Blues',
-    performer: 'Wes Montgomery',
-    releaseDate: '2018-08-14',
+    "title": "Alright",
+    "performer": "Supergrass",
+    "releaseDate": "2017-07-18",
+    "expiration": 1816045200000,
+    "id": 952
   },
   {
-    title: 'Back Door Man',
-    performer: 'Willie Dixon',
-    releaseDate: '2018-08-14',
+    "title": "Life Is a Highway",
+    "performer": "Tom Cochrane",
+    "releaseDate": "2017-07-18",
+    "expiration": 1816045200000,
+    "id": 953
   },
   {
-    title: 'Bleeds No More',
-    performer: 'Silverstein',
-    releaseDate: '2018-08-21',
+    "title": "The Beautiful People",
+    "performer": "Marilyn Manson",
+    "releaseDate": "2017-07-25",
+    "expiration": 1816650000000,
+    "id": 954
   },
-  { title: 'My Heroine', performer: 'Silverstein', releaseDate: '2018-08-21' },
   {
-    title: 'Smashed into Pieces',
-    performer: 'Silverstein',
-    releaseDate: '2018-08-21',
+    "title": "Coma White",
+    "performer": "Marilyn Manson",
+    "releaseDate": "2017-07-25",
+    "expiration": 1816650000000,
+    "id": 955
   },
   {
-    title: 'Smile In Your Sleep',
-    performer: 'Silverstein',
-    releaseDate: '2018-08-21',
+    "title": "Tourniquet",
+    "performer": "Marilyn Manson",
+    "releaseDate": "2017-07-25",
+    "expiration": 1816650000000,
+    "id": 956
   },
   {
-    title: 'Changes',
-    performer: 'David Bowie',
-    releaseDate: '2018-08-28',
+    "title": "Last Train to Clarksville",
+    "performer": "The Monkees",
+    "releaseDate": "2017-08-01",
+    "expiration": 1817254800000,
+    "id": 957
   },
-  { title: 'Movies', performer: 'Alien Ant Farm', releaseDate: '2018-08-28' },
   {
-    title: 'Stay (I Missed You)',
-    performer: 'Lisa Loeb',
-    releaseDate: '2018-08-28',
+    "title": "Pleasant Valley Sunday",
+    "performer": "The Monkees",
+    "releaseDate": "2017-08-01",
+    "expiration": 1817254800000,
+    "id": 958
   },
   {
-    title: 'Touch Of Grey',
-    performer: 'Grateful Dead',
-    releaseDate: '2018-08-28',
+    "title": "Valleri",
+    "performer": "The Monkees",
+    "releaseDate": "2017-08-01",
+    "expiration": 1817254800000,
+    "id": 959
   },
   {
-    title: 'Since U Been Gone',
-    performer: 'Kelly Clarkson',
-    releaseDate: '2018-09-04',
+    "title": "Can You Feel My Heart",
+    "performer": "Bring Me the Horizon",
+    "releaseDate": "2017-08-08",
+    "expiration": 1817859600000,
+    "id": 960
   },
   {
-    title: 'Behind These Hazel Eyes',
-    performer: 'Kelly Clarkson',
-    releaseDate: '2018-09-04',
+    "title": "45",
+    "performer": "The Gaslight Anthem",
+    "releaseDate": "2017-08-08",
+    "expiration": 1817859600000,
+    "id": 961
   },
   {
-    title: 'My Life Would Suck Without You',
-    performer: 'Kelly Clarkson',
-    releaseDate: '2018-09-04',
+    "title": "Let Her Go",
+    "performer": "Passenger",
+    "releaseDate": "2017-08-08",
+    "expiration": 1817859600000,
+    "id": 962
   },
-  { title: 'Unsung', performer: 'Helmet', releaseDate: '2018-09-11' },
   {
-    title: 'Summer Song',
-    performer: 'Joe Satriani',
-    releaseDate: '2018-09-11',
+    "title": "Honey Bee",
+    "performer": "Muddy Waters",
+    "releaseDate": "2017-08-15",
+    "expiration": 1818464400000,
+    "id": 963
   },
   {
-    title: 'Christian Woman',
-    performer: 'Type O Negative',
-    releaseDate: '2018-09-11',
+    "title": "I Can't Be Satisfied",
+    "performer": "Muddy Waters",
+    "releaseDate": "2017-08-15",
+    "expiration": 1818464400000,
+    "id": 964
   },
   {
-    title: 'Absolute Zero',
-    performer: 'Stone Sour',
-    releaseDate: '2018-09-18',
+    "title": "Mannish Boy",
+    "performer": "Muddy Waters",
+    "releaseDate": "2017-08-15",
+    "expiration": 1818464400000,
+    "id": 965
   },
   {
-    title: 'Bother',
-    performer: 'Stone Sour',
-    releaseDate: '2018-09-18',
+    "title": "Still a Fool",
+    "performer": "Muddy Waters",
+    "releaseDate": "2017-08-15",
+    "expiration": 1818464400000,
+    "id": 966
   },
   {
-    title: 'Say You\u0027ll Haunt Me',
-    performer: 'Stone Sour',
-    releaseDate: '2018-09-18',
+    "title": "Runnin' Wild",
+    "performer": "Airbourne",
+    "releaseDate": "2017-08-22",
+    "expiration": 1819069200000,
+    "id": 967
   },
   {
-    title: 'Paradise',
-    performer: 'Coldplay',
-    releaseDate: '2018-09-25',
+    "title": "Too Much, Too Young, Too Fast",
+    "performer": "Airbourne",
+    "releaseDate": "2017-08-22",
+    "expiration": 1819069200000,
+    "id": 968
   },
   {
-    title: 'Ex\u0027s \u0026 Oh\u0027s',
-    performer: 'Elle King',
-    releaseDate: '2018-09-25',
+    "title": "Blonde, Bad and Beautiful",
+    "performer": "Airbourne",
+    "releaseDate": "2017-08-22",
+    "expiration": 1819069200000,
+    "id": 969
   },
   {
-    title: 'Red Eyes',
-    performer: 'The War on Drugs',
-    releaseDate: '2018-09-25',
+    "title": "Your Eyes",
+    "performer": "Bombay Bicycle Club",
+    "releaseDate": "2017-08-29",
+    "expiration": 1819674000000,
+    "id": 970
   },
   {
-    title: 'Disorder',
-    performer: 'Joy Division',
-    releaseDate: '2018-10-02',
+    "title": "This War Is Ours (The Guillotine Part 2)",
+    "performer": "Escape the Fate",
+    "releaseDate": "2017-08-29",
+    "expiration": 1819674000000,
+    "id": 971
   },
   {
-    title: 'Love Will Tear Us Apart',
-    performer: 'Joy Division',
-    releaseDate: '2018-10-02',
+    "title": "All My Ex's Live in Texas",
+    "performer": "George Strait",
+    "releaseDate": "2017-08-29",
+    "expiration": 1819674000000,
+    "id": 972
   },
   {
-    title: 'Transmission',
-    performer: 'Joy Division',
-    releaseDate: '2018-10-02',
+    "title": "She Don't Use Jelly",
+    "performer": "The Flaming Lips",
+    "releaseDate": "2017-08-29",
+    "expiration": 1819674000000,
+    "id": 973
   },
   {
-    title: 'Surfin\u0027 Safari',
-    performer: 'The Beach Boys',
-    releaseDate: '2018-10-09',
+    "title": "Away from the Sun",
+    "performer": "3 Doors Down",
+    "releaseDate": "2017-09-05",
+    "expiration": 1820278800000,
+    "id": 974
   },
   {
-    title: 'Gratitude',
-    performer: 'Beastie Boys',
-    releaseDate: '2018-10-09',
+    "title": "Be Like That",
+    "performer": "3 Doors Down",
+    "releaseDate": "2017-09-05",
+    "expiration": 1820278800000,
+    "id": 975
   },
   {
-    title: 'Stay Together for the Kids',
-    performer: 'Blink-182',
-    releaseDate: '2018-10-09',
+    "title": "Here Without You",
+    "performer": "3 Doors Down",
+    "releaseDate": "2017-09-05",
+    "expiration": 1820278800000,
+    "id": 976
   },
   {
-    title: 'Green Grass and High Tides',
-    performer: 'Outlaws',
-    releaseDate: '2018-10-09',
+    "title": "It's Not My Time",
+    "performer": "3 Doors Down",
+    "releaseDate": "2017-09-05",
+    "expiration": 1820278800000,
+    "id": 977
   },
   {
-    title: 'Mud on the Tires',
-    performer: 'Brad Paisley',
-    releaseDate: '2018-10-16',
+    "title": "Let Me Go",
+    "performer": "3 Doors Down",
+    "releaseDate": "2017-09-05",
+    "expiration": 1820278800000,
+    "id": 978
   },
   {
-    title: 'Ticks',
-    performer: 'Brad Paisley',
-    releaseDate: '2018-10-16',
+    "title": "Lay It Down",
+    "performer": "Ratt",
+    "releaseDate": "2017-09-12",
+    "expiration": 1820883600000,
+    "id": 979
   },
   {
-    title: 'Whiskey Lullaby',
-    performer: 'Brad Paisley ft. Alison Krauss',
-    releaseDate: '2018-10-16',
+    "title": "Hip to Be Square",
+    "performer": "Huey Lewis and the News",
+    "releaseDate": "2017-09-12",
+    "expiration": 1820883600000,
+    "id": 980
   },
   {
-    title: 'Take On Me',
-    performer: 'A-ha',
-    releaseDate: '2018-10-23',
+    "title": "Higher Love",
+    "performer": "Steve Winwood",
+    "releaseDate": "2017-09-12",
+    "expiration": 1820883600000,
+    "id": 981
   },
   {
-    title: 'Keep Your Hands to Yourself',
-    performer: 'The Georgia Satellites',
-    releaseDate: '2018-10-23',
+    "title": "The Artist in the Ambulance",
+    "performer": "Thrice",
+    "releaseDate": "2017-09-19",
+    "expiration": 1821488400000,
+    "id": 982
   },
-  { title: 'Fallen Angel', performer: 'Poison', releaseDate: '2018-10-23' },
   {
-    title: 'Cirice',
-    performer: 'Ghost',
-    releaseDate: '2018-10-29',
+    "title": "Stare At the Sun",
+    "performer": "Thrice",
+    "releaseDate": "2017-09-19",
+    "expiration": 1821488400000,
+    "id": 983
   },
-  { title: 'He Is', performer: 'Ghost', releaseDate: '2018-10-29' },
   {
-    title: 'Ritual',
-    performer: 'Ghost',
-    releaseDate: '2018-10-29',
+    "title": "Deadbolt",
+    "performer": "Thrice",
+    "releaseDate": "2017-09-19",
+    "expiration": 1821488400000,
+    "id": 984
   },
-  { title: 'Year Zero', performer: 'Ghost', releaseDate: '2018-10-29' },
   {
-    title: 'Don\u0027t Stop Me Now',
-    performer: 'Queen',
-    releaseDate: '2018-11-06',
+    "title": "99 Red Balloons",
+    "performer": "Goldfinger",
+    "releaseDate": "2017-09-26",
+    "expiration": 1822093200000,
+    "id": 985
   },
-  { title: 'We Will Rock You', performer: 'Queen', releaseDate: '2018-11-06' },
   {
-    title: 'Love Of My Life',
-    performer: 'Queen',
-    releaseDate: '2018-11-06',
+    "title": "Bad Romance",
+    "performer": "Halestorm",
+    "releaseDate": "2017-09-26",
+    "expiration": 1822093200000,
+    "id": 986
   },
   {
-    title: 'Tie Your Mother Down',
-    performer: 'Queen',
-    releaseDate: '2018-11-06',
+    "title": "Tainted Love",
+    "performer": "Marilyn Manson",
+    "releaseDate": "2017-09-26",
+    "expiration": 1822093200000,
+    "id": 987
   },
   {
-    title: 'In A Big Country',
-    performer: 'Big Country',
-    releaseDate: '2018-11-13',
+    "title": "Careless Whisper",
+    "performer": "Seether",
+    "releaseDate": "2017-09-26",
+    "expiration": 1822093200000,
+    "id": 988
   },
   {
-    title: 'Stir It Up',
-    performer: 'Bob Marley and the Wailers',
-    releaseDate: '2018-11-13',
+    "title": "I Can't Help Myself (Sugar Pie Honey Bunch)",
+    "performer": "Four Tops",
+    "releaseDate": "2017-10-03",
+    "expiration": 1822698000000,
+    "id": 989
   },
   {
-    title: 'Cissy Strut',
-    performer: 'The Meters',
-    releaseDate: '2018-11-13',
+    "title": "It's the Same Old Song",
+    "performer": "Four Tops",
+    "releaseDate": "2017-10-03",
+    "expiration": 1822698000000,
+    "id": 990
   },
   {
-    title: 'More Human Than Human',
-    performer: 'White Zombie',
-    releaseDate: '2018-11-13',
+    "title": "Reach Out I'll Be There",
+    "performer": "Four Tops",
+    "releaseDate": "2017-10-03",
+    "expiration": 1822698000000,
+    "id": 991
   },
   {
-    title: 'Rockin\u0027 Around The Christmas Tree',
-    performer: 'Brenda Lee',
-    releaseDate: '2018-11-20',
+    "title": "Bernadette",
+    "performer": "Four Tops",
+    "releaseDate": "2017-10-03",
+    "expiration": 1822698000000,
+    "id": 992
   },
   {
-    title: 'Run, Rudolph, Run',
-    performer: 'Chuck Berry',
-    releaseDate: '2018-11-20',
+    "title": "The Funeral",
+    "performer": "Band of Horses",
+    "releaseDate": "2017-10-10",
+    "expiration": 1823302800000,
+    "id": 993
   },
   {
-    title: 'Blue Christmas',
-    performer: 'Elvis Presley',
-    releaseDate: '2018-11-20',
+    "title": "Lips of an Angel",
+    "performer": "Hinder",
+    "releaseDate": "2017-10-10",
+    "expiration": 1823302800000,
+    "id": 994
   },
   {
-    title: 'Rudolph The Red-Nosed Reindeer',
-    performer: 'Gene Autry',
-    releaseDate: '2018-11-20',
+    "title": "Breakaway",
+    "performer": "Kelly Clarkson",
+    "releaseDate": "2017-10-10",
+    "expiration": 1823302800000,
+    "id": 995
   },
   {
-    title: 'Bleed American',
-    performer: 'Jimmy Eat World',
-    releaseDate: '2018-11-27',
+    "title": "Takin' Care of Business",
+    "performer": "Bachman-Turner Overdrive",
+    "releaseDate": "2017-10-17",
+    "expiration": 1823907600000,
+    "id": 996
   },
   {
-    title: 'The Middle',
-    performer: 'Jimmy Eat World',
-    releaseDate: '2018-11-27',
+    "title": "Let It Ride",
+    "performer": "Bachman-Turner Overdrive",
+    "releaseDate": "2017-10-17",
+    "expiration": 1823907600000,
+    "id": 997
   },
   {
-    title: 'Sweetness',
-    performer: 'Jimmy Eat World',
-    releaseDate: '2018-11-27',
+    "title": "You Ain't Seen Nothing Yet",
+    "performer": "Bachman-Turner Overdrive",
+    "releaseDate": "2017-10-17",
+    "expiration": 1823907600000,
+    "id": 998
   },
   {
-    title: 'Billion Dollar Babies',
-    performer: 'Alice Cooper',
-    releaseDate: '2018-12-04',
+    "title": "Down Under",
+    "performer": "Colin Hay",
+    "releaseDate": "2017-10-24",
+    "expiration": 1824512400000,
+    "id": 999
   },
   {
-    title: 'Poison',
-    performer: 'Alice Cooper',
-    releaseDate: '2018-12-04',
+    "title": "Through the Fire and Flames",
+    "performer": "DragonForce",
+    "releaseDate": "2017-10-24",
+    "expiration": 1824512400000,
+    "id": 1000
   },
   {
-    title: 'School\u0027s Out',
-    performer: 'Alice Cooper',
-    releaseDate: '2018-12-04',
+    "title": "Saturday Night's Alright for Fighting",
+    "performer": "Elton John",
+    "releaseDate": "2017-10-24",
+    "expiration": 1824512400000,
+    "id": 1001
   },
   {
-    title: 'Bad Company',
-    performer: 'Five Finger Death Punch',
-    releaseDate: '2018-12-11',
+    "title": "Send Me on My Way",
+    "performer": "Rusted Root",
+    "releaseDate": "2017-10-24",
+    "expiration": 1824512400000,
+    "id": 1002
   },
   {
-    title: 'The Bleeding',
-    performer: 'Five Finger Death Punch',
-    releaseDate: '2018-12-11',
+    "title": "Twilight of the Thunder God",
+    "performer": "Amon Amarth",
+    "releaseDate": "2017-10-31",
+    "expiration": 1825113600000,
+    "id": 1003
   },
   {
-    title: 'Wrong Side of Heaven',
-    performer: 'Five Finger Death Punch',
-    releaseDate: '2018-12-11',
+    "title": "The Pursuit of Vikings",
+    "performer": "Amon Amarth",
+    "releaseDate": "2017-10-31",
+    "expiration": 1825113600000,
+    "id": 1004
   },
   {
-    title: 'Brown Sugar',
-    performer: 'The Rolling Stones',
-    releaseDate: '2018-12-18',
+    "title": "War of the Gods",
+    "performer": "Amon Amarth",
+    "releaseDate": "2017-10-31",
+    "expiration": 1825113600000,
+    "id": 1005
   },
   {
-    title: 'Gimme Shelter',
-    performer: 'The Rolling Stones',
-    releaseDate: '2018-12-18',
+    "title": "Death in Fire",
+    "performer": "Amon Amarth",
+    "releaseDate": "2017-10-31",
+    "expiration": 1825113600000,
+    "id": 1006
   },
   {
-    title: 'Jumpin\u0027 Jack Flash',
-    performer: 'The Rolling Stones',
-    releaseDate: '2018-12-18',
+    "title": "Guardians of Asgaard",
+    "performer": "Amon Amarth",
+    "releaseDate": "2017-10-31",
+    "expiration": 1825113600000,
+    "id": 1007
   },
   {
-    title: 'Sympathy for the Devil',
-    performer: 'The Rolling Stones',
-    releaseDate: '2018-12-18',
+    "title": "Linoleum",
+    "performer": "NOFX",
+    "releaseDate": "2017-11-07",
+    "expiration": 1825718400000,
+    "id": 1008
   },
   {
-    title: 'Johnny B. Goode',
-    performer: 'Chuck Berry',
-    releaseDate: '2019-01-08',
+    "title": "Bob",
+    "performer": "NOFX",
+    "releaseDate": "2017-11-07",
+    "expiration": 1825718400000,
+    "id": 1009
   },
   {
-    title: 'School Day (Ring! Ring! Goes the Bell)',
-    performer: 'Chuck Berry',
-    releaseDate: '2019-01-08',
+    "title": "Seeing Double At The Triple Rock",
+    "performer": "NOFX",
+    "releaseDate": "2017-11-07",
+    "expiration": 1825718400000,
+    "id": 1010
   },
   {
-    title: 'You Never Can Tell',
-    performer: 'Chuck Berry',
-    releaseDate: '2019-01-08',
+    "title": "Stickin' In My Eye",
+    "performer": "NOFX",
+    "releaseDate": "2017-11-07",
+    "expiration": 1825718400000,
+    "id": 1011
   },
   {
-    title: 'Misery Business',
-    performer: 'Paramore',
-    releaseDate: '2019-01-15',
+    "title": "Back on the Chain Gang",
+    "performer": "The Pretenders",
+    "releaseDate": "2017-11-14",
+    "expiration": 1826323200000,
+    "id": 1012
   },
   {
-    title: 'Ignorance',
-    performer: 'Paramore',
-    releaseDate: '2019-01-15',
+    "title": "Brass in Pocket",
+    "performer": "The Pretenders",
+    "releaseDate": "2017-11-14",
+    "expiration": 1826323200000,
+    "id": 1013
   },
   {
-    title: 'Rose-Colored Boy',
-    performer: 'Paramore',
-    releaseDate: '2019-01-15',
+    "title": "Don't Get Me Wrong",
+    "performer": "The Pretenders",
+    "releaseDate": "2017-11-14",
+    "expiration": 1826323200000,
+    "id": 1014
   },
   {
-    title: 'Breakfast at Tiffany\u0027s',
-    performer: 'Deep Blue Something',
-    releaseDate: '2019-01-22',
+    "title": "I'll Stand By You",
+    "performer": "The Pretenders",
+    "releaseDate": "2017-11-14",
+    "expiration": 1826323200000,
+    "id": 1015
   },
   {
-    title: 'On The Sunny Side of the Street',
-    performer: 'Les Paul \u0026 Mary Ford',
-    releaseDate: '2019-01-22',
+    "title": "Middle of the Road",
+    "performer": "The Pretenders",
+    "releaseDate": "2017-11-14",
+    "expiration": 1826323200000,
+    "id": 1016
   },
   {
-    title: 'Whiskey In The Jar',
-    performer: 'Thin Lizzy',
-    releaseDate: '2019-01-22',
+    "title": "I Get Off",
+    "performer": "Halestorm",
+    "releaseDate": "2017-11-22",
+    "expiration": 1826928000000,
+    "id": 1017
   },
-  { title: 'Teenage Dirtbag', performer: 'Wheatus', releaseDate: '2019-01-22' },
   {
-    title: 'Hammer to Fall',
-    performer: 'Queen',
-    releaseDate: '2019-01-29',
+    "title": "I Miss the Misery",
+    "performer": "Halestorm",
+    "releaseDate": "2017-11-22",
+    "expiration": 1826928000000,
+    "id": 1018
   },
   {
-    title: 'I Want to Break Free',
-    performer: 'Queen',
-    releaseDate: '2019-01-29',
+    "title": "Mz. Hyde",
+    "performer": "Halestorm",
+    "releaseDate": "2017-11-22",
+    "expiration": 1826928000000,
+    "id": 1019
   },
-  { title: 'Somebody to Love', performer: 'Queen', releaseDate: '2019-01-29' },
   {
-    title: 'When I Come Around',
-    performer: 'Green Day',
-    releaseDate: '2019-02-05',
+    "title": "A Mad Russian's Christmas",
+    "performer": "Trans-Siberian Orchestra",
+    "releaseDate": "2017-11-28",
+    "expiration": 1827532800000,
+    "id": 1020
   },
   {
-    title: 'One of Us',
-    performer: 'Joan Osborne',
-    releaseDate: '2019-02-05',
+    "title": "Christmas Canon Rock",
+    "performer": "Trans-Siberian Orchestra",
+    "releaseDate": "2017-11-28",
+    "expiration": 1827532800000,
+    "id": 1021
   },
   {
-    title: 'Trippin\u0027 On a Hole in a Paper Heart',
-    performer: 'Stone Temple Pilots',
-    releaseDate: '2019-02-05',
+    "title": "Christmas Eve/Sarajevo 12/24",
+    "performer": "Trans-Siberian Orchestra",
+    "releaseDate": "2017-11-28",
+    "expiration": 1827532800000,
+    "id": 1022
   },
-  { title: '40:1', performer: 'Sabaton', releaseDate: '2019-02-12' },
   {
-    title: 'Ghost Division',
-    performer: 'Sabaton',
-    releaseDate: '2019-02-12',
+    "title": "O Come, All Ye Faithful/O Holy Night",
+    "performer": "Trans-Siberian Orchestra",
+    "releaseDate": "2017-11-28",
+    "expiration": 1827532800000,
+    "id": 1023
   },
-  { title: 'Primo Victoria', performer: 'Sabaton', releaseDate: '2019-02-12' },
   {
-    title: 'Always',
-    performer: 'Blink-182',
-    releaseDate: '2019-02-19',
+    "title": "Wizards in Winter",
+    "performer": "Trans-Siberian Orchestra",
+    "releaseDate": "2017-11-28",
+    "expiration": 1827532800000,
+    "id": 1024
   },
-  { title: 'Bodies', performer: 'Drowning Pool', releaseDate: '2019-02-19' },
   {
-    title: 'Stacy\u0027s Mom',
-    performer: 'Fountains of Wayne',
-    releaseDate: '2019-02-19',
+    "title": "Fly Like an Eagle",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2017-12-05",
+    "expiration": 1828137600000,
+    "id": 1025
   },
-  { title: 'The Regulator', performer: 'Clutch', releaseDate: '2019-02-26' },
   {
-    title: 'Shimmer',
-    performer: 'Fuel',
-    releaseDate: '2019-02-26',
+    "title": "Jet Airliner",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2017-12-05",
+    "expiration": 1828137600000,
+    "id": 1026
   },
   {
-    title: 'Found Out About You',
-    performer: 'Gin Blossoms',
-    releaseDate: '2019-02-26',
+    "title": "The Joker",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2017-12-05",
+    "expiration": 1828137600000,
+    "id": 1027
   },
   {
-    title: 'Werewolves of London',
-    performer: 'Warren Zevon',
-    releaseDate: '2019-02-26',
+    "title": "Rock'n Me",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2017-12-05",
+    "expiration": 1828137600000,
+    "id": 1028
   },
   {
-    title: 'Alone',
-    performer: 'Heart',
-    releaseDate: '2019-03-05',
+    "title": "Take the Money and Run",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2017-12-05",
+    "expiration": 1828137600000,
+    "id": 1029
   },
-  { title: 'Straight On', performer: 'Heart', releaseDate: '2019-03-05' },
   {
-    title: 'What About Love',
-    performer: 'Heart',
-    releaseDate: '2019-03-05',
+    "title": "Down in a Hole",
+    "performer": "Alice in Chains",
+    "releaseDate": "2017-12-12",
+    "expiration": 1828742400000,
+    "id": 1030
   },
   {
-    title: 'Don\u0027t Tell Me You Love Me',
-    performer: 'Night Ranger',
-    releaseDate: '2019-03-12',
+    "title": "Heaven Beside You",
+    "performer": "Alice in Chains",
+    "releaseDate": "2017-12-12",
+    "expiration": 1828742400000,
+    "id": 1031
   },
   {
-    title: 'Sister Christian',
-    performer: 'Night Ranger',
-    releaseDate: '2019-03-12',
+    "title": "No Excuses",
+    "performer": "Alice in Chains",
+    "releaseDate": "2017-12-12",
+    "expiration": 1828742400000,
+    "id": 1032
   },
   {
-    title: '(You Can Still) Rock in America',
-    performer: 'Night Ranger',
-    releaseDate: '2019-03-12',
+    "title": "Nutshell",
+    "performer": "Alice in Chains",
+    "releaseDate": "2017-12-12",
+    "expiration": 1828742400000,
+    "id": 1033
   },
-  { title: 'Brick House', performer: 'Commodores', releaseDate: '2019-03-19' },
   {
-    title: 'Maggot Brain',
-    performer: 'Funkadelic',
-    releaseDate: '2019-03-19',
+    "title": "Rooster",
+    "performer": "Alice in Chains",
+    "releaseDate": "2017-12-12",
+    "expiration": 1828742400000,
+    "id": 1034
   },
   {
-    title: 'Long Cool Woman in a Black Dress',
-    performer: 'The Hollies',
-    releaseDate: '2019-03-19',
+    "title": "Big River",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1035
   },
-  { title: 'Airbag', performer: 'Radiohead', releaseDate: '2019-03-26' },
   {
-    title: 'Fake Plastic Trees',
-    performer: 'Radiohead',
-    releaseDate: '2019-03-26',
+    "title": "Folsom Prison Blues",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1036
   },
   {
-    title: 'Jigsaw Falling Into Place',
-    performer: 'Radiohead',
-    releaseDate: '2019-03-26',
+    "title": "Give My Love to Rose",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1037
   },
   {
-    title: 'It Must Have Been Love',
-    performer: 'Roxette',
-    releaseDate: '2019-04-02',
+    "title": "Hey, Porter",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1038
   },
   {
-    title: 'Listen to Your Heart',
-    performer: 'Roxette',
-    releaseDate: '2019-04-02',
+    "title": "Jackson",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1039
   },
   {
-    title: 'The Look',
-    performer: 'Roxette',
-    releaseDate: '2019-04-02',
+    "title": "Cry! Cry! Cry!",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1040
   },
-  { title: 'Wild World', performer: 'Cat Stevens', releaseDate: '2019-04-09' },
   {
-    title: 'Father and Son',
-    performer: 'Cat Stevens',
-    releaseDate: '2019-04-09',
+    "title": "Get Rhythm",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1041
   },
   {
-    title: 'Morning Has Broken',
-    performer: 'Cat Stevens',
-    releaseDate: '2019-04-09',
+    "title": "I Walk the Line",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1042
   },
   {
-    title: 'Alison Hell',
-    performer: 'Annihilator',
-    releaseDate: '2019-04-16',
+    "title": "Ring of Fire",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1043
   },
   {
-    title: 'Counting Blue Cars',
-    performer: 'Dishwalla',
-    releaseDate: '2019-04-16',
+    "title": "Sunday Mornin' Comin' Down",
+    "performer": "Johnny Cash",
+    "releaseDate": "2017-12-19",
+    "expiration": 1829347200000,
+    "id": 1044
   },
   {
-    title: 'From the Pinnacle to the Pit',
-    performer: 'Ghost',
-    releaseDate: '2019-04-16',
+    "title": "Ain't It Fun",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1045
   },
   {
-    title: 'Long Tall Sally',
-    performer: 'Wanda Jackson',
-    releaseDate: '2019-04-16',
+    "title": "Brick by Boring Brick",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1046
   },
   {
-    title: 'Party Hard',
-    performer: 'Andrew W.K.',
-    releaseDate: '2019-04-23',
+    "title": "Crushcrushcrush",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1047
   },
   {
-    title: 'The Adventure',
-    performer: 'Angels \u0026 Airwaves',
-    releaseDate: '2019-04-23',
+    "title": "The Only Exception",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1048
   },
-  { title: 'Shiver', performer: 'Coldplay', releaseDate: '2019-04-23' },
   {
-    title: 'When the Curtain Falls',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2019-04-30',
+    "title": "Pressure",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1049
   },
   {
-    title: 'Edge Of Darkness',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2019-04-30',
+    "title": "Still Into You",
+    "performer": "Paramore",
+    "releaseDate": "2018-01-09",
+    "expiration": 1831161600000,
+    "id": 1050
   },
   {
-    title: 'You\u0027re the One',
-    performer: 'Greta Van Fleet',
-    releaseDate: '2019-04-30',
+    "title": "Boulevard of Broken Dreams",
+    "performer": "Green Day",
+    "releaseDate": "2018-01-16",
+    "expiration": 1831766400000,
+    "id": 1051
   },
   {
-    title: 'Girls Just Want To Have Fun',
-    performer: 'Cyndi Lauper',
-    releaseDate: '2019-05-07',
+    "title": "Jesus of Suburbia",
+    "performer": "Green Day",
+    "releaseDate": "2018-01-16",
+    "expiration": 1831766400000,
+    "id": 1052
   },
   {
-    title: 'Time After Time',
-    performer: 'Cyndi Lauper',
-    releaseDate: '2019-05-07',
+    "title": "Holiday",
+    "performer": "Green Day",
+    "releaseDate": "2018-01-16",
+    "expiration": 1831766400000,
+    "id": 1053
   },
   {
-    title: 'True Colors',
-    performer: 'Cyndi Lauper',
-    releaseDate: '2019-05-07',
+    "title": "Know Your Enemy",
+    "performer": "Green Day",
+    "releaseDate": "2018-01-16",
+    "expiration": 1831766400000,
+    "id": 1054
   },
   {
-    title: 'Youth of the Nation',
-    performer: 'P.O.D',
-    releaseDate: '2019-05-14',
+    "title": "Welcome to Paradise",
+    "performer": "Green Day",
+    "releaseDate": "2018-01-16",
+    "expiration": 1831766400000,
+    "id": 1055
   },
   {
-    title: 'Boom',
-    performer: 'P.O.D',
-    releaseDate: '2019-05-14',
+    "title": "The Cave",
+    "performer": "Mumford & Sons",
+    "releaseDate": "2018-01-23",
+    "expiration": 1832371200000,
+    "id": 1056
   },
-  { title: 'Alive', performer: 'P.O.D', releaseDate: '2019-05-14' },
   {
-    title: 'Amazing Grace',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-05-21',
+    "title": "I Will Wait",
+    "performer": "Mumford & Sons",
+    "releaseDate": "2018-01-23",
+    "expiration": 1832371200000,
+    "id": 1057
   },
   {
-    title: 'When the Saints Go Marching In',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-05-21',
+    "title": "Little Lion Man",
+    "performer": "Mumford & Sons",
+    "releaseDate": "2018-01-23",
+    "expiration": 1832371200000,
+    "id": 1058
   },
   {
-    title: 'Frere Jacques',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-05-21',
+    "title": "Aqualung",
+    "performer": "Jethro Tull",
+    "releaseDate": "2018-01-30",
+    "expiration": 1832976000000,
+    "id": 1059
   },
   {
-    title: 'She Looks So Perfect',
-    performer: '5 Seconds of Summer',
-    releaseDate: '2019-05-28',
+    "title": "Radar Love",
+    "performer": "Golden Earring",
+    "releaseDate": "2018-01-30",
+    "expiration": 1832976000000,
+    "id": 1060
   },
   {
-    title: 'Amnesia',
-    performer: '5 Seconds of Summer',
-    releaseDate: '2019-05-28',
+    "title": "We're an American Band",
+    "performer": "Grand Funk Railroad",
+    "releaseDate": "2018-01-30",
+    "expiration": 1832976000000,
+    "id": 1061
   },
   {
-    title: 'She\u0027s Kinda Hot',
-    performer: '5 Seconds of Summer',
-    releaseDate: '2019-05-28',
+    "title": "Poker Face",
+    "performer": "Lady Gaga",
+    "releaseDate": "2018-02-06",
+    "expiration": 1833580800000,
+    "id": 1062
   },
   {
-    title: 'Easy Hammer-on/Pull-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-06-04',
+    "title": "Paparazzi",
+    "performer": "Lady Gaga",
+    "releaseDate": "2018-02-06",
+    "expiration": 1833580800000,
+    "id": 1063
   },
   {
-    title: 'Easy Linear Playing 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-06-04',
+    "title": "Bad Romance",
+    "performer": "Lady Gaga",
+    "releaseDate": "2018-02-06",
+    "expiration": 1833580800000,
+    "id": 1064
   },
   {
-    title: 'Easy Pull-on/Hammer-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-06-04',
+    "title": "You and I",
+    "performer": "Lady Gaga",
+    "releaseDate": "2018-02-06",
+    "expiration": 1833580800000,
+    "id": 1065
   },
   {
-    title: 'Easy String Skipping 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-06-04',
+    "title": "Built to Fall",
+    "performer": "Trivium",
+    "releaseDate": "2018-02-13",
+    "expiration": 1834185600000,
+    "id": 1066
   },
   {
-    title: 'Easy String Switching 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-06-04',
+    "title": "In Waves",
+    "performer": "Trivium",
+    "releaseDate": "2018-02-13",
+    "expiration": 1834185600000,
+    "id": 1067
   },
   {
-    title: 'Dying in Your Arms',
-    performer: 'Trivium',
-    releaseDate: '2019-06-11',
+    "title": "Strife",
+    "performer": "Trivium",
+    "releaseDate": "2018-02-13",
+    "expiration": 1834185600000,
+    "id": 1068
   },
   {
-    title: 'A Gunshot to the Head of Trepidation',
-    performer: 'Trivium',
-    releaseDate: '2019-06-11',
+    "title": "Only the Good Die Young",
+    "performer": "Billy Joel",
+    "releaseDate": "2018-02-20",
+    "expiration": 1834790400000,
+    "id": 1069
   },
   {
-    title: 'Pull Harder on the Strings of Your Martyr',
-    performer: 'Trivium',
-    releaseDate: '2019-06-11',
+    "title": "Bad To The Bone",
+    "performer": "George Thorogood and the Destroyers",
+    "releaseDate": "2018-02-20",
+    "expiration": 1834790400000,
+    "id": 1070
   },
   {
-    title: 'Over the Hills and Far Away',
-    performer: 'Nightwish',
-    releaseDate: '2019-06-18',
+    "title": "Face Down",
+    "performer": "The Red Jumpsuit Apparatus",
+    "releaseDate": "2018-02-20",
+    "expiration": 1834790400000,
+    "id": 1071
   },
   {
-    title: 'Take On Me',
-    performer: 'Reel Big Fish',
-    releaseDate: '2019-06-18',
+    "title": "Runaway Train",
+    "performer": "Soul Asylum",
+    "releaseDate": "2018-02-20",
+    "expiration": 1834790400000,
+    "id": 1072
   },
   {
-    title: 'Louie Louie',
-    performer: 'Joan Jett and the Blackhearts',
-    releaseDate: '2019-06-18',
+    "title": "Games People Play",
+    "performer": "Joe South",
+    "releaseDate": "2018-02-27",
+    "expiration": 1835395200000,
+    "id": 1073
   },
   {
-    title: 'Call It Off',
-    performer: 'Tegan and Sara',
-    releaseDate: '2019-06-25',
+    "title": "Get Together",
+    "performer": "The Youngbloods",
+    "releaseDate": "2018-02-27",
+    "expiration": 1835395200000,
+    "id": 1074
   },
   {
-    title: 'The Con',
-    performer: 'Tegan and Sara',
-    releaseDate: '2019-06-25',
+    "title": "Hush",
+    "performer": "Deep Purple",
+    "releaseDate": "2018-02-27",
+    "expiration": 1835395200000,
+    "id": 1075
   },
   {
-    title: 'Walking with a Ghost',
-    performer: 'Tegan and Sara',
-    releaseDate: '2019-06-25',
+    "title": "Man! I Feel Like A Woman",
+    "performer": "Shania Twain",
+    "releaseDate": "2018-03-06",
+    "expiration": 1836000000000,
+    "id": 1076
   },
   {
-    title: 'Intermediate Hammer-on/Pull-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-02',
+    "title": "That Don't Impress Me Much",
+    "performer": "Shania Twain",
+    "releaseDate": "2018-03-06",
+    "expiration": 1836000000000,
+    "id": 1077
   },
   {
-    title: 'Intermediate Linear Playing 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-02',
+    "title": "You're Still The One",
+    "performer": "Shania Twain",
+    "releaseDate": "2018-03-06",
+    "expiration": 1836000000000,
+    "id": 1078
   },
   {
-    title: 'Intermediate Pull-on/Hammer-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-02',
+    "title": "Ruby",
+    "performer": "Kaiser Chiefs",
+    "releaseDate": "2018-03-13",
+    "expiration": 1836604800000,
+    "id": 1079
   },
   {
-    title: 'Intermediate String Skipping 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-02',
+    "title": "Never Miss A Beat",
+    "performer": "Kaiser Chiefs",
+    "releaseDate": "2018-03-13",
+    "expiration": 1836604800000,
+    "id": 1080
   },
   {
-    title: 'Intermediate String Switching 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-02',
+    "title": "I Predict A Riot",
+    "performer": "Kaiser Chiefs",
+    "releaseDate": "2018-03-13",
+    "expiration": 1836604800000,
+    "id": 1081
   },
   {
-    title: 'My Medicine',
-    performer: 'The Pretty Reckless',
-    releaseDate: '2019-07-09',
+    "title": "Pompeii",
+    "performer": "Bastille",
+    "releaseDate": "2018-03-20",
+    "expiration": 1837209600000,
+    "id": 1082
   },
   {
-    title: 'Make Me Wanna Die',
-    performer: 'The Pretty Reckless',
-    releaseDate: '2019-07-09',
+    "title": "What You Know",
+    "performer": "Two Door Cinema Club",
+    "releaseDate": "2018-03-20",
+    "expiration": 1837209600000,
+    "id": 1083
   },
   {
-    title: 'Going to Hell',
-    performer: 'The Pretty Reckless',
-    releaseDate: '2019-07-09',
+    "title": "Hold Back The River",
+    "performer": "James Bay",
+    "releaseDate": "2018-03-20",
+    "expiration": 1837209600000,
+    "id": 1084
   },
   {
-    title: 'Bitter Sweet Symphony',
-    performer: 'Aranbee Pop Symphony Orchestra',
-    releaseDate: '2019-07-16',
+    "title": "Lovefool",
+    "performer": "The Cardigans",
+    "releaseDate": "2018-03-27",
+    "expiration": 1837814400000,
+    "id": 1085
   },
   {
-    title: 'Chasing Cars',
-    performer: 'Snow Patrol',
-    releaseDate: '2019-07-16',
+    "title": "Erase/Rewind",
+    "performer": "The Cardigans",
+    "releaseDate": "2018-03-27",
+    "expiration": 1837814400000,
+    "id": 1086
   },
   {
-    title: 'Renegades',
-    performer: 'X Ambassadors',
-    releaseDate: '2019-07-16',
+    "title": "My Favourite Game",
+    "performer": "The Cardigans",
+    "releaseDate": "2018-03-27",
+    "expiration": 1837814400000,
+    "id": 1087
   },
   {
-    title: 'A Design for Life',
-    performer: 'Manic Street Preachers',
-    releaseDate: '2019-07-23',
+    "title": "Murmaider",
+    "performer": "Dethklok",
+    "releaseDate": "2018-04-03",
+    "expiration": 1838422800000,
+    "id": 1088
   },
   {
-    title: 'If You Tolerate This Your Children Will Be Next',
-    performer: 'Manic Street Preachers',
-    releaseDate: '2019-07-23',
+    "title": "Black Fire Upon Us",
+    "performer": "Dethklok",
+    "releaseDate": "2018-04-03",
+    "expiration": 1838422800000,
+    "id": 1089
   },
   {
-    title: 'Motorcycle Emptiness',
-    performer: 'Manic Street Preachers',
-    releaseDate: '2019-07-23',
+    "title": "Bloodlines",
+    "performer": "Dethklok",
+    "releaseDate": "2018-04-03",
+    "expiration": 1838422800000,
+    "id": 1090
   },
   {
-    title: 'Advanced Hammer-on/Pull-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-30',
+    "title": "Your Love",
+    "performer": "The Outfield",
+    "releaseDate": "2018-04-10",
+    "expiration": 1839027600000,
+    "id": 1091
   },
   {
-    title: 'Advanced Linear Playing 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-30',
+    "title": "Amie",
+    "performer": "Pure Prairie League",
+    "releaseDate": "2018-04-10",
+    "expiration": 1839027600000,
+    "id": 1092
   },
   {
-    title: 'Advanced Pull-on/Hammer-off 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-30',
+    "title": "Hunger Strike",
+    "performer": "Temple Of The Dog",
+    "releaseDate": "2018-04-10",
+    "expiration": 1839027600000,
+    "id": 1093
   },
   {
-    title: 'Advanced String Skipping 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-30',
+    "title": "I Write Sins Not Tragedies",
+    "performer": "Panic! At The Disco",
+    "releaseDate": "2018-04-10",
+    "expiration": 1839027600000,
+    "id": 1094
   },
   {
-    title: 'Advanced String Switching 1',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-07-30',
+    "title": "Dakota",
+    "performer": "Stereophonics",
+    "releaseDate": "2018-04-17",
+    "expiration": 1839632400000,
+    "id": 1095
   },
   {
-    title: 'Break the Walls Down (Chris Jericho)',
-    performer: 'Jim Johnston',
-    releaseDate: '2019-08-06',
+    "title": "The Bartender And The Thief",
+    "performer": "Stereophonics",
+    "releaseDate": "2018-04-17",
+    "expiration": 1839632400000,
+    "id": 1096
   },
   {
-    title: 'Electrifying (The Rock)',
-    performer: 'Jim Johnston',
-    releaseDate: '2019-08-06',
+    "title": "Maybe Tomorrow",
+    "performer": "Stereophonics",
+    "releaseDate": "2018-04-17",
+    "expiration": 1839632400000,
+    "id": 1097
   },
   {
-    title: 'I Won\u0027t Do What You Tell Me (Stone Cold Steve Austin)',
-    performer: 'Jim Johnston',
-    releaseDate: '2019-08-06',
+    "title": "You Get What You Give",
+    "performer": "New Radicals",
+    "releaseDate": "2018-04-24",
+    "expiration": 1840237200000,
+    "id": 1098
   },
   {
-    title: 'The Loner',
-    performer: 'Gary Moore',
-    releaseDate: '2019-08-13',
+    "title": "Keep Away",
+    "performer": "Godsmack",
+    "releaseDate": "2018-04-24",
+    "expiration": 1840237200000,
+    "id": 1099
   },
   {
-    title: 'Over the Hills and Far Away',
-    performer: 'Gary Moore',
-    releaseDate: '2019-08-13',
+    "title": "Volcano Girls",
+    "performer": "Veruca Salt",
+    "releaseDate": "2018-04-24",
+    "expiration": 1840237200000,
+    "id": 1100
   },
   {
-    title: 'Still Got the Blues',
-    performer: 'Gary Moore',
-    releaseDate: '2019-08-13',
+    "title": "Black Horse and the Cherry Tree",
+    "performer": "KT Tunstall",
+    "releaseDate": "2018-05-01",
+    "expiration": 1840842000000,
+    "id": 1101
   },
   {
-    title: 'The Bad Touch',
-    performer: 'Bloodhound Gang',
-    releaseDate: '2019-08-20',
+    "title": "Other Side Of The World",
+    "performer": "KT Tunstall",
+    "releaseDate": "2018-05-01",
+    "expiration": 1840842000000,
+    "id": 1102
   },
   {
-    title: 'The Ballad of Chasey Lain',
-    performer: 'Bloodhound Gang',
-    releaseDate: '2019-08-20',
+    "title": "Suddenly I See",
+    "performer": "KT Tunstall",
+    "releaseDate": "2018-05-01",
+    "expiration": 1840842000000,
+    "id": 1103
   },
   {
-    title: 'Foxtrot Uniform Charlie Kilo',
-    performer: 'Bloodhound Gang',
-    releaseDate: '2019-08-20',
+    "title": "Lonely Is The Night",
+    "performer": "Billy Squier",
+    "releaseDate": "2018-05-08",
+    "expiration": 1841446800000,
+    "id": 1104
   },
   {
-    title: 'We Got the Beat',
-    performer: 'Go-Go\u0027sThe Go-Go\u0027s',
-    releaseDate: '2019-08-27',
+    "title": "Too Much Time on My Hands",
+    "performer": "Styx",
+    "releaseDate": "2018-05-08",
+    "expiration": 1841446800000,
+    "id": 1105
   },
   {
-    title: 'According to You',
-    performer: 'Orianthi',
-    releaseDate: '2019-08-27',
+    "title": "Let's Groove",
+    "performer": "Earth, Wind & Fire",
+    "releaseDate": "2018-05-08",
+    "expiration": 1841446800000,
+    "id": 1106
   },
   {
-    title: 'Seether',
-    performer: 'Veruca Salt',
-    releaseDate: '2019-08-27',
+    "title": "Obstacle 1",
+    "performer": "Interpol",
+    "releaseDate": "2018-05-15",
+    "expiration": 1842051600000,
+    "id": 1107
   },
   {
-    title: 'Easy Hammer-on/Pull-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-09-03',
+    "title": "All The Rage Back Home",
+    "performer": "Interpol",
+    "releaseDate": "2018-05-15",
+    "expiration": 1842051600000,
+    "id": 1108
   },
   {
-    title: 'Easy Linear Playing 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-09-03',
+    "title": "PDA",
+    "performer": "Interpol",
+    "releaseDate": "2018-05-15",
+    "expiration": 1842051600000,
+    "id": 1109
   },
   {
-    title: 'Easy Pull-on/Hammer-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-09-03',
+    "title": "Evil",
+    "performer": "Interpol",
+    "releaseDate": "2018-05-15",
+    "expiration": 1842051600000,
+    "id": 1110
   },
   {
-    title: 'Easy String Skipping 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-09-03',
+    "title": "Souls of Black",
+    "performer": "Testament",
+    "releaseDate": "2018-05-22",
+    "expiration": 1842656400000,
+    "id": 1111
   },
   {
-    title: 'Easy String Switching 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-09-03',
+    "title": "Transilvanian Hunger",
+    "performer": "Darkthrone",
+    "releaseDate": "2018-05-22",
+    "expiration": 1842656400000,
+    "id": 1112
   },
   {
-    title: 'All the Pretty Girls',
-    performer: 'Kaleo',
-    releaseDate: '2019-09-10',
+    "title": "Immortal Rites",
+    "performer": "Morbid Angel",
+    "releaseDate": "2018-05-22",
+    "expiration": 1842656400000,
+    "id": 1113
   },
   {
-    title: 'No Good',
-    performer: 'Kaleo',
-    releaseDate: '2019-09-10',
+    "title": "Come Away With Me",
+    "performer": "Norah Jones",
+    "releaseDate": "2018-05-29",
+    "expiration": 1843261200000,
+    "id": 1114
   },
-  { title: 'Way Down We Go', performer: 'Kaleo', releaseDate: '2019-09-10' },
   {
-    title: 'No Reason',
-    performer: 'Audrey and Kate',
-    releaseDate: '2019-09-17',
+    "title": "Don't Know Why",
+    "performer": "Norah Jones",
+    "releaseDate": "2018-05-29",
+    "expiration": 1843261200000,
+    "id": 1115
   },
   {
-    title: 'Guitar Solos With Dooo #2 - Ascend',
-    performer: 'The Dooo',
-    releaseDate: '2019-09-17',
+    "title": "Sunrise",
+    "performer": "Norah Jones",
+    "releaseDate": "2018-05-29",
+    "expiration": 1843261200000,
+    "id": 1116
   },
   {
-    title: 'Everything But Me',
-    performer: 'Set the Charge',
-    releaseDate: '2019-09-17',
+    "title": "Baby Blue",
+    "performer": "Badfinger",
+    "releaseDate": "2018-06-05",
+    "expiration": 1843866000000,
+    "id": 1117
   },
   {
-    title: 'Highway to Oblivion',
-    performer: 'DragonForce',
-    releaseDate: '2019-09-24',
+    "title": "Apache",
+    "performer": "The Shadows",
+    "releaseDate": "2018-06-05",
+    "expiration": 1843866000000,
+    "id": 1118
   },
-  { title: 'Amaranthine', performer: 'Amaranthe', releaseDate: '2019-10-01' },
   {
-    title: 'Drop Dead Cynical',
-    performer: 'Amaranthe',
-    releaseDate: '2019-10-01',
+    "title": "In The Meantime",
+    "performer": "Spacehog",
+    "releaseDate": "2018-06-05",
+    "expiration": 1843866000000,
+    "id": 1119
   },
   {
-    title: 'The Nexus',
-    performer: 'Amaranthe',
-    releaseDate: '2019-10-01',
+    "title": "Bad",
+    "performer": "U2",
+    "releaseDate": "2018-06-05",
+    "expiration": 1843866000000,
+    "id": 1120
   },
   {
-    title: 'Intermediate Hammer-on/Pull-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-10-08',
+    "title": "Dashboard",
+    "performer": "Modest Mouse",
+    "releaseDate": "2018-06-12",
+    "expiration": 1844470800000,
+    "id": 1121
   },
   {
-    title: 'Intermediate Linear Playing 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-10-08',
+    "title": "Johnny, I Hardly Knew Ya",
+    "performer": "Dropkick Murphys",
+    "releaseDate": "2018-06-12",
+    "expiration": 1844470800000,
+    "id": 1122
   },
   {
-    title: 'Intermediate Pull-on/Hammer-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-10-08',
+    "title": "Bad Girlfriend",
+    "performer": "Theory of a Deadman",
+    "releaseDate": "2018-06-12",
+    "expiration": 1844470800000,
+    "id": 1123
   },
   {
-    title: 'Intermediate String Skipping 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-10-08',
+    "title": "No Surprises",
+    "performer": "Radiohead",
+    "releaseDate": "2018-06-19",
+    "expiration": 1845075600000,
+    "id": 1124
   },
   {
-    title: 'Intermediate String Switching 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-10-08',
+    "title": "Street Spirit (Fade Out)",
+    "performer": "Radiohead",
+    "releaseDate": "2018-06-19",
+    "expiration": 1845075600000,
+    "id": 1125
   },
-  { title: 'Davidian', performer: 'Machine Head', releaseDate: '2019-10-15' },
   {
-    title: 'Are You Dead Yet?',
-    performer: 'Children of Bodom',
-    releaseDate: '2019-10-15',
+    "title": "There, There",
+    "performer": "Radiohead",
+    "releaseDate": "2018-06-19",
+    "expiration": 1845075600000,
+    "id": 1126
   },
-  { title: 'Crystal Mountain', performer: 'Death', releaseDate: '2019-10-15' },
   {
-    title: 'Galileo',
-    performer: 'Indigo Girls',
-    releaseDate: '2019-10-22',
+    "title": "Bad Reputation",
+    "performer": "Joan Jett",
+    "releaseDate": "2018-06-26",
+    "expiration": 1845680400000,
+    "id": 1127
   },
   {
-    title: 'Power of Two',
-    performer: 'Indigo Girls',
-    releaseDate: '2019-10-22',
+    "title": "Crimson and Clover",
+    "performer": "Joan Jett & the Blackhearts",
+    "releaseDate": "2018-06-26",
+    "expiration": 1845680400000,
+    "id": 1128
   },
   {
-    title: 'Closer to Fine',
-    performer: 'Indigo Girls',
-    releaseDate: '2019-10-22',
+    "title": "I Hate Myself for Loving You",
+    "performer": "Joan Jett & the Blackhearts",
+    "releaseDate": "2018-06-26",
+    "expiration": 1845680400000,
+    "id": 1129
   },
   {
-    title: 'Time of the Season',
-    performer: 'The Zombies',
-    releaseDate: '2019-10-29',
+    "title": "Ever Fallen In Love",
+    "performer": "Buzzcocks",
+    "releaseDate": "2018-07-03",
+    "expiration": 1846285200000,
+    "id": 1130
   },
   {
-    title: 'Tell Her No',
-    performer: 'The Zombies',
-    releaseDate: '2019-10-29',
+    "title": "Who Do You Love",
+    "performer": "George Thorogood and the Destroyers",
+    "releaseDate": "2018-07-03",
+    "expiration": 1846285200000,
+    "id": 1131
   },
   {
-    title: 'She\u0027s Not There',
-    performer: 'The Zombies',
-    releaseDate: '2019-10-29',
+    "title": "Jungle Love",
+    "performer": "Steve Miller Band",
+    "releaseDate": "2018-07-03",
+    "expiration": 1846285200000,
+    "id": 1132
   },
   {
-    title: 'Advanced Hammer-on/Pull-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-11-05',
+    "title": "It's Tricky",
+    "performer": "Run-DMC",
+    "releaseDate": "2018-07-10",
+    "expiration": 1846890000000,
+    "id": 1133
   },
   {
-    title: 'Advanced Linear Playing 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-11-05',
+    "title": "King of Rock",
+    "performer": "Run-DMC",
+    "releaseDate": "2018-07-10",
+    "expiration": 1846890000000,
+    "id": 1134
   },
   {
-    title: 'Advanced Pull-on/Hammer-off 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-11-05',
+    "title": "Rock Box",
+    "performer": "Run-DMC",
+    "releaseDate": "2018-07-10",
+    "expiration": 1846890000000,
+    "id": 1135
   },
   {
-    title: 'Advanced String Skipping 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-11-05',
+    "title": "Rebel Rouser",
+    "performer": "Duane Eddy",
+    "releaseDate": "2018-07-17",
+    "expiration": 1847494800000,
+    "id": 1136
   },
   {
-    title: 'Advanced String Switching 2',
-    performer: 'The Notetrackers',
-    releaseDate: '2019-11-05',
+    "title": "Feeling Good",
+    "performer": "Nina Simone",
+    "releaseDate": "2018-07-17",
+    "expiration": 1847494800000,
+    "id": 1137
   },
-  { title: 'Over You', performer: 'Daughtry', releaseDate: '2019-11-12' },
   {
-    title: 'Feels Like Tonight',
-    performer: 'Daughtry',
-    releaseDate: '2019-11-12',
+    "title": "This Love",
+    "performer": "Pantera",
+    "releaseDate": "2018-07-17",
+    "expiration": 1847494800000,
+    "id": 1138
   },
-  { title: 'Home', performer: 'Daughtry', releaseDate: '2019-11-12' },
   {
-    title: 'Going Down',
-    performer: 'Freddie King',
-    releaseDate: '2019-11-19',
+    "title": "I'm Gonna Be (500 Miles)",
+    "performer": "The Proclaimers",
+    "releaseDate": "2018-07-17",
+    "expiration": 1847494800000,
+    "id": 1139
   },
   {
-    title: 'San Francisco',
-    performer: 'John Lee Hooker',
-    releaseDate: '2019-11-19',
+    "title": "A Case Of You",
+    "performer": "Joni Mitchell",
+    "releaseDate": "2018-07-24",
+    "expiration": 1848099600000,
+    "id": 1140
   },
   {
-    title: 'Bootie Cooler',
-    performer: 'Shuggie Otis',
-    releaseDate: '2019-11-19',
+    "title": "Big Yellow Taxi",
+    "performer": "Joni Mitchell",
+    "releaseDate": "2018-07-24",
+    "expiration": 1848099600000,
+    "id": 1141
   },
   {
-    title: 'Heartbreaker',
-    performer: 'Pat Benatar',
-    releaseDate: '2019-11-26',
+    "title": "Both Sides, Now",
+    "performer": "Joni Mitchell",
+    "releaseDate": "2018-07-24",
+    "expiration": 1848099600000,
+    "id": 1142
   },
-  { title: 'We Belong', performer: 'Pat Benatar', releaseDate: '2019-11-26' },
   {
-    title: 'Hell Is For Children',
-    performer: 'Pat Benatar',
-    releaseDate: '2019-11-26',
+    "title": "Strategy and Spying",
+    "performer": "Billy Martin",
+    "releaseDate": "2018-07-31",
+    "expiration": 1848704400000,
+    "id": 1143
   },
   {
-    title: 'Perfect Situation',
-    performer: 'Weezer',
-    releaseDate: '2019-12-03',
+    "title": "Assassin's Creed IV Black Flag Main Theme",
+    "performer": "Brian Tyler",
+    "releaseDate": "2018-07-31",
+    "expiration": 1848704400000,
+    "id": 1144
   },
   {
-    title: 'Beverly Hills',
-    performer: 'Weezer',
-    releaseDate: '2019-12-03',
+    "title": "Ezio's Family",
+    "performer": "Jesper Kyd",
+    "releaseDate": "2018-07-31",
+    "expiration": 1848704400000,
+    "id": 1145
   },
-  { title: 'Pork and Beans', performer: 'Weezer', releaseDate: '2019-12-03' },
   {
-    title: 'Dancing Queen',
-    performer: 'ABBA',
-    releaseDate: '2019-12-10',
+    "title": "Blood Dragon Theme (Far Cry 3: Blood Dragon)",
+    "performer": "Power Glove",
+    "releaseDate": "2018-07-31",
+    "expiration": 1848704400000,
+    "id": 1146
   },
-  { title: 'Fernando', performer: 'ABBA', releaseDate: '2019-12-10' },
   {
-    title: 'Mamma Mia',
-    performer: 'ABBA',
-    releaseDate: '2019-12-10',
+    "title": "The Ballad of Clutch Nixon",
+    "performer": "The Road Vikings",
+    "releaseDate": "2018-07-31",
+    "expiration": 1848704400000,
+    "id": 1147
   },
-  { title: 'Crazy', performer: 'Aerosmith', releaseDate: '2019-12-17' },
   {
-    title: 'Love in an Elevator',
-    performer: 'Aerosmith',
-    releaseDate: '2019-12-17',
+    "title": "Black Smoke Rising",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2018-08-07",
+    "expiration": 1849309200000,
+    "id": 1148
   },
   {
-    title: 'Train Kept A-Rollin\u0027',
-    performer: 'Aerosmith',
-    releaseDate: '2019-12-17',
+    "title": "Highway Tune",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2018-08-07",
+    "expiration": 1849309200000,
+    "id": 1149
   },
   {
-    title: 'Tennessee Whiskey',
-    performer: 'Chris Stapleton',
-    releaseDate: '2020-01-07',
+    "title": "Safari Song",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2018-08-07",
+    "expiration": 1849309200000,
+    "id": 1150
   },
   {
-    title: 'Parachute',
-    performer: 'Chris Stapleton',
-    releaseDate: '2020-01-07',
+    "title": "One Bourbon, One Scotch, One Beer",
+    "performer": "John Lee Hooker",
+    "releaseDate": "2018-08-14",
+    "expiration": 1849914000000,
+    "id": 1151
   },
   {
-    title: 'Nobody to Blame',
-    performer: 'Chris Stapleton',
-    releaseDate: '2020-01-07',
+    "title": "West Coast Blues",
+    "performer": "Wes Montgomery",
+    "releaseDate": "2018-08-14",
+    "expiration": 1849914000000,
+    "id": 1152
   },
   {
-    title: 'Jack \u0026 Diane',
-    performer: 'John Mellencamp',
-    releaseDate: '2020-01-14',
+    "title": "Back Door Man",
+    "performer": "Willie Dixon",
+    "releaseDate": "2018-08-14",
+    "expiration": 1849914000000,
+    "id": 1153
   },
   {
-    title: 'Pink Houses',
-    performer: 'John Mellencamp',
-    releaseDate: '2020-01-14',
+    "title": "Bleeds No More",
+    "performer": "Silverstein",
+    "releaseDate": "2018-08-21",
+    "expiration": 1850518800000,
+    "id": 1154
   },
   {
-    title: 'Small Town',
-    performer: 'John Mellencamp',
-    releaseDate: '2020-01-14',
+    "title": "My Heroine",
+    "performer": "Silverstein",
+    "releaseDate": "2018-08-21",
+    "expiration": 1850518800000,
+    "id": 1155
   },
-  { title: 'Don\u0027t Save Me', performer: 'Haim', releaseDate: '2020-01-21' },
   {
-    title: 'Forever',
-    performer: 'Haim',
-    releaseDate: '2020-01-21',
+    "title": "Smashed into Pieces",
+    "performer": "Silverstein",
+    "releaseDate": "2018-08-21",
+    "expiration": 1850518800000,
+    "id": 1156
   },
-  { title: 'The Wire', performer: 'Haim', releaseDate: '2020-01-21' },
   {
-    title: 'House of Broken Love',
-    performer: 'Great White',
-    releaseDate: '2020-01-28',
+    "title": "Smile In Your Sleep",
+    "performer": "Silverstein",
+    "releaseDate": "2018-08-21",
+    "expiration": 1850518800000,
+    "id": 1157
   },
   {
-    title: 'Once Bitten, Twice Shy',
-    performer: 'Great White',
-    releaseDate: '2020-01-28',
+    "title": "Changes",
+    "performer": "David Bowie",
+    "releaseDate": "2018-08-28",
+    "expiration": 1851123600000,
+    "id": 1158
   },
   {
-    title: 'Rock Me',
-    performer: 'Great White',
-    releaseDate: '2020-01-28',
+    "title": "Movies",
+    "performer": "Alien Ant Farm",
+    "releaseDate": "2018-08-28",
+    "expiration": 1851123600000,
+    "id": 1159
   },
   {
-    title: 'Signed, Sealed, Delivered I\u0027m Yours',
-    performer: 'Stevie Wonder',
-    releaseDate: '2020-02-04',
+    "title": "Stay (I Missed You)",
+    "performer": "Lisa Loeb",
+    "releaseDate": "2018-08-28",
+    "expiration": 1851123600000,
+    "id": 1160
   },
   {
-    title: 'Superstition',
-    performer: 'Stevie Wonder',
-    releaseDate: '2020-02-04',
+    "title": "Touch Of Grey",
+    "performer": "Grateful Dead",
+    "releaseDate": "2018-08-28",
+    "expiration": 1851123600000,
+    "id": 1161
   },
   {
-    title: 'I Wish',
-    performer: 'Stevie Wonder',
-    releaseDate: '2020-02-04',
+    "title": "Since U Been Gone",
+    "performer": "Kelly Clarkson",
+    "releaseDate": "2018-09-04",
+    "expiration": 1851728400000,
+    "id": 1162
   },
-  { title: 'Brain Stew', performer: 'Green Day', releaseDate: '2020-02-11' },
   {
-    title: 'Father of All...',
-    performer: 'Green Day',
-    releaseDate: '2020-02-11',
+    "title": "Behind These Hazel Eyes",
+    "performer": "Kelly Clarkson",
+    "releaseDate": "2018-09-04",
+    "expiration": 1851728400000,
+    "id": 1163
   },
   {
-    title: 'Fire, Ready, Aim',
-    performer: 'Green Day',
-    releaseDate: '2020-02-11',
+    "title": "My Life Would Suck Without You",
+    "performer": "Kelly Clarkson",
+    "releaseDate": "2018-09-04",
+    "expiration": 1851728400000,
+    "id": 1164
   },
   {
-    title: 'Bruise Violet',
-    performer: 'Babes in Toyland',
-    releaseDate: '2020-02-18',
+    "title": "Unsung",
+    "performer": "Helmet",
+    "releaseDate": "2018-09-11",
+    "expiration": 1852333200000,
+    "id": 1165
   },
   {
-    title: 'Pretend We\u0027re Dead',
-    performer: 'L7',
-    releaseDate: '2020-02-18',
+    "title": "Summer Song",
+    "performer": "Joe Satriani",
+    "releaseDate": "2018-09-11",
+    "expiration": 1852333200000,
+    "id": 1166
   },
   {
-    title: 'Dig Me Out',
-    performer: 'Sleater-Kinney',
-    releaseDate: '2020-02-18',
+    "title": "Christian Woman",
+    "performer": "Type O Negative",
+    "releaseDate": "2018-09-11",
+    "expiration": 1852333200000,
+    "id": 1167
   },
-  { title: 'Black', performer: 'Sevendust', releaseDate: '2020-02-25' },
   {
-    title: 'Angel\u0027s Son',
-    performer: 'Sevendust',
-    releaseDate: '2020-02-25',
+    "title": "Absolute Zero",
+    "performer": "Stone Sour",
+    "releaseDate": "2018-09-18",
+    "expiration": 1852938000000,
+    "id": 1168
   },
-  { title: 'Praise', performer: 'Sevendust', releaseDate: '2020-02-25' },
   {
-    title: 'Come to My Window',
-    performer: 'Melissa Etheridge',
-    releaseDate: '2020-03-03',
+    "title": "Bother",
+    "performer": "Stone Sour",
+    "releaseDate": "2018-09-18",
+    "expiration": 1852938000000,
+    "id": 1169
   },
   {
-    title: 'I\u0027m the Only One',
-    performer: 'Melissa Etheridge',
-    releaseDate: '2020-03-03',
+    "title": "Say You'll Haunt Me",
+    "performer": "Stone Sour",
+    "releaseDate": "2018-09-18",
+    "expiration": 1852938000000,
+    "id": 1170
   },
   {
-    title: 'I Want to Come Over',
-    performer: 'Melissa Etheridge',
-    releaseDate: '2020-03-03',
+    "title": "Paradise",
+    "performer": "Coldplay",
+    "releaseDate": "2018-09-25",
+    "expiration": 1853542800000,
+    "id": 1171
   },
-  { title: 'Stars', performer: 'Sixx:A.M.', releaseDate: '2020-03-10' },
   {
-    title: 'Life is Beautiful',
-    performer: 'Sixx:A.M.',
-    releaseDate: '2020-03-10',
+    "title": "Ex's & Oh's",
+    "performer": "Elle King",
+    "releaseDate": "2018-09-25",
+    "expiration": 1853542800000,
+    "id": 1172
   },
   {
-    title: 'This is Gonna Hurt',
-    performer: 'Sixx:A.M.',
-    releaseDate: '2020-03-10',
+    "title": "Red Eyes",
+    "performer": "The War on Drugs",
+    "releaseDate": "2018-09-25",
+    "expiration": 1853542800000,
+    "id": 1173
   },
   {
-    title: 'You\u0027re So Vain',
-    performer: 'Carly Simon',
-    releaseDate: '2020-03-17',
+    "title": "Disorder",
+    "performer": "Joy Division",
+    "releaseDate": "2018-10-02",
+    "expiration": 1854147600000,
+    "id": 1174
   },
   {
-    title: 'Saturday in the Park',
-    performer: 'Chicago',
-    releaseDate: '2020-03-17',
+    "title": "Love Will Tear Us Apart",
+    "performer": "Joy Division",
+    "releaseDate": "2018-10-02",
+    "expiration": 1854147600000,
+    "id": 1175
   },
   {
-    title: 'Breezin\u0027',
-    performer: 'George Benson',
-    releaseDate: '2020-03-17',
+    "title": "Transmission",
+    "performer": "Joy Division",
+    "releaseDate": "2018-10-02",
+    "expiration": 1854147600000,
+    "id": 1176
   },
   {
-    title: 'Piece of My Heart',
-    performer: 'Big Brother and the Holding Company',
-    releaseDate: '2020-03-24',
+    "title": "Surfin' Safari",
+    "performer": "The Beach Boys",
+    "releaseDate": "2018-10-09",
+    "expiration": 1854752400000,
+    "id": 1177
   },
   {
-    title: 'Summertime',
-    performer: 'Big Brother and the Holding Company',
-    releaseDate: '2020-03-24',
+    "title": "Gratitude",
+    "performer": "Beastie Boys",
+    "releaseDate": "2018-10-09",
+    "expiration": 1854752400000,
+    "id": 1178
   },
   {
-    title: 'Me and Bobby McGee',
-    performer: 'Janis Joplin',
-    releaseDate: '2020-03-24',
+    "title": "Stay Together for the Kids",
+    "performer": "Blink-182",
+    "releaseDate": "2018-10-09",
+    "expiration": 1854752400000,
+    "id": 1179
   },
   {
-    title: 'Bleak',
-    performer: 'Opeth',
-    releaseDate: '2020-03-31',
+    "title": "Green Grass and High Tides",
+    "performer": "Outlaws",
+    "releaseDate": "2018-10-09",
+    "expiration": 1854752400000,
+    "id": 1180
   },
-  { title: 'Blackwater Park', performer: 'Opeth', releaseDate: '2020-03-31' },
   {
-    title: 'Ghost of Perdition',
-    performer: 'Opeth',
-    releaseDate: '2020-03-31',
+    "title": "Mud on the Tires",
+    "performer": "Brad Paisley",
+    "releaseDate": "2018-10-16",
+    "expiration": 1855357200000,
+    "id": 1181
   },
-].map(s => ({ ...s, expiration: calcExpiration(s.releaseDate) }))
+  {
+    "title": "Ticks",
+    "performer": "Brad Paisley",
+    "releaseDate": "2018-10-16",
+    "expiration": 1855357200000,
+    "id": 1182
+  },
+  {
+    "title": "Whiskey Lullaby",
+    "performer": "Brad Paisley ft. Alison Krauss",
+    "releaseDate": "2018-10-16",
+    "expiration": 1855357200000,
+    "id": 1183
+  },
+  {
+    "title": "Take On Me",
+    "performer": "A-ha",
+    "releaseDate": "2018-10-23",
+    "expiration": 1855962000000,
+    "id": 1184
+  },
+  {
+    "title": "Keep Your Hands to Yourself",
+    "performer": "The Georgia Satellites",
+    "releaseDate": "2018-10-23",
+    "expiration": 1855962000000,
+    "id": 1185
+  },
+  {
+    "title": "Fallen Angel",
+    "performer": "Poison",
+    "releaseDate": "2018-10-23",
+    "expiration": 1855962000000,
+    "id": 1186
+  },
+  {
+    "title": "Cirice",
+    "performer": "Ghost",
+    "releaseDate": "2018-10-29",
+    "expiration": 1856563200000,
+    "id": 1187
+  },
+  {
+    "title": "He Is",
+    "performer": "Ghost",
+    "releaseDate": "2018-10-29",
+    "expiration": 1856563200000,
+    "id": 1188
+  },
+  {
+    "title": "Ritual",
+    "performer": "Ghost",
+    "releaseDate": "2018-10-29",
+    "expiration": 1856563200000,
+    "id": 1189
+  },
+  {
+    "title": "Year Zero",
+    "performer": "Ghost",
+    "releaseDate": "2018-10-29",
+    "expiration": 1856563200000,
+    "id": 1190
+  },
+  {
+    "title": "Don't Stop Me Now",
+    "performer": "Queen",
+    "releaseDate": "2018-11-06",
+    "expiration": 1857168000000,
+    "id": 1191
+  },
+  {
+    "title": "We Will Rock You",
+    "performer": "Queen",
+    "releaseDate": "2018-11-06",
+    "expiration": 1857168000000,
+    "id": 1192
+  },
+  {
+    "title": "Love Of My Life",
+    "performer": "Queen",
+    "releaseDate": "2018-11-06",
+    "expiration": 1857168000000,
+    "id": 1193
+  },
+  {
+    "title": "Tie Your Mother Down",
+    "performer": "Queen",
+    "releaseDate": "2018-11-06",
+    "expiration": 1857168000000,
+    "id": 1194
+  },
+  {
+    "title": "In A Big Country",
+    "performer": "Big Country",
+    "releaseDate": "2018-11-13",
+    "expiration": 1857772800000,
+    "id": 1195
+  },
+  {
+    "title": "Stir It Up",
+    "performer": "Bob Marley and the Wailers",
+    "releaseDate": "2018-11-13",
+    "expiration": 1857772800000,
+    "id": 1196
+  },
+  {
+    "title": "Cissy Strut",
+    "performer": "The Meters",
+    "releaseDate": "2018-11-13",
+    "expiration": 1857772800000,
+    "id": 1197
+  },
+  {
+    "title": "More Human Than Human",
+    "performer": "White Zombie",
+    "releaseDate": "2018-11-13",
+    "expiration": 1857772800000,
+    "id": 1198
+  },
+  {
+    "title": "Rockin' Around The Christmas Tree",
+    "performer": "Brenda Lee",
+    "releaseDate": "2018-11-20",
+    "expiration": 1858377600000,
+    "id": 1199
+  },
+  {
+    "title": "Run, Rudolph, Run",
+    "performer": "Chuck Berry",
+    "releaseDate": "2018-11-20",
+    "expiration": 1858377600000,
+    "id": 1200
+  },
+  {
+    "title": "Blue Christmas",
+    "performer": "Elvis Presley",
+    "releaseDate": "2018-11-20",
+    "expiration": 1858377600000,
+    "id": 1201
+  },
+  {
+    "title": "Rudolph The Red-Nosed Reindeer",
+    "performer": "Gene Autry",
+    "releaseDate": "2018-11-20",
+    "expiration": 1858377600000,
+    "id": 1202
+  },
+  {
+    "title": "Bleed American",
+    "performer": "Jimmy Eat World",
+    "releaseDate": "2018-11-27",
+    "expiration": 1858982400000,
+    "id": 1203
+  },
+  {
+    "title": "The Middle",
+    "performer": "Jimmy Eat World",
+    "releaseDate": "2018-11-27",
+    "expiration": 1858982400000,
+    "id": 1204
+  },
+  {
+    "title": "Sweetness",
+    "performer": "Jimmy Eat World",
+    "releaseDate": "2018-11-27",
+    "expiration": 1858982400000,
+    "id": 1205
+  },
+  {
+    "title": "Billion Dollar Babies",
+    "performer": "Alice Cooper",
+    "releaseDate": "2018-12-04",
+    "expiration": 1859587200000,
+    "id": 1206
+  },
+  {
+    "title": "Poison",
+    "performer": "Alice Cooper",
+    "releaseDate": "2018-12-04",
+    "expiration": 1859587200000,
+    "id": 1207
+  },
+  {
+    "title": "School's Out",
+    "performer": "Alice Cooper",
+    "releaseDate": "2018-12-04",
+    "expiration": 1859587200000,
+    "id": 1208
+  },
+  {
+    "title": "Bad Company",
+    "performer": "Five Finger Death Punch",
+    "releaseDate": "2018-12-11",
+    "expiration": 1860192000000,
+    "id": 1209
+  },
+  {
+    "title": "The Bleeding",
+    "performer": "Five Finger Death Punch",
+    "releaseDate": "2018-12-11",
+    "expiration": 1860192000000,
+    "id": 1210
+  },
+  {
+    "title": "Wrong Side of Heaven",
+    "performer": "Five Finger Death Punch",
+    "releaseDate": "2018-12-11",
+    "expiration": 1860192000000,
+    "id": 1211
+  },
+  {
+    "title": "Brown Sugar",
+    "performer": "The Rolling Stones",
+    "releaseDate": "2018-12-18",
+    "expiration": 1860796800000,
+    "id": 1212
+  },
+  {
+    "title": "Gimme Shelter",
+    "performer": "The Rolling Stones",
+    "releaseDate": "2018-12-18",
+    "expiration": 1860796800000,
+    "id": 1213
+  },
+  {
+    "title": "Jumpin' Jack Flash",
+    "performer": "The Rolling Stones",
+    "releaseDate": "2018-12-18",
+    "expiration": 1860796800000,
+    "id": 1214
+  },
+  {
+    "title": "Sympathy for the Devil",
+    "performer": "The Rolling Stones",
+    "releaseDate": "2018-12-18",
+    "expiration": 1860796800000,
+    "id": 1215
+  },
+  {
+    "title": "Johnny B. Goode",
+    "performer": "Chuck Berry",
+    "releaseDate": "2019-01-08",
+    "expiration": 1862611200000,
+    "id": 1216
+  },
+  {
+    "title": "School Day (Ring! Ring! Goes the Bell)",
+    "performer": "Chuck Berry",
+    "releaseDate": "2019-01-08",
+    "expiration": 1862611200000,
+    "id": 1217
+  },
+  {
+    "title": "You Never Can Tell",
+    "performer": "Chuck Berry",
+    "releaseDate": "2019-01-08",
+    "expiration": 1862611200000,
+    "id": 1218
+  },
+  {
+    "title": "Misery Business",
+    "performer": "Paramore",
+    "releaseDate": "2019-01-15",
+    "expiration": 1863216000000,
+    "id": 1219
+  },
+  {
+    "title": "Ignorance",
+    "performer": "Paramore",
+    "releaseDate": "2019-01-15",
+    "expiration": 1863216000000,
+    "id": 1220
+  },
+  {
+    "title": "Rose-Colored Boy",
+    "performer": "Paramore",
+    "releaseDate": "2019-01-15",
+    "expiration": 1863216000000,
+    "id": 1221
+  },
+  {
+    "title": "Breakfast at Tiffany's",
+    "performer": "Deep Blue Something",
+    "releaseDate": "2019-01-22",
+    "expiration": 1863820800000,
+    "id": 1222
+  },
+  {
+    "title": "On The Sunny Side of the Street",
+    "performer": "Les Paul & Mary Ford",
+    "releaseDate": "2019-01-22",
+    "expiration": 1863820800000,
+    "id": 1223
+  },
+  {
+    "title": "Whiskey In The Jar",
+    "performer": "Thin Lizzy",
+    "releaseDate": "2019-01-22",
+    "expiration": 1863820800000,
+    "id": 1224
+  },
+  {
+    "title": "Teenage Dirtbag",
+    "performer": "Wheatus",
+    "releaseDate": "2019-01-22",
+    "expiration": 1863820800000,
+    "id": 1225
+  },
+  {
+    "title": "Hammer to Fall",
+    "performer": "Queen",
+    "releaseDate": "2019-01-29",
+    "expiration": 1864425600000,
+    "id": 1226
+  },
+  {
+    "title": "I Want to Break Free",
+    "performer": "Queen",
+    "releaseDate": "2019-01-29",
+    "expiration": 1864425600000,
+    "id": 1227
+  },
+  {
+    "title": "Somebody to Love",
+    "performer": "Queen",
+    "releaseDate": "2019-01-29",
+    "expiration": 1864425600000,
+    "id": 1228
+  },
+  {
+    "title": "When I Come Around",
+    "performer": "Green Day",
+    "releaseDate": "2019-02-05",
+    "expiration": 1865030400000,
+    "id": 1229
+  },
+  {
+    "title": "One of Us",
+    "performer": "Joan Osborne",
+    "releaseDate": "2019-02-05",
+    "expiration": 1865030400000,
+    "id": 1230
+  },
+  {
+    "title": "Trippin' On a Hole in a Paper Heart",
+    "performer": "Stone Temple Pilots",
+    "releaseDate": "2019-02-05",
+    "expiration": 1865030400000,
+    "id": 1231
+  },
+  {
+    "title": "40:1",
+    "performer": "Sabaton",
+    "releaseDate": "2019-02-12",
+    "expiration": 1865635200000,
+    "id": 1232
+  },
+  {
+    "title": "Ghost Division",
+    "performer": "Sabaton",
+    "releaseDate": "2019-02-12",
+    "expiration": 1865635200000,
+    "id": 1233
+  },
+  {
+    "title": "Primo Victoria",
+    "performer": "Sabaton",
+    "releaseDate": "2019-02-12",
+    "expiration": 1865635200000,
+    "id": 1234
+  },
+  {
+    "title": "Always",
+    "performer": "Blink-182",
+    "releaseDate": "2019-02-19",
+    "expiration": 1866240000000,
+    "id": 1235
+  },
+  {
+    "title": "Bodies",
+    "performer": "Drowning Pool",
+    "releaseDate": "2019-02-19",
+    "expiration": 1866240000000,
+    "id": 1236
+  },
+  {
+    "title": "Stacy's Mom",
+    "performer": "Fountains of Wayne",
+    "releaseDate": "2019-02-19",
+    "expiration": 1866240000000,
+    "id": 1237
+  },
+  {
+    "title": "The Regulator",
+    "performer": "Clutch",
+    "releaseDate": "2019-02-26",
+    "expiration": 1866844800000,
+    "id": 1238
+  },
+  {
+    "title": "Shimmer",
+    "performer": "Fuel",
+    "releaseDate": "2019-02-26",
+    "expiration": 1866844800000,
+    "id": 1239
+  },
+  {
+    "title": "Found Out About You",
+    "performer": "Gin Blossoms",
+    "releaseDate": "2019-02-26",
+    "expiration": 1866844800000,
+    "id": 1240
+  },
+  {
+    "title": "Werewolves of London",
+    "performer": "Warren Zevon",
+    "releaseDate": "2019-02-26",
+    "expiration": 1866844800000,
+    "id": 1241
+  },
+  {
+    "title": "Alone",
+    "performer": "Heart",
+    "releaseDate": "2019-03-05",
+    "expiration": 1867449600000,
+    "id": 1242
+  },
+  {
+    "title": "Straight On",
+    "performer": "Heart",
+    "releaseDate": "2019-03-05",
+    "expiration": 1867449600000,
+    "id": 1243
+  },
+  {
+    "title": "What About Love",
+    "performer": "Heart",
+    "releaseDate": "2019-03-05",
+    "expiration": 1867449600000,
+    "id": 1244
+  },
+  {
+    "title": "Don't Tell Me You Love Me",
+    "performer": "Night Ranger",
+    "releaseDate": "2019-03-12",
+    "expiration": 1868054400000,
+    "id": 1245
+  },
+  {
+    "title": "Sister Christian",
+    "performer": "Night Ranger",
+    "releaseDate": "2019-03-12",
+    "expiration": 1868054400000,
+    "id": 1246
+  },
+  {
+    "title": "(You Can Still) Rock in America",
+    "performer": "Night Ranger",
+    "releaseDate": "2019-03-12",
+    "expiration": 1868054400000,
+    "id": 1247
+  },
+  {
+    "title": "Brick House",
+    "performer": "Commodores",
+    "releaseDate": "2019-03-19",
+    "expiration": 1868659200000,
+    "id": 1248
+  },
+  {
+    "title": "Maggot Brain",
+    "performer": "Funkadelic",
+    "releaseDate": "2019-03-19",
+    "expiration": 1868659200000,
+    "id": 1249
+  },
+  {
+    "title": "Long Cool Woman in a Black Dress",
+    "performer": "The Hollies",
+    "releaseDate": "2019-03-19",
+    "expiration": 1868659200000,
+    "id": 1250
+  },
+  {
+    "title": "Airbag",
+    "performer": "Radiohead",
+    "releaseDate": "2019-03-26",
+    "expiration": 1869264000000,
+    "id": 1251
+  },
+  {
+    "title": "Fake Plastic Trees",
+    "performer": "Radiohead",
+    "releaseDate": "2019-03-26",
+    "expiration": 1869264000000,
+    "id": 1252
+  },
+  {
+    "title": "Jigsaw Falling Into Place",
+    "performer": "Radiohead",
+    "releaseDate": "2019-03-26",
+    "expiration": 1869264000000,
+    "id": 1253
+  },
+  {
+    "title": "It Must Have Been Love",
+    "performer": "Roxette",
+    "releaseDate": "2019-04-02",
+    "expiration": 1869868800000,
+    "id": 1254
+  },
+  {
+    "title": "Listen to Your Heart",
+    "performer": "Roxette",
+    "releaseDate": "2019-04-02",
+    "expiration": 1869868800000,
+    "id": 1255
+  },
+  {
+    "title": "The Look",
+    "performer": "Roxette",
+    "releaseDate": "2019-04-02",
+    "expiration": 1869868800000,
+    "id": 1256
+  },
+  {
+    "title": "Wild World",
+    "performer": "Cat Stevens",
+    "releaseDate": "2019-04-09",
+    "expiration": 1870477200000,
+    "id": 1257
+  },
+  {
+    "title": "Father and Son",
+    "performer": "Cat Stevens",
+    "releaseDate": "2019-04-09",
+    "expiration": 1870477200000,
+    "id": 1258
+  },
+  {
+    "title": "Morning Has Broken",
+    "performer": "Cat Stevens",
+    "releaseDate": "2019-04-09",
+    "expiration": 1870477200000,
+    "id": 1259
+  },
+  {
+    "title": "Alison Hell",
+    "performer": "Annihilator",
+    "releaseDate": "2019-04-16",
+    "expiration": 1871082000000,
+    "id": 1260
+  },
+  {
+    "title": "Counting Blue Cars",
+    "performer": "Dishwalla",
+    "releaseDate": "2019-04-16",
+    "expiration": 1871082000000,
+    "id": 1261
+  },
+  {
+    "title": "From the Pinnacle to the Pit",
+    "performer": "Ghost",
+    "releaseDate": "2019-04-16",
+    "expiration": 1871082000000,
+    "id": 1262
+  },
+  {
+    "title": "Long Tall Sally",
+    "performer": "Wanda Jackson",
+    "releaseDate": "2019-04-16",
+    "expiration": 1871082000000,
+    "id": 1263
+  },
+  {
+    "title": "Party Hard",
+    "performer": "Andrew W.K.",
+    "releaseDate": "2019-04-23",
+    "expiration": 1871686800000,
+    "id": 1264
+  },
+  {
+    "title": "The Adventure",
+    "performer": "Angels & Airwaves",
+    "releaseDate": "2019-04-23",
+    "expiration": 1871686800000,
+    "id": 1265
+  },
+  {
+    "title": "Shiver",
+    "performer": "Coldplay",
+    "releaseDate": "2019-04-23",
+    "expiration": 1871686800000,
+    "id": 1266
+  },
+  {
+    "title": "When the Curtain Falls",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2019-04-30",
+    "expiration": 1872291600000,
+    "id": 1267
+  },
+  {
+    "title": "Edge Of Darkness",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2019-04-30",
+    "expiration": 1872291600000,
+    "id": 1268
+  },
+  {
+    "title": "You're the One",
+    "performer": "Greta Van Fleet",
+    "releaseDate": "2019-04-30",
+    "expiration": 1872291600000,
+    "id": 1269
+  },
+  {
+    "title": "Girls Just Want To Have Fun",
+    "performer": "Cyndi Lauper",
+    "releaseDate": "2019-05-07",
+    "expiration": 1872896400000,
+    "id": 1270
+  },
+  {
+    "title": "Time After Time",
+    "performer": "Cyndi Lauper",
+    "releaseDate": "2019-05-07",
+    "expiration": 1872896400000,
+    "id": 1271
+  },
+  {
+    "title": "True Colors",
+    "performer": "Cyndi Lauper",
+    "releaseDate": "2019-05-07",
+    "expiration": 1872896400000,
+    "id": 1272
+  },
+  {
+    "title": "Youth of the Nation",
+    "performer": "P.O.D",
+    "releaseDate": "2019-05-14",
+    "expiration": 1873501200000,
+    "id": 1273
+  },
+  {
+    "title": "Boom",
+    "performer": "P.O.D",
+    "releaseDate": "2019-05-14",
+    "expiration": 1873501200000,
+    "id": 1274
+  },
+  {
+    "title": "Alive",
+    "performer": "P.O.D",
+    "releaseDate": "2019-05-14",
+    "expiration": 1873501200000,
+    "id": 1275
+  },
+  {
+    "title": "Amazing Grace",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-05-21",
+    "expiration": 1874106000000,
+    "id": 1276
+  },
+  {
+    "title": "When the Saints Go Marching In",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-05-21",
+    "expiration": 1874106000000,
+    "id": 1277
+  },
+  {
+    "title": "Frere Jacques",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-05-21",
+    "expiration": 1874106000000,
+    "id": 1278
+  },
+  {
+    "title": "She Looks So Perfect",
+    "performer": "5 Seconds of Summer",
+    "releaseDate": "2019-05-28",
+    "expiration": 1874710800000,
+    "id": 1279
+  },
+  {
+    "title": "Amnesia",
+    "performer": "5 Seconds of Summer",
+    "releaseDate": "2019-05-28",
+    "expiration": 1874710800000,
+    "id": 1280
+  },
+  {
+    "title": "She's Kinda Hot",
+    "performer": "5 Seconds of Summer",
+    "releaseDate": "2019-05-28",
+    "expiration": 1874710800000,
+    "id": 1281
+  },
+  {
+    "title": "Easy Hammer-on/Pull-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-06-04",
+    "expiration": 1875315600000,
+    "id": 1282
+  },
+  {
+    "title": "Easy Linear Playing 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-06-04",
+    "expiration": 1875315600000,
+    "id": 1283
+  },
+  {
+    "title": "Easy Pull-on/Hammer-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-06-04",
+    "expiration": 1875315600000,
+    "id": 1284
+  },
+  {
+    "title": "Easy String Skipping 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-06-04",
+    "expiration": 1875315600000,
+    "id": 1285
+  },
+  {
+    "title": "Easy String Switching 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-06-04",
+    "expiration": 1875315600000,
+    "id": 1286
+  },
+  {
+    "title": "Dying in Your Arms",
+    "performer": "Trivium",
+    "releaseDate": "2019-06-11",
+    "expiration": 1875920400000,
+    "id": 1287
+  },
+  {
+    "title": "A Gunshot to the Head of Trepidation",
+    "performer": "Trivium",
+    "releaseDate": "2019-06-11",
+    "expiration": 1875920400000,
+    "id": 1288
+  },
+  {
+    "title": "Pull Harder on the Strings of Your Martyr",
+    "performer": "Trivium",
+    "releaseDate": "2019-06-11",
+    "expiration": 1875920400000,
+    "id": 1289
+  },
+  {
+    "title": "Over the Hills and Far Away",
+    "performer": "Nightwish",
+    "releaseDate": "2019-06-18",
+    "expiration": 1876525200000,
+    "id": 1290
+  },
+  {
+    "title": "Take On Me",
+    "performer": "Reel Big Fish",
+    "releaseDate": "2019-06-18",
+    "expiration": 1876525200000,
+    "id": 1291
+  },
+  {
+    "title": "Louie Louie",
+    "performer": "Joan Jett and the Blackhearts",
+    "releaseDate": "2019-06-18",
+    "expiration": 1876525200000,
+    "id": 1292
+  },
+  {
+    "title": "Call It Off",
+    "performer": "Tegan and Sara",
+    "releaseDate": "2019-06-25",
+    "expiration": 1877130000000,
+    "id": 1293
+  },
+  {
+    "title": "The Con",
+    "performer": "Tegan and Sara",
+    "releaseDate": "2019-06-25",
+    "expiration": 1877130000000,
+    "id": 1294
+  },
+  {
+    "title": "Walking with a Ghost",
+    "performer": "Tegan and Sara",
+    "releaseDate": "2019-06-25",
+    "expiration": 1877130000000,
+    "id": 1295
+  },
+  {
+    "title": "Intermediate Hammer-on/Pull-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-02",
+    "expiration": 1877734800000,
+    "id": 1296
+  },
+  {
+    "title": "Intermediate Linear Playing 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-02",
+    "expiration": 1877734800000,
+    "id": 1297
+  },
+  {
+    "title": "Intermediate Pull-on/Hammer-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-02",
+    "expiration": 1877734800000,
+    "id": 1298
+  },
+  {
+    "title": "Intermediate String Skipping 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-02",
+    "expiration": 1877734800000,
+    "id": 1299
+  },
+  {
+    "title": "Intermediate String Switching 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-02",
+    "expiration": 1877734800000,
+    "id": 1300
+  },
+  {
+    "title": "My Medicine",
+    "performer": "The Pretty Reckless",
+    "releaseDate": "2019-07-09",
+    "expiration": 1878339600000,
+    "id": 1301
+  },
+  {
+    "title": "Make Me Wanna Die",
+    "performer": "The Pretty Reckless",
+    "releaseDate": "2019-07-09",
+    "expiration": 1878339600000,
+    "id": 1302
+  },
+  {
+    "title": "Going to Hell",
+    "performer": "The Pretty Reckless",
+    "releaseDate": "2019-07-09",
+    "expiration": 1878339600000,
+    "id": 1303
+  },
+  {
+    "title": "Bitter Sweet Symphony",
+    "performer": "Aranbee Pop Symphony Orchestra",
+    "releaseDate": "2019-07-16",
+    "expiration": 1878944400000,
+    "id": 1304
+  },
+  {
+    "title": "Chasing Cars",
+    "performer": "Snow Patrol",
+    "releaseDate": "2019-07-16",
+    "expiration": 1878944400000,
+    "id": 1305
+  },
+  {
+    "title": "Renegades",
+    "performer": "X Ambassadors",
+    "releaseDate": "2019-07-16",
+    "expiration": 1878944400000,
+    "id": 1306
+  },
+  {
+    "title": "A Design for Life",
+    "performer": "Manic Street Preachers",
+    "releaseDate": "2019-07-23",
+    "expiration": 1879549200000,
+    "id": 1307
+  },
+  {
+    "title": "If You Tolerate This Your Children Will Be Next",
+    "performer": "Manic Street Preachers",
+    "releaseDate": "2019-07-23",
+    "expiration": 1879549200000,
+    "id": 1308
+  },
+  {
+    "title": "Motorcycle Emptiness",
+    "performer": "Manic Street Preachers",
+    "releaseDate": "2019-07-23",
+    "expiration": 1879549200000,
+    "id": 1309
+  },
+  {
+    "title": "Advanced Hammer-on/Pull-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-30",
+    "expiration": 1880154000000,
+    "id": 1310
+  },
+  {
+    "title": "Advanced Linear Playing 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-30",
+    "expiration": 1880154000000,
+    "id": 1311
+  },
+  {
+    "title": "Advanced Pull-on/Hammer-off 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-30",
+    "expiration": 1880154000000,
+    "id": 1312
+  },
+  {
+    "title": "Advanced String Skipping 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-30",
+    "expiration": 1880154000000,
+    "id": 1313
+  },
+  {
+    "title": "Advanced String Switching 1",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-07-30",
+    "expiration": 1880154000000,
+    "id": 1314
+  },
+  {
+    "title": "Break the Walls Down (Chris Jericho)",
+    "performer": "Jim Johnston",
+    "releaseDate": "2019-08-06",
+    "expiration": 1880758800000,
+    "id": 1315
+  },
+  {
+    "title": "Electrifying (The Rock)",
+    "performer": "Jim Johnston",
+    "releaseDate": "2019-08-06",
+    "expiration": 1880758800000,
+    "id": 1316
+  },
+  {
+    "title": "I Won't Do What You Tell Me (Stone Cold Steve Austin)",
+    "performer": "Jim Johnston",
+    "releaseDate": "2019-08-06",
+    "expiration": 1880758800000,
+    "id": 1317
+  },
+  {
+    "title": "The Loner",
+    "performer": "Gary Moore",
+    "releaseDate": "2019-08-13",
+    "expiration": 1881363600000,
+    "id": 1318
+  },
+  {
+    "title": "Over the Hills and Far Away",
+    "performer": "Gary Moore",
+    "releaseDate": "2019-08-13",
+    "expiration": 1881363600000,
+    "id": 1319
+  },
+  {
+    "title": "Still Got the Blues",
+    "performer": "Gary Moore",
+    "releaseDate": "2019-08-13",
+    "expiration": 1881363600000,
+    "id": 1320
+  },
+  {
+    "title": "The Bad Touch",
+    "performer": "Bloodhound Gang",
+    "releaseDate": "2019-08-20",
+    "expiration": 1881968400000,
+    "id": 1321
+  },
+  {
+    "title": "The Ballad of Chasey Lain",
+    "performer": "Bloodhound Gang",
+    "releaseDate": "2019-08-20",
+    "expiration": 1881968400000,
+    "id": 1322
+  },
+  {
+    "title": "Foxtrot Uniform Charlie Kilo",
+    "performer": "Bloodhound Gang",
+    "releaseDate": "2019-08-20",
+    "expiration": 1881968400000,
+    "id": 1323
+  },
+  {
+    "title": "We Got the Beat",
+    "performer": "Go-Go'sThe Go-Go's",
+    "releaseDate": "2019-08-27",
+    "expiration": 1882573200000,
+    "id": 1324
+  },
+  {
+    "title": "According to You",
+    "performer": "Orianthi",
+    "releaseDate": "2019-08-27",
+    "expiration": 1882573200000,
+    "id": 1325
+  },
+  {
+    "title": "Seether",
+    "performer": "Veruca Salt",
+    "releaseDate": "2019-08-27",
+    "expiration": 1882573200000,
+    "id": 1326
+  },
+  {
+    "title": "Easy Hammer-on/Pull-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-09-03",
+    "expiration": 1883178000000,
+    "id": 1327
+  },
+  {
+    "title": "Easy Linear Playing 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-09-03",
+    "expiration": 1883178000000,
+    "id": 1328
+  },
+  {
+    "title": "Easy Pull-on/Hammer-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-09-03",
+    "expiration": 1883178000000,
+    "id": 1329
+  },
+  {
+    "title": "Easy String Skipping 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-09-03",
+    "expiration": 1883178000000,
+    "id": 1330
+  },
+  {
+    "title": "Easy String Switching 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-09-03",
+    "expiration": 1883178000000,
+    "id": 1331
+  },
+  {
+    "title": "All the Pretty Girls",
+    "performer": "Kaleo",
+    "releaseDate": "2019-09-10",
+    "expiration": 1883782800000,
+    "id": 1332
+  },
+  {
+    "title": "No Good",
+    "performer": "Kaleo",
+    "releaseDate": "2019-09-10",
+    "expiration": 1883782800000,
+    "id": 1333
+  },
+  {
+    "title": "Way Down We Go",
+    "performer": "Kaleo",
+    "releaseDate": "2019-09-10",
+    "expiration": 1883782800000,
+    "id": 1334
+  },
+  {
+    "title": "No Reason",
+    "performer": "Audrey and Kate",
+    "releaseDate": "2019-09-17",
+    "expiration": 1884387600000,
+    "id": 1335
+  },
+  {
+    "title": "Guitar Solos With Dooo #2 - Ascend",
+    "performer": "The Dooo",
+    "releaseDate": "2019-09-17",
+    "expiration": 1884387600000,
+    "id": 1336
+  },
+  {
+    "title": "Everything But Me",
+    "performer": "Set the Charge",
+    "releaseDate": "2019-09-17",
+    "expiration": 1884387600000,
+    "id": 1337
+  },
+  {
+    "title": "Highway to Oblivion",
+    "performer": "DragonForce",
+    "releaseDate": "2019-09-24",
+    "expiration": 1884992400000,
+    "id": 1338
+  },
+  {
+    "title": "Amaranthine",
+    "performer": "Amaranthe",
+    "releaseDate": "2019-10-01",
+    "expiration": 1885597200000,
+    "id": 1339
+  },
+  {
+    "title": "Drop Dead Cynical",
+    "performer": "Amaranthe",
+    "releaseDate": "2019-10-01",
+    "expiration": 1885597200000,
+    "id": 1340
+  },
+  {
+    "title": "The Nexus",
+    "performer": "Amaranthe",
+    "releaseDate": "2019-10-01",
+    "expiration": 1885597200000,
+    "id": 1341
+  },
+  {
+    "title": "Intermediate Hammer-on/Pull-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-10-08",
+    "expiration": 1886202000000,
+    "id": 1342
+  },
+  {
+    "title": "Intermediate Linear Playing 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-10-08",
+    "expiration": 1886202000000,
+    "id": 1343
+  },
+  {
+    "title": "Intermediate Pull-on/Hammer-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-10-08",
+    "expiration": 1886202000000,
+    "id": 1344
+  },
+  {
+    "title": "Intermediate String Skipping 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-10-08",
+    "expiration": 1886202000000,
+    "id": 1345
+  },
+  {
+    "title": "Intermediate String Switching 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-10-08",
+    "expiration": 1886202000000,
+    "id": 1346
+  },
+  {
+    "title": "Davidian",
+    "performer": "Machine Head",
+    "releaseDate": "2019-10-15",
+    "expiration": 1886806800000,
+    "id": 1347
+  },
+  {
+    "title": "Are You Dead Yet?",
+    "performer": "Children of Bodom",
+    "releaseDate": "2019-10-15",
+    "expiration": 1886806800000,
+    "id": 1348
+  },
+  {
+    "title": "Crystal Mountain",
+    "performer": "Death",
+    "releaseDate": "2019-10-15",
+    "expiration": 1886806800000,
+    "id": 1349
+  },
+  {
+    "title": "Galileo",
+    "performer": "Indigo Girls",
+    "releaseDate": "2019-10-22",
+    "expiration": 1887411600000,
+    "id": 1350
+  },
+  {
+    "title": "Power of Two",
+    "performer": "Indigo Girls",
+    "releaseDate": "2019-10-22",
+    "expiration": 1887411600000,
+    "id": 1351
+  },
+  {
+    "title": "Closer to Fine",
+    "performer": "Indigo Girls",
+    "releaseDate": "2019-10-22",
+    "expiration": 1887411600000,
+    "id": 1352
+  },
+  {
+    "title": "Time of the Season",
+    "performer": "The Zombies",
+    "releaseDate": "2019-10-29",
+    "expiration": 1888012800000,
+    "id": 1353
+  },
+  {
+    "title": "Tell Her No",
+    "performer": "The Zombies",
+    "releaseDate": "2019-10-29",
+    "expiration": 1888012800000,
+    "id": 1354
+  },
+  {
+    "title": "She's Not There",
+    "performer": "The Zombies",
+    "releaseDate": "2019-10-29",
+    "expiration": 1888012800000,
+    "id": 1355
+  },
+  {
+    "title": "Advanced Hammer-on/Pull-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-11-05",
+    "expiration": 1888617600000,
+    "id": 1356
+  },
+  {
+    "title": "Advanced Linear Playing 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-11-05",
+    "expiration": 1888617600000,
+    "id": 1357
+  },
+  {
+    "title": "Advanced Pull-on/Hammer-off 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-11-05",
+    "expiration": 1888617600000,
+    "id": 1358
+  },
+  {
+    "title": "Advanced String Skipping 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-11-05",
+    "expiration": 1888617600000,
+    "id": 1359
+  },
+  {
+    "title": "Advanced String Switching 2",
+    "performer": "The Notetrackers",
+    "releaseDate": "2019-11-05",
+    "expiration": 1888617600000,
+    "id": 1360
+  },
+  {
+    "title": "Over You",
+    "performer": "Daughtry",
+    "releaseDate": "2019-11-12",
+    "expiration": 1889222400000,
+    "id": 1361
+  },
+  {
+    "title": "Feels Like Tonight",
+    "performer": "Daughtry",
+    "releaseDate": "2019-11-12",
+    "expiration": 1889222400000,
+    "id": 1362
+  },
+  {
+    "title": "Home",
+    "performer": "Daughtry",
+    "releaseDate": "2019-11-12",
+    "expiration": 1889222400000,
+    "id": 1363
+  },
+  {
+    "title": "Going Down",
+    "performer": "Freddie King",
+    "releaseDate": "2019-11-19",
+    "expiration": 1889827200000,
+    "id": 1364
+  },
+  {
+    "title": "San Francisco",
+    "performer": "John Lee Hooker",
+    "releaseDate": "2019-11-19",
+    "expiration": 1889827200000,
+    "id": 1365
+  },
+  {
+    "title": "Bootie Cooler",
+    "performer": "Shuggie Otis",
+    "releaseDate": "2019-11-19",
+    "expiration": 1889827200000,
+    "id": 1366
+  },
+  {
+    "title": "Heartbreaker",
+    "performer": "Pat Benatar",
+    "releaseDate": "2019-11-26",
+    "expiration": 1890432000000,
+    "id": 1367
+  },
+  {
+    "title": "We Belong",
+    "performer": "Pat Benatar",
+    "releaseDate": "2019-11-26",
+    "expiration": 1890432000000,
+    "id": 1368
+  },
+  {
+    "title": "Hell Is For Children",
+    "performer": "Pat Benatar",
+    "releaseDate": "2019-11-26",
+    "expiration": 1890432000000,
+    "id": 1369
+  },
+  {
+    "title": "Perfect Situation",
+    "performer": "Weezer",
+    "releaseDate": "2019-12-03",
+    "expiration": 1891036800000,
+    "id": 1370
+  },
+  {
+    "title": "Beverly Hills",
+    "performer": "Weezer",
+    "releaseDate": "2019-12-03",
+    "expiration": 1891036800000,
+    "id": 1371
+  },
+  {
+    "title": "Pork and Beans",
+    "performer": "Weezer",
+    "releaseDate": "2019-12-03",
+    "expiration": 1891036800000,
+    "id": 1372
+  },
+  {
+    "title": "Dancing Queen",
+    "performer": "ABBA",
+    "releaseDate": "2019-12-10",
+    "expiration": 1891641600000,
+    "id": 1373
+  },
+  {
+    "title": "Fernando",
+    "performer": "ABBA",
+    "releaseDate": "2019-12-10",
+    "expiration": 1891641600000,
+    "id": 1374
+  },
+  {
+    "title": "Mamma Mia",
+    "performer": "ABBA",
+    "releaseDate": "2019-12-10",
+    "expiration": 1891641600000,
+    "id": 1375
+  },
+  {
+    "title": "Crazy",
+    "performer": "Aerosmith",
+    "releaseDate": "2019-12-17",
+    "expiration": 1892246400000,
+    "id": 1376
+  },
+  {
+    "title": "Love in an Elevator",
+    "performer": "Aerosmith",
+    "releaseDate": "2019-12-17",
+    "expiration": 1892246400000,
+    "id": 1377
+  },
+  {
+    "title": "Train Kept A-Rollin'",
+    "performer": "Aerosmith",
+    "releaseDate": "2019-12-17",
+    "expiration": 1892246400000,
+    "id": 1378
+  },
+  {
+    "title": "Tennessee Whiskey",
+    "performer": "Chris Stapleton",
+    "releaseDate": "2020-01-07",
+    "expiration": 1894060800000,
+    "id": 1379
+  },
+  {
+    "title": "Parachute",
+    "performer": "Chris Stapleton",
+    "releaseDate": "2020-01-07",
+    "expiration": 1894060800000,
+    "id": 1380
+  },
+  {
+    "title": "Nobody to Blame",
+    "performer": "Chris Stapleton",
+    "releaseDate": "2020-01-07",
+    "expiration": 1894060800000,
+    "id": 1381
+  },
+  {
+    "title": "Jack & Diane",
+    "performer": "John Mellencamp",
+    "releaseDate": "2020-01-14",
+    "expiration": 1894665600000,
+    "id": 1382
+  },
+  {
+    "title": "Pink Houses",
+    "performer": "John Mellencamp",
+    "releaseDate": "2020-01-14",
+    "expiration": 1894665600000,
+    "id": 1383
+  },
+  {
+    "title": "Small Town",
+    "performer": "John Mellencamp",
+    "releaseDate": "2020-01-14",
+    "expiration": 1894665600000,
+    "id": 1384
+  },
+  {
+    "title": "Don't Save Me",
+    "performer": "Haim",
+    "releaseDate": "2020-01-21",
+    "expiration": 1895270400000,
+    "id": 1385
+  },
+  {
+    "title": "Forever",
+    "performer": "Haim",
+    "releaseDate": "2020-01-21",
+    "expiration": 1895270400000,
+    "id": 1386
+  },
+  {
+    "title": "The Wire",
+    "performer": "Haim",
+    "releaseDate": "2020-01-21",
+    "expiration": 1895270400000,
+    "id": 1387
+  },
+  {
+    "title": "House of Broken Love",
+    "performer": "Great White",
+    "releaseDate": "2020-01-28",
+    "expiration": 1895875200000,
+    "id": 1388
+  },
+  {
+    "title": "Once Bitten, Twice Shy",
+    "performer": "Great White",
+    "releaseDate": "2020-01-28",
+    "expiration": 1895875200000,
+    "id": 1389
+  },
+  {
+    "title": "Rock Me",
+    "performer": "Great White",
+    "releaseDate": "2020-01-28",
+    "expiration": 1895875200000,
+    "id": 1390
+  },
+  {
+    "title": "Signed, Sealed, Delivered I'm Yours",
+    "performer": "Stevie Wonder",
+    "releaseDate": "2020-02-04",
+    "expiration": 1896480000000,
+    "id": 1391
+  },
+  {
+    "title": "Superstition",
+    "performer": "Stevie Wonder",
+    "releaseDate": "2020-02-04",
+    "expiration": 1896480000000,
+    "id": 1392
+  },
+  {
+    "title": "I Wish",
+    "performer": "Stevie Wonder",
+    "releaseDate": "2020-02-04",
+    "expiration": 1896480000000,
+    "id": 1393
+  },
+  {
+    "title": "Brain Stew",
+    "performer": "Green Day",
+    "releaseDate": "2020-02-11",
+    "expiration": 1897084800000,
+    "id": 1394
+  },
+  {
+    "title": "Father of All...",
+    "performer": "Green Day",
+    "releaseDate": "2020-02-11",
+    "expiration": 1897084800000,
+    "id": 1395
+  },
+  {
+    "title": "Fire, Ready, Aim",
+    "performer": "Green Day",
+    "releaseDate": "2020-02-11",
+    "expiration": 1897084800000,
+    "id": 1396
+  },
+  {
+    "title": "Bruise Violet",
+    "performer": "Babes in Toyland",
+    "releaseDate": "2020-02-18",
+    "expiration": 1897689600000,
+    "id": 1397
+  },
+  {
+    "title": "Pretend We're Dead",
+    "performer": "L7",
+    "releaseDate": "2020-02-18",
+    "expiration": 1897689600000,
+    "id": 1398
+  },
+  {
+    "title": "Dig Me Out",
+    "performer": "Sleater-Kinney",
+    "releaseDate": "2020-02-18",
+    "expiration": 1897689600000,
+    "id": 1399
+  },
+  {
+    "title": "Black",
+    "performer": "Sevendust",
+    "releaseDate": "2020-02-25",
+    "expiration": 1898294400000,
+    "id": 1400
+  },
+  {
+    "title": "Angel's Son",
+    "performer": "Sevendust",
+    "releaseDate": "2020-02-25",
+    "expiration": 1898294400000,
+    "id": 1401
+  },
+  {
+    "title": "Praise",
+    "performer": "Sevendust",
+    "releaseDate": "2020-02-25",
+    "expiration": 1898294400000,
+    "id": 1402
+  },
+  {
+    "title": "Come to My Window",
+    "performer": "Melissa Etheridge",
+    "releaseDate": "2020-03-03",
+    "expiration": 1898899200000,
+    "id": 1403
+  },
+  {
+    "title": "I'm the Only One",
+    "performer": "Melissa Etheridge",
+    "releaseDate": "2020-03-03",
+    "expiration": 1898899200000,
+    "id": 1404
+  },
+  {
+    "title": "I Want to Come Over",
+    "performer": "Melissa Etheridge",
+    "releaseDate": "2020-03-03",
+    "expiration": 1898899200000,
+    "id": 1405
+  },
+  {
+    "title": "Stars",
+    "performer": "Sixx:A.M.",
+    "releaseDate": "2020-03-10",
+    "expiration": 1899504000000,
+    "id": 1406
+  },
+  {
+    "title": "Life is Beautiful",
+    "performer": "Sixx:A.M.",
+    "releaseDate": "2020-03-10",
+    "expiration": 1899504000000,
+    "id": 1407
+  },
+  {
+    "title": "This is Gonna Hurt",
+    "performer": "Sixx:A.M.",
+    "releaseDate": "2020-03-10",
+    "expiration": 1899504000000,
+    "id": 1408
+  },
+  {
+    "title": "You're So Vain",
+    "performer": "Carly Simon",
+    "releaseDate": "2020-03-17",
+    "expiration": 1900108800000,
+    "id": 1409
+  },
+  {
+    "title": "Saturday in the Park",
+    "performer": "Chicago",
+    "releaseDate": "2020-03-17",
+    "expiration": 1900108800000,
+    "id": 1410
+  },
+  {
+    "title": "Breezin'",
+    "performer": "George Benson",
+    "releaseDate": "2020-03-17",
+    "expiration": 1900108800000,
+    "id": 1411
+  },
+  {
+    "title": "Piece of My Heart",
+    "performer": "Big Brother and the Holding Company",
+    "releaseDate": "2020-03-24",
+    "expiration": 1900713600000,
+    "id": 1412
+  },
+  {
+    "title": "Summertime",
+    "performer": "Big Brother and the Holding Company",
+    "releaseDate": "2020-03-24",
+    "expiration": 1900713600000,
+    "id": 1413
+  },
+  {
+    "title": "Me and Bobby McGee",
+    "performer": "Janis Joplin",
+    "releaseDate": "2020-03-24",
+    "expiration": 1900713600000,
+    "id": 1414
+  },
+  {
+    "title": "Bleak",
+    "performer": "Opeth",
+    "releaseDate": "2020-03-31",
+    "expiration": 1901318400000,
+    "id": 1415
+  },
+  {
+    "title": "Blackwater Park",
+    "performer": "Opeth",
+    "releaseDate": "2020-03-31",
+    "expiration": 1901318400000,
+    "id": 1416
+  },
+  {
+    "title": "Ghost of Perdition",
+    "performer": "Opeth",
+    "releaseDate": "2020-03-31",
+    "expiration": 1901318400000,
+    "id": 1417
+  }
+]

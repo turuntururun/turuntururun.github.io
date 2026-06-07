@@ -1,5 +1,7 @@
+@use "sass:color";
+
 /**
-  Watch out: AI generated styles.
+  Watch out: LLM generated styles.
  */
 
 // Variables
@@ -67,7 +69,7 @@ a {
   transition: color 0.2s ease;
 
   &:hover {
-    color: darken($accent-color, 15%);
+    color: color.adjust($accent-color, $lightness: -15%);
     text-decoration: underline;
   }
 }
@@ -113,7 +115,7 @@ td.centered {
 
 // Code blocks
 pre, code {
-  background: darken($background-color, 5%);
+  background: color.adjust($background-color, $lightness: -5%);
   border-radius: 4px;
   padding: 0.2em 0.4em;
   font-family: "Consolas", "Monaco", monospace;
@@ -161,7 +163,7 @@ blockquote {
   border-left: 4px solid $primary-color;
   margin: $spacing-unit 0;
   padding: $spacing-unit;
-  background: lighten($background-color, 10%);
+  background: color.adjust($background-color, $lightness: 10%);
   font-style: italic;
 
   p:last-child {
