@@ -3,6 +3,11 @@ title: Notes
 description: Stuff to bookmark and remember
 ---
 
+## turuntururun
+
+Hi there! There's no much going on around here, but we have a game
+[here](/falcon) and some notes of stuff to remember:
+
 [//]: # (TODO tener esta sección utilizable:)
 <!---
 ### Sofware
@@ -11,11 +16,11 @@ description: Stuff to bookmark and remember
 - [jdk-versions-cheatsheet](/notes/programming/jdk-versions-cheatsheet)
 -->
 
-### Devices
+#### Devices
 
 - [SY-1 Synth params](/tools/synth) 
 
-### Gaming
+#### Gaming
 
 - [Rocksmith delisting](/reminders/rocksmith-delisting)
-- [Pokemon Sleep Recipes](/reference/sleep-recipes)
+- [Pokémon Sleep Recipes](/reference/sleep-recipes)

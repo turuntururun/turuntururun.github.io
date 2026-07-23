@@ -15,7 +15,7 @@ const selectedRecipes: ComputedRef<Recipe[]> = computed(() => recipes[dish.value
 </script>
 
 <template>
-
+  <NuxtLink to="/">🏠</NuxtLink>
   <div class="wrapper">
     <section class="data">
       <form>

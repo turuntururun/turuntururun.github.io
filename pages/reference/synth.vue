@@ -1,32 +1,26 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import { voicingMap } from 'assets/data/sy1-voicings'
 import Dashboard from '~/components/synth/dashboard.vue'
 
-export default defineComponent({
-  name: 'synth',
-  components: { Dashboard },
-  data: () => ({
-    type: 'LEAD1',
-    variation: 0
-  }),
-  computed: {
-    types() {
-      return Object.keys(voicingMap)
-    },
-    vars() {
-      return Object.keys(voicingMap[this.type] || {})
-    },
-    control() {
-      const t = voicingMap[this.type]
-      return t[this.vars[this.variation]]
-    }
-  }
+defineOptions({name: 'synth'})
+
+const type = ref('LEAD1')
+const variation = ref(0)
+
+
+const types = computed(() => Object.keys(voicingMap))
+
+const vars = computed(() => Object.keys(voicingMap[type.value] || {}))
+
+const control = computed(() => {
+  const t = voicingMap[type.value]
+  return t[vars.value[variation.value]]
 })
+
 </script>
 
 <template>
-  <NuxtLink to="/public">🏠</NuxtLink>
+  <NuxtLink to="/">🏠</NuxtLink>
   <section class="row-wrapped">
 
     <form class="row-no-wrap">
