@@ -104,7 +104,7 @@ ul, ol {
 
 table, th, td {
   border: 1px solid black;
-  background: lighten($background-color, 10%);
+  background: color.adjust($background-color, $lightness: 10%);
   border-radius: 4px;
   padding: 0.2em 0.4em;
 }

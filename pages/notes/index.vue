@@ -2,10 +2,9 @@
   <ContentDoc path="/" class="content" />
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 
-export default defineComponent({
+defineOptions({
   name: 'IndexPage'
 })
 </script>

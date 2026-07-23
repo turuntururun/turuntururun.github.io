@@ -1,25 +1,17 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import type { Recipe } from 'assets/data/sleep-recipes'
-import { recipes, ingredientList } from 'assets/data/sleep-recipes'
+import { ingredientList as il, recipes } from 'assets/data/sleep-recipes'
 
-export default defineComponent({
-  name: 'sleep-recipes',
-  data(): { dish: string, selectedIngredients: string[] } {
-    return {
-      dish: 'salads',
-      selectedIngredients: []
-    }
-  },
-  computed: {
-    ingredientList: () => ingredientList,
-    selectedRecipes(): Recipe[] {
+defineOptions({ name: 'sleep-recipes' })
 
-      return recipes[this.dish]
-        .filter(d => this.selectedIngredients.every(e => d.ingredients.map(({ name }) => name).includes(e)))
-    }
-  }
-})
+const dish: Ref<string> = ref('salads')
+const selectedIngredients: Ref<string[]> = ref([])
+
+const ingredientList: readonly string[] = il
+
+const selectedRecipes: ComputedRef<Recipe[]> = computed(() => recipes[dish.value]
+  .filter(d => selectedIngredients.value.every(e => d.ingredients.map(({ name }) => name).includes(e))))
+
 </script>
 
 <template>
@@ -31,16 +23,16 @@ export default defineComponent({
         <fieldset class="dish-type">
           <legend>Dish type</legend>
 
-          <label>
-            <input type="radio" v-model="dish" value="salads" />
+          <label :class="{selected:dish === 'salads'}">
+            <input style="display: none" type="radio" v-model="dish" value="salads" />
             Salads
           </label>
-          <label>
-            <input type="radio" v-model="dish" value="curry" />
+          <label :class="{selected:dish === 'curry'}">
+            <input style="display: none" type="radio" v-model="dish" value="curry" />
             Curry
           </label>
-          <label>
-            <input type="radio" v-model="dish" value="desserts" />
+          <label :class="{selected:dish === 'desserts'}">
+            <input style="display: none" type="radio" v-model="dish" value="desserts" />
             Desserts & Drinks
           </label>
         </fieldset>
@@ -111,7 +103,18 @@ export default defineComponent({
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+
+@use "@/assets/styles/main" as vars;
+@use "sass:color";
+
+label:has(input[type="radio"]){
+  padding: 0.5rem;
+}
+
+label.selected {
+  background: color.adjust(vars.$background-color, $lightness: 10%);
+}
 
 label.ingredient-option {
   margin: 0 0.7rem;

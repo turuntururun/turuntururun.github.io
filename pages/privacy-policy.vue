@@ -2,12 +2,11 @@
   <ContentDoc path="/politica-de-privacidad"/>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script lang="ts" setup>
 
-export default defineComponent({
+defineOptions({
   name: 'PrivacyPolicy',
-    // todo get user language and load english policy if needed
+  // todo get user language and load english policy if needed
 })
 </script>
 
