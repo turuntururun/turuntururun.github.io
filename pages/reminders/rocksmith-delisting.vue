@@ -13,6 +13,7 @@
       </div>
       <section v-for="song in soonDelisting" :key="song.title + song.performer">
         <p :class="available(song.expiration) ? '' : 'strike'">
+          <code v-if="hiddenSongs.includes(song.id)">Hidden</code>
           <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
         </p>
         <span
@@ -45,8 +46,12 @@
       </span>
         <span class="hide-widget">
         <label>
-          Hide?
-          <input type="checkbox" :checked="hiddenSongs.includes(song.id)" @change="hide(song.id,($event?.target as HTMLInputElement).checked)">
+          <code>
+            {{ hiddenSongs.includes(song.id)?'Show':'Hide' }}
+          </code>
+          <input type="checkbox" style="display: none"
+                 :checked="hiddenSongs.includes(song.id)"
+                 @change="hide(song.id,($event?.target as HTMLInputElement).checked)">
         </label>
           </span>
       </section>
