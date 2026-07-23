@@ -11,12 +11,11 @@ description: Stuff to bookmark and remember
 - [jdk-versions-cheatsheet](/notes/programming/jdk-versions-cheatsheet)
 -->
 
-### Music
+### Devices
 
-- [Diatonic chords](/tools/diatonic-chords)
-- [Guitar proficiency](/tools/guitar-proficiency)
 - [SY-1 Synth params](/tools/synth) 
 
 ### Gaming
 
 - [Rocksmith delisting](/reminders/rocksmith-delisting)
+- [Pokemon Sleep Recipes](/reference/sleep-recipes)

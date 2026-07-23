@@ -32,4 +32,8 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules:{
+    '/tools/synth': {redirect: { to:'/reference/synth', statusCode: 301 }}
+  }
+
 })

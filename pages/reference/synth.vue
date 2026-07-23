@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <NuxtLink to="/">🏠</NuxtLink>
+  <NuxtLink to="/public">🏠</NuxtLink>
   <section class="row-wrapped">
 
     <form class="row-no-wrap">
