@@ -1,21 +1,9 @@
 <template>
-  <div>
-    <h2>turuntururun</h2>
-    <p>
-      Hi there! There's no much going on around here, but we have a game
-      <nuxt-link to="/falcon">here</nuxt-link>
-      and some notes
-      <nuxt-link to="/notes">over here</nuxt-link>
-      .
-    </p>
-
-  </div>
+  <ContentDoc path="/" class="content" />
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
-
-export default defineComponent({
+<script lang="ts" setup>
+defineOptions({
   name: 'IndexPage',
 })
 </script>
@@ -32,5 +20,4 @@ p {
   font-size: 24pt;
   padding: 1rem 1.5rem;
 }
-
 </style>
