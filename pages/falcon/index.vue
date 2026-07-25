@@ -2,56 +2,56 @@
   <h1>Falcon</h1>
   <div class="container">
     <span>
-      <Tile content="🕺" size="5"/>
-    <nuxt-link to="/falcon/singleplayer">  Single Player Board</nuxt-link>
+      <Tile content="🕺" size="5" />
+      <nuxt-link to="/falcon/singleplayer"> Single Player Board</nuxt-link>
     </span>
     <span>
-      <Tile content="👯" size="5"/>
-      <button v-if="!message.text"
-              @click="requestMultiplayerSession"> Create Multiplayer Session</button>
-      <nuxt-link :to="message.target" v-if="message.type ==='success'">
+      <Tile content="👯" size="5" />
+      <button v-if="!message.text" @click="requestMultiplayerSession">
+        Create Multiplayer Session
+      </button>
+      <nuxt-link :to="message.target" v-if="message.type === 'success'">
         {{ message.text }}
       </nuxt-link>
       <span v-else-if="message.text">
         {{ message.text }}
       </span>
     </span>
-
   </div>
 </template>
 
 <script setup lang="ts">
-import axios from "axios";
-import {serverUrl} from "assets/global";
+import axios from 'axios'
+import { serverUrl } from 'assets/global'
 
 const message = ref({ type: 'info', text: 'Loading...', target: '' })
 
-onMounted(()=> {
-    axios.get(serverUrl + '/actuator/health')
-      .then(response => {
-        if (response.status == 200 && response.data.status == 'UP') {
-          message.value.text = ''
-        } else {
-          message.value.text = 'Service unavailable'
-        }
-      }).catch(_ => {
+onMounted(() => {
+  axios
+    .get(serverUrl + '/actuator/health')
+    .then((response) => {
+      if (response.status == 200 && response.data.status == 'UP') {
+        message.value.text = ''
+      } else {
         message.value.text = 'Service unavailable'
-      })
-  })
+      }
+    })
+    .catch((_) => {
+      message.value.text = 'Service unavailable'
+    })
+})
 
 function requestMultiplayerSession() {
-      // TODO display loading while requesting
-      axios.post(serverUrl + '/board')
-        .then(response => {
-          if ((response.status == 201)) {
-            const boardId = response.data
-            message.value.type = 'success'
-            message.value.text = 'Session "' + boardId + '" created'
-            message.value.target = '/falcon/board/' + boardId
-          }
-        })
-
+  // TODO display loading while requesting
+  axios.post(serverUrl + '/board').then((response) => {
+    if (response.status == 201) {
+      const boardId = response.data
+      message.value.type = 'success'
+      message.value.text = 'Session "' + boardId + '" created'
+      message.value.target = '/falcon/board/' + boardId
     }
+  })
+}
 </script>
 
 <style lang="scss" scoped>
@@ -91,7 +91,5 @@ h1 {
     background: #00dc82;
     border-color: #65ea9b;
   }
-
 }
-
 </style>

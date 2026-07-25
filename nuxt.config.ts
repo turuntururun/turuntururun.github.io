@@ -1,19 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-
-  devtools: {enabled: true},
+  devtools: { enabled: true },
 
   app: {
     head: {
       title: 'turuntururun',
       meta: [
-        {charset: 'utf-8'},
-        {name: 'viewport', content: 'width=device-width, initial-scale=1'},
-        {hid: 'description', name: 'description', content: ''},
-        {name: 'format-detection', content: 'telephone=no'},
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { hid: 'description', name: 'description', content: '' },
+        { name: 'format-detection', content: 'telephone=no' },
       ],
-      link: [{rel: 'icon', type: 'image/x-icon', href: '/logo.svg'}],
-    }
+      link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.svg' }],
+    },
   },
 
   css: ['~/assets/styles/main.scss', '~/assets/css/nuxt-content.scss'],
@@ -28,12 +27,12 @@ export default defineNuxtConfig({
 
   nitro: {
     output: {
-      publicDir: 'docs'
-    }
+      publicDir: 'docs',
+    },
   },
+  compatibilityDate: '2026-07-24',
 
-  routeRules:{
-    '/tools/synth': {redirect: { to:'/reference/synth', statusCode: 301 }}
-  }
-
+  routeRules: {
+    '/tools/synth': { redirect: { to: '/reference/synth', statusCode: 301 } },
+  },
 })

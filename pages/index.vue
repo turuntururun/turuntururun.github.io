@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts" setup>
-
 defineOptions({
   name: 'IndexPage',
 })
@@ -21,5 +20,4 @@ p {
   font-size: 24pt;
   padding: 1rem 1.5rem;
 }
-
 </style>

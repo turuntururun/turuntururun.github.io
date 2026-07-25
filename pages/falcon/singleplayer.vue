@@ -17,15 +17,18 @@
     </header>
 
     <client-only>
-    <Board :key="boardKey" :accent="accent" :tiles="80" @correct="add" @mounted="boardMounted" />
+      <Board
+        :key="boardKey"
+        :accent="accent"
+        :tiles="80"
+        @correct="add"
+        @mounted="boardMounted"
+      />
     </client-only>
-
   </div>
 </template>
 
 <script lang="ts" setup>
-
-
 const found = ref<number[]>([])
 const chips = ref<string[]>([])
 const boardKey = ref('dummy-whatever')
@@ -37,7 +40,7 @@ function boardMounted(stuff: string[]) {
   chips.value = stuff
 }
 
-function add(data: { emoji: string, index: number }) {
+function add(data: { emoji: string; index: number }) {
   const hit = chips.value.indexOf(data.emoji)
   accent.value[data.index] = 'chartreuse'
   if (!found.value.includes(hit)) found.value.push(hit)
@@ -50,7 +53,6 @@ function restart() {
   // fixme ugly hack
   boardKey.value += '.'
 }
-
 </script>
 
 <style scoped>

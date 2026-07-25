@@ -1,4 +1,4 @@
-@use "sass:color";
+@use 'sass:color';
 
 /**
   Watch out: LLM generated styles.
@@ -17,7 +17,7 @@ $spacing-unit: 1rem;
 html {
   background: $background-color;
   color: $text-color;
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
 }
@@ -37,7 +37,12 @@ body {
 }
 
 // Typography
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: $primary-color;
   margin-top: $spacing-unit * 2;
   margin-bottom: $spacing-unit;
@@ -90,7 +95,8 @@ a {
 }
 
 // Lists
-ul, ol {
+ul,
+ol {
   margin: $spacing-unit 0;
   padding-left: $spacing-unit * 1.5;
 
@@ -102,7 +108,9 @@ ul, ol {
 
 // Tables
 
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
   background: color.adjust($background-color, $lightness: 10%);
   border-radius: 4px;
@@ -114,11 +122,12 @@ td.centered {
 }
 
 // Code blocks
-pre, code {
+pre,
+code {
   background: color.adjust($background-color, $lightness: -5%);
   border-radius: 4px;
   padding: 0.2em 0.4em;
-  font-family: "Consolas", "Monaco", monospace;
+  font-family: 'Consolas', 'Monaco', monospace;
 }
 
 pre {
@@ -177,10 +186,10 @@ label:has(input) {
   padding: 0.15rem 0.45rem;
 }
 
-label > input[type=radio] {
+label > input[type='radio'] {
   display: none;
 }
 
-label.selected:has(input[type=radio]) {
+label.selected:has(input[type='radio']) {
   background: color.adjust($background-color, $lightness: 10%);
 }

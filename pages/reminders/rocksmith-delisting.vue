@@ -17,46 +17,58 @@
           <strong>{{ song.title }}</strong> <cite>{{ song.performer }}</cite>
         </p>
         <span
-        >{{ available(song.expiration) ? 'Delisting' : 'Delisted' }}
-        {{
+          >{{ available(song.expiration) ? 'Delisting' : 'Delisted' }}
+          {{
             expiryDate(song).toLocaleDateString('en-uk', {
               year: 'numeric',
               month: 'short',
-              day: 'numeric'
+              day: 'numeric',
             })
           }}</span
         >
         <span>
-        <a :href="searchSpotify(song)" target="_blank"
-        ><img class="inline-logo"
-          src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
-          alt="Spotify search"
-        /></a>
-        <a :href="searchYouTube(song)" target="_blank"
-        ><img class="inline-logo"
-          src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
-
-          alt="YouTube search"
-        /></a>
-        <a v-if="available(song.expiration)" :href="searchSteam(song)" target="_blank"
-        ><img class="inline-logo"
-          src="https://store.steampowered.com/favicon.ico"
-          alt="Steam search"
-        /></a>
-      </span>
+          <a :href="searchSpotify(song)" target="_blank"
+            ><img
+              class="inline-logo"
+              src="https://open.spotifycdn.com/cdn/images/favicon32.8e66b099.png"
+              alt="Spotify search"
+          /></a>
+          <a :href="searchYouTube(song)" target="_blank"
+            ><img
+              class="inline-logo"
+              src="https://www.youtube.com/s/desktop/8093e6f6/img/favicon.ico"
+              alt="YouTube search"
+          /></a>
+          <a
+            v-if="available(song.expiration)"
+            :href="searchSteam(song)"
+            target="_blank"
+            ><img
+              class="inline-logo"
+              src="https://store.steampowered.com/favicon.ico"
+              alt="Steam search"
+          /></a>
+        </span>
         <span class="hide-widget">
-        <label>
-          <code>
-            {{ hiddenSongs.includes(song.id)?'Show':'Hide' }}
-          </code>
-          <input type="checkbox" style="display: none"
-                 :checked="hiddenSongs.includes(song.id)"
-                 @change="hide(song.id,($event?.target as HTMLInputElement).checked)">
-        </label>
-          </span>
+          <label>
+            <code>
+              {{ hiddenSongs.includes(song.id) ? 'Show' : 'Hide' }}
+            </code>
+            <input
+              type="checkbox"
+              style="display: none"
+              :checked="hiddenSongs.includes(song.id)"
+              @change="
+                hide(song.id, ($event?.target as HTMLInputElement).checked)
+              "
+            />
+          </label>
+        </span>
       </section>
-      <footer>Dates are best effort approximates. Feel free to send your comments to
-        <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a></footer>
+      <footer>
+        Dates are best effort approximates. Feel free to send your comments to
+        <a href="mailto:kevin@turuntururun.com">kevin@turuntururun.com</a>
+      </footer>
     </div>
   </client-only>
 </template>
@@ -119,9 +131,9 @@ function searchSteam(song: Song): string {
 }
 
 function searchYouTube(song: Song): string {
-  return (
-    `https://www.youtube.com/results?search_query=Rocksmith+${song.title}+${song.performer}`
-      .replaceAll(' ', '+')
+  return `https://www.youtube.com/results?search_query=Rocksmith+${song.title}+${song.performer}`.replaceAll(
+    ' ',
+    '+',
   )
 }
 
@@ -151,8 +163,7 @@ onMounted(() => {
   }
 })
 
-watch(limit, val => localStorage.setItem('limit-days', val.toString()))
-
+watch(limit, (val) => localStorage.setItem('limit-days', val.toString()))
 </script>
 
 <style scoped lang="scss">
@@ -211,5 +222,4 @@ input[type='number'] {
   flex-flow: row wrap;
   justify-content: flex-end;
 }
-
 </style>
