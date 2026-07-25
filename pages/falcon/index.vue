@@ -20,45 +20,38 @@
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 import axios from "axios";
 import {serverUrl} from "assets/global";
 
-export default defineComponent({
-  name: 'FalconGameIndex',
-  data: () => ({
-    message: {type: 'info', text: 'Loading...', target: ''}
-  }),
-  mounted() {
+const message = ref({ type: 'info', text: 'Loading...', target: '' })
+
+onMounted(()=> {
     axios.get(serverUrl + '/actuator/health')
       .then(response => {
         if (response.status == 200 && response.data.status == 'UP') {
-          this.message.text = ''
+          message.value.text = ''
         } else {
-          this.message.text = 'Service unavailable'
+          message.value.text = 'Service unavailable'
         }
       }).catch(_ => {
-        this.message.text = 'Service unavailable'
+        message.value.text = 'Service unavailable'
       })
+  })
 
-  },
-  methods: {
-    requestMultiplayerSession() {
+function requestMultiplayerSession() {
       // TODO display loading while requesting
       axios.post(serverUrl + '/board')
         .then(response => {
           if ((response.status == 201)) {
             const boardId = response.data
-            this.message.type = 'success'
-            this.message.text = 'Session "' + boardId + '" created'
-            this.message.target = '/falcon/board/' + boardId
+            message.value.type = 'success'
+            message.value.text = 'Session "' + boardId + '" created'
+            message.value.target = '/falcon/board/' + boardId
           }
         })
 
     }
-  }
-})
 </script>
 
 <style lang="scss" scoped>

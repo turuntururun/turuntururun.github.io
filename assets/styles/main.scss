@@ -170,3 +170,17 @@ blockquote {
     margin-bottom: 0;
   }
 }
+
+// Inputs
+
+label:has(input) {
+  padding: 0.15rem 0.45rem;
+}
+
+label > input[type=radio] {
+  display: none;
+}
+
+label.selected:has(input[type=radio]) {
+  background: color.adjust($background-color, $lightness: 10%);
+}

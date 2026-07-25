@@ -27,21 +27,26 @@ const control = computed(() => {
       <fieldset style="width: 7rem">
         <legend>Type</legend>
         <div class="radio" v-for="t in types">
-          <input type="radio" :id="'type-' +t" name="type" :value="t" v-model="type" />
-          <label :for="'type-' +t">{{ t }}</label>
+          <label :class="{selected: type === t}">
+          <input type="radio" name="type" :value="t" v-model="type" />
+            {{ t }}
+          </label>
         </div>
       </fieldset>
 
       <fieldset style="width: 18rem">
         <legend>Variation</legend>
         <div class="radio" v-for="(v, pos) in vars">
-          <input type="radio" :id="'variation' +v" name="variation" :value="pos" v-model="variation" />
-          <label v-if="v.includes('(')" :for="'variation' +v">
-            {{ pos + 1 }} - {{ v.substring(0, v.indexOf('(')) }}
-            <sup v-if="v.includes('PITCH CONTROL')" aria-label="PITCH CONTROL">🎶👣</sup>
-            <sup v-if="v.includes('Octave Down')" aria-label="Octave Down on Lower Notes Only">🎼🔽</sup>
+          <label :class="{selected: variation === pos}">
+            <input type="radio" style="display: none" name="variation" :value="pos" v-model="variation" />
+            {{ pos + 1 }} - {{ v.includes('(') ? v.substring(0, v.indexOf('(')): v }}
+            <span v-if="v.includes('PITCH CONTROL')" title="PITCH CONTROL">
+              <sup aria-label="PITCH CONTROL">🎶👣</sup>
+            </span>
+            <span v-if="v.includes('Octave Down')" title="Octave Down on Lower Notes Only">
+              <sup aria-label="Octave Down on Lower Notes Only">🎼🔽</sup>
+            </span>
           </label>
-          <label v-else :for="'variation' +v">{{ pos + 1 }} - {{ v }}</label>
         </div>
       </fieldset>
     </form>
@@ -59,7 +64,7 @@ const control = computed(() => {
   </section>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 .row-wrapped {
   display: flex;

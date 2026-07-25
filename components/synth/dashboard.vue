@@ -1,26 +1,21 @@
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 
-export default defineComponent({
-  name: 'dashboard',
-  props: {
-    innerKnob: 'string',
-    outerKnob: 'string',
-    variation: 'number',
-    type: 'number'
-  },
-  computed: {},
-  methods: {
-    rotatedByPosition(position: number): string {
-      const angle = (420 - (position * 30)) % 360
-      return `rotate(${angle})`
-    },
-    numberCounterRotation(number: number): string {
-      const angle = ((number * 30) - 60) % 360
-      return `rotate(${angle}, 0,-60)`
-    }
-  }
-})
+const props = withDefaults(defineProps<{
+  innerKnob?: string
+  outerKnob?: string
+  variation: number
+  type: number
+}>(), { innerKnob: '', outerKnob: '', variation: 0, type: 0})
+
+function rotatedByPosition(position: number): string {
+  const angle = (420 - (position * 30)) % 360
+  return `rotate(${angle})`
+}
+
+function numberCounterRotation(number: number): string {
+  const angle = ((number * 30) - 60) % 360
+  return `rotate(${angle}, 0,-60)`
+}
 </script>
 
 <template>
@@ -52,15 +47,15 @@ export default defineComponent({
 
       <rect y="-7" height="14" x="15" width="12" />
       <rect y="-3" height="6" x="0" width="30" fill="white" rx="2" />
-      <text x="36" y="0" text-anchor="start" dominant-baseline="middle"> {{ innerKnob }}</text>
+      <text x="36" y="0" text-anchor="start" dominant-baseline="middle"> {{ props.innerKnob }}</text>
 
       <rect y="21" height="18" x="-3" width="6" fill="white" rx="2" />
       <rect y="33" height="6" x="0" width="30" fill="white" rx="2" />
-      <text x="36" y="36" text-anchor="start" dominant-baseline="middle"> {{ outerKnob }}</text>
+      <text x="36" y="36" text-anchor="start" dominant-baseline="middle"> {{ props.outerKnob }}</text>
     </g>
 
     <!-- Variation knob -->
-    <g transform="translate(350, 145)">
+    <g transform="translate(370, 145)">
       <text x="0" y="-100" text-anchor="middle" dominant-baseline="hanging">VARIATION</text>
 
       <g v-for="i in [0,1,2,3,4,5,6,7,8,9,10]" :transform="rotatedByPosition(i)">
@@ -72,14 +67,14 @@ export default defineComponent({
       </g>
 
       <circle cx="0" cy="0" r="42" fill="#000" stroke="#999" />
-      <g :transform="rotatedByPosition(variation)">
+      <g :transform="rotatedByPosition(props.variation)">
         <rect x="-5" width="10" y="-39" height="18" fill="#fff" rx="5" />
       </g>
 
     </g>
 
     <!-- Type knob -->
-    <g transform="translate(490, 155)">
+    <g transform="translate(510, 155)">
       <text x="0" y="-110" text-anchor="middle" dominant-baseline="hanging">TYPE</text>
 
       <text x="12" y="-50" text-anchor="start">LEAD</text>
@@ -123,7 +118,7 @@ export default defineComponent({
       <circle cx="0" cy="0" r="42" fill="#000" stroke="#999" />
 
       <!-- Rotation indicator - rotates around (0,0) since we're in translated space -->
-      <g :transform="rotatedByPosition(type)">
+      <g :transform="rotatedByPosition(props.type)">
         <rect x="-5" width="10" y="-39" height="18" fill="#fff" rx="5" />
       </g>
 

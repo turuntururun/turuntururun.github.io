@@ -16,41 +16,41 @@
       </Tile>
     </header>
 
-    <Board :key="boardKey" :tiles="80" @correct="add" @mounted="boardMounted" />
+    <client-only>
+    <Board :key="boardKey" :accent="accent" :tiles="80" @correct="add" @mounted="boardMounted" />
+    </client-only>
 
   </div>
 </template>
 
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: 'FalconGame',
-  data: (): { found: number[]; chips: string[]; boardKey: string } => ({
-    found: [],
-    chips: [],
-    boardKey: 'dummy-whatever',
-  }),
-  computed: {
-    tileWidth() {
-      return 4
-    },
-  },
-  methods: {
-    boardMounted(stuff: string[]) {
-      this.chips = stuff
-    },
-    add(data: { emoji: string, index: number }) {
-      const hit = this.chips.indexOf(data.emoji)
-      if (!this.found.includes(hit)) this.found.push(hit)
-    },
-    restart() {
-      this.found = []
-      this.chips = []
-      this.boardKey += '.'
-    },
-  },
-})
+
+const found = ref<number[]>([])
+const chips = ref<string[]>([])
+const boardKey = ref('dummy-whatever')
+const accent = ref<{ [tile: number]: string }>({})
+
+const tileWidth = computed(() => 4)
+
+function boardMounted(stuff: string[]) {
+  chips.value = stuff
+}
+
+function add(data: { emoji: string, index: number }) {
+  const hit = chips.value.indexOf(data.emoji)
+  accent.value[data.index] = 'chartreuse'
+  if (!found.value.includes(hit)) found.value.push(hit)
+}
+
+function restart() {
+  found.value = []
+  chips.value = []
+  accent.value = {}
+  // fixme ugly hack
+  boardKey.value += '.'
+}
+
 </script>
 
 <style scoped>

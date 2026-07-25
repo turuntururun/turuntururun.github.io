@@ -1,33 +1,15 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 
-export default defineComponent({
-  name: "Fretboard",
-  data() {
-    return {
-      yPadding: 10,
-      xPadding: 10,
-      criterion: Math.ceil
-    }
-  },
-  props: ['fingerings'],
-  computed: {
-    // TODO show custom strings/frets dynamically
-    strings() {
-      return [1, 2, 3, 4, 5, 6]
-    },
-    frets() {
-      return [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-    },
-  },
-  methods: {
-    toFretPosition(string: number, note: number) {
-      const x = Math.max(2.5 + note * 15, 5);
-      const y = 10 + string * 5;
-      return `translate(${x},${y})`
-    },
-  }
-})
+const props = defineProps<{ fingerings: any }>()
+
+const strings = [1, 2, 3, 4, 5, 6]
+const frets = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+function toFretPosition(string: number, note: number) {
+  const x = Math.max(2.5 + note * 15, 5)
+  const y = 10 + string * 5
+  return `translate(${x},${y})`
+}
 </script>
 
 <template>
@@ -42,7 +24,7 @@ export default defineComponent({
       <circle v-for="c in [3,5,7,9,12,15]" r="1" :cx="2.5+ c*15" cy="27.5" fill="gray"/>
     </g>
 
-    <g v-for="(f, i) in fingerings" :transform="toFretPosition(f.string,f.fret)" :key="i">
+    <g v-for="(f, i) in props.fingerings" :transform="toFretPosition(f.string,f.fret)" :key="i">
       <circle r="2.5" cx="0" cy="0" fill="white" stroke="black" stroke-width="0.5"/>
       <text x="-1.5" y="1.6" font-size="5" font-weight="bold" font-family="monospace">X</text>
     </g>

@@ -1,10 +1,10 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
+<script setup lang="ts">
 import {Client} from "@stomp/stompjs";
 import {randomEmojiSet} from "assets/emoji-store";
 import axios from 'axios';
 import {serverUrl} from "assets/global";
 
+const boardId = useRoute().params.id
 
 const stompClient = new Client({
   brokerURL: serverUrl.replace('https', 'wss') + '/falcon-websocket'
@@ -21,138 +21,131 @@ stompClient.onStompError = (frame) => {
 
 // todo animate game start/end/restart
 
-export default defineComponent({
-  name: "multiplayer",
-  data: (): {
-    found: number[];
-    chips: string[];
-    boardKey: string;
-    score: { [user: string]: { points: number; total: number } };
-    accent: { [tile: number]: string };
-    session: {
-      playing: boolean,
-      userName: string
-      userId: string
-    }
-  } => ({
-    boardKey: 'boardKey',
-    found: [],
-    chips: [],
-    score: {},
-    accent: {},
-    session: {
+const boardKey = ref('boardKey')
+const found = ref<number[]>([])
+const chips = ref<string[]>([])
+const score = ref<{
+  [user: string]: {
+    points: number; total: number; user: { name: string }
+  }
+}>({})
+const accent = ref<{ [tile: number]: string }>({})
+const session = ref({
       playing: false,
       userId: randomEmojiSet(8).join(''),
       userName: 'Player ' + randomEmojiSet(2).join('')
-    }
-  }),
-  mounted() {
-    this.session.userId = localStorage.getItem('falcon-user-id') || this.session.userId
-    localStorage.setItem('falcon-user-id', this.session.userId)
+    })
 
-    this.session.userName = localStorage.getItem('falcon-user-name') || this.session.userName
-    localStorage.setItem('falcon-user-name', this.session.userName)
+  onMounted(() => {
+    session.value.userId = localStorage.getItem('falcon-user-id') || session.value.userId
+    localStorage.setItem('falcon-user-id', session.value.userId)
 
-    console.debug('We are in board', this.boardId)
+    session.value.userName = localStorage.getItem('falcon-user-name') || session.value.userName
+    localStorage.setItem('falcon-user-name', session.value.userName)
 
-    axios.get(serverUrl+'/board/' + this.boardId)
+    console.debug('We are in board', boardId)
+
+    axios.get(serverUrl+'/board/' + boardId)
       .then(response => {
         // fixme if response data contains current user, asume joined/connected
-        this.score = response.data
+        score.value = response.data
         console.debug('get response', response);
-        this.connect()
+        connect()
       }).catch(e => {
         console.warn('Caught error', e)
         navigateTo('/falcon')
       });
 
-  },
-  beforeUnmount() {
-    this.disconnect()
-  },
-  computed: {
-    boardId() {
-      return this.$route.params.id
-    },
-    joined() {
-      return Object.keys(this.score).includes(this.session.userId)
-    }
-  },
-  methods: {
-    boardMounted(stuff: string[]) {
-      this.chips = stuff
-    },
-    add(data: { emoji: string, index: number }) {
-      console.log('emmitted', data)
-      const {emoji, index} = data
-      const hit = this.chips.indexOf(emoji)
-      this.accent[index] = "chartreuse"
-      if (!this.found.includes(hit)) {
-        this.found.push(hit)
-        this.postPoint()
-      }
-      if ((this.found.length === 5)) {
-        this.postEvent('stop')
-      }
-    },
-    restart() {
-      this.found = []
-      this.chips = []
-      this.accent = {}
-      this.boardKey += '.'
-    },
-    connect() {
-      stompClient.onConnect = (frame) => {
+  })
+  onBeforeUnmount(()=> {
+    disconnect()
+  })
 
-        // todo handle connection issues
-        console.debug('Connected: ' + JSON.stringify(frame));
-        stompClient.subscribe('/topic/' + this.boardId + '/user-score', (response) => {
-          console.debug('/user-score', 'body', response.body)
-          this.score = JSON.parse(response.body)
-        });
-        stompClient.subscribe('/topic/' + this.boardId + '/events', (response) => {
-          console.debug('/events', 'body', response.body)
-          switch (response.body) {
-            case 'start':
-              this.session.playing = true
-              return
-            case 'stop':
-              this.session.playing = false
-              this.restart()
-              return
-          }
-          // TODO animate to game events
-        });
-      };
 
-      stompClient.activate();
-    },
-    disconnect() {
-      stompClient.deactivate();
-      console.debug("Disconnected");
-    },
-    postPlayer() {
-      // todo connect to websocket here?
-      localStorage.setItem('falcon-user-name', this.session.userName)
-      stompClient.publish({
-        destination: "/board/" + this.boardId + "/player",
-        body: JSON.stringify({id: this.session.userId, name: this.session.userName})
-      });
-    },
-    postEvent(eventType: string) {
-      stompClient.publish({
-        destination: "/board/" + this.boardId + "/event",
-        body: eventType
-      });
-    },
-    postPoint() {
-      stompClient.publish({
-        destination: "/board/" + this.boardId + "/score",
-        body: this.session.userId
-      });
-    }
+const    joined = computed(()=> {
+      return Object.keys(score.value).includes(session.value.userId)
+    })
+
+function boardMounted(stuff: string[]) {
+  chips.value = stuff
+}
+
+function add(data: { emoji: string, index: number }) {
+  console.log('emmitted', data)
+  const { emoji, index } = data
+  const hit = chips.value.indexOf(emoji)
+  accent.value[index] = 'chartreuse'
+  if (!found.value.includes(hit)) {
+    found.value.push(hit)
+    postPoint()
   }
-})
+  if ((found.value.length === 5)) {
+    postEvent('stop')
+  }
+}
+
+function restart() {
+  found.value = []
+  chips.value = []
+  accent.value = {}
+  boardKey.value += '.'
+}
+
+function connect() {
+  stompClient.onConnect = (frame) => {
+
+    // todo handle connection issues
+    console.debug('Connected: ' + JSON.stringify(frame))
+    stompClient.subscribe('/topic/' + boardId + '/user-score', (response) => {
+      console.debug('/user-score', 'body', response.body)
+      score.value = JSON.parse(response.body)
+    })
+    stompClient.subscribe('/topic/' + boardId + '/events', (response) => {
+      console.debug('/events', 'body', response.body)
+      switch (response.body) {
+        case 'start':
+          session.value.playing = true
+          return
+        case 'stop':
+          session.value.playing = false
+          restart()
+          return
+      }
+      // TODO animate to game events
+    })
+  }
+
+  stompClient.activate()
+}
+
+function disconnect() {
+  stompClient.deactivate();
+  console.debug("Disconnected");
+}
+
+function postPlayer() {
+  // todo connect to websocket here?
+  localStorage.setItem('falcon-user-name', session.value.userName)
+  stompClient.publish({
+    destination: '/board/' + boardId + '/player',
+    body: JSON.stringify({ id: session.value.userId, name: session.value.userName })
+  })
+}
+
+function postEvent(eventType: string) {
+  stompClient.publish({
+    destination: '/board/' + boardId + '/event',
+    body: eventType
+  })
+}
+
+function postPoint() {
+  stompClient.publish({
+    destination: '/board/' + boardId + '/score',
+    body: session.value.userId
+  })
+}
+
 </script>
 
 <template>

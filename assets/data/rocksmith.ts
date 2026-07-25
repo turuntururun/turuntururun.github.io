@@ -961,7 +961,7 @@ export const songs: Song[] = [
   },
   {
     "title": "Here Comes Your Man",
-    "performer": "PixiesPixies",
+    "performer": "Pixies",
     "releaseDate": "2013-04-30",
     "expiration": 1682989200000,
     "id": 137

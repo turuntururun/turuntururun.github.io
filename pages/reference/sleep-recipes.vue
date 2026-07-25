@@ -105,17 +105,6 @@ const selectedRecipes: ComputedRef<Recipe[]> = computed(() => recipes[dish.value
 
 <style lang="scss" scoped>
 
-@use "@/assets/styles/main" as vars;
-@use "sass:color";
-
-label:has(input[type="radio"]){
-  padding: 0.5rem;
-}
-
-label.selected {
-  background: color.adjust(vars.$background-color, $lightness: 10%);
-}
-
 label.ingredient-option {
   margin: 0 0.7rem;
   position: relative;
@@ -126,7 +115,10 @@ label.ingredient-option.selected::before {
   content: "✅";
   position: absolute;
   font-size: 20px;
-  left: 5px;
+  right: 0;
+  left: 0;
+  margin-inline: auto;
+  width: fit-content;
 }
 
 img {

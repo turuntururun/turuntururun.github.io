@@ -1,6 +1,5 @@
-<script lang="ts">
-import {defineComponent} from 'vue'
-import Fretboard from "~/components/Fretboard.vue";
+<script setup lang="ts">
+
 import {
   closed,
   generateFingering,
@@ -26,32 +25,26 @@ All in C (x7), then in all(x12x7), prioritize C, F, Bb, Eb, G, D, A. First two o
   d. Harmonic major
  */
 
-export default defineComponent({
-  name: "guitar-proficiency",
-  components: {Fretboard},
-  data: () => ({
-    scale: 'major',
-    baseNote: 48,
-    mode: 1,
-  }),
-  methods: {},
-  computed: {
-    notes() {
-      // todo generate note naming
-      let notes = scaleComposer(this.scaleProvider, onDegree(this.mode), octaves(2), closed)(this.baseNote)
-      return generateFingering(notes)
-    },
-    scaleProvider() {
+const scale = ref('major')
+const baseNote = ref(48)
+const mode = ref(1)
+
+const scaleProvider = computed(() => {
       return {
         major: major,
         melodicMinor: melodicMinor,
         harmonicMinor: harmonicMinor,
         harmonicMajor: harmonicMajor,
-      }[this.scale]!
-    }
-  }
+      }[scale.value]!
+    })
 
+const notes = computed(() => {
+  // todo generate note naming
+  let notes = scaleComposer(scaleProvider.value, onDegree(mode.value),
+    octaves(2), closed)(baseNote.value)
+  return generateFingering(notes)
 })
+
 </script>
 
 <template>
