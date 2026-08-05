@@ -1,0 +1,1 @@
+import{L as e,Mt as t,jt as n,m as r}from"./TKpGujPe.js";import{t as i}from"#entry";var a={name:`BoardTile`,props:[`content`,`size`,`background`],computed:{}};function o(i,a,o,s,c,l){return e(),r(`p`,{style:n(`font-size: `+o.size+`pc;background:`+o.background)},t(o.content),5)}var s=Object.assign(i(a,[[`render`,o],[`__scopeId`,`data-v-11897039`]]),{__name:`Tile`});export{s as t};

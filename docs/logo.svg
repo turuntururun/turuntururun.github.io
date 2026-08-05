@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="0 0 340 180" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    path { fill:none; stroke:purple; stroke-width:7; }
+    rect { fill:#A9EEF3; }
+  </style>
+
+  <rect width="340" height="180" rx="30" ry="25"/>
+
+  <path d="M25,50h45"/>
+  <path d="M50,10 l-24,130 a20,20 0,0,0 16,20 h10
+    a32,35 0,0,0 25,-40 a18,28 0,0,0 20,40
+    a32,35 0,0,0 25,-40 a18,28 0,0,0 20,40
+    "/>
+
+  <path d="M155,50h45"/>
+  <path d="M180,10 l-24,130 a20,20 0,0,0 16,20 h10
+    a32,35 0,0,0 25,-40 a18,28 0,0,0 20,40
+    a32,35 0,0,0 25,-40 a18,28 0,0,0 20,40
+    a32,35 0,0,0 25,-40 a18,28 0,0,0 20,40"/>
+
+</svg>

@@ -1,0 +1,1 @@
+import{L as e,f as t,x as n}from"./TKpGujPe.js";import{t as r}from"#entry";import{t as i}from"./DGQFIA3R.js";var a=r(n({name:`IndexPage`,__name:`index`,setup(n){return(n,r)=>{let a=i;return e(),t(a,{path:`/`,class:`content`})}}}),[[`__scopeId`,`data-v-1191db9d`]]);export{a as default};
