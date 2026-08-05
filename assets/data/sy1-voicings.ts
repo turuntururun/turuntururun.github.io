@@ -3,8 +3,11 @@ const tonePitch = { c1: 'TONE', c2: 'PITCH' }
 const depthPitch = { c1: 'DEPTH', c2: 'PITCH' }
 const rateDepth = { c1: 'TEMPO', c2: 'DEPTH' }
 
-export const voicingMap: Record<string, Record<string, Record<string, string>>> = {
-  'LEAD1': {
+export const voicingMap: Record<
+  string,
+  Record<string, Record<string, string>>
+> = {
+  LEAD1: {
     'SAW LEAD': toneDepth,
     'SAW LEAD OCT UP': toneDepth,
     'SQUARE LEAD': toneDepth,
@@ -15,9 +18,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'BRASSY LEAD': toneDepth,
     'TRI LEAD': toneDepth,
     'WHISTLY LEAD': toneDepth,
-    'SAW LEAD (PITCH CONTROL)': tonePitch
+    'SAW LEAD (PITCH CONTROL)': tonePitch,
   },
-  'LEAD2': {
+  LEAD2: {
     '5th LEAD 1': toneDepth,
     '5th LEAD 2': toneDepth,
     '5th LEAD 3': toneDepth,
@@ -28,9 +31,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'PWM LEAD': toneDepth,
     'PWM OCT LEAD': toneDepth,
     'FILTER LEAD': toneDepth,
-    'SQUARE LEAD (PITCH CONTROL)': tonePitch
+    'SQUARE LEAD (PITCH CONTROL)': tonePitch,
   },
-  'PAD': {
+  PAD: {
     'SAW PAD': toneDepth,
     'SOFT PAD': toneDepth,
     'LAYERED PAD 1 (Octave Down on Lower Notes Only)': toneDepth,
@@ -41,9 +44,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'LAYERED SYNTH BRASS 2 (Octave Down on Lower Notes Only)': toneDepth,
     'SYNTH BRASS 2': toneDepth,
     'PHASED PAD': toneDepth,
-    'SAW PAD (PITCH CONTROL)': tonePitch
+    'SAW PAD (PITCH CONTROL)': tonePitch,
   },
-  'BASS': {
+  BASS: {
     'FILTER BASS 1': toneDepth,
     'FILTER BASS 2': toneDepth,
     'FILTER BASS 3': toneDepth,
@@ -54,9 +57,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'BOWED BASS': toneDepth,
     'FILTER BASS 4': toneDepth,
     'LIGHT SQUARE BASS': toneDepth,
-    'SAW BASS (PITCH CONTROL)': tonePitch
+    'SAW BASS (PITCH CONTROL)': tonePitch,
   },
-  'STR': {
+  STR: {
     'DETUNED STRINGS': toneDepth,
     'HIGH OCTAVE STRINGS': toneDepth,
     'LOW OCTAVE STRINGS': toneDepth,
@@ -67,9 +70,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'LAYERED STRINGS 3 (Octave Down on Lower Notes Only)': toneDepth,
     'SWEEP STRINGS': toneDepth,
     'PHASED STRINGS': toneDepth,
-    'DETUNED STRINGS (PITCH CONTROL)': tonePitch
+    'DETUNED STRINGS (PITCH CONTROL)': tonePitch,
   },
-  'ORGAN': {
+  ORGAN: {
     'ROTARY SLOW 1': toneDepth,
     'ROTARY SLOW 2': toneDepth,
     'ROTARY SLOW 3': toneDepth,
@@ -80,9 +83,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'LAYERED ORGAN (Octave Down on Lower Notes Only)': toneDepth,
     'CHORUS ORGAN': toneDepth,
     'SWEEP ORGAN': toneDepth,
-    'ROTARY FAST (PITCH CONTROL)': tonePitch
+    'ROTARY FAST (PITCH CONTROL)': tonePitch,
   },
-  'BELL': {
+  BELL: {
     'BELL 1': toneDepth,
     'BELL 2': toneDepth,
     'BELL SQUARE': toneDepth,
@@ -93,32 +96,33 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'STEEL PAN 1': toneDepth,
     'STEEL PAN 2': toneDepth,
     'PHASED BELL': toneDepth,
-    'BELL (PITCH CONTROL)': tonePitch
+    'BELL (PITCH CONTROL)': tonePitch,
   },
-  'SFX1': {
-    'WIND': toneDepth,
+  SFX1: {
+    WIND: toneDepth,
     'LASER BEAM': toneDepth,
     'LO-FI': toneDepth,
-    'BEEP': toneDepth,
+    BEEP: toneDepth,
     'LO-FI PHASE': toneDepth,
     'GOING DOWN 1': depthPitch,
     'GOING UP 1': depthPitch,
-    'WIGGLE': depthPitch,
+    WIGGLE: depthPitch,
     'GOING DOWN 2': depthPitch,
     'GOING UP 2': depthPitch,
-    'BUBBLE': toneDepth
+    BUBBLE: toneDepth,
   },
-  'SFX2': {
+  SFX2: {
     'MOVING FILTER 1': {
       c1: 'RATE',
-      c2: 'DEPTH'
+      c2: 'DEPTH',
     },
     'MOVING FILTER 2 RATE DEPTH': {
-
-      c1: 'RATE', c2: 'DEPTH'
+      c1: 'RATE',
+      c2: 'DEPTH',
     },
     'MOVING PITCH': {
-      c1: 'RATE', c2: 'DEPTH'
+      c1: 'RATE',
+      c2: 'DEPTH',
     },
     'BREATH 1': toneDepth,
     'BREATH 2': toneDepth,
@@ -127,9 +131,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'TOUCH FILTER 3': toneDepth,
     'SENSITIVE PITCH': toneDepth,
     'RING MOD 1': toneDepth,
-    'RING MOD 2': toneDepth
+    'RING MOD 2': toneDepth,
   },
-  'SEQ1': {
+  SEQ1: {
     'SIMPLE BASS 16th NOTE': rateDepth,
     'SIMPLE BASS 8th NOTE': rateDepth,
     'MOVING ORGAN': rateDepth,
@@ -140,9 +144,9 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'SEQUENCE 3': rateDepth,
     'RHYTHM + BASS 8th NOTE': rateDepth,
     'RHYTHM + BASS TRIPLET': rateDepth,
-    'RHYTHM + BASS 16th NOTE': rateDepth
+    'RHYTHM + BASS 16th NOTE': rateDepth,
   },
-  'SEQ2': {
+  SEQ2: {
     'ARPEGGIO 1': rateDepth,
     'ARPEGGIO 2': rateDepth,
     'ARPEGGIO 3': rateDepth,
@@ -153,6 +157,6 @@ export const voicingMap: Record<string, Record<string, Record<string, string>>> 
     'BASS SEQUENCE + BRASS': rateDepth,
     'BASS SEQUENCE + RHYTHM 1': rateDepth,
     'BASS SEQUENCE + RHYTHM 2': rateDepth,
-    'BASS SEQUENCE + RHYTHM 3': rateDepth
-  }
+    'BASS SEQUENCE + RHYTHM 3': rateDepth,
+  },
 }

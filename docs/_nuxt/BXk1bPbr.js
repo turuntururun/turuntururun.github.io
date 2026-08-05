@@ -1,1 +1,0 @@
-import{_ as t,o as n,c as o,t as c,l as a}from"./DGG35wXq.js";const s={name:"BoardTile",props:["content","size","background"],computed:{}};function r(_,d,e,i,p,l){return n(),o("p",{style:a("font-size: "+e.size+"pc;background:"+e.background)},c(e.content),5)}const u=t(s,[["render",r],["__scopeId","data-v-9adf8d41"]]);export{u as _};
