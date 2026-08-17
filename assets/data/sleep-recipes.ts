@@ -454,6 +454,56 @@ const curry: Recipe[] = [
       },
     ],
   },
+  {
+    picUrl:
+      'https://www.serebii.net/pokemonsleep/meals/greengrasscurrybun.png',
+    name: 'Greengrass Curry Bun',
+    description:
+      'A curry bun packed full of Greengrass Isle\'s goodness. It\'s crispy on the outside, and chunky on the inside.',
+    ingredients: [
+      {
+        name: 'Warming Ginger',
+        number: 20
+      },
+      {
+        name: 'Fiery Herb',
+        number: 20
+      },
+      {
+        name: 'Greengrass Soybeans',
+        number: 8
+      },
+      {
+        name: 'Pure Oil',
+        number: 15
+      },
+    ],
+  },
+  {
+    picUrl:
+      'https://www.serebii.net/pokemonsleep/meals/bouncecurryudon.png',
+    name: 'Bounce Curry Udon',
+    description:
+      'The burst of flavor from the spices bring excitement, but be careful not to splash curry on yourself',
+    ingredients: [
+      {
+        name: 'Warming Ginger',
+        number: 39,
+      },
+      {
+        name: 'Tasty Mushroom',
+        number: 31,
+      },
+      {
+        name: 'Fiery Herb',
+        number: 22,
+      },
+      {
+        name: 'Bean Sausage',
+        number: 20,
+      },
+    ],
+  },
 ]
 
 const salads: Recipe[] = [
