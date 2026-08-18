@@ -1,11 +1,9 @@
 <template>
-  <ContentDoc path="/" class="content" />
+  <MarkdownContent file-path="/content/index.md" />
 </template>
 
 <script lang="ts" setup>
-defineOptions({
-  name: 'IndexPage',
-})
+
 </script>
 
 <style scoped>
