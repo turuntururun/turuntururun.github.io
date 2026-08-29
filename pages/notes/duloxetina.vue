@@ -314,8 +314,8 @@ Puede tomarse con o sin alimentos. No espolvoree el contenido de las cápsulas s
 const document = await parseMarkdown(spanish)
 
 useHead({
-  title: document.frontmatter.title,
-  meta: [{ name: 'description', content: document.frontmatter.description }],
+  title: 'Duloxetina',
+  meta: [{ name: 'description', content: 'Información farmacológica sobre la duloxetina' }],
 })
 </script>
 

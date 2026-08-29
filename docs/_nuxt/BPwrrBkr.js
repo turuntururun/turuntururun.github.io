@@ -121,4 +121,4 @@ Evite el consumo excesivo o crónico de alcohol. El alcohol aumenta el riesgo de
 
 Puede tomarse con o sin alimentos. No espolvoree el contenido de las cápsulas sobre alimentos o líquidos.
 
-`,u=a({__name:`duloxetine`,async setup(a){let u,d,f=([u,d]=t(()=>s(l)),u=await u,d(),u);return o({title:f.frontmatter.title,meta:[{name:`description`,content:f.frontmatter.description}]}),(t,a)=>(e(),r(`article`,null,[n(i(c),{value:i(f)},null,8,[`value`])]))}});export{u as default};
+`,u=a({__name:`duloxetina`,async setup(a){let u,d,f=([u,d]=t(()=>s(l)),u=await u,d(),u);return o({title:`Duloxetina`,meta:[{name:`description`,content:`Información farmacológica sobre la duloxetina`}]}),(t,a)=>(e(),r(`article`,null,[n(i(c),{value:i(f)},null,8,[`value`])]))}});export{u as default};
