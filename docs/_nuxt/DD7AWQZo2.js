@@ -1,1 +1,0 @@
-import{L as e,f as t,x as n}from"./TKpGujPe.js";import{t as r}from"./DGQFIA3R.js";var i=n({name:`PrivacyPolicy`,__name:`privacy-policy`,setup(n){return(n,i)=>{let a=r;return e(),t(a,{path:`/politica-de-privacidad`})}}});export{i as default};

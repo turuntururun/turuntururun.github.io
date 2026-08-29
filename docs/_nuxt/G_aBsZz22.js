@@ -1,1 +1,0 @@
-import{L as e,f as t}from"./TKpGujPe.js";import{t as n,v as r}from"#entry";import{t as i}from"./DGQFIA3R.js";var a={};function o(n,a){let o=i;return e(),t(o,{path:(n._.provides[r]||n.$route).params.category+`/`+(n._.provides[r]||n.$route).params.post,class:`content`},null,8,[`path`])}var s=n(a,[[`render`,o]]);export{s as default};

@@ -1,0 +1,1 @@
+import{L as e,P as t,u as n}from"./CgESp-Aj.js";import{r}from"./FJJ_VChM.js";import{t as i}from"./BDNMzG2s.js";var a={};function o(i,a){let o=e(`ContentDoc`);return t(),n(o,{path:(i._.provides[r]||i.$route).params.category+`/`+(i._.provides[r]||i.$route).params.post,class:`content`},null,8,[`path`])}var s=i(a,[[`render`,o]]);export{s as default};

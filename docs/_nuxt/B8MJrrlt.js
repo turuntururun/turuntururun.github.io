@@ -1,1 +1,0 @@
-import{S as e,W as t,u as n,x as r}from"./TKpGujPe.js";import i from"./BATutk8N.js";var a=r({name:`Markdown`,extends:i,setup(r){let{parent:i}=e(),{between:a,default:o}=t();return{fallbackSlot:o,tags:n(()=>typeof r.unwrap==`string`?r.unwrap.split(` `):[`*`]),between:a,parent:i}}}),o=Object.assign(a,{__name:`Markdown`});export{o as default};
