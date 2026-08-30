@@ -1,12 +1,9 @@
 <template>
-  <ContentDoc path="/politica-de-privacidad" />
+  <MarkdownContent file-path="/content/politica-de-privacidad.md" />
 </template>
 
 <script lang="ts" setup>
-defineOptions({
-  name: 'PrivacyPolicy',
-  // todo get user language and load english policy if needed
-})
+// todo get user language and load english policy if needed
 </script>
 
 <style scoped></style>
