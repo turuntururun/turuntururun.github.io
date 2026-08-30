@@ -28,7 +28,7 @@
     "axios": "1.18.1",
     "eslint": "^10.8.0",
     "sass": "^1.102.0",
-    "ws": "8.21.1"
+    "ws": "8.21.3"
   },
   "overrides": {
     "@nuxt/devtools": "$@nuxt/devtools"
