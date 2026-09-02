@@ -31,4 +31,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
           publish_branch: ${{ github.ref_name }}-build
-          commit_message: "build: ${{ github.sha }}"
+          commit_message: 'build: ${{ github.sha }}'
