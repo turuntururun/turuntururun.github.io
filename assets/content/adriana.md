@@ -1,4 +1,4 @@
-## Notas para Adriana
+# Appunti per Adriana 
 
-### 29 de septiembre
+### 1 de Octubre
 
