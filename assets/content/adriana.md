@@ -12,6 +12,8 @@ Llegué tarde y no estuve mientras revisaban la tarea. Después comenzamos la un
 | _tutta una serie di_          | vari/varie - diversi/diverse - numerosi/numerose |
 | _come è andata_               | come è stato/stata                               |
 | _tranne_                      | a parte - eccetto - ad eccezione di              |
+
+
 En lo gramatical vimos la diferencia de usar _sapere_ y _conoscere_ en _passato prossimo_ e _imperfetto_:
 
 - _sapere, passato prossimo_: qualcuno mi ha dato una notizia nuova, mi ha informato di qualcosa
