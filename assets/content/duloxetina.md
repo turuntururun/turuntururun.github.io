@@ -1,21 +1,25 @@
-
 # Duloxetina
 
 ## Descripción
+
 Medicamento utilizado para tratar la depresión, la ansiedad, el dolor neuropático y la incontinencia.
 
 ### Categorías terapéuticas
+
 - Antidepresivos indicados para la depresión
 - Inhibidores de la recaptación de serotonina y noradrenalina
 
 ### Mecanismo de acción
+
 - Inhibidor del transportador de serotonina dependiente de sodio
 - Inhibidor del transportador de noradrenalina dependiente de sodio
 
 ### Resumen
+
 La duloxetina es un inhibidor de la recaptación de serotonina y noradrenalina utilizado para tratar el trastorno de ansiedad generalizada, el dolor neuropático, la osteoartritis y la incontinencia de esfuerzo.
 
 ### Antecedentes
+
 La duloxetina es un inhibidor dual de la recaptación de serotonina y noradrenalina.
 Fue descubierta originalmente en 1993 y desarrollada por Eli Lilly and Company bajo la denominación LY248686. La duloxetina recibió por primera vez la aprobación de la FDA en agosto de 2004, comercializada como Cymbalta, para el tratamiento del trastorno depresivo mayor. Desde entonces, ha obtenido autorización para diversas indicaciones, incluyendo el tratamiento del dolor neuropático, el trastorno de ansiedad generalizada, la osteoartritis y la incontinencia de esfuerzo. La duloxetina continúa siendo objeto de investigación para el tratamiento del dolor asociado al cáncer, a intervenciones quirúrgicas y más.
 
@@ -23,26 +27,26 @@ Fue descubierta originalmente en 1993 y desarrollada por Eli Lilly and Company b
 
 ![uhhninij](/svg/duloxetine.svg)
 
-
 ## Indicaciones
 
 - Indicada para:
 
-1) Tratamiento del trastorno depresivo mayor.
-2) Tratamiento del trastorno de ansiedad generalizada.
-3) Tratamiento de la neuropatía periférica diabética.
-4) Tratamiento de la fibromialgia.
-5) Tratamiento del dolor musculoesquelético crónico.
-6) Tratamiento de la osteoartritis de rodilla en adultos.
-7) Tratamiento del dolor lumbar crónico en adultos.
-8) Tratamiento de la incontinencia urinaria de esfuerzo en mujeres adultas.
+1. Tratamiento del trastorno depresivo mayor.
+2. Tratamiento del trastorno de ansiedad generalizada.
+3. Tratamiento de la neuropatía periférica diabética.
+4. Tratamiento de la fibromialgia.
+5. Tratamiento del dolor musculoesquelético crónico.
+6. Tratamiento de la osteoartritis de rodilla en adultos.
+7. Tratamiento del dolor lumbar crónico en adultos.
+8. Tratamiento de la incontinencia urinaria de esfuerzo en mujeres adultas.
 
-- Los usos fuera de indicación (*off-label*) incluyen:
+- Los usos fuera de indicación (_off-label_) incluyen:
 
-1) Tratamiento de la neuropatía periférica inducida por quimioterapia.
-2) Tratamiento de la incontinencia urinaria de esfuerzo en hombres adultos tras una prostatectomía hasta lograr la recuperación completa.
+1. Tratamiento de la neuropatía periférica inducida por quimioterapia.
+2. Tratamiento de la incontinencia urinaria de esfuerzo en hombres adultos tras una prostatectomía hasta lograr la recuperación completa.
 
 ## Farmacodinámica
+
 La duloxetina, al aumentar las concentraciones de serotonina y noradrenalina en el núcleo de Onuf, potencia
 la activación glutamatérgica del nervio motor pudendo, que inerva el esfínter uretral externo. Esta señalización
 potenciada permite una contracción más fuerte. El aumento de la contracción de este esfínter incrementa la presión necesaria para
@@ -55,6 +59,7 @@ Si bien se ha demostrado que la duloxetina es eficaz tanto en modelos animales d
 El aumento de la presión arterial es un efecto secundario frecuente de la duloxetina, debido a la vasoconstricción mediada por el incremento intencional de la señalización de noradrenalina.
 
 ## Mecanismo de acción
+
 La duloxetina es un potente inhibidor de la recaptación neuronal de serotonina y noradrenalina, y un inhibidor menos potente de la recaptación de dopamina. La duloxetina no presenta una afinidad significativa por los receptores dopaminérgicos, adrenérgicos, colinérgicos, histaminérgicos, opioides, de glutamato ni GABA.
 
 La acción sobre el esfínter uretral externo está mediada por los efectos de la duloxetina en el sistema nervioso central (SNC). El aumento de las concentraciones de serotonina y noradrenalina en el núcleo de Onuf provoca una mayor activación de los receptores 5-HT₂, 5-HT₃ y adrenérgicos α₁. Tanto los receptores 5-HT₂ como los α₁ están acoplados a proteínas G<sub>q</sub>, y su activación incrementa la actividad de la vía del inositol trifosfato/fosfolipasa C (IP₃/PLC). Esta vía conduce a la liberación de las reservas intracelulares de calcio, lo que aumenta las concentraciones intracelulares de este ion y facilita la excitabilidad neuronal. El receptor 5-HT₃ funciona como un canal de sodio activado por ligando que permite la entrada de sodio en la neurona cuando se activa.
@@ -71,7 +76,7 @@ Se postula que la participación de la serotonina y la noradrenalina en áreas r
 El efecto hipertensor de la duloxetina está relacionado con su efecto farmacológico esperado. La mayor disponibilidad de noradrenalina conduce a la activación de receptores adrenérgicos en el endotelio vascular. Dado que predomina la acción de los receptores α₁, se produce vasoconstricción a la vez que el receptor acoplado a proteínas G<sub>q</sub> señaliza la liberación de calcio desde el retículo sarcoplásmico para facilitar la contracción del músculo liso.
 
 | Blanco                                              | Acciones  | Organismo |
-  |-----------------------------------------------------|-----------|-----------|
+| --------------------------------------------------- | --------- | --------- |
 | Transportador de serotonina dependiente de sodio    | Inhibidor | Humanos   |
 | Transportador de noradrenalina dependiente de sodio | Inhibidor | Humanos   |
 | Transportador de dopamina dependiente de sodio      | Inhibidor | Humanos   |
@@ -120,4 +125,3 @@ Se estima que el 25 % de la duloxetina plasmática pasa a la leche materna; la d
 Evite el consumo excesivo o crónico de alcohol. El alcohol aumenta el riesgo de toxicidad hepática.
 
 Puede tomarse con o sin alimentos. No espolvoree el contenido de las cápsulas sobre alimentos o líquidos.
-

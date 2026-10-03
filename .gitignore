@@ -80,6 +80,7 @@ dist
 
 # IDE / Editor
 .idea
+.junie
 
 # Service worker
 sw.*
