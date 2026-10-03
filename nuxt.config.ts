@@ -22,6 +22,11 @@ export default defineNuxtConfig({
     host: '0.0.0.0',
   },
 
+  vite: {
+    build: {
+      target: ['es2015', 'safari11'],
+    },
+  },
   nitro: {
     output: {
       publicDir: 'docs',
