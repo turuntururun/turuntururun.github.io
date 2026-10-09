@@ -1,10 +1,13 @@
 <script setup lang="ts">
-
 useHead({
   title: 'Duloxetina',
-  meta: [{ name: 'description', content: 'Información farmacológica sobre la duloxetina' }],
+  meta: [
+    {
+      name: 'description',
+      content: 'Información farmacológica sobre la duloxetina',
+    },
+  ],
 })
-
 </script>
 
 <template>
