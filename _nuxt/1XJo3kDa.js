@@ -23,14 +23,14 @@ La conjugación en general es:
 No es tan complicado conjugarlo sabiendo la primera conjugación porque es muy regular en el resto de las personas. Unos
 casos irregulares que nos contó son:
 
-- Essere: sia
-- Dovere: debba
-- Avere: abbia
-- Sapere: sappia
-- Potere: possa
-- Volere: voglia
-- Andare: vada
-- Uscire: esca
+- Essere → sia
+- Dovere → debba
+- Avere → abbia
+- Sapere → sappia
+- Potere → possa
+- Volere → voglia
+- Andare → vada
+- Uscire → esca
 
 Algunas cosas "irregulares" tienen la misma irregularidad del indicativo. Por ejemplo para _finire_:
 
