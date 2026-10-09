@@ -1,0 +1,1 @@
+import{P as e,u as t,y as n}from"./Csr6Yppz.js";import{t as r}from"./Dac00AXP.js";var i=n({__name:`privacy-policy`,setup(n){return(n,i)=>{let a=r;return e(),t(a,{"file-path":`/content/politica-de-privacidad.md`})}}});export{i as default};
