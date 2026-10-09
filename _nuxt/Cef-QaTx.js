@@ -5,9 +5,9 @@ var e=`## Appunti per Adriana
 Hoy vimos eso del _congiuntivo_, lo que es el subjuntivo en español. En italiano lo llaman así porque _congiunge_ (une)
 frases, en español es subjuntivo porque se suele usar para expresar opiniones o pensamientos que suelen ser subjetivos.
 
-> _Non_ **pensi** _que sia noioso_
+> _Non pensi que_ **sia** _noioso_
 >
-> ¿No **piensas** que sería aburrido?
+> ¿No piensas que **sería** aburrido?
 
 La conjugación en general es:
 
