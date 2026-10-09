@@ -34,8 +34,8 @@ casos irregulares que nos contó son:
 
 Algunas cosas "irregulares" tienen la misma irregularidad del indicativo. Por ejemplo para _finire_:
 
-|         | Subjuntivo    | Congiuntivo   |
-| ------- | ------------- | ------------- |
+|         | Indicativo    | Congiuntivo   |
+| ------- |---------------| ------------- |
 | io      | finisc**o**   | finisc**a**   |
 | tu      | finisc**i**   | finisc**a**   |
 | lui/lei | finisc**e**   | finisc**a**   |
