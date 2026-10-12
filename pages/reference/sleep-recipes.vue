@@ -10,11 +10,13 @@ const selectedIngredients: Ref<string[]> = ref([])
 const ingredientList: readonly string[] = il
 
 const selectedRecipes: ComputedRef<Recipe[]> = computed(() =>
-  recipes[dish.value].filter((d) =>
-    selectedIngredients.value.every((e) =>
-      d.ingredients.map(({ name }) => name).includes(e),
-    ),
-  ),
+  recipes[dish.value]
+    .filter((d) =>
+      selectedIngredients.value.every((e) =>
+        d.ingredients.map(({ name }) => name).includes(e),
+      ),
+    )
+    .sort((a, b) => a.potSize - b.potSize),
 )
 </script>
 
@@ -116,9 +118,7 @@ const selectedRecipes: ComputedRef<Recipe[]> = computed(() =>
               </span>
             </td>
             <td class="centered">
-              {{
-                r.ingredients.map((a) => a.number).reduce((a, b) => a + b, 0)
-              }}
+              {{ r.potSize }}
             </td>
           </tr>
         </tbody>
