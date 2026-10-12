@@ -2,10 +2,19 @@ export interface Recipe {
   picUrl: string
   name: string
   description: string
+  potSize: number
   ingredients: {
     name: string
     number: number
   }[]
+}
+
+function potSize(
+  ingredients: {
+    number: number
+  }[],
+): number {
+  return ingredients.map((a) => a.number).reduce((a, b) => a + b, 0)
 }
 
 const curry: Recipe[] = [
@@ -502,7 +511,7 @@ const curry: Recipe[] = [
       },
     ],
   },
-]
+].map((r) => ({ potSize: potSize(r.ingredients), ...r }))
 
 const salads: Recipe[] = [
   {
@@ -1023,7 +1032,7 @@ const salads: Recipe[] = [
       },
     ],
   },
-]
+].map((r) => ({ potSize: potSize(r.ingredients), ...r }))
 
 const desserts: Recipe[] = [
   {
@@ -1553,7 +1562,7 @@ const desserts: Recipe[] = [
       },
     ],
   },
-]
+].map((r) => ({ potSize: potSize(r.ingredients), ...r }))
 
 export const recipes: { [key: string]: Recipe[] } = { curry, salads, desserts }
 
