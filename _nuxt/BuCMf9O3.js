@@ -1,5 +1,47 @@
 var e=`## Appunti per Adriana
 
+### 13 de octubre
+
+Hoy continuamos viendo usos del _conguintivo_. Esta vez vimos su uso con conjunciones para hacer frases compuestas
+usando conjunciones:
+
+_Congiunzioni Concessive_
+- _Nonostante_ (A pesar de que)
+> Nonostante **faccia** molto freddo, sono uscito senza giacca
+- _Sebbene_ (Si bien)
+> Sebbene Maria **abbia** studiato molto, non ha superato l'esame
+- _Benché_ (Aunque)
+> Benché **sia** tardi, vogliamo continuare la festa
+- _Malgrado_ (A pesar de que)
+> Malgrado **piova** oggi, andiamo al parco
+
+_Congiunzioni Condizionali_
+- _Purché_ (siempre que)
+> Ti presto la mia macchina, purché tu la **guidi** con molta attenzione
+- _A condizione che_ (bajo la condición de que)
+> Possiamo organizzare il viaggio, a condizione che tutti **siano** d'accordo
+- _A patto che_ (con la condición de que)
+> Ti aiuto a fare i compiti, a patto che tu mi **offra** un caffè
+
+_Congiunzioni Finali_
+- _Perché_¹ (para que)
+> Ti spiego la regola perché tu **possa** capire meglio l'esercizio
+- _Affinché_
+> Ti lascio le chiavi affinché tu **entri** in casa quando **arrivi**
+
+_Congiunzione Temporale_
+- Prima che
+> Finisci di cenare prima che il cibo si raffreddi
+
+...
+
+Y seguro hay más, pero estas son las que nos contó y seguro que seguiremos haciendo más ejercicios cuando regreses.
+
+¹ En particular _perché_ puede significar tanto "por qué/porque" como "para qué" porque en italiano _per_ significa 
+"por" y "para". La cosa es que si va con un verbo conjugado en indicativo (_Vado a palestra perché **ci sono** 
+molti cani nel parco_) significa "porque", pero si va con un verbo en _conguintivo_ (_Vado a palestra perché non 
+mi **morda** un cane_) significa "para que".
+
 ### 8 de octubre
 
 Hoy vimos eso del _congiuntivo_, lo que es el subjuntivo en español. En italiano lo llaman así porque _congiunge_ (une)

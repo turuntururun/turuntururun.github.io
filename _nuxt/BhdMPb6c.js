@@ -1,0 +1,1 @@
+import{t as e}from"./D-DRW5S0.js";import{P as t,u as n}from"./awuxVcMw.js";import{t as r}from"./CO6DK7bB.js";var i={};function a(e,i){let a=r;return t(),n(a,{"file-path":`/content/index.md`})}var o=e(i,[[`render`,a],[`__scopeId`,`data-v-8f9aaeac`]]);export{o as default};
