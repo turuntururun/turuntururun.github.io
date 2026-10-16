@@ -1,1 +1,0 @@
-import{P as e,_ as t,f as n,y as r}from"./awuxVcMw.js";import{i}from"./jcwD66YB.js";import{t as a}from"./CO6DK7bB.js";var o=r({__name:`per-adriana`,setup(r){return i({title:`Notas para Adriana`,meta:[{name:`description`,content:`Notas para compartir a Adriana`}]}),(r,i)=>{let o=a;return e(),n(`article`,null,[t(o,{"file-path":`/content/adriana.md`})])}}});export{o as default};
