@@ -1,0 +1,1 @@
+import{P as e,u as t}from"./awuxVcMw.js";import{t as n}from"./CJPtlwNV.js";import{t as r}from"./CcHh9n-J.js";var i={};function a(n,i){let a=r;return e(),t(a,{"file-path":`/content/index.md`})}var o=n(i,[[`render`,a],[`__scopeId`,`data-v-8f9aaeac`]]);export{o as default};
