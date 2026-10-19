@@ -6,6 +6,8 @@ import {
   weirdPresents,
   weirdFutures,
   weirdParticiples,
+  type FullConjugation,
+  type Conjugation,
 } from '~/assets/data/italian-words.ts'
 
 const themes = [
@@ -14,15 +16,32 @@ const themes = [
   'Verbi con participio passato irregolare',
   'Verbi con futuro irregolare',
 ]
+type mood =
+  | 'indicativo'
+  | 'congiuntivo'
+  | 'condizionale'
+  | 'imperativo'
+  | 'infinito'
+  | 'participio'
+  | 'gerundio'
 
 // todo cache values in user's storage
 const theme: Ref<number> = ref(0)
 const selectedVerb: Ref<string> = ref('')
-const conj: Ref<{ v: string; t: string; m: string }> = ref({
+const conj: Ref<{ v: string; t: string; m: mood }> = ref({
   v: 'essere',
   t: 'presente',
   m: 'indicativo',
 })
+
+const conjTable: ComputedRef<Record<string, Conjugation | {}> | false> =
+  computed(() => {
+    const params = conj.value
+    const sampleConjugation: FullConjugation | undefined =
+      sampleConjugations[params.v]
+    if (sampleConjugation === undefined) return false
+    return sampleConjugation[params.m] || false
+  })
 </script>
 
 <template>
@@ -54,7 +73,7 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
       />
     </section>
 
-    <table v-if="sampleConjugations[conj.v][conj.m][conj.t]">
+    <table v-if="conjTable!! && conjTable[conj.t]">
       <thead>
         <tr>
           <th></th>
@@ -64,17 +83,17 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
       <tbody v-if="['infinito', 'gerundio', 'participio'].includes(conj.m)">
         <tr>
           <td>presente</td>
-          <td>{{ sampleConjugations[conj.v][conj.m].presente ?? '---' }}</td>
+          <td>{{ conjTable.presente ?? '---' }}</td>
         </tr>
         <tr>
           <td>passato</td>
-          <td>{{ sampleConjugations[conj.v][conj.m].passato ?? '---' }}</td>
+          <td>{{ conjTable.passato ?? '---' }}</td>
         </tr>
       </tbody>
       <tbody v-else>
         <tr v-for="p in persons">
           <td>{{ p }}</td>
-          <td>{{ sampleConjugations[conj.v][conj.m][conj.t]?.[p] ?? '---' }}</td>
+          <td>{{ (conjTable[conj.t] as Conjugation)?.[p] ?? '---' }}</td>
         </tr>
       </tbody>
     </table>
@@ -87,20 +106,20 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
         :options="Object.keys(weirdPresents)"
         orientation="row"
       />
-    <table v-if="weirdPresents[selectedVerb]">
-      <thead>
-        <tr>
-          <th></th>
-          <th>{{ selectedVerb }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="p in persons">
-          <td>{{ p }}</td>
-          <td>{{ weirdPresents[selectedVerb]?.[p] ?? '' }}</td>
-        </tr>
-      </tbody>
-    </table>
+      <table v-if="weirdPresents[selectedVerb]">
+        <thead>
+          <tr>
+            <th></th>
+            <th>{{ selectedVerb }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="p in persons">
+            <td>{{ p }}</td>
+            <td>{{ weirdPresents[selectedVerb]?.[p] ?? '' }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
   <section v-if="theme === 2">
@@ -121,6 +140,12 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
   </section>
   <section v-if="theme === 3">
     <table>
+      <thead>
+        <tr>
+          <th>Verbo</th>
+          <th>Futuro (io)</th>
+        </tr>
+      </thead>
       <tbody>
         <tr v-for="f in weirdFutures">
           <td>{{ f[0] }}</td>
@@ -131,7 +156,7 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 section {
   margin: 1rem;
   display: flex;
@@ -145,5 +170,9 @@ section {
   flex-direction: row;
   align-items: flex-start;
   gap: 0.5rem;
+
+  * {
+    max-width: 35rem;
+  }
 }
 </style>
