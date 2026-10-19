@@ -9,32 +9,32 @@ export const persons: person[] = [
   'loro',
 ]
 
-type conjugation = Record<person, string>
+export type Conjugation = Record<person, string>
 
-type FullConjugation = {
+export type FullConjugation = {
   indicativo: {
-    presente: conjugation
-    imperfetto: conjugation
-    'passato remoto': conjugation
-    'futuro semplice': conjugation
-    'passato prossimo': conjugation
-    'trapassato prossimo': conjugation
-    'trapassato remoto': conjugation
-    'futuro anteriore': conjugation
+    presente: Conjugation
+    imperfetto: Conjugation
+    'passato remoto': Conjugation
+    'futuro semplice': Conjugation
+    'passato prossimo': Conjugation
+    'trapassato prossimo': Conjugation
+    'trapassato remoto': Conjugation
+    'futuro anteriore': Conjugation
   }
   congiuntivo: {
-    presente: conjugation
-    passato: conjugation
-    imperfetto: conjugation
-    trapassato: conjugation
+    presente: Conjugation
+    passato: Conjugation
+    imperfetto: Conjugation
+    trapassato: Conjugation
   }
   condizionale: {
-    presente: conjugation
-    passato: conjugation
+    presente: Conjugation
+    passato: Conjugation
   }
   imperativo: {
-    presente: Partial<conjugation>
-    futuro: Partial<conjugation>
+    presente: Partial<Conjugation>
+    futuro: Partial<Conjugation>
   }
   infinito: { presente: string; passato: string }
   participio: { presente: string; passato: string }
@@ -46,23 +46,23 @@ type EssentialConjugation = {
   gerundio: string
   participio: { presente: string; passato: string }
   indicativo: {
-    presente: conjugation
-    imperfetto: conjugation
-    'passato remoto': conjugation
-    'futuro semplice': conjugation
+    presente: Conjugation
+    imperfetto: Conjugation
+    'passato remoto': Conjugation
+    'futuro semplice': Conjugation
   }
   congiuntivo: {
-    presente: conjugation
-    imperfetto: conjugation
+    presente: Conjugation
+    imperfetto: Conjugation
   }
-  condizionale: conjugation
+  condizionale: Conjugation
   imperativo: {
-    presente: Partial<conjugation>
-    futuro: Partial<conjugation>
+    presente: Partial<Conjugation>
+    futuro: Partial<Conjugation>
   }
 }
 
-function conj(forms: string[]): conjugation {
+function conj(forms: string[]): Conjugation {
   return {
     io: forms[0] || '',
     tu: forms[1] || '',
@@ -73,7 +73,7 @@ function conj(forms: string[]): conjugation {
   }
 }
 
-function compose(base: conjugation, participle: string): conjugation {
+function compose(base: Conjugation, participle: string): Conjugation {
   return {
     io: base.io + ' ' + participle,
     tu: base.tu + ' ' + participle,
@@ -103,7 +103,7 @@ export const modes: Record<string, string[]> = {
   gerundio: ['presente', 'passato'],
 }
 
-export const weirdPresents: Record<string, conjugation> = {
+export const weirdPresents: Record<string, Conjugation> = {
   andare: conj(['vado', 'vai', 'va', 'andiamo', 'andate', 'vanno']),
   bere: conj(['bevo', 'bevi', 'beve', 'beviamo', 'bevete', 'bevono']),
   dare: conj(['do', 'dai', 'dà', 'diamo', 'date', 'danno']),
