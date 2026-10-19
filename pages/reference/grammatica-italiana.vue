@@ -121,6 +121,12 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
   </section>
   <section v-if="theme === 3">
     <table>
+      <thead>
+      <tr>
+        <th>Verbo</th>
+        <th>Futuro (io)</th>
+      </tr>
+      </thead>
       <tbody>
         <tr v-for="f in weirdFutures">
           <td>{{ f[0] }}</td>
@@ -131,7 +137,7 @@ const conj: Ref<{ v: string; t: string; m: string }> = ref({
   </section>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 section {
   margin: 1rem;
   display: flex;
@@ -145,5 +151,9 @@ section {
   flex-direction: row;
   align-items: flex-start;
   gap: 0.5rem;
+
+  * {
+    max-width: 35rem;
+  }
 }
 </style>
