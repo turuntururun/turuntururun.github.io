@@ -33,12 +33,33 @@ type FullConjugation = {
     passato: conjugation
   }
   imperativo: {
-    presente: conjugation
-    futuro: conjugation
+    presente: Partial<conjugation>
+    futuro: Partial<conjugation>
   }
   infinito: { presente: string; passato: string }
   participio: { presente: string; passato: string }
   gerundio: { presente: string; passato: string }
+}
+
+type EssentialConjugation = {
+  infinito: string
+  gerundio: string
+  participio: { presente: string; passato: string }
+  indicativo: {
+    presente: conjugation
+    imperfetto: conjugation
+    'passato remoto': conjugation
+    'futuro semplice': conjugation
+  }
+  congiuntivo: {
+    presente: conjugation
+    imperfetto: conjugation
+  }
+  condizionale: conjugation
+  imperativo: {
+    presente: Partial<conjugation>
+    futuro: Partial<conjugation>
+  }
 }
 
 function conj(forms: string[]): conjugation {
@@ -49,6 +70,17 @@ function conj(forms: string[]): conjugation {
     noi: forms[3] || '',
     voi: forms[4] || '',
     loro: forms[5] || '',
+  }
+}
+
+function compose(base: conjugation, participle: string): conjugation {
+  return {
+    io: base.io + ' ' + participle,
+    tu: base.tu + ' ' + participle,
+    'lui/lei/Lei': base['lui/lei/Lei'] + ' ' + participle,
+    noi: base.noi + ' ' + participle,
+    voi: base.voi + ' ' + participle,
+    loro: base.loro + ' ' + participle,
   }
 }
 
@@ -307,4 +339,348 @@ const essere: FullConjugation = {
   gerundio: { presente: 'essendo', passato: 'essendo stato' },
 }
 
-export const auxiliars = { essere, avere: {} }
+const avere: EssentialConjugation = {
+  infinito: 'avere',
+  gerundio: 'avendo',
+  participio: { presente: 'avente', passato: 'avuto' },
+  indicativo: {
+    presente: conj(['ho', 'hai', 'ha', 'abbiamo', 'avete', 'hanno']),
+    imperfetto: conj([
+      'avevo',
+      'avevi',
+      'aveva',
+      'avevamo',
+      'avevate',
+      'avevano',
+    ]),
+    'passato remoto': conj([
+      'ebbi',
+      'avesti',
+      'ebbe',
+      'avemmo',
+      'aveste',
+      'ebbero',
+    ]),
+    'futuro semplice': conj([
+      'avrò',
+      'avrai',
+      'avrà',
+      'avremo',
+      'avrete',
+      'avranno',
+    ]),
+  },
+  congiuntivo: {
+    presente: conj([
+      'abbia',
+      'abbia',
+      'abbia',
+      'abbiamo',
+      'abbiate',
+      'abbiano',
+    ]),
+    imperfetto: conj([
+      'avessi',
+      'avessi',
+      'avesse',
+      'avessimo',
+      'aveste',
+      'avessero',
+    ]),
+  },
+  condizionale: conj([
+    'avrei',
+    'avresti',
+    'avrebbe',
+    'avremmo',
+    'avreste',
+    'avrebbero',
+  ]),
+  imperativo: {
+    presente: conj(['--', 'abbi', 'abbia', 'abbiamo', 'abbiate', 'abbiano']),
+    futuro: conj(['--', 'avrai', 'avrà', 'avremo', 'avrete', 'avranno']),
+  },
+}
+
+function composeConjugation(
+  aux: EssentialConjugation,
+  simpleConjugation: EssentialConjugation,
+): FullConjugation {
+  let participle = simpleConjugation.participio.passato
+  return {
+    infinito: {
+      presente: simpleConjugation.infinito,
+      passato: aux.infinito + ' ' + participle,
+    },
+    participio: {
+      presente: simpleConjugation.participio.presente,
+      passato: participle,
+    },
+    gerundio: {
+      presente: simpleConjugation.gerundio,
+      passato: aux.gerundio + ' ' + participle,
+    },
+
+    indicativo: {
+      presente: simpleConjugation.indicativo.presente,
+      imperfetto: simpleConjugation.indicativo.imperfetto,
+      'passato remoto': simpleConjugation.indicativo['passato remoto'],
+      'futuro semplice': simpleConjugation.indicativo['futuro semplice'],
+      'passato prossimo': compose(aux.indicativo.presente, participle),
+      'trapassato prossimo': compose(aux.indicativo.imperfetto, participle),
+      'trapassato remoto': compose(
+        aux.indicativo['passato remoto'],
+        participle,
+      ),
+      'futuro anteriore': compose(
+        aux.indicativo['futuro semplice'],
+        participle,
+      ),
+    },
+    congiuntivo: {
+      presente: simpleConjugation.congiuntivo.presente,
+      passato: compose(aux.congiuntivo.presente, participle),
+      imperfetto: simpleConjugation.congiuntivo.imperfetto,
+      trapassato: compose(aux.congiuntivo.imperfetto, participle),
+    },
+    condizionale: {
+      presente: simpleConjugation.condizionale,
+      passato: compose(aux.condizionale, participle),
+    },
+    imperativo: simpleConjugation.imperativo,
+  }
+}
+
+export const sampleConjugations: Record<string, FullConjugation> = {
+  essere,
+  avere: composeConjugation(avere, avere),
+  amare: composeConjugation(avere, {
+    infinito: 'amare',
+    gerundio: 'amando',
+    participio: { presente: 'amante', passato: 'amato' },
+    indicativo: {
+      presente: conj(['amo', 'ami', 'ama', 'amiamo', 'amate', 'amano']),
+      imperfetto: conj([
+        'amavo',
+        'amavi',
+        'amava',
+        'amavamo',
+        'amavate',
+        'amavano',
+      ]),
+      'passato remoto': conj([
+        'amai',
+        'amasti',
+        'amò',
+        'amammo',
+        'amaste',
+        'amarono',
+      ]),
+      'futuro semplice': conj([
+        'amerò',
+        'amerai',
+        'amerà',
+        'ameremo',
+        'amerete',
+        'ameranno',
+      ]),
+    },
+    condizionale: conj([
+      'amerei',
+      'ameresti',
+      'amerebbe',
+      'ameremmo',
+      'amereste',
+      'amerebbero',
+    ]),
+    congiuntivo: {
+      presente: conj(['ami', 'ami', 'ami', 'amiamo', 'amiate', 'amino']),
+      imperfetto: conj([
+        'amassi',
+        'amassi',
+        'amasse',
+        'amassimo',
+        'amaste',
+        'amassero',
+      ]),
+    },
+    imperativo: {
+      presente: {
+        tu: 'ama',
+        'lui/lei/Lei': 'ami',
+        noi: 'amiamo',
+        voi: 'amate',
+        loro: 'amino',
+      },
+      futuro: {
+        tu: 'amerai',
+        'lui/lei/Lei': 'amerà',
+        noi: 'ameremo',
+        voi: 'amerete',
+        loro: 'ameranno',
+      },
+    },
+  }),
+  temere: composeConjugation(avere, {
+    infinito: 'temere',
+    gerundio: 'temendo',
+    participio: { presente: 'temente', passato: 'temuto' },
+    indicativo: {
+      presente: {
+        io: 'temo',
+        tu: 'temi',
+        'lui/lei/Lei': 'teme',
+        noi: 'temiamo',
+        voi: 'temete',
+        loro: 'temono',
+      },
+      imperfetto: {
+        io: 'temevo',
+        tu: 'temevi',
+        'lui/lei/Lei': 'temeva',
+        noi: 'temevamo',
+        voi: 'temevate',
+        loro: 'temevano',
+      },
+      'passato remoto': {
+        io: 'temei',
+        tu: 'temesti',
+        'lui/lei/Lei': 'temette',
+        noi: 'tememmo',
+        voi: 'temeteste',
+        loro: 'temerono',
+      },
+      'futuro semplice': {
+        io: 'temerò',
+        tu: 'temerai',
+        'lui/lei/Lei': 'temerà',
+        noi: 'temeremo',
+        voi: 'temerete',
+        loro: 'temeranno',
+      },
+    },
+    congiuntivo: {
+      presente: {
+        io: 'tema',
+        tu: 'tema',
+        'lui/lei/Lei': 'tema',
+        noi: 'temiamo',
+        voi: 'temiate',
+        loro: 'temano',
+      },
+      imperfetto: {
+        io: 'temessi',
+        tu: 'temessi',
+        'lui/lei/Lei': 'temesse',
+        noi: 'temiamo',
+        voi: 'temete',
+        loro: 'temono',
+      },
+    },
+    condizionale: {
+      io: 'temerei',
+      tu: 'temeresti',
+      'lui/lei/Lei': 'temerebbe',
+      noi: 'temeremmo',
+      voi: 'temereste',
+      loro: 'temerebbero',
+    },
+    imperativo: {
+      presente: {
+        tu: 'temi',
+        'lui/lei/Lei': 'tema',
+        noi: 'temiamo',
+        voi: 'temete',
+        loro: 'temano',
+      },
+      futuro: {
+        tu: 'temerai',
+        'lui/lei/Lei': 'temerà',
+        noi: 'temeremo',
+        voi: 'temerete',
+        loro: 'temeranno',
+      },
+    },
+  }),
+  servire: composeConjugation(avere, {
+    infinito: 'servire',
+    gerundio: 'servendo',
+    participio: { passato: 'servito', presente: 'servente' },
+    indicativo: {
+      presente: {
+        io: 'servo',
+        tu: 'servi',
+        'lui/lei/Lei': 'serve',
+        noi: 'serviamo',
+        voi: 'servite',
+        loro: 'servono',
+      },
+      imperfetto: {
+        io: 'servivo',
+        tu: 'servivi',
+        'lui/lei/Lei': 'serviva',
+        noi: 'servivamo',
+        voi: 'servivate',
+        loro: 'servivono',
+      },
+      'passato remoto': {
+        io: 'servii',
+        tu: 'servisti',
+        'lui/lei/Lei': 'servì',
+        noi: 'servimmo',
+        voi: 'serviste',
+        loro: 'servirono',
+      },
+      'futuro semplice': {
+        io: 'servirò',
+        tu: 'servirai',
+        'lui/lei/Lei': 'servirà',
+        noi: 'serviremo',
+        voi: 'servirete',
+        loro: 'serviranno',
+      },
+    },
+    congiuntivo: {
+      presente: {
+        io: 'serva',
+        tu: 'serva',
+        'lui/lei/Lei': 'serva',
+        noi: 'serviamo',
+        voi: 'serviate',
+        loro: 'servano',
+      },
+      imperfetto: {
+        io: 'servissi',
+        tu: 'servissi',
+        'lui/lei/Lei': 'servisse',
+        noi: 'servissimo',
+        voi: 'serviste',
+        loro: 'servissero',
+      },
+    },
+    condizionale: {
+      io: 'serv',
+      tu: 'serv',
+      'lui/lei/Lei': 'serv',
+      noi: 'serv',
+      voi: 'serv',
+      loro: 'serv',
+    },
+    imperativo: {
+      presente: {
+        tu: 'servi',
+        'lui/lei/Lei': 'serva',
+        noi: 'serviamo',
+        voi: 'servite',
+        loro: 'servano',
+      },
+      futuro: {
+        tu: 'servirai',
+        'lui/lei/Lei': 'servirà',
+        noi: 'serviremo',
+        voi: 'servirete',
+        loro: 'serviranno',
+      },
+    },
+  }),
+}

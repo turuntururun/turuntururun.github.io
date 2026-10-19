@@ -2,22 +2,23 @@
 import {
   persons,
   modes,
-  auxiliars,
+  sampleConjugations,
   weirdPresents,
   weirdFutures,
   weirdParticiples,
 } from '~/assets/data/italian-words.ts'
 
 const themes = [
+  'Coniugazioni',
   'Verbi con presente irregolare',
   'Verbi con participio passato irregolare',
   'Verbi con futuro irregolare',
-  'Essere/Avere',
 ]
 
-const theme: Ref<number> = ref(0) //'selected-theme', Number.parseInt)
-const selectedVerb: Ref<string> = ref('') // 'selected-verb')
-const conj: Ref<{ v: 'essere' | 'avere'; t: string; m: string }> = ref({
+// todo cache values in user's storage
+const theme: Ref<number> = ref(0)
+const selectedVerb: Ref<string> = ref('')
+const conj: Ref<{ v: string; t: string; m: string }> = ref({
   v: 'essere',
   t: 'presente',
   m: 'indicativo',
@@ -34,14 +35,58 @@ const conj: Ref<{ v: 'essere' | 'avere'; t: string; m: string }> = ref({
     />
   </form>
   <section v-if="theme === 0">
-    <label>
-      Verbo
-      <select v-model="selectedVerb">
-        <option v-for="p in Object.keys(weirdPresents)" :value="p">
-          {{ p }}
-        </option>
-      </select>
-    </label>
+    <section class="options">
+      <FieldSelect
+        title="Verbo"
+        v-model="conj.v"
+        :options="Object.keys(sampleConjugations)"
+      />
+      <FieldSelect
+        title="Modo"
+        v-model="conj.m"
+        :options="Object.keys(modes)"
+      />
+      <FieldSelect
+        v-if="!['infinito', 'gerundio', 'participio'].includes(conj.m)"
+        title="Tempo"
+        v-model="conj.t"
+        :options="modes[conj.m] || []"
+      />
+    </section>
+
+    <table v-if="sampleConjugations[conj.v][conj.m][conj.t]">
+      <thead>
+        <tr>
+          <th></th>
+          <th>{{ conj.v }}</th>
+        </tr>
+      </thead>
+      <tbody v-if="['infinito', 'gerundio', 'participio'].includes(conj.m)">
+        <tr>
+          <td>presente</td>
+          <td>{{ sampleConjugations[conj.v][conj.m].presente ?? '---' }}</td>
+        </tr>
+        <tr>
+          <td>passato</td>
+          <td>{{ sampleConjugations[conj.v][conj.m].passato ?? '---' }}</td>
+        </tr>
+      </tbody>
+      <tbody v-else>
+        <tr v-for="p in persons">
+          <td>{{ p }}</td>
+          <td>{{ sampleConjugations[conj.v][conj.m][conj.t]?.[p] ?? '---' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section v-if="theme === 1">
+    <div class="side-by-side">
+      <FieldSelect
+        title="Verbo"
+        v-model="selectedVerb"
+        :options="Object.keys(weirdPresents)"
+        orientation="row"
+      />
     <table v-if="weirdPresents[selectedVerb]">
       <thead>
         <tr>
@@ -56,13 +101,14 @@ const conj: Ref<{ v: 'essere' | 'avere'; t: string; m: string }> = ref({
         </tr>
       </tbody>
     </table>
+    </div>
   </section>
-  <section v-if="theme === 1">
+  <section v-if="theme === 2">
     <table>
       <thead>
         <tr>
           <th>Verbo</th>
-          <th>participio passato</th>
+          <th>Participio passato</th>
         </tr>
       </thead>
       <tbody>
@@ -73,7 +119,7 @@ const conj: Ref<{ v: 'essere' | 'avere'; t: string; m: string }> = ref({
       </tbody>
     </table>
   </section>
-  <section v-if="theme === 2">
+  <section v-if="theme === 3">
     <table>
       <tbody>
         <tr v-for="f in weirdFutures">
@@ -83,40 +129,21 @@ const conj: Ref<{ v: 'essere' | 'avere'; t: string; m: string }> = ref({
       </tbody>
     </table>
   </section>
-  <section v-if="theme === 3">
-    <section class="options">
-      <FieldSelect
-        title="Verbo"
-        v-model="conj.v"
-        :options="['essere', 'avere']"
-      />
-      <FieldSelect
-        title="Modo"
-        v-model="conj.m"
-        :options="Object.keys(modes)"
-      />
-      <FieldSelect
-        title="Tempo"
-        v-model="conj.t"
-        :options="modes[conj.m] || []"
-      />
-    </section>
-
-    <table v-if="auxiliars[conj.v][conj.m][conj.t]">
-      <thead>
-        <tr>
-          <th></th>
-          <th>Essere</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="p in persons">
-          <td>{{ p }}</td>
-          <td>{{ auxiliars[conj.v][conj.m][conj.t]?.[p] ?? '' }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </section>
 </template>
 
-<style scoped></style>
+<style scoped>
+section {
+  margin: 1rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.side-by-side {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+</style>

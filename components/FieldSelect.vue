@@ -40,6 +40,9 @@ function isSelected(m: string, i: number): boolean {
 </template>
 
 <style scoped>
+fieldset {
+  margin: 0.4rem 0;
+}
 fieldset.column {
   flex-flow: column nowrap;
   display: inline-flex;
