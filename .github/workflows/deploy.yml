@@ -24,7 +24,7 @@ jobs:
       - name: Install and Build
         run: |
           npm ci
-          npm run build-site
+          npm run generate
 
       - name: Push build to deployment branch
         uses: peaceiris/actions-gh-pages@v4

@@ -2,6 +2,22 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
+  // Build config
+  components: true,
+  css: ['~/assets/styles/main.scss'],
+  compatibilityDate: '2026-07-24',
+  nitro: {
+    output: {
+      publicDir: 'docs',
+    },
+  },
+  vite: {
+    build: {
+      target: ['es2015', 'safari11'],
+    },
+  },
+
+  // Site config
   app: {
     head: {
       title: 'turuntururun',
@@ -13,26 +29,6 @@ export default defineNuxtConfig({
       link: [{ rel: 'icon', type: 'image/x-icon', href: '/logo.svg' }],
     },
   },
-
-  css: ['~/assets/styles/main.scss'],
-
-  components: true,
-
-  devServer: {
-    host: '0.0.0.0',
-  },
-
-  vite: {
-    build: {
-      target: ['es2015', 'safari11'],
-    },
-  },
-  nitro: {
-    output: {
-      publicDir: 'docs',
-    },
-  },
-  compatibilityDate: '2026-07-24',
 
   routeRules: {
     '/tools/synth': { redirect: { to: '/reference/synth', statusCode: 301 } },

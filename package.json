@@ -2,14 +2,13 @@
   "name": "turuntururun",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
-    "clean": "rm -rf ./docs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "generate": "nuxt generate",
-    "build-site": "npm run clean && npm run generate && git add -A -- docs",
     "lint:prettier": "prettier --write .",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js && npm run lint:prettier",
@@ -17,7 +16,7 @@
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
-    "@nuxt/devtools": "3.3.1",
+    "@nuxt/devtools": "3.4.4",
     "@stomp/stompjs": "^7.3.0",
     "@vite-pwa/nuxt": "^1.1.1",
     "jest": "^30.5.0",
@@ -25,13 +24,10 @@
     "prettier": "^3.0.0"
   },
   "dependencies": {
-    "@comark/vue": "^0.6.2",
+    "@comark/vue": "^0.7.0",
     "axios": "1.20.0",
     "eslint": "^10.9.1",
     "sass": "^1.103.1",
-    "ws": "8.21.1"
-  },
-  "overrides": {
-    "@nuxt/devtools": "$@nuxt/devtools"
+    "ws": "8.22.0"
   }
 }
