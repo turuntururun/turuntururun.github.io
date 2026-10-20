@@ -17,7 +17,7 @@
   "devDependencies": {
     "@babel/preset-typescript": "^7.23.3",
     "@nuxt/devtools": "3.4.4",
-    "@stomp/stompjs": "^7.3.0",
+    "@stomp/stompjs": "^7.5.0",
     "@vite-pwa/nuxt": "^1.1.1",
     "jest": "^30.5.0",
     "nuxt": "^4.5.1",
