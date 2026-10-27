@@ -27,7 +27,7 @@
     "@comark/vue": "^0.7.0",
     "@duckdb/duckdb-wasm": "^1.33.1-dev57.0",
     "axios": "1.20.0",
-    "eslint": "^10.9.1",
+    "eslint": "^10.13.0",
     "sass": "^1.103.1",
     "ws": "8.22.0"
   }
