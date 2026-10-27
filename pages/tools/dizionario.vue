@@ -1,8 +1,7 @@
 <template>
   <div class="parquet-container">
     <header class="header">
-      <h1>Local Parquet Filter & Search</h1>
-      <p class="subtitle">Client-side SQL execution via DuckDB-Wasm</p>
+      <h1>DIZIONARIO DI ITALIANO</h1>
     </header>
 
     <!-- Loading / Initialization Indicator -->
@@ -20,17 +19,8 @@
     <div v-else class="content">
       <!-- Search & Controls Bar -->
       <section class="controls-panel">
-        <div class="control-group">
-          <label for="filter-column">Filter Column:</label>
-          <select id="filter-column" v-model="selectedColumn">
-            <option v-for="col in availableColumns" :key="col" :value="col">
-              {{ col }}
-            </option>
-          </select>
-        </div>
-
         <div class="control-group search-input">
-          <label for="search-query">Search Term:</label>
+          <label for="search-query">Cerca</label>
           <input
             id="search-query"
             type="text"
@@ -41,8 +31,13 @@
         </div>
 
         <div class="control-group">
-          <label for="page-size">Limit:</label>
-          <select id="page-size" v-model.number="pageSize" @change="executeQuery">
+          <!-- todo enable an 'infinite' scroll -->
+          <label for="page-size">Limite</label>
+          <select
+            id="page-size"
+            v-model.number="pageSize"
+            @change="executeQuery"
+          >
             <option :value="10">10</option>
             <option :value="25">25</option>
             <option :value="50">50</option>
@@ -56,26 +51,15 @@
         <span>Showing {{ rows.length }} row(s)</span>
       </div>
 
-      <!-- Data Table -->
-      <div class="table-wrapper">
-        <table v-if="rows.length > 0">
-          <thead>
-          <tr>
-            <th v-for="col in availableColumns" :key="col">{{ col }}</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr v-for="(row, idx) in rows" :key="idx">
-            <td v-for="col in availableColumns" :key="col">
-              {{ formatCell(row[col]) }}
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <div v-else class="no-records">
-          No records match your criteria.
-        </div>
-      </div>
+      <section class="results" v-if="rows.length > 0">
+        <FieldSelect
+          :options="rows.map((row) => row.name)"
+          v-model="selectedTerm"
+          title="Select a term"
+        />
+        <pre v-if="definition">{{ definition }}</pre>
+      </section>
+      <div v-else class="no-records">No records match your criteria.</div>
     </div>
   </div>
 </template>
@@ -93,11 +77,14 @@ const PARQUET_PATH = '/data/italian.parquet'
 const isLoading = ref(true)
 const statusMessage = ref('Initializing WebAssembly engine...')
 const errorMessage = ref('')
-const availableColumns = ref<string[]>([])
-const selectedColumn = ref('name')
+const selectedTerm = ref('')
 const searchQuery = ref('')
 const pageSize = ref(25)
 const rows = ref<RowData[]>([])
+
+const definition = computed<string | undefined>(() => {
+  return rows.value.find((row) => row.name === selectedTerm.value)?.defin
+})
 
 // DuckDB references
 let db: any = null
@@ -110,7 +97,6 @@ onMounted(async () => {
 
   try {
     await initDuckDB()
-    await loadParquetMetadata()
     await executeQuery()
   } catch (err: any) {
     errorMessage.value = `Failed to load Parquet: ${err.message}`
@@ -132,12 +118,12 @@ async function initDuckDB() {
   // 1. Resolve local URLs for worker and wasm modules via Vite
   const worker_url = new URL(
     '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js',
-    import.meta.url
+    import.meta.url,
   ).href
 
   const wasm_url = new URL(
     '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm',
-    import.meta.url
+    import.meta.url,
   ).href
 
   // 2. Instantiate DuckDB directly using the local bundle definition
@@ -159,35 +145,23 @@ async function initDuckDB() {
   conn = await db.connect()
 }
 
-async function loadParquetMetadata() {
-  statusMessage.value = 'Reading schema definitions...'
-
-  // Inspect schema
-  const schemaResult = await conn.query(`DESCRIBE SELECT * FROM 'dataset.parquet'`)
-  const schemaRows = schemaResult.toArray()
-
-  availableColumns.value = schemaRows.map((r: any) => r.column_name)
-
-  // Fallback if 'name' doesn't exist in the parquet file
-  if (!availableColumns.value.includes(selectedColumn.value) && availableColumns.value.length > 0) {
-    selectedColumn.value = availableColumns.value[0]
-  }
-}
-
 async function executeQuery() {
   if (!conn) return
 
   try {
     const term = searchQuery.value.trim()
-    const col = selectedColumn.value
+    if (!term) {
+      rows.value = []
+      return
+    }
+
+    const col = 'name'
 
     let sql = `SELECT * FROM 'dataset.parquet'`
 
     // Filter using ILIKE for case-insensitive matching; cast to VARCHAR for numeric types (e.g., id)
-    if (term) {
-      const sanitizedTerm = term.replace(/'/g, "''")
-      sql += ` WHERE CAST("${col}" AS VARCHAR) ILIKE '%${sanitizedTerm}%'`
-    }
+    const sanitizedTerm = term.replace(/'/g, "''")
+    sql += ` WHERE CAST("${col}" AS VARCHAR) ILIKE '${sanitizedTerm}%'`
 
     sql += ` LIMIT ${pageSize.value}`
 
@@ -217,7 +191,9 @@ function formatCell(val: any): string {
   max-width: 1100px;
   margin: 2rem auto;
   padding: 0 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
   color: #1e293b;
 }
 
@@ -259,7 +235,8 @@ function formatCell(val: any): string {
   color: #475569;
 }
 
-select, input {
+select,
+input {
   height: 38px;
   border: 1px solid #cbd5e1;
   border-radius: 6px;
@@ -269,7 +246,8 @@ select, input {
   background-color: #fff;
 }
 
-select:focus, input:focus {
+select:focus,
+input:focus {
   border-color: #3b82f6;
   box-shadow: 0 0 0 1px #3b82f6;
 }
@@ -279,41 +257,16 @@ select:focus, input:focus {
   min-width: 220px;
 }
 
+.results {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 1rem;
+}
+
 .results-meta {
   margin: 1.25rem 0 0.5rem 0;
   font-size: 0.85rem;
   color: #64748b;
-}
-
-.table-wrapper {
-  overflow-x: auto;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background-color: #fff;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
-  font-size: 0.875rem;
-}
-
-th {
-  background-color: #f1f5f9;
-  padding: 0.75rem 1rem;
-  font-weight: 600;
-  color: #334155;
-  border-bottom: 1px solid #e2e8f0;
-}
-
-td {
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #f1f5f9;
-}
-
-tr:hover {
-  background-color: #f8fafc;
 }
 
 .no-records {
@@ -348,6 +301,8 @@ tr:hover {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 </style>
