@@ -1,0 +1,1 @@
+import{P as e,u as t}from"./B5cvn1GB.js";import{t as n}from"./BD6zTj4H.js";import{t as r}from"./CX1PTV6f.js";var i={};function a(n,i){let a=r;return e(),t(a,{"file-path":`/content/index.md`})}var o=n(i,[[`render`,a],[`__scopeId`,`data-v-8f9aaeac`]]);export{o as default};
