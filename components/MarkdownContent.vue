@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { parseMarkdown } from 'comark'
 import { MarkdownDocument } from '@comark/vue'
+import Spoiler from '~/components/Spoiler.vue'
 
 const props = defineProps<{
   filePath: string
@@ -10,6 +11,8 @@ const glob = import.meta.glob('../**/*.md', {
   import: 'default',
   query: '?raw',
 })
+
+const components = { Spoiler }
 
 let globElement = glob['../assets' + props.filePath]
 
@@ -28,7 +31,9 @@ useHead({
 </script>
 
 <template>
-  <MarkdownDocument :value="document" />
+  <MarkdownDocument :value="document" :components="components" />
 </template>
 
-<style scoped></style>
+<style scoped>
+/* todo add article specific styles */
+</style>

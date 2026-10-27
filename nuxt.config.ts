@@ -11,6 +11,11 @@ export default defineNuxtConfig({
       publicDir: 'docs',
     },
   },
+  vite: {
+    build: {
+      target: ['es2015', 'safari11'],
+    },
+  },
 
   // Site config
   app: {
