@@ -15,6 +15,13 @@ export default defineNuxtConfig({
     build: {
       target: ['es2015', 'safari11'],
     },
+    worker: {
+      format: 'es',
+    },
+    assetsInclude: ['**/*.wasm'],
+    optimizeDeps: {
+      exclude: ['@duckdb/duckdb-wasm'],
+    },
   },
 
   // Site config
