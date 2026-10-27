@@ -24,7 +24,7 @@
     "prettier": "^3.0.0"
   },
   "dependencies": {
-    "@comark/vue": "^0.7.0",
+    "@comark/vue": "^0.8.1",
     "@duckdb/duckdb-wasm": "^1.33.1-dev57.0",
     "axios": "1.20.0",
     "eslint": "^10.9.1",
