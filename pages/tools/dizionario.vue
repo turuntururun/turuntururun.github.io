@@ -25,30 +25,21 @@
             id="search-query"
             type="text"
             v-model="searchQuery"
-            placeholder="Type to filter..."
+            placeholder="Scrivi un po"
             @input="debounceQuery"
           />
-        </div>
-
-        <div class="control-group">
-          <!-- todo enable an 'infinite' scroll -->
-          <label for="page-size">Limite</label>
-          <select
-            id="page-size"
-            v-model.number="pageSize"
-            @change="executeQuery"
-          >
-            <option :value="10">10</option>
-            <option :value="25">25</option>
-            <option :value="50">50</option>
-            <option :value="100">100</option>
-          </select>
         </div>
       </section>
 
       <!-- Results Summary -->
-      <div class="results-meta">
-        <span>Showing {{ rows.length }} row(s)</span>
+      <div class="results-meta" v-if="totalMatches > rows.length">
+        <span
+          >Abbiamo trovato: {{ totalMatches }}. Ecco i primi
+          {{ rows.length }}</span
+        >
+      </div>
+      <div class="results-meta" v-else>
+        <span>Abbiamo trovato: {{ rows.length }}</span>
       </div>
 
       <section class="results" v-if="rows.length > 0">
@@ -59,114 +50,66 @@
         />
         <pre v-if="definition">{{ definition }}</pre>
       </section>
-      <div v-else class="no-records">No records match your criteria.</div>
+      <div v-else class="no-records">Non abbiamo trovato parole</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref } from 'vue'
 
 interface RowData {
   [key: string]: any
 }
 
-const PARQUET_PATH = '/data/italian.parquet'
-
-// Reactive state
-const isLoading = ref(true)
-const statusMessage = ref('Initializing WebAssembly engine...')
-const errorMessage = ref('')
-const selectedTerm = ref('')
+// query params
 const searchQuery = ref('')
-const pageSize = ref(25)
-const rows = ref<RowData[]>([])
+const pageSize = ref(20)
 
+// query results
+const rows = ref<RowData[]>([])
+const totalMatches = ref<number>(0)
+
+// display selection
+const selectedTerm = ref('')
 const definition = computed<string | undefined>(() => {
   return rows.value.find((row) => row.name === selectedTerm.value)?.defin
 })
 
-// DuckDB references
-let db: any = null
-let conn: any = null
 let debounceTimer: ReturnType<typeof setTimeout> | null = null
 
-onMounted(async () => {
-  // Guard against SSR execution
-  if (!import.meta.client) return
-
-  try {
-    await initDuckDB()
-    await executeQuery()
-  } catch (err: any) {
-    errorMessage.value = `Failed to load Parquet: ${err.message}`
-  } finally {
-    isLoading.value = false
-  }
+const { isLoading, statusMessage, errorMessage, query } = useParquetDB({
+  parquetUrl: '/data/italian.parquet',
 })
-
-onBeforeUnmount(async () => {
-  if (conn) await conn.close()
-  if (db) await db.terminate()
-})
-
-async function initDuckDB() {
-  const duckdb = await import('@duckdb/duckdb-wasm')
-
-  statusMessage.value = 'Loading local WebAssembly binaries...'
-
-  // 1. Resolve local URLs for worker and wasm modules via Vite
-  const worker_url = new URL(
-    '@duckdb/duckdb-wasm/dist/duckdb-browser-eh.worker.js',
-    import.meta.url,
-  ).href
-
-  const wasm_url = new URL(
-    '@duckdb/duckdb-wasm/dist/duckdb-eh.wasm',
-    import.meta.url,
-  ).href
-
-  // 2. Instantiate DuckDB directly using the local bundle definition
-  const worker = new Worker(worker_url, { type: 'module' })
-  const logger = new duckdb.VoidLogger()
-
-  db = new duckdb.AsyncDuckDB(logger, worker)
-  await db.instantiate(wasm_url)
-
-  statusMessage.value = 'Fetching bundled Parquet file...'
-  const response = await fetch(PARQUET_PATH)
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status}: Failed to fetch ${PARQUET_PATH}`)
-  }
-
-  const buffer = await response.arrayBuffer()
-  await db.registerFileBuffer('dataset.parquet', new Uint8Array(buffer))
-
-  conn = await db.connect()
-}
 
 async function executeQuery() {
-  if (!conn) return
-
   try {
     const term = searchQuery.value.trim()
     if (!term) {
       rows.value = []
+      totalMatches.value = 0
       return
     }
 
-    const col = 'name'
+    const sanitizedTerm = term.replaceAll("'", "''")
 
-    let sql = `SELECT * FROM 'dataset.parquet'`
+    // Filter using ILIKE for case-insensitive matching
+    // language=SQL
+    const fromMatchingEntries = `FROM 'dataset.parquet' WHERE name ILIKE '${sanitizedTerm}%'`
 
-    // Filter using ILIKE for case-insensitive matching; cast to VARCHAR for numeric types (e.g., id)
-    const sanitizedTerm = term.replace(/'/g, "''")
-    sql += ` WHERE CAST("${col}" AS VARCHAR) ILIKE '${sanitizedTerm}%'`
+    query(
+      // language=SQL
+      `SELECT count(*) as total ${fromMatchingEntries}`,
+    ).then((count) => {
+      totalMatches.value = count!.get(0)?.total || 0
+    })
 
-    sql += ` LIMIT ${pageSize.value}`
-
-    const result = await conn.query(sql)
-    rows.value = result.toArray().map((row: any) => row.toJSON())
+    query(
+      // language=SQL
+      `SELECT name, defin ${fromMatchingEntries} LIMIT ${pageSize.value}`,
+    ).then((result) => {
+      rows.value = result!.toArray().map((row: any) => row.toJSON())
+    })
   } catch (err: any) {
     errorMessage.value = `Query execution error: ${err.message}`
   }
@@ -177,12 +120,6 @@ function debounceQuery() {
   debounceTimer = setTimeout(() => {
     executeQuery()
   }, 250)
-}
-
-function formatCell(val: any): string {
-  if (val === null || val === undefined) return '—'
-  if (typeof val === 'bigint') return val.toString()
-  return String(val)
 }
 </script>
 
@@ -205,11 +142,6 @@ function formatCell(val: any): string {
   font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
-}
-
-.subtitle {
-  color: #64748b;
-  font-size: 0.95rem;
 }
 
 .controls-panel {

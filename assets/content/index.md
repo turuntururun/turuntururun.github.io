@@ -12,6 +12,11 @@ Hi there! There's no much going on around here, but we have a game
 
 - [SY-1 Synth params](/tools/synth)
 
+#### Languages
+
+- [Italian dictionary](/tools/dizionario)
+- [Italian grammar cheatsheet](/reference/grammatica-italiana)
+
 #### Gaming
 
 - [Rocksmith delisting](/reminders/rocksmith-delisting)
