@@ -21,7 +21,7 @@
       <section class="controls-panel">
         <div class="control-group search-input">
           <label for="search-query">Cerca</label>
-          <input
+          <fancy-input
             id="search-query"
             type="text"
             v-model="searchQuery"
@@ -108,7 +108,12 @@ async function executeQuery() {
       // language=SQL
       `SELECT name, defin ${fromMatchingEntries} LIMIT ${pageSize.value}`,
     ).then((result) => {
-      rows.value = result!.toArray().map((row: any) => row.toJSON())
+      const toArray = result!.toArray()
+      rows.value = toArray.map((row: any) => row.toJSON())
+      if (toArray.length > 0) {
+        console.log("Found ", toArray.length, toArray[0].name)
+        selectedTerm.value = toArray[0].name
+      }
     })
   } catch (err: any) {
     errorMessage.value = `Query execution error: ${err.message}`

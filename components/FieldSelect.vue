@@ -1,9 +1,10 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
+    title: string
+    // todo accept something to keep key value and display value separated
     options: string[]
     modelValue: string | number
-    title: string
     name?: string
     orientation?: 'column' | 'row'
   }>(),

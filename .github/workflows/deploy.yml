@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - dev
-      - class-notes
+      - tools
 
 jobs:
   build-and-deploy:
